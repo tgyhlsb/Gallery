@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  GASplitVC.h
 //  Gallery
 //
 //  Created by Tanguy Hélesbeux on 03/05/2015.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface GASplitVC : UISplitViewController
 
 @end
-
