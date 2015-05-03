@@ -12,7 +12,7 @@
 #import "GAFileManager.h"
 
 // Controllers
-#import "GADirectoryInspectorVC.h"
+#import "GADirectoryNavigationController.h"
 
 
 @interface GASplitVC ()
@@ -28,7 +28,7 @@
     if (self) {
         GADirectory *rootDirectory = [GAFileManager readSharedDirectory];
         
-        UIViewController *mainVC = [GADirectoryInspectorVC newWithDirectory:rootDirectory];
+        UIViewController *mainVC = [GADirectoryNavigationController newWithRootDirectory:rootDirectory];
         
         UIViewController *blueVC = [[UIViewController alloc] init];
         blueVC.view.backgroundColor = [UIColor blueColor];
