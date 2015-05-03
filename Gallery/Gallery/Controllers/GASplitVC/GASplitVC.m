@@ -8,7 +8,12 @@
 
 #import "GASplitVC.h"
 
+// Models
+#import "GAFileManager.h"
+
 // Controllers
+#import "GADirectoryInspectorVC.h"
+
 
 @interface GASplitVC ()
 
@@ -21,14 +26,14 @@
 - (id)init {
     self = [super init];
     if (self) {
+        GADirectory *rootDirectory = [GAFileManager readSharedDirectory];
         
-        UIViewController *redVC = [[UIViewController alloc] init];
-        redVC.view.backgroundColor = [UIColor redColor];
+        UIViewController *mainVC = [GADirectoryInspectorVC newWithDirectory:rootDirectory];
         
         UIViewController *blueVC = [[UIViewController alloc] init];
         blueVC.view.backgroundColor = [UIColor blueColor];
         
-        self.viewControllers = @[redVC, blueVC];
+        self.viewControllers = @[mainVC, blueVC];
     }
     return self;
 }
