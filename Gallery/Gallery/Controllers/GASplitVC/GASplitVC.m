@@ -8,7 +8,7 @@
 
 #import "GASplitVC.h"
 
-// Controlles
+// Controllers
 
 @interface GASplitVC ()
 

@@ -14,6 +14,10 @@
 		5A4570601AF6C3D900A436AC /* GalleryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A45705F1AF6C3D900A436AC /* GalleryTests.m */; };
 		5A45706D1AF6C66800A436AC /* GASplitVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A45706B1AF6C66700A436AC /* GASplitVC.m */; };
 		5A45706E1AF6C66800A436AC /* GASplitVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A45706C1AF6C66800A436AC /* GASplitVC.xib */; };
+		5A4570791AF6C96100A436AC /* GADirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570721AF6C96100A436AC /* GADirectory.m */; };
+		5A45707A1AF6C96100A436AC /* GAFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570741AF6C96100A436AC /* GAFileManager.m */; };
+		5A45707B1AF6C96100A436AC /* GAImageFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570761AF6C96100A436AC /* GAImageFile.m */; };
+		5A45707C1AF6C96100A436AC /* GATreeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570781AF6C96100A436AC /* GATreeItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,14 @@
 		5A45706A1AF6C66700A436AC /* GASplitVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GASplitVC.h; path = GASplitVC/GASplitVC.h; sourceTree = "<group>"; };
 		5A45706B1AF6C66700A436AC /* GASplitVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GASplitVC.m; path = GASplitVC/GASplitVC.m; sourceTree = "<group>"; };
 		5A45706C1AF6C66800A436AC /* GASplitVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GASplitVC.xib; path = GASplitVC/GASplitVC.xib; sourceTree = "<group>"; };
+		5A4570711AF6C96100A436AC /* GADirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADirectory.h; sourceTree = "<group>"; };
+		5A4570721AF6C96100A436AC /* GADirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADirectory.m; sourceTree = "<group>"; };
+		5A4570731AF6C96100A436AC /* GAFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFileManager.h; sourceTree = "<group>"; };
+		5A4570741AF6C96100A436AC /* GAFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAFileManager.m; sourceTree = "<group>"; };
+		5A4570751AF6C96100A436AC /* GAImageFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAImageFile.h; sourceTree = "<group>"; };
+		5A4570761AF6C96100A436AC /* GAImageFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAImageFile.m; sourceTree = "<group>"; };
+		5A4570771AF6C96100A436AC /* GATreeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GATreeItem.h; sourceTree = "<group>"; };
+		5A4570781AF6C96100A436AC /* GATreeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GATreeItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +95,7 @@
 			children = (
 				5A4570471AF6C3D900A436AC /* AppDelegate.h */,
 				5A4570481AF6C3D900A436AC /* AppDelegate.m */,
+				5A4570701AF6C96100A436AC /* Model */,
 				5A4570691AF6C63700A436AC /* Controllers */,
 				5A4570501AF6C3D900A436AC /* Images.xcassets */,
 				5A4570521AF6C3D900A436AC /* LaunchScreen.xib */,
@@ -120,11 +133,34 @@
 		5A4570691AF6C63700A436AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5A45706F1AF6C94700A436AC /* GASplitVC */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5A45706F1AF6C94700A436AC /* GASplitVC */ = {
+			isa = PBXGroup;
+			children = (
 				5A45706A1AF6C66700A436AC /* GASplitVC.h */,
 				5A45706B1AF6C66700A436AC /* GASplitVC.m */,
 				5A45706C1AF6C66800A436AC /* GASplitVC.xib */,
 			);
-			path = Controllers;
+			name = GASplitVC;
+			sourceTree = "<group>";
+		};
+		5A4570701AF6C96100A436AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5A4570711AF6C96100A436AC /* GADirectory.h */,
+				5A4570721AF6C96100A436AC /* GADirectory.m */,
+				5A4570731AF6C96100A436AC /* GAFileManager.h */,
+				5A4570741AF6C96100A436AC /* GAFileManager.m */,
+				5A4570751AF6C96100A436AC /* GAImageFile.h */,
+				5A4570761AF6C96100A436AC /* GAImageFile.m */,
+				5A4570771AF6C96100A436AC /* GATreeItem.h */,
+				5A4570781AF6C96100A436AC /* GATreeItem.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +265,10 @@
 			files = (
 				5A4570491AF6C3D900A436AC /* AppDelegate.m in Sources */,
 				5A4570461AF6C3D900A436AC /* main.m in Sources */,
+				5A45707C1AF6C96100A436AC /* GATreeItem.m in Sources */,
+				5A45707B1AF6C96100A436AC /* GAImageFile.m in Sources */,
+				5A45707A1AF6C96100A436AC /* GAFileManager.m in Sources */,
+				5A4570791AF6C96100A436AC /* GADirectory.m in Sources */,
 				5A45706D1AF6C66800A436AC /* GASplitVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
