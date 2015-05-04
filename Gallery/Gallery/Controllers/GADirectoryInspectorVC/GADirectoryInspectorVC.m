@@ -11,6 +11,9 @@
 // Models
 #import "GATreeItem.h"
 
+// Managers
+#import "GACacheManager.h"
+
 @interface GADirectoryInspectorVC ()
 
 @end
@@ -93,9 +96,7 @@
         cell.imageView.image = nil;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
-        GAImageFile *imgFile = (GAImageFile *)treeItem;
-        cell.imageView.image = [UIImage imageWithContentsOfFile:imgFile.path];
-        cell.imageView.backgroundColor = [UIColor redColor];
+        cell.imageView.image = [GACacheManager thumbnailForTreeItem:treeItem];
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     

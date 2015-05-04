@@ -26,6 +26,7 @@
 		5A45708D1AF73F2700A436AC /* GARightNavigationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A45708B1AF73F2700A436AC /* GARightNavigationVC.xib */; };
 		5A4570921AF73F8A00A436AC /* GARightVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570901AF73F8A00A436AC /* GARightVC.m */; };
 		5A4570931AF73F8A00A436AC /* GARightVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4570911AF73F8A00A436AC /* GARightVC.xib */; };
+		5A4570971AF7471A00A436AC /* GACacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570961AF7471A00A436AC /* GACacheManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		5A45708F1AF73F8A00A436AC /* GARightVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GARightVC.h; path = GARightVC/GARightVC.h; sourceTree = "<group>"; };
 		5A4570901AF73F8A00A436AC /* GARightVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GARightVC.m; path = GARightVC/GARightVC.m; sourceTree = "<group>"; };
 		5A4570911AF73F8A00A436AC /* GARightVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GARightVC.xib; path = GARightVC/GARightVC.xib; sourceTree = "<group>"; };
+		5A4570951AF7471A00A436AC /* GACacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GACacheManager.h; sourceTree = "<group>"; };
+		5A4570961AF7471A00A436AC /* GACacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GACacheManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +186,8 @@
 				5A4570761AF6C96100A436AC /* GAImageFile.m */,
 				5A4570771AF6C96100A436AC /* GATreeItem.h */,
 				5A4570781AF6C96100A436AC /* GATreeItem.m */,
+				5A4570951AF7471A00A436AC /* GACacheManager.h */,
+				5A4570961AF7471A00A436AC /* GACacheManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 			files = (
 				5A4570801AF6CA8500A436AC /* GADirectoryInspectorVC.m in Sources */,
 				5A4570491AF6C3D900A436AC /* AppDelegate.m in Sources */,
+				5A4570971AF7471A00A436AC /* GACacheManager.m in Sources */,
 				5A4570461AF6C3D900A436AC /* main.m in Sources */,
 				5A4570861AF6CD6B00A436AC /* GADirectoryNavigationController.m in Sources */,
 				5A45707C1AF6C96100A436AC /* GATreeItem.m in Sources */,

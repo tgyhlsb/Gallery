@@ -39,6 +39,10 @@
     return _image;
 }
 
+- (UIImage *)imageForThumbnail {
+    return self.image;
+}
+
 - (BOOL)isImage {
     return YES;
 }

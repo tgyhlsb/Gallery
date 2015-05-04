@@ -35,6 +35,10 @@
 
 #pragma mark - Getters & Setters
 
+- (UIImage *)imageForThumbnail {
+    return nil;
+}
+
 - (BOOL)isDirectory {
     return YES;
 }
