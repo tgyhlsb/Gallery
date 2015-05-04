@@ -10,11 +10,21 @@
 
 // Models
 #import "GADirectory.h"
+#import "GAImageFile.h"
+
+@protocol GADirectoryInspectorDelegate;
 
 @interface GADirectoryInspectorVC : UITableViewController
 
 @property (strong, nonatomic) GADirectory *directory;
+@property (weak, nonatomic) id<GADirectoryInspectorDelegate> delegate;
 
 + (instancetype)newWithDirectory:(GADirectory *)directory;
+
+@end
+
+@protocol GADirectoryInspectorDelegate <NSObject>
+
+- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectImageFile:(GAImageFile *)imageFile;
 
 @end

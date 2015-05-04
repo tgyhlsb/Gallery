@@ -8,9 +8,6 @@
 
 #import "GADirectoryNavigationController.h"
 
-// Controllers
-#import "GADirectoryInspectorVC.h"
-
 @interface GADirectoryNavigationController ()
 
 @property (strong, nonatomic) GADirectory *rootDirectory;
@@ -30,8 +27,30 @@
     self = [super initWithRootViewController:rootVC];
     if (self) {
         self.rootDirectory = rootDirectory;
+        rootVC.delegate = self;
     }
     return self;
+}
+
+#pragma mark - UINAvigationController overrides
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
+//    Attach delegate of all directory inspectors
+    if ([viewController isKindOfClass:[GADirectoryInspectorVC class]]) {
+        ((GADirectoryInspectorVC *)viewController).delegate = self;
+    }
+    
+    [super pushViewController:viewController animated:animated];
+}
+
+#pragma mark - GADirectoryInspectorDelegate
+
+- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectImageFile:(GAImageFile *)imageFile {
+    
+    if ([self.directoryDelegate respondsToSelector:@selector(directoryInspector:didSelectImageFile:)]) {
+        [self.directoryDelegate directoryInspector:inspectorVC didSelectImageFile:imageFile];
+    }
 }
 
 @end

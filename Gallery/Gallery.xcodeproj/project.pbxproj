@@ -22,6 +22,10 @@
 		5A4570811AF6CA8500A436AC /* GADirectoryInspectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A45707F1AF6CA8500A436AC /* GADirectoryInspectorVC.xib */; };
 		5A4570861AF6CD6B00A436AC /* GADirectoryNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570841AF6CD6B00A436AC /* GADirectoryNavigationController.m */; };
 		5A4570871AF6CD6B00A436AC /* GADirectoryNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4570851AF6CD6B00A436AC /* GADirectoryNavigationController.xib */; };
+		5A45708C1AF73F2700A436AC /* GARightNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A45708A1AF73F2700A436AC /* GARightNavigationVC.m */; };
+		5A45708D1AF73F2700A436AC /* GARightNavigationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A45708B1AF73F2700A436AC /* GARightNavigationVC.xib */; };
+		5A4570921AF73F8A00A436AC /* GARightVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570901AF73F8A00A436AC /* GARightVC.m */; };
+		5A4570931AF73F8A00A436AC /* GARightVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4570911AF73F8A00A436AC /* GARightVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +66,12 @@
 		5A4570831AF6CD6B00A436AC /* GADirectoryNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADirectoryNavigationController.h; path = GADirectoryNavigationController/GADirectoryNavigationController.h; sourceTree = "<group>"; };
 		5A4570841AF6CD6B00A436AC /* GADirectoryNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GADirectoryNavigationController.m; path = GADirectoryNavigationController/GADirectoryNavigationController.m; sourceTree = "<group>"; };
 		5A4570851AF6CD6B00A436AC /* GADirectoryNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GADirectoryNavigationController.xib; path = GADirectoryNavigationController/GADirectoryNavigationController.xib; sourceTree = "<group>"; };
+		5A4570891AF73F2700A436AC /* GARightNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GARightNavigationVC.h; path = GARightNavigationVC/GARightNavigationVC.h; sourceTree = "<group>"; };
+		5A45708A1AF73F2700A436AC /* GARightNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GARightNavigationVC.m; path = GARightNavigationVC/GARightNavigationVC.m; sourceTree = "<group>"; };
+		5A45708B1AF73F2700A436AC /* GARightNavigationVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GARightNavigationVC.xib; path = GARightNavigationVC/GARightNavigationVC.xib; sourceTree = "<group>"; };
+		5A45708F1AF73F8A00A436AC /* GARightVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GARightVC.h; path = GARightVC/GARightVC.h; sourceTree = "<group>"; };
+		5A4570901AF73F8A00A436AC /* GARightVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GARightVC.m; path = GARightVC/GARightVC.m; sourceTree = "<group>"; };
+		5A4570911AF73F8A00A436AC /* GARightVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GARightVC.xib; path = GARightVC/GARightVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +156,8 @@
 				5A45706F1AF6C94700A436AC /* GASplitVC */,
 				5A4570821AF6CA8800A436AC /* GADirectoryInspectorVC */,
 				5A4570881AF6CD6E00A436AC /* GADirectoryNavigationController */,
+				5A45708E1AF73F2A00A436AC /* GARightNavigationVC */,
+				5A4570941AF73F8D00A436AC /* GARightVC */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -193,6 +205,26 @@
 				5A4570851AF6CD6B00A436AC /* GADirectoryNavigationController.xib */,
 			);
 			name = GADirectoryNavigationController;
+			sourceTree = "<group>";
+		};
+		5A45708E1AF73F2A00A436AC /* GARightNavigationVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A4570891AF73F2700A436AC /* GARightNavigationVC.h */,
+				5A45708A1AF73F2700A436AC /* GARightNavigationVC.m */,
+				5A45708B1AF73F2700A436AC /* GARightNavigationVC.xib */,
+			);
+			name = GARightNavigationVC;
+			sourceTree = "<group>";
+		};
+		5A4570941AF73F8D00A436AC /* GARightVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A45708F1AF73F8A00A436AC /* GARightVC.h */,
+				5A4570901AF73F8A00A436AC /* GARightVC.m */,
+				5A4570911AF73F8A00A436AC /* GARightVC.xib */,
+			);
+			name = GARightVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,7 +311,9 @@
 				5A4570541AF6C3D900A436AC /* LaunchScreen.xib in Resources */,
 				5A4570511AF6C3D900A436AC /* Images.xcassets in Resources */,
 				5A4570871AF6CD6B00A436AC /* GADirectoryNavigationController.xib in Resources */,
+				5A4570931AF73F8A00A436AC /* GARightVC.xib in Resources */,
 				5A45706E1AF6C66800A436AC /* GASplitVC.xib in Resources */,
+				5A45708D1AF73F2700A436AC /* GARightNavigationVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,8 +338,10 @@
 				5A45707C1AF6C96100A436AC /* GATreeItem.m in Sources */,
 				5A45707B1AF6C96100A436AC /* GAImageFile.m in Sources */,
 				5A45707A1AF6C96100A436AC /* GAFileManager.m in Sources */,
+				5A45708C1AF73F2700A436AC /* GARightNavigationVC.m in Sources */,
 				5A4570791AF6C96100A436AC /* GADirectory.m in Sources */,
 				5A45706D1AF6C66800A436AC /* GASplitVC.m in Sources */,
+				5A4570921AF73F8A00A436AC /* GARightVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

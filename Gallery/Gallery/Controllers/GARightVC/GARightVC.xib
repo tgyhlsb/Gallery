@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GARightVC">
+            <connections>
+                <outlet property="imageview" destination="igl-Bz-7aT" id="Fb0-dO-BOm"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="igl-Bz-7aT">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="igl-Bz-7aT" secondAttribute="trailing" id="8aT-56-8wO"/>
+                <constraint firstItem="igl-Bz-7aT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Hcy-so-iF5"/>
+                <constraint firstAttribute="bottom" secondItem="igl-Bz-7aT" secondAttribute="bottom" id="IX9-xE-MiZ"/>
+                <constraint firstItem="igl-Bz-7aT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Trj-1T-c98"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

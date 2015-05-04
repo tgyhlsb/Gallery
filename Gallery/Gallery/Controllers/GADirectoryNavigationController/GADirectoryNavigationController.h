@@ -8,11 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+// Controllers
+#import "GADirectoryInspectorVC.h"
+
 // Models
 #import "GADirectory.h"
+#import "GAImageFile.h"
 
-@interface GADirectoryNavigationController : UINavigationController
+@protocol GADirectoryNavigationDelegate;
+
+@interface GADirectoryNavigationController : UINavigationController <GADirectoryInspectorDelegate>
+
+@property (weak, nonatomic) id<GADirectoryNavigationDelegate> directoryDelegate;
 
 + (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory;
+
+@end
+
+@protocol GADirectoryNavigationDelegate <NSObject>
+
+- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectImageFile:(GAImageFile *)imageFile;
 
 @end

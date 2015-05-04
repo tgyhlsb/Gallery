@@ -10,7 +10,6 @@
 
 // Models
 #import "GATreeItem.h"
-#import "GAImageFile.h"
 
 @interface GADirectoryInspectorVC ()
 
@@ -159,9 +158,9 @@
 }
 
 - (void)openImagefile:(GAImageFile *)imageFile {
-//    ILImageVC *destination = [ILImageVC newWithImageFile:imageFile];
-//    destination.title = [imageFile nameWithExtension:YES];
-//    [self.navigationController pushViewController:destination animated:YES];
+    if ([self.delegate respondsToSelector:@selector(directoryInspector:didSelectImageFile:)]) {
+        [self.delegate directoryInspector:self didSelectImageFile:imageFile];
+    }
 }
 
 /*
