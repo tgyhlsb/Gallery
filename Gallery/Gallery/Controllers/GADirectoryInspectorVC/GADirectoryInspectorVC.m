@@ -14,6 +14,9 @@
 // Managers
 #import "GACacheManager.h"
 
+// Views
+#import "GAThumbnailView.h"
+
 @interface GADirectoryInspectorVC ()
 
 @end
@@ -86,7 +89,6 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         //        Initialize cell
-        
     }
     //     Customize cell
     GAFile *file = [self.directory.tree objectAtIndex:indexPath.row];
@@ -96,7 +98,6 @@
         cell.imageView.image = nil;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
-        cell.imageView.image = [GACacheManager thumbnailForFile:file];
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     

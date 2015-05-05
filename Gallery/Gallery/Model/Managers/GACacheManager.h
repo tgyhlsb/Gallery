@@ -10,6 +10,9 @@
 // Models
 #import "GAFile.h"
 
+// Blocks
+typedef void (^GAThumbnailLoadingBlock)(UIImage *thumbnail);
+
 @interface GACacheManager : NSObject
 
 @property (nonatomic) NSInteger thumbnailCacheLimit;
@@ -20,5 +23,6 @@
 + (void)clearThumbnails;
 
 + (UIImage *)thumbnailForFile:(GAFile *)file;
++ (void)thumbnailForFile:(GAFile *)file inBackgroundWithBlock:(GAThumbnailLoadingBlock)block;
 
 @end

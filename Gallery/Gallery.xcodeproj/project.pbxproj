@@ -15,7 +15,6 @@
 		5A45706D1AF6C66800A436AC /* GASplitVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A45706B1AF6C66700A436AC /* GASplitVC.m */; };
 		5A45706E1AF6C66800A436AC /* GASplitVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A45706C1AF6C66800A436AC /* GASplitVC.xib */; };
 		5A4570791AF6C96100A436AC /* GADirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570721AF6C96100A436AC /* GADirectory.m */; };
-		5A45707A1AF6C96100A436AC /* GAFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570741AF6C96100A436AC /* GAFileManager.m */; };
 		5A45707B1AF6C96100A436AC /* GAImageFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570761AF6C96100A436AC /* GAImageFile.m */; };
 		5A45707C1AF6C96100A436AC /* GAFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570781AF6C96100A436AC /* GAFile.m */; };
 		5A4570801AF6CA8500A436AC /* GADirectoryInspectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A45707E1AF6CA8500A436AC /* GADirectoryInspectorVC.m */; };
@@ -26,7 +25,9 @@
 		5A45708D1AF73F2700A436AC /* GARightNavigationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A45708B1AF73F2700A436AC /* GARightNavigationVC.xib */; };
 		5A4570921AF73F8A00A436AC /* GARightVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570901AF73F8A00A436AC /* GARightVC.m */; };
 		5A4570931AF73F8A00A436AC /* GARightVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4570911AF73F8A00A436AC /* GARightVC.xib */; };
-		5A4570971AF7471A00A436AC /* GACacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570961AF7471A00A436AC /* GACacheManager.m */; };
+		5A51E9851AF95CC3000B3576 /* GACacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9821AF95CC3000B3576 /* GACacheManager.m */; };
+		5A51E9861AF95CC3000B3576 /* GAFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9841AF95CC3000B3576 /* GAFileManager.m */; };
+		5A51E98A1AF96194000B3576 /* GAThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9891AF96194000B3576 /* GAThumbnailView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +56,6 @@
 		5A45706C1AF6C66800A436AC /* GASplitVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GASplitVC.xib; path = GASplitVC/GASplitVC.xib; sourceTree = "<group>"; };
 		5A4570711AF6C96100A436AC /* GADirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADirectory.h; sourceTree = "<group>"; };
 		5A4570721AF6C96100A436AC /* GADirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADirectory.m; sourceTree = "<group>"; };
-		5A4570731AF6C96100A436AC /* GAFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFileManager.h; sourceTree = "<group>"; };
-		5A4570741AF6C96100A436AC /* GAFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAFileManager.m; sourceTree = "<group>"; };
 		5A4570751AF6C96100A436AC /* GAImageFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAImageFile.h; sourceTree = "<group>"; };
 		5A4570761AF6C96100A436AC /* GAImageFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAImageFile.m; sourceTree = "<group>"; };
 		5A4570771AF6C96100A436AC /* GAFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFile.h; sourceTree = "<group>"; };
@@ -73,8 +72,12 @@
 		5A45708F1AF73F8A00A436AC /* GARightVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GARightVC.h; path = GARightVC/GARightVC.h; sourceTree = "<group>"; };
 		5A4570901AF73F8A00A436AC /* GARightVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GARightVC.m; path = GARightVC/GARightVC.m; sourceTree = "<group>"; };
 		5A4570911AF73F8A00A436AC /* GARightVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GARightVC.xib; path = GARightVC/GARightVC.xib; sourceTree = "<group>"; };
-		5A4570951AF7471A00A436AC /* GACacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GACacheManager.h; sourceTree = "<group>"; };
-		5A4570961AF7471A00A436AC /* GACacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GACacheManager.m; sourceTree = "<group>"; };
+		5A51E9811AF95CC3000B3576 /* GACacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GACacheManager.h; sourceTree = "<group>"; };
+		5A51E9821AF95CC3000B3576 /* GACacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GACacheManager.m; sourceTree = "<group>"; };
+		5A51E9831AF95CC3000B3576 /* GAFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFileManager.h; sourceTree = "<group>"; };
+		5A51E9841AF95CC3000B3576 /* GAFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAFileManager.m; sourceTree = "<group>"; };
+		5A51E9881AF96194000B3576 /* GAThumbnailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAThumbnailView.h; path = GAThumbnailView/GAThumbnailView.h; sourceTree = "<group>"; };
+		5A51E9891AF96194000B3576 /* GAThumbnailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAThumbnailView.m; path = GAThumbnailView/GAThumbnailView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,7 @@
 				5A4570471AF6C3D900A436AC /* AppDelegate.h */,
 				5A4570481AF6C3D900A436AC /* AppDelegate.m */,
 				5A4570701AF6C96100A436AC /* Model */,
+				5A51E9871AF96129000B3576 /* Views */,
 				5A4570691AF6C63700A436AC /* Controllers */,
 				5A4570501AF6C3D900A436AC /* Images.xcassets */,
 				5A4570521AF6C3D900A436AC /* LaunchScreen.xib */,
@@ -178,16 +182,13 @@
 		5A4570701AF6C96100A436AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5A51E9801AF95CC3000B3576 /* Managers */,
 				5A4570711AF6C96100A436AC /* GADirectory.h */,
 				5A4570721AF6C96100A436AC /* GADirectory.m */,
-				5A4570731AF6C96100A436AC /* GAFileManager.h */,
-				5A4570741AF6C96100A436AC /* GAFileManager.m */,
 				5A4570751AF6C96100A436AC /* GAImageFile.h */,
 				5A4570761AF6C96100A436AC /* GAImageFile.m */,
 				5A4570771AF6C96100A436AC /* GAFile.h */,
 				5A4570781AF6C96100A436AC /* GAFile.m */,
-				5A4570951AF7471A00A436AC /* GACacheManager.h */,
-				5A4570961AF7471A00A436AC /* GACacheManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,6 +231,34 @@
 				5A4570911AF73F8A00A436AC /* GARightVC.xib */,
 			);
 			name = GARightVC;
+			sourceTree = "<group>";
+		};
+		5A51E9801AF95CC3000B3576 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5A51E9811AF95CC3000B3576 /* GACacheManager.h */,
+				5A51E9821AF95CC3000B3576 /* GACacheManager.m */,
+				5A51E9831AF95CC3000B3576 /* GAFileManager.h */,
+				5A51E9841AF95CC3000B3576 /* GAFileManager.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		5A51E9871AF96129000B3576 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5A51E98B1AF967F5000B3576 /* GAThumbnailView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5A51E98B1AF967F5000B3576 /* GAThumbnailView */ = {
+			isa = PBXGroup;
+			children = (
+				5A51E9881AF96194000B3576 /* GAThumbnailView.h */,
+				5A51E9891AF96194000B3576 /* GAThumbnailView.m */,
+			);
+			name = GAThumbnailView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,15 +367,16 @@
 			files = (
 				5A4570801AF6CA8500A436AC /* GADirectoryInspectorVC.m in Sources */,
 				5A4570491AF6C3D900A436AC /* AppDelegate.m in Sources */,
-				5A4570971AF7471A00A436AC /* GACacheManager.m in Sources */,
 				5A4570461AF6C3D900A436AC /* main.m in Sources */,
 				5A4570861AF6CD6B00A436AC /* GADirectoryNavigationController.m in Sources */,
+				5A51E98A1AF96194000B3576 /* GAThumbnailView.m in Sources */,
 				5A45707C1AF6C96100A436AC /* GAFile.m in Sources */,
 				5A45707B1AF6C96100A436AC /* GAImageFile.m in Sources */,
-				5A45707A1AF6C96100A436AC /* GAFileManager.m in Sources */,
 				5A45708C1AF73F2700A436AC /* GARightNavigationVC.m in Sources */,
 				5A4570791AF6C96100A436AC /* GADirectory.m in Sources */,
 				5A45706D1AF6C66800A436AC /* GASplitVC.m in Sources */,
+				5A51E9861AF95CC3000B3576 /* GAFileManager.m in Sources */,
+				5A51E9851AF95CC3000B3576 /* GACacheManager.m in Sources */,
 				5A4570921AF73F8A00A436AC /* GARightVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,7 +494,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Gallery/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -475,7 +505,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Gallery/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

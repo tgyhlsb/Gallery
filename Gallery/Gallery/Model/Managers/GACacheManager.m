@@ -35,6 +35,10 @@ static GACacheManager *sharedManager;
     return [[GACacheManager sharedManager] thumbnailForFile:file];
 }
 
++ (void)thumbnailForFile:(GAFile *)file inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
+    [[GACacheManager sharedManager] thumbnailForFile:file inBackgroundWithBlock:block];
+}
+
 + (void)shouldCacheThumbnails:(BOOL)shouldCacheThumbnails {
     [GACacheManager sharedManager].shouldCacheThumbnails = shouldCacheThumbnails;
 }
@@ -80,6 +84,16 @@ static GACacheManager *sharedManager;
     }
     
     return thumbnail;
+}
+
+// Reference http://stackoverflow.com/questions/16283652/understanding-dispatch-async
+- (void)thumbnailForFile:(GAFile *)file inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        UIImage *thumbnail = [self thumbnailForFile:file];
+        if (block) {
+            block(thumbnail);
+        }
+    });
 }
 
 - (UIImage *)createThumbnailFromImage:(UIImage *)image {
