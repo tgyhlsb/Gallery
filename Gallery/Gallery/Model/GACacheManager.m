@@ -14,6 +14,7 @@ static GACacheManager *sharedManager;
 
 @property (nonatomic) BOOL shouldCacheThumbnails;
 @property (strong, nonatomic) NSMutableDictionary *thumbnails;
+@property (strong, nonatomic) NSMutableArray *thumbnailPathStack;
 
 @end
 
@@ -22,7 +23,11 @@ static GACacheManager *sharedManager;
 #pragma mark - Singleton
 
 + (GACacheManager *)sharedManager {
-    if (!sharedManager) sharedManager = [GACacheManager new];
+    if (!sharedManager) {
+        sharedManager = [GACacheManager new];
+        sharedManager.shouldCacheThumbnails = YES;
+        sharedManager.thumbnailCacheLimit = 50;
+    }
     return sharedManager;
 }
 
@@ -53,6 +58,11 @@ static GACacheManager *sharedManager;
     return _thumbnails;
 }
 
+- (NSMutableArray *)thumbnailPathStack {
+    if (!_thumbnailPathStack) _thumbnailPathStack = [[NSMutableArray alloc] init];
+    return _thumbnailPathStack;
+}
+
 #pragma mark - Thumbnails
 
 - (void)clearThumbnails {
@@ -66,7 +76,7 @@ static GACacheManager *sharedManager;
     thumbnail = [self createThumbnailFromImage:[treeItem imageForThumbnail]];
     
     if (thumbnail && self.shouldCacheThumbnails) {
-        [self.thumbnails setObject:thumbnail forKey:treeItem.path];
+        [self cacheThumbnail:thumbnail forPath:treeItem.path];
     }
     
     return thumbnail;
@@ -76,5 +86,24 @@ static GACacheManager *sharedManager;
     return image;
 }
 
+- (void)cacheThumbnail:(UIImage *)thumbnail forPath:(NSString *)path {
+    if (thumbnail) {
+        if ([self.thumbnailPathStack count] >= self.thumbnailCacheLimit) {
+            [self popThumbnail];
+        }
+        [self pushThumbnail:thumbnail forPath:path];
+    }
+}
+
+- (void)pushThumbnail:(UIImage *)thumbnail forPath:(NSString *)path {
+    [self.thumbnails setObject:thumbnail forKey:path];
+    [self.thumbnailPathStack addObject:path];
+}
+
+- (void)popThumbnail {
+    NSString *removedThumbnailPath = [self.thumbnailPathStack firstObject];
+    [self.thumbnails removeObjectForKey:removedThumbnailPath];
+    [self.thumbnailPathStack removeObjectAtIndex:0];
+}
 
 @end

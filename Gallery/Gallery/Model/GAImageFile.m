@@ -13,8 +13,6 @@
 
 @interface GAImageFile()
 
-@property (strong, nonatomic, readwrite) UIImage *image;
-
 @end
 
 @implementation GAImageFile
@@ -34,13 +32,8 @@
 
 #pragma mark - Getters & Setters
 
-- (UIImage *)image {
-    if (!_image) _image = [UIImage imageWithContentsOfFile:self.path];
-    return _image;
-}
-
 - (UIImage *)imageForThumbnail {
-    return self.image;
+    return [UIImage imageWithContentsOfFile:self.path];
 }
 
 - (BOOL)isImage {
