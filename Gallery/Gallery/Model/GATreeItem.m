@@ -34,6 +34,10 @@
     return extension ? [self.path lastPathComponent] : [[self.path lastPathComponent] stringByDeletingPathExtension];
 }
 
+- (UIImage *)imageForThumbnail {
+    return nil;
+}
+
 - (BOOL)isDirectory {
     return NO;
 }
@@ -41,5 +45,6 @@
 - (BOOL)isImage {
     return NO;
 }
+
 
 @end

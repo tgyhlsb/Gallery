@@ -18,6 +18,7 @@
 - (id)initFromPath:(NSString *)path;
 
 - (NSString *)nameWithExtension:(BOOL)extension;
+- (UIImage *)imageForThumbnail;
 
 - (BOOL)isDirectory;
 - (BOOL)isImage;

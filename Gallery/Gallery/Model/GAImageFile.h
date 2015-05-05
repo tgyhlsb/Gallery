@@ -15,8 +15,6 @@
 
 @interface GAImageFile : GATreeItem
 
-@property (strong, nonatomic, readonly) UIImage *image;
-
 + (instancetype)imageFileFromPath:(NSString *)path;
 
 + (BOOL)isImageFile:(NSString *)path;
