@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 
 // Models
-#import "GATreeItem.h"
+#import "GAFile.h"
 
 @interface GACacheManager : NSObject
 
@@ -19,6 +19,6 @@
 + (void)shouldCacheThumbnails:(BOOL)shouldCacheThumbnails;
 + (void)clearThumbnails;
 
-+ (UIImage *)thumbnailForTreeItem:(GATreeItem *)treeItem;
++ (UIImage *)thumbnailForFile:(GAFile *)file;
 
 @end

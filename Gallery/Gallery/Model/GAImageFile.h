@@ -5,7 +5,7 @@
 //  Created by Tanguy Hélesbeux on 03/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
-#import "GATreeItem.h"
+#import "GAFile.h"
 
 // Frameworks
 #import <Foundation/Foundation.h>
@@ -13,7 +13,7 @@
 
 
 
-@interface GAImageFile : GATreeItem
+@interface GAImageFile : GAFile
 
 + (instancetype)imageFileFromPath:(NSString *)path;
 

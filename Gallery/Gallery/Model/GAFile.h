@@ -1,5 +1,5 @@
 //
-//  GATreeItem.h
+//  GAFile.h
 //  Gallery
 //
 //  Created by Tanguy Hélesbeux on 03/05/2015.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIImage.h>
 
-@interface GATreeItem : NSObject
+@interface GAFile : NSObject
 
 @property (strong, nonatomic, readonly) NSString *path;
 @property (strong, nonatomic, readonly) UIImage *thumbnail;

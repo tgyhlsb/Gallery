@@ -9,7 +9,7 @@
 #import "GADirectoryInspectorVC.h"
 
 // Models
-#import "GATreeItem.h"
+#import "GAFile.h"
 
 // Managers
 #import "GACacheManager.h"
@@ -89,14 +89,14 @@
         
     }
     //     Customize cell
-    GATreeItem *treeItem = [self.directory.tree objectAtIndex:indexPath.row];
-    cell.textLabel.text = [treeItem nameWithExtension:YES];
+    GAFile *file = [self.directory.tree objectAtIndex:indexPath.row];
+    cell.textLabel.text = [file nameWithExtension:YES];
     
-    if ([treeItem isDirectory]) {
+    if ([file isDirectory]) {
         cell.imageView.image = nil;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
-        cell.imageView.image = [GACacheManager thumbnailForTreeItem:treeItem];
+        cell.imageView.image = [GACacheManager thumbnailForFile:file];
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
@@ -140,12 +140,12 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    GATreeItem *treeItem = [self.directory.tree objectAtIndex:indexPath.row];
+    GAFile *file = [self.directory.tree objectAtIndex:indexPath.row];
     
-    if ([treeItem isDirectory]) {
-        [self openDirectory:(GADirectory *)treeItem];
-    } else if ([treeItem isImage]) {
-        [self openImagefile:(GAImageFile *)treeItem];
+    if ([file isDirectory]) {
+        [self openDirectory:(GADirectory *)file];
+    } else if ([file isImage]) {
+        [self openImagefile:(GAImageFile *)file];
     } else {
         
     }

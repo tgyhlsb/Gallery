@@ -31,8 +31,8 @@ static GACacheManager *sharedManager;
     return sharedManager;
 }
 
-+ (UIImage *)thumbnailForTreeItem:(GATreeItem *)treeItem {
-    return [[GACacheManager sharedManager] thumbnailForTreeItem:treeItem];
++ (UIImage *)thumbnailForFile:(GAFile *)file {
+    return [[GACacheManager sharedManager] thumbnailForFile:file];
 }
 
 + (void)shouldCacheThumbnails:(BOOL)shouldCacheThumbnails {
@@ -69,14 +69,14 @@ static GACacheManager *sharedManager;
     self.thumbnails = nil;
 }
 
-- (UIImage *)thumbnailForTreeItem:(GATreeItem *)treeItem {
-    UIImage *thumbnail = [self.thumbnails objectForKey:treeItem.path];
+- (UIImage *)thumbnailForFile:(GAFile *)file {
+    UIImage *thumbnail = [self.thumbnails objectForKey:file.path];
     if (thumbnail) return thumbnail;
     
-    thumbnail = [self createThumbnailFromImage:[treeItem imageForThumbnail]];
+    thumbnail = [self createThumbnailFromImage:[file imageForThumbnail]];
     
     if (thumbnail && self.shouldCacheThumbnails) {
-        [self cacheThumbnail:thumbnail forPath:treeItem.path];
+        [self cacheThumbnail:thumbnail forPath:file.path];
     }
     
     return thumbnail;

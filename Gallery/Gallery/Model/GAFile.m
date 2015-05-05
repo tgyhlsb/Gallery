@@ -1,21 +1,21 @@
 //
-//  ILTreeItem.m
-//  ios-lab
+//  GAFile.h
+//  Gallery
 //
 //  Created by Tanguy Hélesbeux on 03/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "GATreeItem.h"
+#import "GAFile.h"
 
-@interface GATreeItem()
+@interface GAFile()
 
 @property (strong, nonatomic, readwrite) NSString *path;
 @property (strong, nonatomic, readwrite) UIImage *thumbnail;
 
 @end
 
-@implementation GATreeItem
+@implementation GAFile
 
 #pragma mark - Constructors
 
