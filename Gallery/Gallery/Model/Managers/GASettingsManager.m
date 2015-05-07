@@ -8,8 +8,14 @@
 
 #import "GASettingsManager.h"
 
+// Managers
+#import "GACacheManager.h"
+
 #define KEY_THUMBNAIL_MODE @"GAThumbnailMode"
 #define DEFAULT_THUMBNAIL_MODE UIViewContentModeScaleAspectFill
+
+#define KEY_THUMBNAIL_CACHE_LIMIT @"GAThumbnailCacheLimit"
+#define DEFAULT_THUMBNAIL_CACHE_LIMIT 100
 
 static GASettingsManager *sharedManager;
 
@@ -44,6 +50,15 @@ static GASettingsManager *sharedManager;
 
 + (void)setThumbnailMode:(UIViewContentMode)thumbnailMode {
     [[GASettingsManager sharedManager] setValue:@(thumbnailMode) forKey:KEY_THUMBNAIL_MODE];
+}
+
++ (NSInteger)thumbnailCacheLimit {
+    NSNumber *value = [[GASettingsManager sharedManager] objectForKey:KEY_THUMBNAIL_CACHE_LIMIT];
+    return value ? [value integerValue] : DEFAULT_THUMBNAIL_CACHE_LIMIT;
+}
+
++ (void)setTumbnailCacheLimit:(NSInteger)cacheLimit {
+    [[GASettingsManager sharedManager] setValue:@(cacheLimit) forKey:KEY_THUMBNAIL_CACHE_LIMIT];
 }
 
 @end

@@ -14,4 +14,7 @@
 + (UIViewContentMode)thumbnailMode;
 + (void)setThumbnailMode:(UIViewContentMode)thumbnailMode;
 
++ (NSInteger)thumbnailCacheLimit;
++ (void)setTumbnailCacheLimit:(NSInteger)cacheLimit;
+
 @end

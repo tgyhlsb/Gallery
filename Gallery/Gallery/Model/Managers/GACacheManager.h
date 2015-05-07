@@ -15,8 +15,6 @@ typedef void (^GAThumbnailLoadingBlock)(UIImage *thumbnail);
 
 @interface GACacheManager : NSObject
 
-@property (nonatomic) NSInteger thumbnailCacheLimit;
-
 + (instancetype)sharedManager;
 
 + (void)shouldCacheThumbnails:(BOOL)shouldCacheThumbnails;
