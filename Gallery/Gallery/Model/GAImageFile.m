@@ -43,8 +43,8 @@
 #pragma mark - Helpers
 
 + (BOOL)isImageFile:(NSString *)path {
-    UIImage *img = [UIImage imageWithContentsOfFile:path];
-    return img != nil;
+    NSString *extension = [path pathExtension];
+    return [@[@"jpg", @"png"] containsObject:extension.lowercaseString];
 }
 
 @end
