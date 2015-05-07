@@ -25,7 +25,7 @@ static GACacheManager *sharedManager;
 + (GACacheManager *)sharedManager {
     if (!sharedManager) {
         sharedManager = [GACacheManager new];
-        sharedManager.shouldCacheThumbnails = YES;
+        sharedManager.shouldCacheThumbnails = NO;
         sharedManager.thumbnailCacheLimit = 50;
     }
     return sharedManager;

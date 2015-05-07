@@ -28,6 +28,9 @@
 		5A51E9851AF95CC3000B3576 /* GACacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9821AF95CC3000B3576 /* GACacheManager.m */; };
 		5A51E9861AF95CC3000B3576 /* GAFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9841AF95CC3000B3576 /* GAFileManager.m */; };
 		5A51E98A1AF96194000B3576 /* GAThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9891AF96194000B3576 /* GAThumbnailView.m */; };
+		5A51E9961AF969CC000B3576 /* GAImageFileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9941AF969CC000B3576 /* GAImageFileTableViewCell.m */; };
+		5A51E9971AF969CC000B3576 /* GAImageFileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A51E9951AF969CC000B3576 /* GAImageFileTableViewCell.xib */; };
+		5A51E99B1AF96B8D000B3576 /* GATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E99A1AF96B8D000B3576 /* GATableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +81,11 @@
 		5A51E9841AF95CC3000B3576 /* GAFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAFileManager.m; sourceTree = "<group>"; };
 		5A51E9881AF96194000B3576 /* GAThumbnailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAThumbnailView.h; path = GAThumbnailView/GAThumbnailView.h; sourceTree = "<group>"; };
 		5A51E9891AF96194000B3576 /* GAThumbnailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAThumbnailView.m; path = GAThumbnailView/GAThumbnailView.m; sourceTree = "<group>"; };
+		5A51E9931AF969CC000B3576 /* GAImageFileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAImageFileTableViewCell.h; path = GAImageFileTableViewCell/GAImageFileTableViewCell.h; sourceTree = "<group>"; };
+		5A51E9941AF969CC000B3576 /* GAImageFileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAImageFileTableViewCell.m; path = GAImageFileTableViewCell/GAImageFileTableViewCell.m; sourceTree = "<group>"; };
+		5A51E9951AF969CC000B3576 /* GAImageFileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAImageFileTableViewCell.xib; path = GAImageFileTableViewCell/GAImageFileTableViewCell.xib; sourceTree = "<group>"; };
+		5A51E9991AF96B8D000B3576 /* GATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GATableViewCell.h; path = GATableViewCell/GATableViewCell.h; sourceTree = "<group>"; };
+		5A51E99A1AF96B8D000B3576 /* GATableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GATableViewCell.m; path = GATableViewCell/GATableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +255,7 @@
 		5A51E9871AF96129000B3576 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5A51E98C1AF96964000B3576 /* TableViewCells */,
 				5A51E98B1AF967F5000B3576 /* GAThumbnailView */,
 			);
 			path = Views;
@@ -259,6 +268,34 @@
 				5A51E9891AF96194000B3576 /* GAThumbnailView.m */,
 			);
 			name = GAThumbnailView;
+			sourceTree = "<group>";
+		};
+		5A51E98C1AF96964000B3576 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				5A51E99C1AF96B92000B3576 /* GATableViewCell */,
+				5A51E9981AF969D1000B3576 /* GAImageFileTableViewCell */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		5A51E9981AF969D1000B3576 /* GAImageFileTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5A51E9931AF969CC000B3576 /* GAImageFileTableViewCell.h */,
+				5A51E9941AF969CC000B3576 /* GAImageFileTableViewCell.m */,
+				5A51E9951AF969CC000B3576 /* GAImageFileTableViewCell.xib */,
+			);
+			name = GAImageFileTableViewCell;
+			sourceTree = "<group>";
+		};
+		5A51E99C1AF96B92000B3576 /* GATableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5A51E9991AF96B8D000B3576 /* GATableViewCell.h */,
+				5A51E99A1AF96B8D000B3576 /* GATableViewCell.m */,
+			);
+			name = GATableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A4570811AF6CA8500A436AC /* GADirectoryInspectorVC.xib in Resources */,
+				5A51E9971AF969CC000B3576 /* GAImageFileTableViewCell.xib in Resources */,
 				5A4570541AF6C3D900A436AC /* LaunchScreen.xib in Resources */,
 				5A4570511AF6C3D900A436AC /* Images.xcassets in Resources */,
 				5A4570871AF6CD6B00A436AC /* GADirectoryNavigationController.xib in Resources */,
@@ -374,10 +412,12 @@
 				5A45707B1AF6C96100A436AC /* GAImageFile.m in Sources */,
 				5A45708C1AF73F2700A436AC /* GARightNavigationVC.m in Sources */,
 				5A4570791AF6C96100A436AC /* GADirectory.m in Sources */,
+				5A51E99B1AF96B8D000B3576 /* GATableViewCell.m in Sources */,
 				5A45706D1AF6C66800A436AC /* GASplitVC.m in Sources */,
 				5A51E9861AF95CC3000B3576 /* GAFileManager.m in Sources */,
 				5A51E9851AF95CC3000B3576 /* GACacheManager.m in Sources */,
 				5A4570921AF73F8A00A436AC /* GARightVC.m in Sources */,
+				5A51E9961AF969CC000B3576 /* GAImageFileTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

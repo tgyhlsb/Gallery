@@ -15,7 +15,7 @@
 #import "GACacheManager.h"
 
 // Views
-#import "GAThumbnailView.h"
+#import "GAImageFileTableViewCell.h"
 
 @interface GADirectoryInspectorVC ()
 
@@ -57,6 +57,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [GAImageFileTableViewCell registerToTableView:self.tableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,23 +85,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    NSString *identifier = [GAImageFileTableViewCell reusableIdentifier];
+    GAImageFileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-        //        Initialize cell
-    }
-    //     Customize cell
-    GAFile *file = [self.directory.tree objectAtIndex:indexPath.row];
-    cell.textLabel.text = [file nameWithExtension:YES];
-    
-    if ([file isDirectory]) {
-        cell.imageView.image = nil;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+    cell.imageFile = [self.directory.tree objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -139,6 +128,10 @@
  */
 
 #pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44.0;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     GAFile *file = [self.directory.tree objectAtIndex:indexPath.row];

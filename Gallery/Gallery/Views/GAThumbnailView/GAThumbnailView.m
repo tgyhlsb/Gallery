@@ -25,6 +25,7 @@
     if (!_activityIndicator) {
         _activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:self.bounds];
         _activityIndicator.hidesWhenStopped = YES;
+        _activityIndicator.color = [UIColor blackColor];
         [self addSubview:_activityIndicator];
     }
     return _activityIndicator;
