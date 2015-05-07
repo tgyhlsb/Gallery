@@ -8,6 +8,9 @@
 
 #import "GACacheManager.h"
 
+// Frameworks
+#import <ImageIO/ImageIO.h>
+
 static GACacheManager *sharedManager;
 
 @interface GACacheManager()
@@ -73,17 +76,36 @@ static GACacheManager *sharedManager;
     self.thumbnails = nil;
 }
 
+//- (UIImage *)thumbnailForFile:(GAFile *)file {
+//    UIImage *thumbnail = [self.thumbnails objectForKey:file.path];
+//    if (thumbnail) return thumbnail;
+//    
+//    thumbnail = [self createThumbnailFromImage:[file imageForThumbnail]];
+//    
+//    if (thumbnail && self.shouldCacheThumbnails) {
+//        [self cacheThumbnail:thumbnail forPath:file.path];
+//    }
+//    
+//    return thumbnail;
+//}
+
+- (CFDictionaryRef)thumbnailOptions {
+    CFMutableDictionaryRef options = CFDictionaryCreateMutable(NULL, 2, NULL, NULL);
+    CFDictionarySetValue(options, kCGImageSourceThumbnailMaxPixelSize, (__bridge CFNumberRef)@88);
+    CFDictionarySetValue(options, kCGImageSourceCreateThumbnailFromImageIfAbsent, (__bridge CFBooleanRef)@YES);
+    return options;
+}
+
 - (UIImage *)thumbnailForFile:(GAFile *)file {
-    UIImage *thumbnail = [self.thumbnails objectForKey:file.path];
-    if (thumbnail) return thumbnail;
-    
-    thumbnail = [self createThumbnailFromImage:[file imageForThumbnail]];
-    
-    if (thumbnail && self.shouldCacheThumbnails) {
-        [self cacheThumbnail:thumbnail forPath:file.path];
+    if ([file isImage]) {
+        CFURLRef url = (__bridge CFURLRef)([NSURL fileURLWithPath:file.path]);
+        CGImageSourceRef imageRef =  CGImageSourceCreateWithURL(url, nil);
+        CFDictionaryRef options = [self thumbnailOptions];
+        CGImageRef thumbnailRef = CGImageSourceCreateThumbnailAtIndex(imageRef, 0, options);
+        UIImage *thumbnail = [UIImage imageWithCGImage:thumbnailRef];
+        return  thumbnail;
     }
-    
-    return thumbnail;
+    return nil;
 }
 
 // Reference http://stackoverflow.com/questions/16283652/understanding-dispatch-async
@@ -96,9 +118,14 @@ static GACacheManager *sharedManager;
     });
 }
 
-- (UIImage *)createThumbnailFromImage:(UIImage *)image {
-    return image;
-}
+//- (UIImage *)createThumbnailFromImage:(UIImage *)image {
+//    CGSize size = CGSizeMake(44, 44);
+//    UIGraphicsBeginImageContext(size);
+//    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+//    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    return destImage;
+//}
 
 - (void)cacheThumbnail:(UIImage *)thumbnail forPath:(NSString *)path {
     if (thumbnail) {
