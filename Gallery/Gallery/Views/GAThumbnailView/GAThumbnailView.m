@@ -19,6 +19,14 @@
 
 @implementation GAThumbnailView
 
+#pragma mark - View life cycle
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.contentMode = UIViewContentModeScaleAspectFit;
+    self.clipsToBounds = YES;
+}
+
 #pragma mark - Getters & Setters
 
 - (UIActivityIndicatorView *)activityIndicator {

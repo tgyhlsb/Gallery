@@ -9,7 +9,7 @@
 #import "GACacheManager.h"
 
 // Frameworks
-#import <ImageIO/ImageIO.h>
+#import <UIKit/UIKit.h>
 
 static GACacheManager *sharedManager;
 
@@ -76,19 +76,21 @@ static GACacheManager *sharedManager;
     self.thumbnails = nil;
 }
 
-//- (UIImage *)thumbnailForFile:(GAFile *)file {
-//    UIImage *thumbnail = [self.thumbnails objectForKey:file.path];
-//    if (thumbnail) return thumbnail;
-//    
-//    thumbnail = [self createThumbnailFromImage:[file imageForThumbnail]];
-//    
-//    if (thumbnail && self.shouldCacheThumbnails) {
-//        [self cacheThumbnail:thumbnail forPath:file.path];
-//    }
-//    
-//    return thumbnail;
-//}
+- (UIImage *)thumbnailForFile:(GAFile *)file {
+    UIImage *thumbnail = [self.thumbnails objectForKey:file.path];
+    if (thumbnail) return thumbnail;
+    
+    thumbnail = [self createThumbnailFromImage:[file imageForThumbnail] withSize:CGSizeMake(44.0, 44.0)];
+    
+    if (thumbnail && self.shouldCacheThumbnails) {
+        [self cacheThumbnail:thumbnail forPath:file.path];
+    }
+    
+    return thumbnail;
+}
 
+// With ImageIO framework
+/*
 - (CFDictionaryRef)thumbnailOptions {
     CFMutableDictionaryRef options = CFDictionaryCreateMutable(NULL, 2, NULL, NULL);
     CFDictionarySetValue(options, kCGImageSourceThumbnailMaxPixelSize, (__bridge CFNumberRef)@88);
@@ -107,6 +109,7 @@ static GACacheManager *sharedManager;
     }
     return nil;
 }
+ */
 
 // Reference http://stackoverflow.com/questions/16283652/understanding-dispatch-async
 - (void)thumbnailForFile:(GAFile *)file inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
@@ -118,14 +121,19 @@ static GACacheManager *sharedManager;
     });
 }
 
-//- (UIImage *)createThumbnailFromImage:(UIImage *)image {
-//    CGSize size = CGSizeMake(44, 44);
-//    UIGraphicsBeginImageContext(size);
-//    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
-//    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return destImage;
-//}
+- (UIImage *)createThumbnailFromImage:(UIImage *)image withSize:(CGSize)size {
+//    Calcul thumbnail size
+    CGFloat ratio = MIN(size.width/image.size.width, size.height/image.size.height);
+    CGSize targetSize = CGSizeMake(image.size.width*ratio, image.size.height*ratio);
+    
+//    Create thumbnail
+    UIGraphicsBeginImageContext(targetSize);
+    [image drawInRect:CGRectMake(0, 0, targetSize.width, targetSize.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return destImage;
+}
 
 - (void)cacheThumbnail:(UIImage *)thumbnail forPath:(NSString *)path {
     if (thumbnail) {
