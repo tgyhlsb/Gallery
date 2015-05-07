@@ -31,6 +31,7 @@
 		5A51E9961AF969CC000B3576 /* GAImageFileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9941AF969CC000B3576 /* GAImageFileTableViewCell.m */; };
 		5A51E9971AF969CC000B3576 /* GAImageFileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A51E9951AF969CC000B3576 /* GAImageFileTableViewCell.xib */; };
 		5A51E99B1AF96B8D000B3576 /* GATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E99A1AF96B8D000B3576 /* GATableViewCell.m */; };
+		5A51E99F1AFBE5C9000B3576 /* GASettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E99E1AFBE5C9000B3576 /* GASettingsManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,8 @@
 		5A51E9951AF969CC000B3576 /* GAImageFileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAImageFileTableViewCell.xib; path = GAImageFileTableViewCell/GAImageFileTableViewCell.xib; sourceTree = "<group>"; };
 		5A51E9991AF96B8D000B3576 /* GATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GATableViewCell.h; path = GATableViewCell/GATableViewCell.h; sourceTree = "<group>"; };
 		5A51E99A1AF96B8D000B3576 /* GATableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GATableViewCell.m; path = GATableViewCell/GATableViewCell.m; sourceTree = "<group>"; };
+		5A51E99D1AFBE5C9000B3576 /* GASettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GASettingsManager.h; sourceTree = "<group>"; };
+		5A51E99E1AFBE5C9000B3576 /* GASettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GASettingsManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +251,8 @@
 				5A51E9821AF95CC3000B3576 /* GACacheManager.m */,
 				5A51E9831AF95CC3000B3576 /* GAFileManager.h */,
 				5A51E9841AF95CC3000B3576 /* GAFileManager.m */,
+				5A51E99D1AFBE5C9000B3576 /* GASettingsManager.h */,
+				5A51E99E1AFBE5C9000B3576 /* GASettingsManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -405,6 +410,7 @@
 			files = (
 				5A4570801AF6CA8500A436AC /* GADirectoryInspectorVC.m in Sources */,
 				5A4570491AF6C3D900A436AC /* AppDelegate.m in Sources */,
+				5A51E99F1AFBE5C9000B3576 /* GASettingsManager.m in Sources */,
 				5A4570461AF6C3D900A436AC /* main.m in Sources */,
 				5A4570861AF6CD6B00A436AC /* GADirectoryNavigationController.m in Sources */,
 				5A51E98A1AF96194000B3576 /* GAThumbnailView.m in Sources */,
