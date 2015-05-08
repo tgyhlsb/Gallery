@@ -386,10 +386,7 @@
 				5A8664F31AFD1AC2002578F7 /* GASettingsDetailVC.h */,
 				5A8664F41AFD1AC2002578F7 /* GASettingsDetailVC.m */,
 				5A8664F51AFD1AC2002578F7 /* GASettingsDetailVC.xib */,
-				5A86651C1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.h */,
-				5A86651D1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.m */,
-				5A8665251AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.h */,
-				5A8665261AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.m */,
+				5A8665281AFD3C42002578F7 /* Specific settings */,
 				5A8665241AFD24E9002578F7 /* GASettingChoiceVC */,
 			);
 			path = GASettingsDetailVC;
@@ -443,6 +440,17 @@
 				5A8665211AFD24E5002578F7 /* GASettingChoiceVC.xib */,
 			);
 			name = GASettingChoiceVC;
+			sourceTree = "<group>";
+		};
+		5A8665281AFD3C42002578F7 /* Specific settings */ = {
+			isa = PBXGroup;
+			children = (
+				5A86651C1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.h */,
+				5A86651D1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.m */,
+				5A8665251AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.h */,
+				5A8665261AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.m */,
+			);
+			name = "Specific settings";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

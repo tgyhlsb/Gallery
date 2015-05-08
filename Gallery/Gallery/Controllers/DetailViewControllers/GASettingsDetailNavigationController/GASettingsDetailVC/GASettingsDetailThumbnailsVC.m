@@ -30,6 +30,9 @@
                             NSLocalizedString(@"SETTINGS_THUMBNAIL_CACHE_LIMIT", nil)
                             ],
                         @[
+                            NSLocalizedString(@"SETTINGS_THUMBNAIL_MODE", nil)
+                            ],
+                        @[
                             NSLocalizedString(@"SETTINGS_THUMBNAIL_RESET", nil)
                             ]
                         ];
@@ -52,7 +55,7 @@
                                 @[@50, @100, @CACHE_LIMIT_UNLIMITED]
                                 ],
                             @[
-                                // nil
+                                @[@(UIViewContentModeScaleToFill), @(UIViewContentModeScaleAspectFill), @(UIViewContentModeScaleAspectFit)]
                                 ]
                             ];
 }
@@ -62,6 +65,9 @@
                                  @[
                                      @[NSLocalizedString(@"YES", nil), NSLocalizedString(@"NO", nil)],
                                      @[@"50", @"100", NSLocalizedString(@"UNLIMITED", nil)]
+                                     ],
+                                 @[
+                                     @[NSLocalizedString(@"SETTINGS_THUMBNAIL_MODE_RESIZE", nil), NSLocalizedString(@"SETTINGS_THUMBNAIL_MODE_FILL", nil), NSLocalizedString(@"SETTINGS_THUMBNAIL_MODE_FIT", nil)]
                                      ]
                                  ];
 }
@@ -71,6 +77,9 @@
                             @[
                                 @([GASettingsManager shouldCacheThumbnails]),
                                 @([GASettingsManager thumbnailCacheLimit])
+                                ],
+                            @[
+                                @([GASettingsManager thumbnailMode])
                                 ]
                             ];
 }
@@ -80,6 +89,9 @@
                            @[
                                @"setShouldCache:",
                                @"setCacheLimit:"
+                               ],
+                           @[
+                               @"setThumbnailMode:"
                                ],
                            @[
                                @"resetCache"
@@ -97,6 +109,11 @@
 - (void)setCacheLimit:(NSObject *)value {
     NSInteger intValue = [((NSNumber *)value) integerValue];
     [GASettingsManager setTumbnailCacheLimit:intValue];
+}
+
+- (void)setThumbnailMode:(NSObject *)value {
+    NSInteger intValue = [((NSNumber *)value) integerValue];
+    [GASettingsManager setThumbnailMode:intValue];
 }
 
 - (void)resetCache {
