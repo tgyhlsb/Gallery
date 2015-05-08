@@ -42,6 +42,8 @@ typedef NS_ENUM(NSInteger,GASettingDevelopment){
     [self initializeCellTitles];
     [self initializeSectionHeaders];
     [self initializeSectionFooters];
+    
+    self.title = NSLocalizedString(@"SETTINGS", nil);
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,11 +8,34 @@
 
 #import "GASettingsSplitController.h"
 
+// Controllers
+#import "GASettingsInspectorVC.h"
+
 @interface GASettingsSplitController ()
 
 @end
 
 @implementation GASettingsSplitController
+
+#pragma mark - Constructors
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        GASettingsInspectorVC *masterRootVC = [GASettingsInspectorVC new];
+        UIViewController *detailRootVC = [UIViewController new];
+        UINavigationController *masterNavController = [[UINavigationController alloc] initWithRootViewController:masterRootVC];
+        UINavigationController *detailNavController = [[UINavigationController alloc] initWithRootViewController:detailRootVC];
+        
+        self.viewControllers = @[masterNavController, detailNavController];
+        self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
+//        self.delegate = detailRootVC;
+    }
+    return self;
+}
+
+
+#pragma mark - View life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,14 +47,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+#pragma mark - Getters & Setters
 
 @end

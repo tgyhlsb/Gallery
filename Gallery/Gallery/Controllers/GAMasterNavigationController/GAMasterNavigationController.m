@@ -9,7 +9,7 @@
 #import "GAMasterNavigationController.h"
 
 // Controllers
-#import "GASettingsInspectorVC.h"
+#import "GASettingsSplitController.h"
 
 @interface GAMasterNavigationController ()
 
@@ -73,7 +73,9 @@
 #pragma mark - Handlers
 
 - (void)settingsButtonHandler {
-    [self pushViewController:[GASettingsInspectorVC new] animated:YES];
+    [self presentViewController:[GASettingsSplitController new] animated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark - Overrides
