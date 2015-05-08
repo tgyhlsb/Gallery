@@ -66,12 +66,22 @@
                   forControlEvents:UIControlEventValueChanged];
 }
 
+- (void)setDelegate:(id<GADirectoryInspectorDelegate>)delegate {
+    _delegate = delegate;
+}
+
 #pragma mark - Handlers
 
 - (void)splitViewButtonHandler {
     [UIView animateWithDuration:0.5 animations:^{
         self.navigationController.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
     }];
+}
+
+- (void)shouldRefresh {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.refreshControl endRefreshing];
+    });
 }
 
 #pragma mark - View life cycle
@@ -84,14 +94,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Handlers
-
-- (void)shouldRefresh {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.refreshControl endRefreshing];
-    });
 }
 
 #pragma mark - Table view data source

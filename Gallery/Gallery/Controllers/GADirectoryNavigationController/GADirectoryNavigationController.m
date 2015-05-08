@@ -27,22 +27,21 @@
     self = [super initWithRootViewController:rootVC];
     if (self) {
         self.rootDirectory = rootDirectory;
-        rootVC.delegate = self;
     }
     return self;
 }
 
 #pragma mark - UINAvigationController overrides
 
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    
-//    Attach delegate of all directory inspectors
-    if ([viewController isKindOfClass:[GADirectoryInspectorVC class]]) {
-        ((GADirectoryInspectorVC *)viewController).delegate = self;
-    }
-    
-    [super pushViewController:viewController animated:animated];
-}
+//- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+//    
+////    Attach delegate of all directory inspectors
+//    if ([viewController isKindOfClass:[GADirectoryInspectorVC class]]) {
+//        ((GADirectoryInspectorVC *)viewController).delegate = self;
+//    }
+//    
+//    [super pushViewController:viewController animated:animated];
+//}
 
 #pragma mark - Getters & Setters
 
