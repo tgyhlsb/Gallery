@@ -27,37 +27,14 @@
     self = [super initWithRootViewController:rootVC];
     if (self) {
         self.rootDirectory = rootDirectory;
-        rootVC.delegate = self;
     }
     return self;
 }
 
-#pragma mark - UINAvigationController overrides
+#pragma mark - Getters & Setters
 
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    
-//    Attach delegate of all directory inspectors
-    if ([viewController isKindOfClass:[GADirectoryInspectorVC class]]) {
-        ((GADirectoryInspectorVC *)viewController).delegate = self;
-    }
-    
-    [super pushViewController:viewController animated:animated];
-}
-
-#pragma mark - GADirectoryInspectorDelegate
-
-- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectImageFile:(GAImageFile *)imageFile {
-    
-    if ([self.directoryDelegate respondsToSelector:@selector(directoryInspector:didSelectImageFile:)]) {
-        [self.directoryDelegate directoryInspector:inspectorVC didSelectImageFile:imageFile];
-    }
-}
-
-- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectDirectory:(GADirectory *)directory {
-    
-    if ([self.directoryDelegate respondsToSelector:@selector(directoryInspector:didSelectDirectory:)]) {
-        [self.directoryDelegate directoryInspector:inspectorVC didSelectDirectory:directory];
-    }
+- (GADirectoryInspectorVC *)rootViewController {
+    return (GADirectoryInspectorVC *)[self.viewControllers firstObject];
 }
 
 @end

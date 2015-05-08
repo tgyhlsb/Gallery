@@ -19,6 +19,8 @@
 
 @interface GADirectoryInspectorVC ()
 
+@property (strong, nonatomic) UIBarButtonItem *splitViewButton;
+
 @end
 
 @implementation GADirectoryInspectorVC
@@ -46,6 +48,17 @@
     [self.tableView reloadData];
 }
 
+- (UIBarButtonItem *)splitViewButton {
+    if (!_splitViewButton) {
+        NSString *title = NSLocalizedString(@"CLOSE", nil);
+        _splitViewButton = [[UIBarButtonItem alloc] initWithTitle:title
+                                                            style:UIBarButtonItemStylePlain
+                                                           target:self
+                                                           action:@selector(splitViewButtonHandler)];
+    }
+    return _splitViewButton;
+}
+
 - (void)initializeRefreshControl {
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self
@@ -53,25 +66,30 @@
                   forControlEvents:UIControlEventValueChanged];
 }
 
+#pragma mark - Handlers
+
+- (void)splitViewButtonHandler {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.navigationController.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
+    }];
+}
+
+- (void)shouldRefresh {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.refreshControl endRefreshing];
+    });
+}
+
 #pragma mark - View life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [GAImageFileTableViewCell registerToTableView:self.tableView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Handlers
-
-- (void)shouldRefresh {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.refreshControl endRefreshing];
-    });
 }
 
 #pragma mark - Table view data source
@@ -151,15 +169,15 @@
     destination.title = [directory nameWithExtension:YES];
     [self.navigationController pushViewController:destination animated:YES];
     
-    if ([self.delegate respondsToSelector:@selector(directoryInspector:didSelectDirectory:)]) {
-        [self.delegate directoryInspector:self didSelectDirectory:directory];
-    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedDirectory
+                                                        object:self
+                                                      userInfo:@{@"directory": directory}];
 }
 
 - (void)openImagefile:(GAImageFile *)imageFile {
-    if ([self.delegate respondsToSelector:@selector(directoryInspector:didSelectImageFile:)]) {
-        [self.delegate directoryInspector:self didSelectImageFile:imageFile];
-    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedImageFile
+                                                        object:self
+                                                      userInfo:@{@"imageFile": imageFile}];
 }
 
 /*

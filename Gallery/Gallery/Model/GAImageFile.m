@@ -20,13 +20,13 @@
 #pragma mark - Constructors
 
 + (instancetype)imageFileFromPath:(NSString *)path
-                           parent:(GAFile *)parent {
+                           parent:(GADirectory *)parent {
     
     return [[GAImageFile alloc] initFromPath:path parent:parent];
 }
 
 - (id)initFromPath:(NSString *)path
-            parent:(GAFile *)parent {
+            parent:(GADirectory *)parent {
     
     self = [super initFromPath:path parent:parent];
     if (self) {

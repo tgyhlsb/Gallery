@@ -15,19 +15,10 @@
 #import "GADirectory.h"
 #import "GAImageFile.h"
 
-@protocol GADirectoryNavigationDelegate;
-
-@interface GADirectoryNavigationController : UINavigationController <GADirectoryInspectorDelegate>
-
-@property (weak, nonatomic) id<GADirectoryNavigationDelegate> directoryDelegate;
+@interface GADirectoryNavigationController : UINavigationController
 
 + (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory;
 
-@end
-
-@protocol GADirectoryNavigationDelegate <NSObject>
-
-- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectImageFile:(GAImageFile *)imageFile;
-- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectDirectory:(GADirectory *)directory;
+- (GADirectoryInspectorVC *)rootViewController;
 
 @end
