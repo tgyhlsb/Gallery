@@ -96,7 +96,7 @@
 
 - (UIBarButtonItem *)showMasterViewButton {
     if (!_showMasterViewButton) {
-        NSString *title = NSLocalizedString(@"LOCALIZE_OPEN", nil);
+        NSString *title = NSLocalizedString(@"LOCALIZE_SHOW", nil);
         _showMasterViewButton = [[UIBarButtonItem alloc] initWithTitle:title
                                                                  style:UIBarButtonItemStylePlain
                                                                 target:self
@@ -107,7 +107,7 @@
 
 - (UIBarButtonItem *)hideMasterViewButton {
     if (!_hideMasterViewButton) {
-        NSString *title = NSLocalizedString(@"LOCALIZE_CLOSE", nil);
+        NSString *title = NSLocalizedString(@"LOCALIZE_HIDE", nil);
         _hideMasterViewButton = [[UIBarButtonItem alloc] initWithTitle:title
                                                                  style:UIBarButtonItemStylePlain
                                                                 target:self
