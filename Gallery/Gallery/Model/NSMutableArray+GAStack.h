@@ -10,4 +10,8 @@
 
 @interface NSMutableArray (GAStack)
 
+- (void)push:(id)object;
+- (id)pop;
+
+
 @end

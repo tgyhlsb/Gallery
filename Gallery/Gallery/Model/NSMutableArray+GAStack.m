@@ -10,4 +10,14 @@
 
 @implementation NSMutableArray (GAStack)
 
+- (void)push:(id)object {
+    [self addObject:object];
+}
+
+- (id)pop {
+    id object = [self firstObject];
+    if (object) [self removeObjectAtIndex:0];
+    return object;
+}
+
 @end
