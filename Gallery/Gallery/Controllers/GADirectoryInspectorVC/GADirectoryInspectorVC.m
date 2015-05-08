@@ -66,10 +66,6 @@
                   forControlEvents:UIControlEventValueChanged];
 }
 
-- (void)setDelegate:(id<GADirectoryInspectorDelegate>)delegate {
-    _delegate = delegate;
-}
-
 #pragma mark - Handlers
 
 - (void)splitViewButtonHandler {
@@ -173,15 +169,15 @@
     destination.title = [directory nameWithExtension:YES];
     [self.navigationController pushViewController:destination animated:YES];
     
-    if ([self.delegate respondsToSelector:@selector(directoryInspector:didSelectDirectory:)]) {
-        [self.delegate directoryInspector:self didSelectDirectory:directory];
-    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedDirectory
+                                                        object:self
+                                                      userInfo:@{@"directory": directory}];
 }
 
 - (void)openImagefile:(GAImageFile *)imageFile {
-    if ([self.delegate respondsToSelector:@selector(directoryInspector:didSelectImageFile:)]) {
-        [self.delegate directoryInspector:self didSelectImageFile:imageFile];
-    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedImageFile
+                                                        object:self
+                                                      userInfo:@{@"imageFile": imageFile}];
 }
 
 /*

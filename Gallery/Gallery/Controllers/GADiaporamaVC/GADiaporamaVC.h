@@ -15,7 +15,7 @@
 #import "GAImageFile.h"
 #import "GADirectory.h"
 
-@interface GADiaporamaVC : UIViewController <GADirectoryInspectorDelegate, UISplitViewControllerDelegate>
+@interface GADiaporamaVC : UIViewController <UISplitViewControllerDelegate>
 
 + (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile;
 

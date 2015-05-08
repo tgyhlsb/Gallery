@@ -50,11 +50,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = self.hideMasterViewButton;
+    [self registerToDirectoryInspectorsNotifications];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Broadcasting
+
+- (void)registerToDirectoryInspectorsNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(directoryInspectorDidSelectDirectory:)
+                                                 name:GADirectoryInspectorNotificationSelectedDirectory
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(directoryInspectorDidSelectImageFile:)
+                                                 name:GADirectoryInspectorNotificationSelectedImageFile
+                                               object:nil];
 }
 
 #pragma mark - Getters & Setters
@@ -125,6 +144,16 @@
     }];
 }
 
+- (void)directoryInspectorDidSelectDirectory:(NSNotification *)notification {
+    GADirectory *directory = [notification.userInfo objectForKey:@"directory"];
+    [self setRootDirectory:directory withImageFile:nil];
+}
+
+- (void)directoryInspectorDidSelectImageFile:(NSNotification *)notification {
+    GAImageFile *imageFile = [notification.userInfo objectForKey:@"imageFile"];
+    [self setRootDirectory:imageFile.parent withImageFile:imageFile];
+}
+
 #pragma mark - UIPageViewControllerDataSource
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
@@ -156,20 +185,6 @@
    previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed {
     
-    if (finished && completed) {
-//        [self.viewControllersStack push:[previousViewControllers firstObject]];
-//        NSLog(@"Pushed %@", [((GARightVC *)[previousViewControllers firstObject]).file nameWithExtension:YES]);
-    }
-}
-
-#pragma mark - GADirectoryInspectorDelegate
-
-- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectImageFile:(GAImageFile *)imageFile {
-    [self setRootDirectory:nil withImageFile:imageFile];
-}
-
-- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectDirectory:(GADirectory *)directory {
-    [self setRootDirectory:directory withImageFile:nil];
 }
 
 #pragma mark - UISplitViewControllerDelegate

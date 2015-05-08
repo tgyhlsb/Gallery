@@ -32,8 +32,6 @@
         GADirectoryNavigationController *mainVC = [GADirectoryNavigationController newWithRootDirectory:rootDirectory];
         GARightNavigationVC *detailVC = [GARightNavigationVC new];
         
-        [mainVC rootViewController].delegate = [detailVC rootViewController];
-        
         self.viewControllers = @[mainVC, detailVC];
     }
     return self;
