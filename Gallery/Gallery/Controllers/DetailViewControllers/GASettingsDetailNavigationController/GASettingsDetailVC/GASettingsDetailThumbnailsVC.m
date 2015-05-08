@@ -8,11 +8,6 @@
 
 #import "GASettingsDetailThumbnailsVC.h"
 
-// Managers
-#import "GASettingsManager.h"
-#import "GACacheManager.h"
-#import "GALogger.h"
-
 #define CACHE_LIMIT_UNLIMITED 1000
 
 @interface GASettingsDetailThumbnailsVC ()

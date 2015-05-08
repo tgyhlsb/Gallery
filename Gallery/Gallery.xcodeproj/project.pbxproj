@@ -49,6 +49,7 @@
 		5A86651E1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A86651D1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.m */; };
 		5A8665221AFD24E5002578F7 /* GASettingChoiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8665201AFD24E5002578F7 /* GASettingChoiceVC.m */; };
 		5A8665231AFD24E5002578F7 /* GASettingChoiceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8665211AFD24E5002578F7 /* GASettingChoiceVC.xib */; };
+		5A8665271AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8665261AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,8 @@
 		5A86651F1AFD24E5002578F7 /* GASettingChoiceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GASettingChoiceVC.h; path = GASettingChoiceVC/GASettingChoiceVC.h; sourceTree = "<group>"; };
 		5A8665201AFD24E5002578F7 /* GASettingChoiceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GASettingChoiceVC.m; path = GASettingChoiceVC/GASettingChoiceVC.m; sourceTree = "<group>"; };
 		5A8665211AFD24E5002578F7 /* GASettingChoiceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GASettingChoiceVC.xib; path = GASettingChoiceVC/GASettingChoiceVC.xib; sourceTree = "<group>"; };
+		5A8665251AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GASettingsDetailDirectoryNavigation.h; sourceTree = "<group>"; };
+		5A8665261AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GASettingsDetailDirectoryNavigation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,6 +388,8 @@
 				5A8664F51AFD1AC2002578F7 /* GASettingsDetailVC.xib */,
 				5A86651C1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.h */,
 				5A86651D1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.m */,
+				5A8665251AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.h */,
+				5A8665261AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.m */,
 				5A8665241AFD24E9002578F7 /* GASettingChoiceVC */,
 			);
 			path = GASettingsDetailVC;
@@ -556,6 +561,7 @@
 				5A8664D51AFD0EB3002578F7 /* GASettingsSplitController.m in Sources */,
 				5A51E9B41AFCBAAA000B3576 /* NSMutableArray+GAStack.m in Sources */,
 				5A51E99F1AFBE5C9000B3576 /* GASettingsManager.m in Sources */,
+				5A8665271AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.m in Sources */,
 				5A8665031AFD1AC2002578F7 /* GAFileDetailNavigationController.m in Sources */,
 				5A4570461AF6C3D900A436AC /* main.m in Sources */,
 				5A51E98A1AF96194000B3576 /* GAThumbnailView.m in Sources */,

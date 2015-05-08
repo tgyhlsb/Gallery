@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+// Managers
+#import "GASettingsManager.h"
+#import "GACacheManager.h"
+#import "GALogger.h"
+
 @interface GASettingsDetailVC : UITableViewController
 
 @property (strong, nonatomic) NSArray *cellTitles;

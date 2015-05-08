@@ -11,6 +11,7 @@
 // Controllers
 #import "GASettingsDetailVC.h"
 #import "GASettingsDetailThumbnailsVC.h"
+#import "GASettingsDetailDirectoryNavigation.h"
 
 @interface GASettingsDetailNavigationController ()
 
@@ -39,7 +40,7 @@
 }
 
 - (void)settingsInspectorDidSelectDirectoryNavigationSettings {
-    GASettingsDetailVC *destination = [GASettingsDetailVC new];
+    GASettingsDetailDirectoryNavigation *destination = [GASettingsDetailDirectoryNavigation new];
     destination.title = NSLocalizedString(@"SETTINGS_DIRECTORY_NAVIGATION_TITLE", nil);
     [self setViewControllers:@[destination]];
     
