@@ -74,7 +74,7 @@
 - (void)initializeSelectedValues {
     self.selectedValues = @[
                             @[
-                                @([GACacheManager shouldCacheThumbnails]),
+                                @([GASettingsManager shouldCacheThumbnails]),
                                 @([GASettingsManager thumbnailCacheLimit])
                                 ]
                             ];
@@ -96,7 +96,7 @@
 
 - (void)setShouldCache:(NSObject *)value {
     BOOL boolValue = [((NSNumber *)value) boolValue];
-    [GACacheManager shouldCacheThumbnails:boolValue];
+    [GASettingsManager setShouldCacheThumbnails:boolValue];
 }
 
 - (void)setCacheLimit:(NSObject *)value {

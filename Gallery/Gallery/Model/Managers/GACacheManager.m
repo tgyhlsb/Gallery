@@ -13,6 +13,7 @@
 
 // Managers
 #import "GASettingsManager.h"
+#import "GALogger.h"
 
 static GACacheManager *sharedManager;
 
@@ -31,7 +32,6 @@ static GACacheManager *sharedManager;
 + (GACacheManager *)sharedManager {
     if (!sharedManager) {
         sharedManager = [GACacheManager new];
-        sharedManager.shouldCacheThumbnails = NO;
     }
     return sharedManager;
 }
@@ -44,27 +44,11 @@ static GACacheManager *sharedManager;
     [[GACacheManager sharedManager] thumbnailForFile:file inBackgroundWithBlock:block];
 }
 
-+ (BOOL)shouldCacheThumbnails {
-    return [GACacheManager sharedManager].shouldCacheThumbnails;
-}
-
-+ (void)shouldCacheThumbnails:(BOOL)shouldCacheThumbnails {
-    [GACacheManager sharedManager].shouldCacheThumbnails = shouldCacheThumbnails;
-}
-
 + (void)clearThumbnails {
     [[GACacheManager sharedManager] clearThumbnails];
 }
 
 #pragma mark - Getters & Setters
-
-- (void)setShouldCacheThumbnails:(BOOL)shouldCacheThumbnails {
-    _shouldCacheThumbnails = shouldCacheThumbnails;
-    
-    if (!shouldCacheThumbnails) {
-        [self clearThumbnails];
-    }
-}
 
 - (NSMutableDictionary *)thumbnails {
     if (!_thumbnails) _thumbnails = [[NSMutableDictionary alloc] init];
@@ -80,6 +64,7 @@ static GACacheManager *sharedManager;
 
 - (void)clearThumbnails {
     self.thumbnails = nil;
+    [GALogger addInformation:@"Logs cleared"];
 }
 
 - (UIImage *)thumbnailForFile:(GAFile *)file {

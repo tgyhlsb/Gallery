@@ -109,7 +109,13 @@
     NSArray *possibleValues = [self objectInArray:self.possibleValues atIndexPath:indexPath];
     if (possibleValues) {
         [self pushMultipleChoiceControllerForIndexPath:indexPath];
+    } else {
+        NSString *selectorName = [self objectInArray:self.selectorNames atIndexPath:indexPath];
+        if (selectorName) {
+            [self performSelectorWithName:selectorName withObject:nil];
+        }
     }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

@@ -17,6 +17,9 @@
 #define KEY_THUMBNAIL_CACHE_LIMIT @"GAThumbnailCacheLimit"
 #define DEFAULT_THUMBNAIL_CACHE_LIMIT 100
 
+#define KEY_THUMBNAIL_SHOULD_CACHE @"GAShouldCacheThumbnails"
+#define DEFAULT_THUMBNAIL_SHOULD_CACHE YES
+
 #define KEY_DIRECTORY_NAVIGATION_MODE @"GASettingDirectoryNavigationMode"
 #define DEFAULT_DIRECTORY_NAVIGATION_MODE GASettingDirectoryNavigationModeShowFirstImage
 
@@ -53,6 +56,15 @@ static GASettingsManager *sharedManager;
 
 + (void)setThumbnailMode:(UIViewContentMode)thumbnailMode {
     [[GASettingsManager sharedManager] setValue:@(thumbnailMode) forKey:KEY_THUMBNAIL_MODE];
+}
+
++ (BOOL)shouldCacheThumbnails {
+    NSNumber *value = [[GASettingsManager sharedManager] objectForKey:KEY_THUMBNAIL_SHOULD_CACHE];
+    return value ? [value boolValue] : DEFAULT_THUMBNAIL_SHOULD_CACHE;
+}
+
++ (void)setShouldCacheThumbnails:(BOOL)shouldCacheThumbnails {
+    [[GASettingsManager sharedManager] setValue:@(shouldCacheThumbnails) forKey:KEY_THUMBNAIL_SHOULD_CACHE];
 }
 
 + (NSInteger)thumbnailCacheLimit {

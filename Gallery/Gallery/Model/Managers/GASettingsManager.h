@@ -23,6 +23,9 @@ typedef NS_ENUM(NSInteger,GASettingDirectoryNavigationMode){
 + (NSInteger)thumbnailCacheLimit;
 + (void)setTumbnailCacheLimit:(NSInteger)cacheLimit;
 
++ (BOOL)shouldCacheThumbnails;
++ (void)setShouldCacheThumbnails:(BOOL)shouldCacheThumbnails;
+
 + (GASettingDirectoryNavigationMode)directoryNavigationMode;
 + (void)setDirectoryNavigationMode:(GASettingDirectoryNavigationMode)mode;
 
