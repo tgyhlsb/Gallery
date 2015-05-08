@@ -40,6 +40,8 @@
 		5A8664CB1AFCFB19002578F7 /* GARightVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664C71AFCFB19002578F7 /* GARightVC.xib */; };
 		5A8664CF1AFCFB77002578F7 /* GASettingsInspectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664CD1AFCFB77002578F7 /* GASettingsInspectorVC.m */; };
 		5A8664D01AFCFB77002578F7 /* GASettingsInspectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664CE1AFCFB77002578F7 /* GASettingsInspectorVC.xib */; };
+		5A8664D51AFD0EB3002578F7 /* GASettingsSplitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664D31AFD0EB3002578F7 /* GASettingsSplitController.m */; };
+		5A8664D61AFD0EB3002578F7 /* GASettingsSplitController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664D41AFD0EB3002578F7 /* GASettingsSplitController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,9 @@
 		5A8664CC1AFCFB77002578F7 /* GASettingsInspectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GASettingsInspectorVC.h; path = GASettingsInspectorVC/GASettingsInspectorVC.h; sourceTree = "<group>"; };
 		5A8664CD1AFCFB77002578F7 /* GASettingsInspectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GASettingsInspectorVC.m; path = GASettingsInspectorVC/GASettingsInspectorVC.m; sourceTree = "<group>"; };
 		5A8664CE1AFCFB77002578F7 /* GASettingsInspectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GASettingsInspectorVC.xib; path = GASettingsInspectorVC/GASettingsInspectorVC.xib; sourceTree = "<group>"; };
+		5A8664D21AFD0EB3002578F7 /* GASettingsSplitController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GASettingsSplitController.h; path = GASettingsSplitController/GASettingsSplitController.h; sourceTree = "<group>"; };
+		5A8664D31AFD0EB3002578F7 /* GASettingsSplitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GASettingsSplitController.m; path = GASettingsSplitController/GASettingsSplitController.m; sourceTree = "<group>"; };
+		5A8664D41AFD0EB3002578F7 /* GASettingsSplitController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GASettingsSplitController.xib; path = GASettingsSplitController/GASettingsSplitController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +198,7 @@
 		5A4570691AF6C63700A436AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5A8664D71AFD0EB6002578F7 /* GASettingsSplitController */,
 				5A45706F1AF6C94700A436AC /* GASplitVC */,
 				5A8664B11AFCFA4A002578F7 /* GADetailNavigationController */,
 				5A8664AB1AFCF995002578F7 /* GAMasterNavigationController */,
@@ -371,6 +377,16 @@
 			name = GASettingsInspectorVC;
 			sourceTree = "<group>";
 		};
+		5A8664D71AFD0EB6002578F7 /* GASettingsSplitController */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664D21AFD0EB3002578F7 /* GASettingsSplitController.h */,
+				5A8664D31AFD0EB3002578F7 /* GASettingsSplitController.m */,
+				5A8664D41AFD0EB3002578F7 /* GASettingsSplitController.xib */,
+			);
+			name = GASettingsSplitController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -458,6 +474,7 @@
 				5A4570541AF6C3D900A436AC /* LaunchScreen.xib in Resources */,
 				5A8664BE1AFCFB02002578F7 /* GADirectoryInspectorVC.xib in Resources */,
 				5A4570511AF6C3D900A436AC /* Images.xcassets in Resources */,
+				5A8664D61AFD0EB3002578F7 /* GASettingsSplitController.xib in Resources */,
 				5A45706E1AF6C66800A436AC /* GASplitVC.xib in Resources */,
 				5A8664CB1AFCFB19002578F7 /* GARightVC.xib in Resources */,
 				5A8664B01AFCF995002578F7 /* GAMasterNavigationController.xib in Resources */,
@@ -479,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A4570491AF6C3D900A436AC /* AppDelegate.m in Sources */,
+				5A8664D51AFD0EB3002578F7 /* GASettingsSplitController.m in Sources */,
 				5A51E9B41AFCBAAA000B3576 /* NSMutableArray+GAStack.m in Sources */,
 				5A51E99F1AFBE5C9000B3576 /* GASettingsManager.m in Sources */,
 				5A4570461AF6C3D900A436AC /* main.m in Sources */,
