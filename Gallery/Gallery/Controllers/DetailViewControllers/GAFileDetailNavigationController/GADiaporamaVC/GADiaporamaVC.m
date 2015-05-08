@@ -279,9 +279,11 @@ typedef NS_ENUM(NSInteger,GAFileType){
 - (void)forceNextFile {
     PAGED_CONTROLLERS_CLASS *afterVC = [PAGED_CONTROLLERS_CLASS new];
     afterVC.file = [self nextFile:self.activeViewController.file];
-    [self.pageViewController setViewControllers:@[afterVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
-        
-    }];
+    if (afterVC.file) {
+        [self.pageViewController setViewControllers:@[afterVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    } else {
+        self.fileTypeSegmentedControl.selectedSegmentIndex = GAFileTypeAll;
+    }
 }
 
 @end
