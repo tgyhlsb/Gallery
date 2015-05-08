@@ -52,7 +52,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.leftBarButtonItem = self.hideMasterViewButton;
+    [self splitViewController:self.navigationController.splitViewController willChangeToDisplayMode:self.navigationController.splitViewController.displayMode];
     [self registerToDirectoryInspectorsNotifications];
 }
 
@@ -148,7 +148,6 @@
     [UIView animateWithDuration:0.5 animations:^{
         self.navigationController.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
     } completion:^(BOOL finished) {
-        [self.navigationItem setLeftBarButtonItem:self.hideMasterViewButton animated:YES];
     }];
 }
 
@@ -157,7 +156,6 @@
     [UIView animateWithDuration:0.5 animations:^{
         self.navigationController.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
     } completion:^(BOOL finished) {
-        [self.navigationItem setLeftBarButtonItem:self.showMasterViewButton animated:YES];
     }];
 }
 
@@ -207,6 +205,11 @@
 #pragma mark - UISplitViewControllerDelegate
 
 - (void)splitViewController:(UISplitViewController *)svc willChangeToDisplayMode:(UISplitViewControllerDisplayMode)displayMode {
+    if (displayMode == UISplitViewControllerDisplayModeAllVisible) {
+        [self.navigationItem setLeftBarButtonItem:self.hideMasterViewButton animated:YES];
+    } else if (displayMode == UISplitViewControllerDisplayModePrimaryHidden) {
+        [self.navigationItem setLeftBarButtonItem:self.showMasterViewButton animated:YES];
+    }
 }
 
 @end

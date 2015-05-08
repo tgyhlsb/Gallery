@@ -33,6 +33,7 @@
         GARightNavigationVC *detailVC = [GARightNavigationVC new];
         
         self.viewControllers = @[mainVC, detailVC];
+        self.delegate = [detailVC rootViewController];
     }
     return self;
 }

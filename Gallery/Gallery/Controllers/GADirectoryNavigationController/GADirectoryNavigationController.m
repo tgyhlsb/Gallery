@@ -27,6 +27,7 @@
     self = [super initWithRootViewController:rootVC];
     if (self) {
         self.rootDirectory = rootDirectory;
+        self.navigationBar.translucent = NO;
     }
     return self;
 }
