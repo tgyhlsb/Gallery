@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 // Models
-#import "GAImageFile.h"
+#import "GAFile+Pointers.h"
 
 @interface GARightVC : UIViewController
 
-@property (strong, nonatomic) GAImageFile *imageFile;
+@property (strong, nonatomic) GAFile *file;
 
 @end

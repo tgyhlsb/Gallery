@@ -31,15 +31,34 @@
 
 #pragma mark - Getters & Setters
 
-- (void)setImageFile:(GAImageFile *)imageFile {
-    _imageFile = imageFile;
+- (void)setFile:(GAFile *)file {
+    _file = file;
     [self updateImageView];
 }
 
 #pragma mark - View methods
 
 - (void)updateImageView {
-    self.imageview.image = [UIImage imageWithContentsOfFile:self.imageFile.path];
+    if (self.file.isImage) {
+        self.view.backgroundColor = [UIColor whiteColor];
+        self.imageview.image = [UIImage imageWithContentsOfFile:self.file.path];
+    } else {
+        self.view.backgroundColor = [UIColor blueColor];
+        self.imageview.image = nil;
+    }
+}
+
+#pragma mark - Statics
+
+static int count = 0;
+
++ (instancetype)new {
+    NSLog(@"%d", ++count);
+    return [super new];
+}
+
+- (void)dealloc {
+    NSLog(@"%d", --count);
 }
 
 @end

@@ -22,6 +22,7 @@
 + (instancetype)new {
     GADiaporamaVC *rootVC = [GADiaporamaVC new];
     GARightNavigationVC *navVC = [[GARightNavigationVC alloc] initWithRootViewController:rootVC];
+    navVC.navigationBar.translucent = NO;
     return navVC;
 }
 

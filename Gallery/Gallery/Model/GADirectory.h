@@ -6,13 +6,25 @@
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 #import "GAFile.h"
+
+// Frameworks
 #import <Foundation/Foundation.h>
+
+// Models
+#import "GAImageFile.h"
 
 @interface GADirectory : GAFile
 
 @property (strong, nonatomic, readonly) NSArray *tree;
+@property (weak, nonatomic, readonly) GAFile *firstChild;
+@property (weak, nonatomic, readonly) GAFile *lastChild;
+@property (weak, nonatomic, readonly) GAImageFile *firstImage;
+@property (weak, nonatomic, readonly) GAImageFile *lastImage;
+@property (weak, nonatomic, readonly) GADirectory *firstDirectory;
+@property (weak, nonatomic, readonly) GADirectory *lastDirectory;
 
-+ (instancetype)directoryFromPath:(NSString *)path;
++ (instancetype)directoryFromPath:(NSString *)path
+                           parent:(GAFile *)parent;
 
 + (BOOL)isDirectory:(NSString *)path;
 

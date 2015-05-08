@@ -53,4 +53,11 @@
     }
 }
 
+- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectDirectory:(GADirectory *)directory {
+    
+    if ([self.directoryDelegate respondsToSelector:@selector(directoryInspector:didSelectDirectory:)]) {
+        [self.directoryDelegate directoryInspector:inspectorVC didSelectDirectory:directory];
+    }
+}
+
 @end

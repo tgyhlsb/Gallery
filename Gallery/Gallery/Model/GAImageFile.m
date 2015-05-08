@@ -19,12 +19,16 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)imageFileFromPath:(NSString *)path {
-    return [[GAImageFile alloc] initFromPath:path];
++ (instancetype)imageFileFromPath:(NSString *)path
+                           parent:(GAFile *)parent {
+    
+    return [[GAImageFile alloc] initFromPath:path parent:parent];
 }
 
-- (id)initFromPath:(NSString *)path {
-    self = [super initFromPath:path];
+- (id)initFromPath:(NSString *)path
+            parent:(GAFile *)parent {
+    
+    self = [super initFromPath:path parent:parent];
     if (self) {
     }
     return self;
@@ -44,7 +48,7 @@
 
 + (BOOL)isImageFile:(NSString *)path {
     NSString *extension = [path pathExtension];
-    return [@[@"jpg", @"png"] containsObject:extension.lowercaseString];
+    return [@[@"jpg", @"png", @"jpeg"] containsObject:extension.lowercaseString];
 }
 
 @end
