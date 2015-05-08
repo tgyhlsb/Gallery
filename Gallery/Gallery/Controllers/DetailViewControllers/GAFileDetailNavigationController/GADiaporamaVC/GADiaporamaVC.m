@@ -8,7 +8,8 @@
 
 #import "GADiaporamaVC.h"
 
-#import "GARightVC.h"
+// Controllers
+#import "GAFileInspectorVC.h"
 
 // Managers
 #import "GASettingsManager.h"
@@ -21,7 +22,7 @@
 // Others
 #import "NSMutableArray+GAStack.h"
 
-#define PAGED_CONTROLLERS_CLASS GARightVC
+#define PAGED_CONTROLLERS_CLASS GAFileInspectorVC
 
 typedef NS_ENUM(NSInteger,GAFileType){
     GAFileTypeAll,
@@ -35,7 +36,7 @@ typedef NS_ENUM(NSInteger,GAFileType){
 @property (strong, nonatomic) UIBarButtonItem *showMasterViewButton;
 @property (strong, nonatomic) UIBarButtonItem *hideMasterViewButton;
 @property (strong, nonatomic) UISegmentedControl *fileTypeSegmentedControl;
-@property (strong, nonatomic) GARightVC *activeViewController;
+@property (strong, nonatomic) GAFileInspectorVC *activeViewController;
 
 @end
 
@@ -149,22 +150,24 @@ typedef NS_ENUM(NSInteger,GAFileType){
 }
 
 - (void)setRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile {
-    PAGED_CONTROLLERS_CLASS *vc = [PAGED_CONTROLLERS_CLASS new];
     
+    GAFile *firstFile = nil;
     if (imageFile) { // show specific file
-        vc.file = imageFile;
+        firstFile = imageFile;
     } else { // show directory
         switch ([GASettingsManager directoryNavigationMode]) {
             case GASettingDirectoryNavigationModeIgnore:
                 break;
             case GASettingDirectoryNavigationModeShowDirectory:
-                vc.file = rootDirectory;
+                firstFile = rootDirectory;
                 break;
             case GASettingDirectoryNavigationModeShowFirstImage:
-                vc.file = rootDirectory.firstImage;
+                firstFile = rootDirectory.firstImage;
                 break;
         }
     }
+    PAGED_CONTROLLERS_CLASS *vc = [PAGED_CONTROLLERS_CLASS inspectorForFile:firstFile];
+    
     self.activeViewController = vc;
     [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
@@ -217,16 +220,16 @@ typedef NS_ENUM(NSInteger,GAFileType){
 #pragma mark - UIPageViewControllerDataSource
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    PAGED_CONTROLLERS_CLASS *beforeVC = [PAGED_CONTROLLERS_CLASS new];
     PAGED_CONTROLLERS_CLASS *activeVC = ((PAGED_CONTROLLERS_CLASS *)viewController);
-    beforeVC.file = [self previousFile:activeVC.file];
+    GAFile *file = [self previousFile:activeVC.file];
+    PAGED_CONTROLLERS_CLASS *beforeVC = [PAGED_CONTROLLERS_CLASS inspectorForFile:file];
     return beforeVC;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    PAGED_CONTROLLERS_CLASS *afterVC = [PAGED_CONTROLLERS_CLASS new];
     PAGED_CONTROLLERS_CLASS *activeVC = ((PAGED_CONTROLLERS_CLASS *)viewController);
-    afterVC.file = [self nextFile:activeVC.file];
+    GAFile *file = [self nextFile:activeVC.file];
+    PAGED_CONTROLLERS_CLASS *afterVC = [PAGED_CONTROLLERS_CLASS inspectorForFile:file];
     return afterVC;
 }
 
@@ -277,9 +280,9 @@ typedef NS_ENUM(NSInteger,GAFileType){
 #pragma mark - Helpers
 
 - (void)forceNextFile {
-    PAGED_CONTROLLERS_CLASS *afterVC = [PAGED_CONTROLLERS_CLASS new];
-    afterVC.file = [self nextFile:self.activeViewController.file];
-    if (afterVC.file) {
+    GAFile *nextFile = [self nextFile:self.activeViewController.file];
+    if (nextFile) {
+        PAGED_CONTROLLERS_CLASS *afterVC = [PAGED_CONTROLLERS_CLASS inspectorForFile:nextFile];
         [self.pageViewController setViewControllers:@[afterVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     } else {
         self.fileTypeSegmentedControl.selectedSegmentIndex = GAFileTypeAll;
