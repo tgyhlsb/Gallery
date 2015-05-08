@@ -9,14 +9,14 @@
 #import "GASettingsSplitController.h"
 
 // Controllers
-#import "GASettingsInspectorVC.h"
+#import "GASettingsMasterVC.h"
 #import "GASettingsDetailVC.h"
 
 @interface GASettingsSplitController ()
 
 @property (strong, nonatomic) UIBarButtonItem *closeButton;
 
-@property (strong, nonatomic) GASettingsInspectorVC *masterVC;
+@property (strong, nonatomic) GASettingsMasterVC *masterVC;
 @property (strong, nonatomic) GASettingsDetailVC *detailVC;
 
 @end
@@ -28,7 +28,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.masterVC = [GASettingsInspectorVC new];
+        self.masterVC = [GASettingsMasterVC new];
         self.detailVC = [GASettingsDetailVC new];
         UINavigationController *masterNavController = [[UINavigationController alloc] initWithRootViewController:self.masterVC];
         UINavigationController *detailNavController = [[UINavigationController alloc] initWithRootViewController:self.detailVC];

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 // Controllers
-#import "GASettingsInspectorVC.h"
+#import "GASettingsMasterVC.h"
 
 @interface GASettingsDetailVC : UITableViewController <GASettingsInspectorDelegate>
 

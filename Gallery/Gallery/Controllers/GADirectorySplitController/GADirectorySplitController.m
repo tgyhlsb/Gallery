@@ -12,8 +12,8 @@
 #import "GAFileManager.h"
 
 // Controllers
-#import "GAMasterNavigationController.h"
-#import "GADetailNavigationController.h"
+#import "GADirectoryNavigationController.h"
+#import "GAFileDetailNavigationController.h"
 
 
 @interface GADirectorySplitController ()
@@ -28,8 +28,9 @@
     self = [super init];
     if (self) {
         GADirectory *rootDirectory = [GAFileManager readSharedDirectory];
-        GAMasterNavigationController *mainVC = [GAMasterNavigationController newWithRootDirectory:rootDirectory];
-        GADetailNavigationController *detailVC = [GADetailNavigationController new];
+        
+        GADirectoryNavigationController *mainVC = [GADirectoryNavigationController newWithRootDirectory:rootDirectory];
+        GAFileDetailNavigationController *detailVC = [GAFileDetailNavigationController new];
         
         self.viewControllers = @[mainVC, detailVC];
         self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;

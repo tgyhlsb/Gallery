@@ -203,10 +203,10 @@
 		5A4570691AF6C63700A436AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5A8664E41AFD1AC2002578F7 /* DetailViewControllers */,
-				5A8664F61AFD1AC2002578F7 /* MasterViewControllers */,
 				5A8664D81AFD0F13002578F7 /* GADirectorySplitController */,
 				5A8664D71AFD0EB6002578F7 /* GASettingsSplitController */,
+				5A8664E41AFD1AC2002578F7 /* DetailViewControllers */,
+				5A8664F61AFD1AC2002578F7 /* MasterViewControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
