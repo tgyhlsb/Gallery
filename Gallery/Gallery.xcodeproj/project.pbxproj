@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A36B9931AFD648A009098CB /* GAInternationalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A36B9921AFD648A009098CB /* GAInternationalization.m */; };
 		5A4570461AF6C3D900A436AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570451AF6C3D900A436AC /* main.m */; };
 		5A4570491AF6C3D900A436AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570481AF6C3D900A436AC /* AppDelegate.m */; };
 		5A4570511AF6C3D900A436AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4570501AF6C3D900A436AC /* Images.xcassets */; };
@@ -65,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A36B9911AFD648A009098CB /* GAInternationalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAInternationalization.h; sourceTree = "<group>"; };
+		5A36B9921AFD648A009098CB /* GAInternationalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAInternationalization.m; sourceTree = "<group>"; };
 		5A4570401AF6C3D900A436AC /* Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4570441AF6C3D900A436AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A4570451AF6C3D900A436AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 				5A51E99E1AFBE5C9000B3576 /* GASettingsManager.m */,
 				5A51E9A01AFBFBF0000B3576 /* GALogger.h */,
 				5A51E9A11AFBFBF0000B3576 /* GALogger.m */,
+				5A36B9911AFD648A009098CB /* GAInternationalization.h */,
+				5A36B9921AFD648A009098CB /* GAInternationalization.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -577,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A36B9931AFD648A009098CB /* GAInternationalization.m in Sources */,
 				5A4570491AF6C3D900A436AC /* AppDelegate.m in Sources */,
 				5A8665221AFD24E5002578F7 /* GASettingChoiceVC.m in Sources */,
 				5A8664D51AFD0EB3002578F7 /* GASettingsSplitController.m in Sources */,
