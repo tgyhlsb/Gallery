@@ -150,6 +150,10 @@
     GADirectoryInspectorVC *destination = [GADirectoryInspectorVC newWithDirectory:directory];
     destination.title = [directory nameWithExtension:YES];
     [self.navigationController pushViewController:destination animated:YES];
+    
+    if ([self.delegate respondsToSelector:@selector(directoryInspector:didSelectDirectory:)]) {
+        [self.delegate directoryInspector:self didSelectDirectory:directory];
+    }
 }
 
 - (void)openImagefile:(GAImageFile *)imageFile {

@@ -9,7 +9,7 @@
 #import "GARightNavigationVC.h"
 
 // Controllers
-#import "GARightVC.h"
+#import "GADiaporamaVC.h"
 
 @interface GARightNavigationVC ()
 
@@ -20,7 +20,7 @@
 #pragma mark - Constructors
 
 + (instancetype)new {
-    GARightVC *rootVC = [GARightVC new];
+    GADiaporamaVC *rootVC = [GADiaporamaVC new];
     GARightNavigationVC *navVC = [[GARightNavigationVC alloc] initWithRootViewController:rootVC];
     return navVC;
 }
@@ -28,9 +28,13 @@
 #pragma mark - GADirectoryInspectorDelegate
 
 - (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectImageFile:(GAImageFile *)imageFile {
-    GARightVC *rootVC = [GARightVC new];
-    rootVC.imageFile = imageFile;
-    [self setViewControllers:@[rootVC] animated:YES];
+    GADiaporamaVC *rootVC = [self.viewControllers firstObject];
+    [rootVC setRootDirectory:nil withImageFile:imageFile];
+}
+
+- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectDirectory:(GADirectory *)directory {
+    GADiaporamaVC *rootVC = [self.viewControllers firstObject];
+    [rootVC setRootDirectory:directory withImageFile:nil];
 }
 
 @end
