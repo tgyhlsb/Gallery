@@ -10,6 +10,7 @@
 
 // Controllers
 #import "GASettingsMasterVC.h"
+#import "GASettingsDetailNavigationController.h"
 #import "GASettingsDetailVC.h"
 
 @interface GASettingsSplitController ()
@@ -18,6 +19,7 @@
 
 @property (strong, nonatomic) GASettingsMasterVC *masterVC;
 @property (strong, nonatomic) GASettingsDetailVC *detailVC;
+@property (strong, nonatomic) GASettingsDetailNavigationController *detailNavigationController;
 
 @end
 
@@ -31,11 +33,11 @@
         self.masterVC = [GASettingsMasterVC new];
         self.detailVC = [GASettingsDetailVC new];
         UINavigationController *masterNavController = [[UINavigationController alloc] initWithRootViewController:self.masterVC];
-        UINavigationController *detailNavController = [[UINavigationController alloc] initWithRootViewController:self.detailVC];
+        self.detailNavigationController = [[GASettingsDetailNavigationController alloc] initWithRootViewController:self.detailVC];
         
-        self.viewControllers = @[masterNavController, detailNavController];
+        self.viewControllers = @[masterNavController, self.detailNavigationController];
         self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
-//        self.delegate = detailRootVC;
+        self.delegate = self.detailNavigationController;
     }
     return self;
 }
@@ -48,7 +50,7 @@
     
     self.masterVC.navigationItem.leftBarButtonItem = self.closeButton;
     
-    self.masterVC.delegate = self.detailVC;
+    self.masterVC.delegate = self.detailNavigationController;
 }
 
 

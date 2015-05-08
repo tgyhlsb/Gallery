@@ -8,20 +8,27 @@
 
 #import "GASettingsDetailVC.h"
 
-@interface GASettingsDetailVC ()
+// Controllers
+#import "GASettingChoiceVC.h"
+
+@interface GASettingsDetailVC () <GASettingChoiceDelegate>
 
 @end
 
 @implementation GASettingsDetailVC
 
+#pragma mark - View life cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self initializeCellTitles];
+    [self initializeSectionHeaders];
+    [self initializeSectionFooters];
+    [self initializePossibleValues];
+    [self initializePossibleValueTitles];
+    [self initializeSelectedValues];
+    [self initializeSelectors];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,95 +36,122 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Configuration
+
+- (void)initializeCellTitles {
+    self.cellTitles = @[];
+}
+
+- (void)initializeSectionHeaders {
+    self.sectionHeaders = @[];
+}
+
+- (void)initializeSectionFooters {
+    self.sectionFooters = @[];
+}
+
+- (void)initializePossibleValues {
+    self.possibleValues = @[];
+}
+
+- (void)initializePossibleValueTitles {
+    self.possibleValueTitles = @[];
+}
+
+- (void)initializeSelectedValues {
+    self.selectedValues = @[];
+}
+
+- (void)initializeSelectors {
+    self.selectorNames = @[];
+}
+
+- (id)objectInArray:(NSArray *)array atIndexPath:(NSIndexPath *)indexPath {
+    NSArray *tempArray = [self objectInArray:array atIndex:indexPath.section];
+    return [self objectInArray:tempArray atIndex:indexPath.row];
+}
+
+- (id)objectInArray:(NSArray *)array atIndex:(NSInteger)index {
+    return (array && [array count] > index) ? [array objectAtIndex:index] : nil;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return [self.cellTitles count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [[self.cellTitles objectAtIndex:section] count];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *identifier = @"settingCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
-    // Configure the cell...
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
+    }
+    
+    
+    cell.textLabel.text = [self objectInArray:self.cellTitles atIndexPath:indexPath];
+    
+    NSArray *possibleValues = [self objectInArray:self.possibleValues atIndexPath:indexPath];
+    cell.accessoryType = possibleValues ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
 #pragma mark - Table view delegate
 
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-    
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-}
-*/
-
-#pragma mark - GASettingsInspectorDelegate
-
-- (void)settingsInspectorDidSelectThumbnailsSettings {
-    self.title = NSLocalizedString(@"SETTINGS_THUMBNAILS_TITLE", nil);
-    
+    NSArray *possibleValues = [self objectInArray:self.possibleValues atIndexPath:indexPath];
+    if (possibleValues) {
+        [self pushMultipleChoiceControllerForIndexPath:indexPath];
+    }
 }
 
-- (void)settingsInspectorDidSelectDirectoryNavigationSettings {
-    self.title = NSLocalizedString(@"SETTINGS_DIRECTORY_NAVIGATION_TITLE", nil);
-    
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self objectInArray:self.sectionHeaders atIndex:section];
 }
 
-- (void)settingsInspectorDidSelectLoggerSettings {
-    self.title = NSLocalizedString(@"SETTINGS_LOGGER_TITLE", nil);
-    
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    return [self objectInArray:self.sectionFooters atIndex:section];
+}
+
+- (void)pushMultipleChoiceControllerForIndexPath:(NSIndexPath *)indexPath {
+    GASettingChoiceVC *destination = [GASettingChoiceVC new];
+    destination.title = [self objectInArray:self.cellTitles atIndexPath:indexPath];
+    destination.values = [self objectInArray:self.possibleValues atIndexPath:indexPath];
+    destination.valueTitles = [self objectInArray:self.possibleValueTitles atIndexPath:indexPath];
+    destination.selectedValue = [self objectInArray:self.selectedValues atIndexPath:indexPath];
+    destination.indexPath = indexPath;
+    destination.delegate = self;
+    [self.navigationController pushViewController:destination animated:YES];
+}
+
+#pragma mark - Handlers 
+
+
+- (void)performSelectorWithName:(NSString *)selectorName withObject:(NSObject *)object {
+    SEL selector = NSSelectorFromString(selectorName);
+    if ([self respondsToSelector:selector]) {
+#pragma clang diagnostic push // Warning removal
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [self performSelector:selector withObject:object];
+#pragma clang diagnostic pop
+        [self initializeSelectedValues]; // refresh them
+    }
+}
+
+#pragma mark - GASettingChoiceDelegate
+
+- (void)multipleChoiceController:(GASettingChoiceVC *)controller didSelectValue:(NSObject *)value {
+    NSString *selectorName = [self objectInArray:self.selectorNames atIndexPath:controller.indexPath];
+    if (selectorName) {
+        [self performSelectorWithName:selectorName withObject:value];
+    }
 }
 
 @end

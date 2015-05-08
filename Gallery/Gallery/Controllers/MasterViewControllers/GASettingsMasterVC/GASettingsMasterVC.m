@@ -47,12 +47,21 @@ typedef NS_ENUM(NSInteger,GASettingDevelopment){
     self.title = NSLocalizedString(@"SETTINGS", nil);
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+//    Select first row
+    NSIndexPath *defaultCell = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView selectRowAtIndexPath:defaultCell animated:YES scrollPosition:UITableViewScrollPositionNone];
+    [self tableView:self.tableView didSelectRowAtIndexPath:defaultCell];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Titles
+#pragma mark - Configuration
 
 - (void)initializeCellTitles {
     self.cellTitles = @[

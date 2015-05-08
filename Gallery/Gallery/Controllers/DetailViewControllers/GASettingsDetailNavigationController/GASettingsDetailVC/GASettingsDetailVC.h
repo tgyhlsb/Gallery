@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-// Controllers
-#import "GASettingsMasterVC.h"
+@interface GASettingsDetailVC : UITableViewController
 
-@interface GASettingsDetailVC : UITableViewController <GASettingsInspectorDelegate>
+@property (strong, nonatomic) NSArray *cellTitles;
+@property (strong, nonatomic) NSArray *sectionHeaders;
+@property (strong, nonatomic) NSArray *sectionFooters;
+@property (strong, nonatomic) NSArray *possibleValues;
+@property (strong, nonatomic) NSArray *possibleValueTitles;
+@property (strong, nonatomic) NSArray *selectedValues;
+@property (strong, nonatomic) NSArray *selectorNames;
 
 @end
