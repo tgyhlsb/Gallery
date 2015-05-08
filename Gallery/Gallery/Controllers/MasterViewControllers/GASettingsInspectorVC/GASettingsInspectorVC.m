@@ -25,12 +25,12 @@ typedef NS_ENUM(NSInteger,GASettingDevelopment){
     GASettingDevelopmentEnd
 };
 
-
 @interface GASettingsInspectorVC ()
 
 @property (strong, nonatomic) NSArray *cellTitles;
 @property (strong, nonatomic) NSArray *sectionHeaders;
 @property (strong, nonatomic) NSArray *sectionFooters;
+@property (strong, nonatomic) NSArray *selectorNames;
 
 @end
 
@@ -42,6 +42,7 @@ typedef NS_ENUM(NSInteger,GASettingDevelopment){
     [self initializeCellTitles];
     [self initializeSectionHeaders];
     [self initializeSectionFooters];
+    [self initializeSelectors];
     
     self.title = NSLocalizedString(@"SETTINGS", nil);
 }
@@ -79,6 +80,18 @@ typedef NS_ENUM(NSInteger,GASettingDevelopment){
                             ];
 }
 
+- (void)initializeSelectors {
+    self.selectorNames = @[
+                       @[
+                           @"settingsInspectorDidSelectThumbnailsSettings",
+                           @"settingsInspectorDidSelectDirectoryNavigationSettings"
+                           ],
+                       @[
+                           @"settingsInspectorDidSelectLoggerSettings"
+                           ]
+                       ];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -114,16 +127,10 @@ typedef NS_ENUM(NSInteger,GASettingDevelopment){
 
 #pragma mark - Table view delegate
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    // Navigation logic may go here, for example:
-//    // Create the next view controller.
-//    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
-//    
-//    // Pass the selected object to the new view controller.
-//    
-//    // Push the view controller.
-//    [self.navigationController pushViewController:detailViewController animated:YES];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *selectorName = [[self.selectorNames objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    [self delegatePerformSelectorWithName:selectorName];
+}
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [self.sectionHeaders objectAtIndex:section];
@@ -131,6 +138,18 @@ typedef NS_ENUM(NSInteger,GASettingDevelopment){
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     return [self.sectionFooters objectAtIndex:section];
+}
+
+#pragma mark - Details
+
+- (void)delegatePerformSelectorWithName:(NSString *)selectorName {
+    SEL selector = NSSelectorFromString(selectorName);
+    if ([self.delegate respondsToSelector:selector]) {
+#pragma clang diagnostic push // Warning removal
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [self.delegate performSelector:selector];
+#pragma clang diagnostic pop
+    }
 }
 
 @end

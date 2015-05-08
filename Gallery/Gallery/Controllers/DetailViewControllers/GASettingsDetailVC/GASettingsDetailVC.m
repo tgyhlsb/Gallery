@@ -103,14 +103,21 @@
 }
 */
 
-/*
-#pragma mark - Navigation
+#pragma mark - GASettingsInspectorDelegate
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)settingsInspectorDidSelectThumbnailsSettings {
+    self.title = NSLocalizedString(@"SETTINGS_THUMBNAILS_TITLE", nil);
+    
 }
-*/
+
+- (void)settingsInspectorDidSelectDirectoryNavigationSettings {
+    self.title = NSLocalizedString(@"SETTINGS_DIRECTORY_NAVIGATION_TITLE", nil);
+    
+}
+
+- (void)settingsInspectorDidSelectLoggerSettings {
+    self.title = NSLocalizedString(@"SETTINGS_LOGGER_TITLE", nil);
+    
+}
 
 @end

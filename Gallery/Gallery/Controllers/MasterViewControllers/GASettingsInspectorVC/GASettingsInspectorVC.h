@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol GASettingsInspectorDelegate;
+
 @interface GASettingsInspectorVC : UITableViewController
+
+@property (weak, nonatomic) id<GASettingsInspectorDelegate> delegate;
+
+@end
+
+@protocol GASettingsInspectorDelegate <NSObject>
+
+- (void)settingsInspectorDidSelectThumbnailsSettings;
+- (void)settingsInspectorDidSelectDirectoryNavigationSettings;
+- (void)settingsInspectorDidSelectLoggerSettings;
 
 @end

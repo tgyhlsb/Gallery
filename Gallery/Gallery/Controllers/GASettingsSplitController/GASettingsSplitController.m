@@ -47,6 +47,8 @@
     [super viewDidLoad];
     
     self.masterVC.navigationItem.leftBarButtonItem = self.closeButton;
+    
+    self.masterVC.delegate = self.detailVC;
 }
 
 
