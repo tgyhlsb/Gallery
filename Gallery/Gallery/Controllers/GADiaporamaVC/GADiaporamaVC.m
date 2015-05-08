@@ -10,9 +10,20 @@
 
 #import "GARightVC.h"
 
+// Models
+#import "GAImageFile.h"
+#import "GADirectory.h"
+
+// Others
+#import "NSMutableArray+GAStack.h"
+
+#define PAGED_CONTROLLERS_CLASS GARightVC
+
 @interface GADiaporamaVC () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
+
+@property (strong, nonatomic) NSMutableArray *viewControllersStack;
 
 @end
 
@@ -75,30 +86,56 @@
     return _pageViewController;
 }
 
+- (NSMutableArray *)viewControllersStack {
+    if (!_viewControllersStack) _viewControllersStack = [NSMutableArray new];
+    return _viewControllersStack;
+}
+
 - (void)setRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile {
-    GARightVC *vc = [GARightVC new];
+    PAGED_CONTROLLERS_CLASS *vc = [PAGED_CONTROLLERS_CLASS new];
     vc.imageFile = imageFile;
     [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
+- (PAGED_CONTROLLERS_CLASS *)dequeueViewController {
+    PAGED_CONTROLLERS_CLASS *viewController = [self.viewControllersStack pop];
+    NSLog(@"Poped");
+    if (!viewController) {
+        viewController = [PAGED_CONTROLLERS_CLASS new];
+        NSLog(@"Created");
+    }
+    return viewController;
 }
 
 #pragma mark - UIPageViewControllerDataSource
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    return nil;
+    PAGED_CONTROLLERS_CLASS *beforeVC = [self dequeueViewController];
+    PAGED_CONTROLLERS_CLASS *activeVC = ((PAGED_CONTROLLERS_CLASS *)viewController);
+    GAFile *previousFile = activeVC.imageFile.previous;
+    beforeVC.imageFile = previousFile.isImage ? (GAImageFile *)previousFile : nil;
+    return beforeVC;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    return nil;
-}
-
-- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
-    return 3;
-}
-
-- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
-    return 2;
+    PAGED_CONTROLLERS_CLASS *afterVC = [self dequeueViewController];
+    PAGED_CONTROLLERS_CLASS *activeVC = ((PAGED_CONTROLLERS_CLASS *)viewController);
+    GAFile *nextFile = activeVC.imageFile.next;
+    afterVC.imageFile = nextFile.isImage ? (GAImageFile *)nextFile : nil;
+    return afterVC;
 }
 
 #pragma mark - UIPageViewControllerDelegate
+
+- (void)pageViewController:(UIPageViewController *)pageViewController
+        didFinishAnimating:(BOOL)finished
+   previousViewControllers:(NSArray *)previousViewControllers
+       transitionCompleted:(BOOL)completed {
+    
+    if (finished && completed) {
+        [self.viewControllersStack push:[previousViewControllers firstObject]];
+        NSLog(@"Pushed");
+    }
+}
 
 @end
