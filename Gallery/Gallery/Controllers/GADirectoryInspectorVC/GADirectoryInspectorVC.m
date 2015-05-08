@@ -19,6 +19,8 @@
 
 @interface GADirectoryInspectorVC ()
 
+@property (strong, nonatomic) UIBarButtonItem *splitViewButton;
+
 @end
 
 @implementation GADirectoryInspectorVC
@@ -46,6 +48,17 @@
     [self.tableView reloadData];
 }
 
+- (UIBarButtonItem *)splitViewButton {
+    if (!_splitViewButton) {
+        NSString *title = NSLocalizedString(@"CLOSE", nil);
+        _splitViewButton = [[UIBarButtonItem alloc] initWithTitle:title
+                                                            style:UIBarButtonItemStylePlain
+                                                           target:self
+                                                           action:@selector(splitViewButtonHandler)];
+    }
+    return _splitViewButton;
+}
+
 - (void)initializeRefreshControl {
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self
@@ -53,11 +66,18 @@
                   forControlEvents:UIControlEventValueChanged];
 }
 
+#pragma mark - Handlers
+
+- (void)splitViewButtonHandler {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.navigationController.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
+    }];
+}
+
 #pragma mark - View life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [GAImageFileTableViewCell registerToTableView:self.tableView];
 }
 

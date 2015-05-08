@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 
 // Controllers
+#import "GADirectoryInspectorVC.h"
 
 // Models
 #import "GAImageFile.h"
 #import "GADirectory.h"
 
-@interface GADiaporamaVC : UIViewController
+@interface GADiaporamaVC : UIViewController <GADirectoryInspectorDelegate, UISplitViewControllerDelegate>
 
 + (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile;
 

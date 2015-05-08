@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+
+// Controllers
+#import "GADiaporamaVC.h"
 #import "GADirectoryNavigationController.h"
 
-@interface GARightNavigationVC : UINavigationController <GADirectoryNavigationDelegate>
+@interface GARightNavigationVC : UINavigationController
+
+- (GADiaporamaVC *)rootViewController;
 
 @end

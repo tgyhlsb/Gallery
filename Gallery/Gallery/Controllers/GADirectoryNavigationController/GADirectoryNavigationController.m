@@ -44,20 +44,10 @@
     [super pushViewController:viewController animated:animated];
 }
 
-#pragma mark - GADirectoryInspectorDelegate
+#pragma mark - Getters & Setters
 
-- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectImageFile:(GAImageFile *)imageFile {
-    
-    if ([self.directoryDelegate respondsToSelector:@selector(directoryInspector:didSelectImageFile:)]) {
-        [self.directoryDelegate directoryInspector:inspectorVC didSelectImageFile:imageFile];
-    }
-}
-
-- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectDirectory:(GADirectory *)directory {
-    
-    if ([self.directoryDelegate respondsToSelector:@selector(directoryInspector:didSelectDirectory:)]) {
-        [self.directoryDelegate directoryInspector:inspectorVC didSelectDirectory:directory];
-    }
+- (GADirectoryInspectorVC *)rootViewController {
+    return (GADirectoryInspectorVC *)[self.viewControllers firstObject];
 }
 
 @end

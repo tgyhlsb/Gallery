@@ -8,9 +8,6 @@
 
 #import "GARightNavigationVC.h"
 
-// Controllers
-#import "GADiaporamaVC.h"
-
 @interface GARightNavigationVC ()
 
 @end
@@ -26,16 +23,10 @@
     return navVC;
 }
 
-#pragma mark - GADirectoryInspectorDelegate
+#pragma mark - Getters & Setters
 
-- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectImageFile:(GAImageFile *)imageFile {
-    GADiaporamaVC *rootVC = [self.viewControllers firstObject];
-    [rootVC setRootDirectory:nil withImageFile:imageFile];
-}
-
-- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectDirectory:(GADirectory *)directory {
-    GADiaporamaVC *rootVC = [self.viewControllers firstObject];
-    [rootVC setRootDirectory:directory withImageFile:nil];
+- (GADiaporamaVC *)rootViewController {
+    return (GADiaporamaVC *)[self.viewControllers firstObject];
 }
 
 @end
