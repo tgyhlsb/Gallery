@@ -165,6 +165,7 @@ typedef NS_ENUM(NSInteger,GAFileType){
                 break;
         }
     }
+    self.activeViewController = vc;
     [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 
