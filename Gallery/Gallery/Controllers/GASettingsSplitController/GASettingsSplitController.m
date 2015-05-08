@@ -10,8 +10,14 @@
 
 // Controllers
 #import "GASettingsInspectorVC.h"
+#import "GASettingsDetailVC.h"
 
 @interface GASettingsSplitController ()
+
+@property (strong, nonatomic) UIBarButtonItem *closeButton;
+
+@property (strong, nonatomic) GASettingsInspectorVC *masterVC;
+@property (strong, nonatomic) GASettingsDetailVC *detailVC;
 
 @end
 
@@ -22,10 +28,10 @@
 - (id)init {
     self = [super init];
     if (self) {
-        GASettingsInspectorVC *masterRootVC = [GASettingsInspectorVC new];
-        UIViewController *detailRootVC = [UIViewController new];
-        UINavigationController *masterNavController = [[UINavigationController alloc] initWithRootViewController:masterRootVC];
-        UINavigationController *detailNavController = [[UINavigationController alloc] initWithRootViewController:detailRootVC];
+        self.masterVC = [GASettingsInspectorVC new];
+        self.detailVC = [GASettingsDetailVC new];
+        UINavigationController *masterNavController = [[UINavigationController alloc] initWithRootViewController:self.masterVC];
+        UINavigationController *detailNavController = [[UINavigationController alloc] initWithRootViewController:self.detailVC];
         
         self.viewControllers = @[masterNavController, detailNavController];
         self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
@@ -39,8 +45,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.masterVC.navigationItem.leftBarButtonItem = self.closeButton;
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -48,5 +56,25 @@
 }
 
 #pragma mark - Getters & Setters
+
+- (UIBarButtonItem *)closeButton {
+    if (!_closeButton) {
+        NSString *title = NSLocalizedString(@"CLOSE", nil);
+        _closeButton = [[UIBarButtonItem alloc] initWithTitle:title
+                                                        style:UIBarButtonItemStylePlain
+                                                       target:self
+                                                       action:@selector(closeButtonHandler)];
+    }
+    return _closeButton;
+}
+
+#pragma mark - Handler 
+
+- (void)closeButtonHandler {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
 
 @end
