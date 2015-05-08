@@ -11,6 +11,7 @@
 #import "GARightVC.h"
 
 // Models
+#import "GAFile+Pointers.h"
 #import "GAImageFile.h"
 #import "GADirectory.h"
 
@@ -93,14 +94,14 @@
 
 - (void)setRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile {
     PAGED_CONTROLLERS_CLASS *vc = [PAGED_CONTROLLERS_CLASS new];
-    vc.imageFile = imageFile;
+    vc.file = imageFile;
     [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 
 - (PAGED_CONTROLLERS_CLASS *)dequeueViewController {
     PAGED_CONTROLLERS_CLASS *viewController = [self.viewControllersStack pop];
     NSLog(@"Poped");
-    if (!viewController) {
+    if (!NO) {
         viewController = [PAGED_CONTROLLERS_CLASS new];
         NSLog(@"Created");
     }
@@ -112,17 +113,23 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     PAGED_CONTROLLERS_CLASS *beforeVC = [self dequeueViewController];
     PAGED_CONTROLLERS_CLASS *activeVC = ((PAGED_CONTROLLERS_CLASS *)viewController);
-    GAFile *previousFile = activeVC.imageFile.previous;
-    beforeVC.imageFile = previousFile.isImage ? (GAImageFile *)previousFile : nil;
+    beforeVC.file = [self previousFile:activeVC.file];
     return beforeVC;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     PAGED_CONTROLLERS_CLASS *afterVC = [self dequeueViewController];
     PAGED_CONTROLLERS_CLASS *activeVC = ((PAGED_CONTROLLERS_CLASS *)viewController);
-    GAFile *nextFile = activeVC.imageFile.next;
-    afterVC.imageFile = nextFile.isImage ? (GAImageFile *)nextFile : nil;
+    afterVC.file = [self nextFile:activeVC.file];
     return afterVC;
+}
+
+- (GAFile *)previousFile:(GAFile *)file {
+    return [file previous];
+}
+
+- (GAFile *)nextFile:(GAFile *)file {
+    return [file next];
 }
 
 #pragma mark - UIPageViewControllerDelegate
