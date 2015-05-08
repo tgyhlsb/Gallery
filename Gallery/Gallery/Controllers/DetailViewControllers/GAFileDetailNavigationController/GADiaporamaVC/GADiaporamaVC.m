@@ -151,25 +151,34 @@ typedef NS_ENUM(NSInteger,GAFileType){
 
 - (void)setRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile {
     
-    GAFile *firstFile = nil;
     if (imageFile) { // show specific file
-        firstFile = imageFile;
+        [self showImage:imageFile];
     } else { // show directory
         switch ([GASettingsManager directoryNavigationMode]) {
             case GASettingDirectoryNavigationModeIgnore:
                 break;
             case GASettingDirectoryNavigationModeShowDirectory:
-                firstFile = rootDirectory;
+                [self showDirectory:rootDirectory];
                 break;
             case GASettingDirectoryNavigationModeShowFirstImage:
-                firstFile = rootDirectory.firstImage;
+                [self showImage:rootDirectory.firstImage];
                 break;
         }
     }
-    PAGED_CONTROLLERS_CLASS *vc = [PAGED_CONTROLLERS_CLASS inspectorForFile:firstFile];
-    
+}
+
+- (void)showImage:(GAImageFile *)imageFile {
+    PAGED_CONTROLLERS_CLASS *vc = [PAGED_CONTROLLERS_CLASS inspectorForFile:imageFile];
     self.activeViewController = vc;
     [self setCenterViewController:vc animated:NO];
+    if ([self selectedFileType] == GAFileTypeDirectories) self.fileTypeSegmentedControl.selectedSegmentIndex = GAFileTypeAll;
+}
+
+- (void)showDirectory:(GADirectory *)directory {
+    PAGED_CONTROLLERS_CLASS *vc = [PAGED_CONTROLLERS_CLASS inspectorForFile:directory];
+    self.activeViewController = vc;
+    [self setCenterViewController:vc animated:NO];
+    if ([self selectedFileType] == GAFileTypeImages) self.fileTypeSegmentedControl.selectedSegmentIndex = GAFileTypeAll;
 }
 
 - (GAFileType)selectedFileType {
@@ -177,8 +186,9 @@ typedef NS_ENUM(NSInteger,GAFileType){
 }
 
 - (void)setCenterViewController:(GAFileInspectorVC *)controller animated:(BOOL)animated {
+    __weak GADiaporamaVC *weakSelf = self;
     [self.pageViewController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionForward animated:animated completion:^(BOOL finished) {
-        
+        weakSelf.activeViewController = controller;
     }];
 }
 
