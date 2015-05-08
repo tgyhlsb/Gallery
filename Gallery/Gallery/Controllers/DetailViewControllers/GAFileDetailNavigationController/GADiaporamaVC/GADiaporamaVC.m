@@ -28,7 +28,6 @@
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) UIBarButtonItem *showMasterViewButton;
 @property (strong, nonatomic) UIBarButtonItem *hideMasterViewButton;
-@property (strong, nonatomic) NSMutableArray *viewControllersStack;
 
 @end
 
@@ -114,11 +113,6 @@
                                                                 action:@selector(hideMasterViewButtonHandler)];
     }
     return _hideMasterViewButton;
-}
-
-- (NSMutableArray *)viewControllersStack {
-    if (!_viewControllersStack) _viewControllersStack = [[NSMutableArray alloc] initWithObjects:[GARightVC new], [GARightVC new], [GARightVC new], [GARightVC new], [GARightVC new], nil];
-    return _viewControllersStack;
 }
 
 - (void)setRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile {
