@@ -13,6 +13,7 @@
 - (GAImageFile *)nextImage {
     GAFile *next = self.next;
     while (!next.isImage) {
+        if ([next isEqual:self]) return nil;
         next = next.next;
     }
     return (GAImageFile *)next;
@@ -21,6 +22,7 @@
 - (GAImageFile *)previousImage {
     GAFile *previous = self.previous;
     while (!previous.isImage) {
+        if ([previous isEqual:self]) return nil;
         previous = previous.previous;
     }
     return (GAImageFile *)previous;
@@ -29,6 +31,7 @@
 - (GADirectory *)nextDirectory {
     GAFile *next = self.next;
     while (!next.isDirectory) {
+        if ([next isEqual:self]) return nil;
         next = next.next;
     }
     return (GADirectory *)next;
@@ -37,6 +40,7 @@
 - (GADirectory *)previousDirectory {
     GAFile *previous = self.previous;
     while (!previous.isDirectory) {
+        if ([previous isEqual:self]) return nil;
         previous = previous.previous;
     }
     return (GADirectory *)previous;
