@@ -57,4 +57,32 @@
     [aCoder encodeObject:@(self.type) forKey:ENCODE_KEY_TYPE];
 }
 
+#pragma mark - Overrides
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ > %@", [self stringType], self.message];
+}
+
+#pragma mark - Class methods
+
++ (NSString *)stringForType:(GALogType)type {
+    switch (type) {
+        case GALogTypeInfo:
+            return @"INFORMATION";
+        case GALogTypeWarning:
+            return @"WARNING";
+        case GALogTypeError:
+            return @"ERROR";
+            
+        default:
+            return @"OTHER";
+    }
+}
+
+#pragma mark - Getters & Setters
+
+- (NSString *)stringType {
+    return [GALog stringForType:self.type];
+}
+
 @end

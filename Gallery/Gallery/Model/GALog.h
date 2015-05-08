@@ -22,4 +22,7 @@ typedef NS_ENUM(NSInteger,GALogType){
 
 + (instancetype)logWithMessage:(NSString *)message type:(GALogType)type;
 
++ (NSString *)stringForType:(GALogType)type;
+- (NSString *)stringType;
+
 @end

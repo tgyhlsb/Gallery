@@ -13,9 +13,9 @@
 
 @interface GALogger : NSObject
 
-+ (void)addMessage:(NSString *)message withType:(GALogType)type;
-+ (void)addInformation:(NSString *)message;
-+ (void)addWarning:(NSString *)message;
-+ (void)addError:(NSString *)message;
++ (void)addEntryWithType:(GALogType)type andFormat:(NSString *)format, ...;
++ (void)addInformation:(NSString *)format, ...;
++ (void)addWarning:(NSString *)format, ...;
++ (void)addError:(NSString *)format, ...;
 
 @end

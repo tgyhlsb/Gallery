@@ -8,6 +8,10 @@
 
 #import "GALogger.h"
 
+#define ARCHIVE_PATH @"/archives/logs"
+
+#define PRINT_LOGS YES
+
 static GALogger *sharedLogger;
 
 @interface GALogger() <NSCoding>
@@ -23,25 +27,41 @@ static GALogger *sharedLogger;
 
 + (instancetype)sharedLogger {
     if (!sharedLogger) {
-        sharedLogger = [GALogger new];
+        sharedLogger = [GALogger loadFromDisk];
     }
     return sharedLogger;
 }
 
-+ (void)addMessage:(NSString *)message withType:(GALogType)type {
++ (void)addEntryWithType:(GALogType)type andFormat:(NSString *)format, ... {
+    va_list args;
+    va_start(args, format);
+    NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
+    va_end(args);
     [[GALogger sharedLogger] addMessage:message withType:type];
 }
 
-+ (void)addInformation:(NSString *)message {
-    [GALogger addMessage:message withType:GALogTypeInfo];
++ (void)addInformation:(NSString *)format, ... {
+    va_list args;
+    va_start(args, format);
+    NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
+    va_end(args);
+    [GALogger addEntryWithType:GALogTypeInfo andFormat:message];
 }
 
-+ (void)addWarning:(NSString *)message {
-    [GALogger addMessage:message withType:GALogTypeWarning];
++ (void)addWarning:(NSString *)format, ... {
+    va_list args;
+    va_start(args, format);
+    NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
+    va_end(args);
+    [GALogger addEntryWithType:GALogTypeWarning andFormat:message];
 }
 
-+ (void)addError:(NSString *)message {
-    [GALogger addMessage:message withType:GALogTypeError];
++ (void)addError:(NSString *)format, ... {
+    va_list args;
+    va_start(args, format);
+    NSString *message = [[NSString alloc] initWithFormat:format arguments:args];
+    va_end(args);
+    [GALogger addEntryWithType:GALogTypeError andFormat:message];
 }
 
 #pragma mark - NSKeyedArchiver
@@ -59,6 +79,16 @@ static GALogger *sharedLogger;
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.logs forKey:ENCODE_KEY_LOGS];
+}
+
+- (void)synchronize {
+    [NSKeyedArchiver archiveRootObject:self toFile:ARCHIVE_PATH];
+}
+
++ (instancetype)loadFromDisk {
+    GALogger *logger = [NSKeyedUnarchiver unarchiveObjectWithFile:ARCHIVE_PATH];
+    if (!logger) logger = [GALogger new];
+    return logger;
 }
 
 #pragma mark - Getters & Setters
@@ -90,6 +120,11 @@ static GALogger *sharedLogger;
     GALog *log = [GALog logWithMessage:message type:type];
     [self.logs addObject:log];
     [[self logsForType:type] addObject:log];
+    [self synchronize];
+    
+    if (PRINT_LOGS) {
+        NSLog(@"%@", log);
+    }
 }
 
 @end
