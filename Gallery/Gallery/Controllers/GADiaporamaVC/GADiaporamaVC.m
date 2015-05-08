@@ -48,23 +48,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIViewController *red = [UIViewController new];
-    red.view.backgroundColor = [UIColor redColor];
-    
-    UIViewController *blue = [UIViewController new];
-    blue.view.backgroundColor = [UIColor blueColor];
-    
-    UIViewController *green = [UIViewController new];
-    green.view.backgroundColor = [UIColor greenColor];
-    
-    UIViewController *yellow = [UIViewController new];
-    yellow.view.backgroundColor = [UIColor yellowColor];
-    
-    [self.pageViewController setViewControllers:@[red]
-                                      direction:UIPageViewControllerNavigationDirectionForward
-                                       animated:YES
-                                     completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,7 +71,7 @@
 }
 
 - (NSMutableArray *)viewControllersStack {
-    if (!_viewControllersStack) _viewControllersStack = [NSMutableArray new];
+    if (!_viewControllersStack) _viewControllersStack = [[NSMutableArray alloc] initWithObjects:[GARightVC new], [GARightVC new], [GARightVC new], [GARightVC new], [GARightVC new], nil];
     return _viewControllersStack;
 }
 
@@ -98,27 +81,17 @@
     [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 
-- (PAGED_CONTROLLERS_CLASS *)dequeueViewController {
-    PAGED_CONTROLLERS_CLASS *viewController = [self.viewControllersStack pop];
-    NSLog(@"Poped");
-    if (!NO) {
-        viewController = [PAGED_CONTROLLERS_CLASS new];
-        NSLog(@"Created");
-    }
-    return viewController;
-}
-
 #pragma mark - UIPageViewControllerDataSource
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
-    PAGED_CONTROLLERS_CLASS *beforeVC = [self dequeueViewController];
+    PAGED_CONTROLLERS_CLASS *beforeVC = [PAGED_CONTROLLERS_CLASS new];
     PAGED_CONTROLLERS_CLASS *activeVC = ((PAGED_CONTROLLERS_CLASS *)viewController);
     beforeVC.file = [self previousFile:activeVC.file];
     return beforeVC;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
-    PAGED_CONTROLLERS_CLASS *afterVC = [self dequeueViewController];
+    PAGED_CONTROLLERS_CLASS *afterVC = [PAGED_CONTROLLERS_CLASS new];
     PAGED_CONTROLLERS_CLASS *activeVC = ((PAGED_CONTROLLERS_CLASS *)viewController);
     afterVC.file = [self nextFile:activeVC.file];
     return afterVC;
@@ -140,8 +113,8 @@
        transitionCompleted:(BOOL)completed {
     
     if (finished && completed) {
-        [self.viewControllersStack push:[previousViewControllers firstObject]];
-        NSLog(@"Pushed");
+//        [self.viewControllersStack push:[previousViewControllers firstObject]];
+//        NSLog(@"Pushed %@", [((GARightVC *)[previousViewControllers firstObject]).file nameWithExtension:YES]);
     }
 }
 

@@ -12,6 +12,7 @@
 
 - (void)push:(id)object;
 - (id)pop;
+- (id)splice;
 
 
 @end

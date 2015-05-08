@@ -48,4 +48,17 @@
     }
 }
 
+#pragma mark - Statics
+
+static int count = 0;
+
++ (instancetype)new {
+    NSLog(@"%d", ++count);
+    return [super new];
+}
+
+- (void)dealloc {
+    NSLog(@"%d", --count);
+}
+
 @end

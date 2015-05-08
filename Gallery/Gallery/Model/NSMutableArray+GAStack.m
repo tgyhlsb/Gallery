@@ -11,13 +11,17 @@
 @implementation NSMutableArray (GAStack)
 
 - (void)push:(id)object {
-    [self addObject:object];
+    [self insertObject:object atIndex:0];
 }
 
 - (id)pop {
-    id object = [self firstObject];
-    if (object) [self removeObjectAtIndex:0];
+    id object = [self lastObject];
+    if (object) [self removeLastObject];
     return object;
+}
+
+- (id)splice {
+    return [self lastObject];
 }
 
 @end
