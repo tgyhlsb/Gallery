@@ -11,7 +11,7 @@
 
 // Controllers
 #import "GADiaporamaVC.h"
-#import "GADirectoryNavigationController.h"
+#import "GAMasterNavigationController.h"
 
 @interface GARightNavigationVC : UINavigationController
 

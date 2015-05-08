@@ -1,36 +1,32 @@
 //
-//  GADirectoryNavigationController.m
+//  GAMasterNavigationController.m
 //  Gallery
 //
 //  Created by Tanguy Hélesbeux on 03/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "GADirectoryNavigationController.h"
+#import "GAMasterNavigationController.h"
 
-@interface GADirectoryNavigationController ()
+@interface GAMasterNavigationController ()
 
 @property (strong, nonatomic) UIBarButtonItem *settingsButton;
 
-@property (strong, nonatomic) GADirectory *rootDirectory;
-
 @end
 
-@implementation GADirectoryNavigationController
+@implementation GAMasterNavigationController
 
 #pragma mark - Constructors
 
 + (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory {
-    return [[GADirectoryNavigationController alloc] initWithRootDirectory:rootDirectory];
+    return [[GAMasterNavigationController alloc] initWithRootDirectory:rootDirectory];
 }
 
 - (id)initWithRootDirectory:(GADirectory *)rootDirectory {
     GADirectoryInspectorVC *rootVC = [GADirectoryInspectorVC newWithDirectory:rootDirectory];
     self = [super initWithRootViewController:rootVC];
     if (self) {
-        self.rootDirectory = rootDirectory;
         self.navigationBar.translucent = NO;
-        
         [self initializeToolbar];
     }
     return self;
@@ -42,7 +38,7 @@
     self.toolbarHidden = NO;
     
 //    Buttons are linked to rootViewController
-    [[self.viewControllers firstObject] setToolbarItems:@[self.settingsButton]];
+    [[self rootViewController] setToolbarItems:@[self.settingsButton]];
 }
 
 #pragma mark - Getters & Setters

@@ -1,5 +1,5 @@
 //
-//  GADirectoryNavigationController.h
+//  GAMasterNavigationController.h
 //  Gallery
 //
 //  Created by Tanguy Hélesbeux on 03/05/2015.
@@ -15,7 +15,7 @@
 #import "GADirectory.h"
 #import "GAImageFile.h"
 
-@interface GADirectoryNavigationController : UINavigationController
+@interface GAMasterNavigationController : UINavigationController
 
 + (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory;
 

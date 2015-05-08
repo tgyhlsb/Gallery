@@ -12,7 +12,7 @@
 #import "GAFileManager.h"
 
 // Controllers
-#import "GADirectoryNavigationController.h"
+#import "GAMasterNavigationController.h"
 #import "GARightNavigationVC.h"
 
 
@@ -29,7 +29,7 @@
     if (self) {
         
         GADirectory *rootDirectory = [GAFileManager readSharedDirectory];
-        GADirectoryNavigationController *mainVC = [GADirectoryNavigationController newWithRootDirectory:rootDirectory];
+        GAMasterNavigationController *mainVC = [GAMasterNavigationController newWithRootDirectory:rootDirectory];
         GARightNavigationVC *detailVC = [GARightNavigationVC new];
         
         self.viewControllers = @[mainVC, detailVC];
