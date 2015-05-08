@@ -1,5 +1,5 @@
 //
-//  GARightNavigationVC.h
+//  GADetailNavigationController.h
 //  Gallery
 //
 //  Created by Tanguy Hélesbeux on 04/05/2015.
@@ -13,7 +13,7 @@
 #import "GADiaporamaVC.h"
 #import "GAMasterNavigationController.h"
 
-@interface GARightNavigationVC : UINavigationController
+@interface GADetailNavigationController : UINavigationController
 
 - (GADiaporamaVC *)rootViewController;
 

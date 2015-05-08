@@ -13,7 +13,7 @@
 
 // Controllers
 #import "GAMasterNavigationController.h"
-#import "GARightNavigationVC.h"
+#import "GADetailNavigationController.h"
 
 
 @interface GASplitVC ()
@@ -30,7 +30,7 @@
         
         GADirectory *rootDirectory = [GAFileManager readSharedDirectory];
         GAMasterNavigationController *mainVC = [GAMasterNavigationController newWithRootDirectory:rootDirectory];
-        GARightNavigationVC *detailVC = [GARightNavigationVC new];
+        GADetailNavigationController *detailVC = [GADetailNavigationController new];
         
         self.viewControllers = @[mainVC, detailVC];
         self.delegate = [detailVC rootViewController];
