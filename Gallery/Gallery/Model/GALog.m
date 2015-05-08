@@ -60,7 +60,7 @@
 #pragma mark - Overrides
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@ > %@", [self stringType], self.message];
+    return [NSString stringWithFormat:@"%@\n> %@", [self stringType], self.message];
 }
 
 #pragma mark - Class methods

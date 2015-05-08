@@ -8,6 +8,9 @@
 
 #import "GADirectory.h"
 
+// Managers
+#import "GALogger.h"
+
 // Models
 #import "GAImageFile.h"
 
@@ -56,7 +59,7 @@
     NSError *error;
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
     if (files == nil) {
-        NSLog(@"Error reading contents of documents directory: %@", [error localizedDescription]);
+        [GALogger addError:@"Error reading contents of documents directory: %@", [error localizedDescription]];
     }
     
     NSMutableArray *tree = [[NSMutableArray alloc] init];
@@ -70,7 +73,7 @@
             GADirectory *directory = [GADirectory directoryFromPath:fullPath];
             [tree addObject:directory];
         } else {
-            NSLog(@"Failed to read : %@", file);
+            [GALogger addError:@"Failed to read : %@", file];
         }
     }
     
