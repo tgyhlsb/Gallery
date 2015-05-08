@@ -53,7 +53,7 @@
 
 - (UIBarButtonItem *)settingsButton {
     if (!_settingsButton) {
-        NSString *title = NSLocalizedString(@"SETTINGS", nil);
+        NSString *title = NSLocalizedString(@"LOCALIZE_SETTINGS", nil);
         _settingsButton = [[UIBarButtonItem alloc] initWithTitle:title
                                                            style:UIBarButtonItemStylePlain
                                                           target:self

@@ -26,14 +26,14 @@
 - (void)initializeCellTitles {
     self.cellTitles = @[
                         @[
-                            NSLocalizedString(@"SETTINGS_THUMBNAIL_SHOULD_CACHE", nil),
-                            NSLocalizedString(@"SETTINGS_THUMBNAIL_CACHE_LIMIT", nil)
+                            NSLocalizedString(@"LOCALIZE_SETTINGS_THUMBNAIL_SHOULD_CACHE", nil),
+                            NSLocalizedString(@"LOCALIZE_SETTINGS_THUMBNAIL_CACHE_LIMIT", nil)
                             ],
                         @[
-                            NSLocalizedString(@"SETTINGS_THUMBNAIL_MODE", nil)
+                            NSLocalizedString(@"LOCALIZE_SETTINGS_THUMBNAIL_MODE", nil)
                             ],
                         @[
-                            NSLocalizedString(@"SETTINGS_THUMBNAIL_RESET", nil)
+                            NSLocalizedString(@"LOCALIZE_SETTINGS_THUMBNAIL_RESET", nil)
                             ]
                         ];
 }
@@ -63,11 +63,11 @@
 - (void)initializePossibleValueTitles {
     self.possibleValueTitles = @[
                                  @[
-                                     @[NSLocalizedString(@"YES", nil), NSLocalizedString(@"NO", nil)],
-                                     @[@"50", @"100", NSLocalizedString(@"UNLIMITED", nil)]
+                                     @[NSLocalizedString(@"LOCALIZE_YES", nil), NSLocalizedString(@"LOCALIZE_NO", nil)],
+                                     @[@"50", @"100", NSLocalizedString(@"LOCALIZE_UNLIMITED", nil)]
                                      ],
                                  @[
-                                     @[NSLocalizedString(@"SETTINGS_THUMBNAIL_MODE_RESIZE", nil), NSLocalizedString(@"SETTINGS_THUMBNAIL_MODE_FILL", nil), NSLocalizedString(@"SETTINGS_THUMBNAIL_MODE_FIT", nil)]
+                                     @[NSLocalizedString(@"LOCALIZE_SETTINGS_THUMBNAIL_MODE_RESIZE", nil), NSLocalizedString(@"LOCALIZE_SETTINGS_THUMBNAIL_MODE_FILL", nil), NSLocalizedString(@"LOCALIZE_SETTINGS_THUMBNAIL_MODE_FIT", nil)]
                                      ]
                                  ];
 }

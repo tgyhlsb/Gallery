@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A36B9931AFD648A009098CB /* GAInternationalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A36B9921AFD648A009098CB /* GAInternationalization.m */; };
 		5A4570461AF6C3D900A436AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570451AF6C3D900A436AC /* main.m */; };
 		5A4570491AF6C3D900A436AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570481AF6C3D900A436AC /* AppDelegate.m */; };
 		5A4570511AF6C3D900A436AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4570501AF6C3D900A436AC /* Images.xcassets */; };
@@ -26,6 +27,8 @@
 		5A51E9A51AFBFEDE000B3576 /* GALog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9A41AFBFEDE000B3576 /* GALog.m */; };
 		5A51E9B41AFCBAAA000B3576 /* NSMutableArray+GAStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9B31AFCBAAA000B3576 /* NSMutableArray+GAStack.m */; };
 		5A51E9B71AFCC686000B3576 /* GAFile+Pointers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9B61AFCC686000B3576 /* GAFile+Pointers.m */; };
+		5A7E0A2C1AFD57AA00DB09D7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E0A2E1AFD57AA00DB09D7 /* Localizable.strings */; };
+		5A7E0A341AFD5C0600DB09D7 /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E0A331AFD5C0600DB09D7 /* localization.sh */; };
 		5A8664D51AFD0EB3002578F7 /* GASettingsSplitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664D31AFD0EB3002578F7 /* GASettingsSplitController.m */; };
 		5A8664D61AFD0EB3002578F7 /* GASettingsSplitController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664D41AFD0EB3002578F7 /* GASettingsSplitController.xib */; };
 		5A8664DC1AFD0F13002578F7 /* GADirectorySplitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664DA1AFD0F13002578F7 /* GADirectorySplitController.m */; };
@@ -63,6 +66,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A36B9911AFD648A009098CB /* GAInternationalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAInternationalization.h; sourceTree = "<group>"; };
+		5A36B9921AFD648A009098CB /* GAInternationalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAInternationalization.m; sourceTree = "<group>"; };
 		5A4570401AF6C3D900A436AC /* Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4570441AF6C3D900A436AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A4570451AF6C3D900A436AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -100,6 +105,12 @@
 		5A51E9B31AFCBAAA000B3576 /* NSMutableArray+GAStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+GAStack.m"; sourceTree = "<group>"; };
 		5A51E9B51AFCC686000B3576 /* GAFile+Pointers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GAFile+Pointers.h"; sourceTree = "<group>"; };
 		5A51E9B61AFCC686000B3576 /* GAFile+Pointers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GAFile+Pointers.m"; sourceTree = "<group>"; };
+		5A7E0A2B1AFD571400DB09D7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5A7E0A2D1AFD57AA00DB09D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5A7E0A2F1AFD57AF00DB09D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5A7E0A301AFD57B100DB09D7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5A7E0A321AFD57E200DB09D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5A7E0A331AFD5C0600DB09D7 /* localization.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = localization.sh; sourceTree = "<group>"; };
 		5A8664D21AFD0EB3002578F7 /* GASettingsSplitController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GASettingsSplitController.h; path = GASettingsSplitController/GASettingsSplitController.h; sourceTree = "<group>"; };
 		5A8664D31AFD0EB3002578F7 /* GASettingsSplitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GASettingsSplitController.m; path = GASettingsSplitController/GASettingsSplitController.m; sourceTree = "<group>"; };
 		5A8664D41AFD0EB3002578F7 /* GASettingsSplitController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GASettingsSplitController.xib; path = GASettingsSplitController/GASettingsSplitController.xib; sourceTree = "<group>"; };
@@ -193,6 +204,8 @@
 		5A4570431AF6C3D900A436AC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5A7E0A331AFD5C0600DB09D7 /* localization.sh */,
+				5A7E0A2E1AFD57AA00DB09D7 /* Localizable.strings */,
 				5A4570441AF6C3D900A436AC /* Info.plist */,
 				5A4570451AF6C3D900A436AC /* main.m */,
 			);
@@ -258,6 +271,8 @@
 				5A51E99E1AFBE5C9000B3576 /* GASettingsManager.m */,
 				5A51E9A01AFBFBF0000B3576 /* GALogger.h */,
 				5A51E9A11AFBFBF0000B3576 /* GALogger.m */,
+				5A36B9911AFD648A009098CB /* GAInternationalization.h */,
+				5A36B9921AFD648A009098CB /* GAInternationalization.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -516,6 +531,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 5A4570371AF6C3D900A436AC;
 			productRefGroup = 5A4570411AF6C3D900A436AC /* Products */;
@@ -534,6 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A8665061AFD1AC2002578F7 /* GADiaporamaVC.xib in Resources */,
+				5A7E0A341AFD5C0600DB09D7 /* localization.sh in Resources */,
 				5A51E9971AF969CC000B3576 /* GAImageFileTableViewCell.xib in Resources */,
 				5A86650A1AFD1AC2002578F7 /* GASettingsDetailVC.xib in Resources */,
 				5A8665161AFD1B17002578F7 /* GASettingsMasterVC.xib in Resources */,
@@ -543,6 +560,7 @@
 				5A86650E1AFD1AC2002578F7 /* GADirectoryNavigationController.xib in Resources */,
 				5A86650C1AFD1AC2002578F7 /* GADirectoryMasterVC.xib in Resources */,
 				5A8665041AFD1AC2002578F7 /* GAFileDetailNavigationController.xib in Resources */,
+				5A7E0A2C1AFD57AA00DB09D7 /* Localizable.strings in Resources */,
 				5A4570541AF6C3D900A436AC /* LaunchScreen.xib in Resources */,
 				5A8665081AFD1AC2002578F7 /* GARightVC.xib in Resources */,
 				5A4570511AF6C3D900A436AC /* Images.xcassets in Resources */,
@@ -564,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A36B9931AFD648A009098CB /* GAInternationalization.m in Sources */,
 				5A4570491AF6C3D900A436AC /* AppDelegate.m in Sources */,
 				5A8665221AFD24E5002578F7 /* GASettingChoiceVC.m in Sources */,
 				5A8664D51AFD0EB3002578F7 /* GASettingsSplitController.m in Sources */,
@@ -618,8 +637,20 @@
 			isa = PBXVariantGroup;
 			children = (
 				5A4570531AF6C3D900A436AC /* Base */,
+				5A7E0A2B1AFD571400DB09D7 /* fr */,
+				5A7E0A321AFD57E200DB09D7 /* en */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		5A7E0A2E1AFD57AA00DB09D7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A7E0A2D1AFD57AA00DB09D7 /* Base */,
+				5A7E0A2F1AFD57AF00DB09D7 /* en */,
+				5A7E0A301AFD57B100DB09D7 /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

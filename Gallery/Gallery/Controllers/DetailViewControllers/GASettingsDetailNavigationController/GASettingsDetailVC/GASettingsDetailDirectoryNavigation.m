@@ -24,7 +24,7 @@
 - (void)initializeCellTitles {
     self.cellTitles = @[
                         @[
-                            NSLocalizedString(@"SETTINGS_DIRECTORY_NAVIGATION_MODE", nil)
+                            NSLocalizedString(@"LOCALIZE_SETTINGS_DIRECTORY_NAVIGATION_MODE", nil)
                             ]
                         ];
 }
@@ -50,7 +50,7 @@
 - (void)initializePossibleValueTitles {
     self.possibleValueTitles = @[
                                  @[
-                                     @[NSLocalizedString(@"DIRECTORY_NAVIGATION_MODE_IGNORE", nil), NSLocalizedString(@"DIRECTORY_NAVIGATION_MODE_SHOW_DIRECTORY", nil), NSLocalizedString(@"DIRECTORY_NAVIGATION_MODE_SHOW_IMAGE", nil)]
+                                     @[NSLocalizedString(@"LOCALIZE_DIRECTORY_NAVIGATION_MODE_IGNORE", nil), NSLocalizedString(@"LOCALIZE_DIRECTORY_NAVIGATION_MODE_SHOW_DIRECTORY", nil), NSLocalizedString(@"LOCALIZE_DIRECTORY_NAVIGATION_MODE_SHOW_IMAGE", nil)]
                                      ]
                                  ];
 }

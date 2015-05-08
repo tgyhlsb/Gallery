@@ -63,7 +63,7 @@
 
 - (UIBarButtonItem *)closeButton {
     if (!_closeButton) {
-        NSString *title = NSLocalizedString(@"CLOSE", nil);
+        NSString *title = NSLocalizedString(@"LOCALIZE_CLOSE", nil);
         _closeButton = [[UIBarButtonItem alloc] initWithTitle:title
                                                         style:UIBarButtonItemStylePlain
                                                        target:self

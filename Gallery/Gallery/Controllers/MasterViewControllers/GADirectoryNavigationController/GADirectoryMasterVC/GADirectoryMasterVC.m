@@ -33,7 +33,7 @@
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
         _directory = directory;
-        self.title = NSLocalizedString(@"DEFAULT_DIRECTORY_NAME", nil);
+        self.title = NSLocalizedString(@"LOCALIZE_DEFAULT_DIRECTORY_NAME", nil);
     }
     return self;
 }
