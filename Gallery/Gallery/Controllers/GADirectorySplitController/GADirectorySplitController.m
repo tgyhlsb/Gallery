@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "GASplitVC.h"
+#import "GADirectorySplitController.h"
 
 // Models
 #import "GAFileManager.h"
@@ -16,11 +16,11 @@
 #import "GADetailNavigationController.h"
 
 
-@interface GASplitVC ()
+@interface GADirectorySplitController ()
 
 @end
 
-@implementation GASplitVC
+@implementation GADirectorySplitController
 
 #pragma mark - Constructors
 

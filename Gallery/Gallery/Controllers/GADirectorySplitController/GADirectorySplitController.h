@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GASplitVC : UISplitViewController
+@interface GADirectorySplitController : UISplitViewController
 
 @end
