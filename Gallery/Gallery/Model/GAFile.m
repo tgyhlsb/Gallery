@@ -12,6 +12,9 @@
 
 @property (strong, nonatomic, readwrite) NSString *path;
 @property (strong, nonatomic, readwrite) UIImage *thumbnail;
+@property (weak, nonatomic, readwrite) GAFile *parent;
+@property (weak, nonatomic, readwrite) GAFile *next;
+@property (weak, nonatomic, readwrite) GAFile *previous;
 
 @end
 
@@ -20,10 +23,13 @@
 #pragma mark - Constructors
 
 
-- (id)initFromPath:(NSString *)path {
+- (id)initFromPath:(NSString *)path
+            parent:(GAFile *)parent {
+    
     self = [super init];
     if (self) {
         self.path = path;
+        self.parent = parent;
     }
     return self;
 }
