@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 // Controllers
-#import "GADirectoryInspectorVC.h"
+#import "GADirectoryMasterVC.h"
 
 // Models
 #import "GADirectory.h"
@@ -19,6 +19,6 @@
 
 + (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory;
 
-- (GADirectoryInspectorVC *)rootViewController;
+- (GADirectoryMasterVC *)rootViewController;
 
 @end

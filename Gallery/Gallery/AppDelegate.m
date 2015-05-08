@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 // Controllers
-#import "GASplitVC.h"
+#import "GADirectorySplitController.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +22,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
-    self.window.rootViewController = [GASplitVC new];
+    self.window.rootViewController = [GADirectorySplitController new];
     
     return YES;
 }

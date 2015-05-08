@@ -6,33 +6,34 @@
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "GASplitVC.h"
+#import "GADirectorySplitController.h"
 
 // Models
 #import "GAFileManager.h"
 
 // Controllers
 #import "GADirectoryNavigationController.h"
-#import "GARightNavigationVC.h"
+#import "GAFileDetailNavigationController.h"
 
 
-@interface GASplitVC ()
+@interface GADirectorySplitController ()
 
 @end
 
-@implementation GASplitVC
+@implementation GADirectorySplitController
 
 #pragma mark - Constructors
 
 - (id)init {
     self = [super init];
     if (self) {
-        
         GADirectory *rootDirectory = [GAFileManager readSharedDirectory];
+        
         GADirectoryNavigationController *mainVC = [GADirectoryNavigationController newWithRootDirectory:rootDirectory];
-        GARightNavigationVC *detailVC = [GARightNavigationVC new];
+        GAFileDetailNavigationController *detailVC = [GAFileDetailNavigationController new];
         
         self.viewControllers = @[mainVC, detailVC];
+        self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
         self.delegate = [detailVC rootViewController];
     }
     return self;

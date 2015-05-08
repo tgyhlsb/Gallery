@@ -16,8 +16,6 @@ typedef void (^GAThumbnailLoadingBlock)(UIImage *thumbnail);
 @interface GACacheManager : NSObject
 
 + (instancetype)sharedManager;
-
-+ (void)shouldCacheThumbnails:(BOOL)shouldCacheThumbnails;
 + (void)clearThumbnails;
 
 + (UIImage *)thumbnailForFile:(GAFile *)file;
