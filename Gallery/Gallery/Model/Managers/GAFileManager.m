@@ -8,6 +8,9 @@
 
 #import "GAFileManager.h"
 
+// Managers
+#import "GALogger.h"
+
 static GAFileManager *sharedManager;
 
 @interface GAFileManager()
@@ -38,7 +41,7 @@ static GAFileManager *sharedManager;
 - (GADirectory *)readSharedDirectory {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *publicDocumentsDir = [paths objectAtIndex:0];
-    NSLog(@"%@", publicDocumentsDir);
+    [GALogger addInformation:@"%@", publicDocumentsDir];
     self.rootDirectory = [GADirectory directoryFromPath:publicDocumentsDir];
     
     return self.rootDirectory;

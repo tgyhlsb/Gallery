@@ -10,6 +10,7 @@
 
 // Managers
 #import "GACacheManager.h"
+#import "GASettingsManager.h"
 
 @interface GAThumbnailView()
 
@@ -23,7 +24,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.contentMode = UIViewContentModeScaleAspectFit;
+    self.contentMode = [GASettingsManager thumbnailMode];
     self.clipsToBounds = YES;
 }
 

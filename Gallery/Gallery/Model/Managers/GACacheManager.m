@@ -11,6 +11,9 @@
 // Frameworks
 #import <UIKit/UIKit.h>
 
+// Managers
+#import "GASettingsManager.h"
+
 static GACacheManager *sharedManager;
 
 @interface GACacheManager()
@@ -29,7 +32,6 @@ static GACacheManager *sharedManager;
     if (!sharedManager) {
         sharedManager = [GACacheManager new];
         sharedManager.shouldCacheThumbnails = NO;
-        sharedManager.thumbnailCacheLimit = 50;
     }
     return sharedManager;
 }
@@ -137,7 +139,7 @@ static GACacheManager *sharedManager;
 
 - (void)cacheThumbnail:(UIImage *)thumbnail forPath:(NSString *)path {
     if (thumbnail) {
-        if ([self.thumbnailPathStack count] >= self.thumbnailCacheLimit) {
+        if ([self.thumbnailPathStack count] >= [GASettingsManager thumbnailCacheLimit]) {
             [self popThumbnail];
         }
         [self pushThumbnail:thumbnail forPath:path];
