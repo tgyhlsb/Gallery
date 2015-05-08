@@ -19,8 +19,6 @@
 
 @interface GADirectoryInspectorVC ()
 
-@property (strong, nonatomic) UIBarButtonItem *splitViewButton;
-
 @end
 
 @implementation GADirectoryInspectorVC
@@ -34,9 +32,8 @@
 - (id)initWithDirectory:(GADirectory *)directory {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-        self.directory = directory;
+        _directory = directory;
         self.title = NSLocalizedString(@"DEFAULT_DIRECTORY_NAME", nil);
-        [self initializeRefreshControl];
     }
     return self;
 }
@@ -48,49 +45,13 @@
     [self.tableView reloadData];
 }
 
-- (UIBarButtonItem *)splitViewButton {
-    if (!_splitViewButton) {
-        NSString *title = NSLocalizedString(@"CLOSE", nil);
-        _splitViewButton = [[UIBarButtonItem alloc] initWithTitle:title
-                                                            style:UIBarButtonItemStylePlain
-                                                           target:self
-                                                           action:@selector(splitViewButtonHandler)];
-    }
-    return _splitViewButton;
-}
-
-- (void)initializeRefreshControl {
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self
-                            action:@selector(shouldRefresh)
-                  forControlEvents:UIControlEventValueChanged];
-}
-
 #pragma mark - Handlers
-
-- (void)splitViewButtonHandler {
-    [UIView animateWithDuration:0.5 animations:^{
-        self.navigationController.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
-    }];
-}
-
-- (void)shouldRefresh {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.refreshControl endRefreshing];
-    });
-}
 
 #pragma mark - View life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [GAImageFileTableViewCell registerToTableView:self.tableView];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self notifySelectedDirectory:self.directory];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -133,7 +94,6 @@
     } else {
         
     }
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)openDirectory:(GADirectory *)directory {
@@ -147,12 +107,6 @@
 }
 
 #pragma mark - Broadcast
-
-- (void)notifySelectedDirectory:(GADirectory *)directory {
-    [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedDirectory
-                                                        object:self
-                                                      userInfo:@{@"directory": directory}];
-}
 
 - (void)notifySelectedImageFile:(GAImageFile *)imageFile {
     [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedImageFile

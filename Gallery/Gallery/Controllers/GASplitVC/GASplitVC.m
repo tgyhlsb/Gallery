@@ -27,12 +27,12 @@
 - (id)init {
     self = [super init];
     if (self) {
-        
         GADirectory *rootDirectory = [GAFileManager readSharedDirectory];
         GAMasterNavigationController *mainVC = [GAMasterNavigationController newWithRootDirectory:rootDirectory];
         GADetailNavigationController *detailVC = [GADetailNavigationController new];
         
         self.viewControllers = @[mainVC, detailVC];
+        self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
         self.delegate = [detailVC rootViewController];
     }
     return self;

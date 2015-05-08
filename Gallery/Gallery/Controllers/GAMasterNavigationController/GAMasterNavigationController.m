@@ -39,9 +39,10 @@
 
 - (void)initializeToolbar {
     self.toolbarHidden = NO;
+    self.toolbarItems = @[self.settingsButton];
     
 //    Buttons are linked to rootViewController
-    [[self rootViewController] setToolbarItems:@[self.settingsButton]];
+    [[self rootViewController] setToolbarItems:self.toolbarItems];
 }
 
 #pragma mark - Getters & Setters
@@ -61,10 +62,37 @@
     return _settingsButton;
 }
 
+#pragma mark - Broadcast
+
+- (void)notifySelectedDirectory:(GADirectory *)directory {
+    [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedDirectory
+                                                        object:self
+                                                      userInfo:@{@"directory": directory}];
+}
+
 #pragma mark - Handlers
 
 - (void)settingsButtonHandler {
     [self pushViewController:[GASettingsInspectorVC new] animated:YES];
+}
+
+#pragma mark - Overrides
+
+- (UIViewController *)popViewControllerAnimated:(BOOL)animated {
+    GADirectoryInspectorVC *previousVC = [self.viewControllers objectAtIndex:self.viewControllers.count-2];
+    [self notifySelectedDirectory:previousVC.directory];
+    return [super popViewControllerAnimated:animated];
+}
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
+    if ([viewController isKindOfClass:[GADirectoryInspectorVC class]]) {
+        [self notifySelectedDirectory:((GADirectoryInspectorVC *)viewController).directory];
+        [viewController setToolbarItems:self.toolbarItems];
+    } else {
+        
+    }
+    [super pushViewController:viewController animated:animated];
 }
 
 @end
