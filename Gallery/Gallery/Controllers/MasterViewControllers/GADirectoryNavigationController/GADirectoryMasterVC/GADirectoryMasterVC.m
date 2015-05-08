@@ -94,6 +94,8 @@
     } else {
         
     }
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)openDirectory:(GADirectory *)directory {
