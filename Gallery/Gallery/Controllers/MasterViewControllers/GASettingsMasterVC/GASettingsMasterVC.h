@@ -1,5 +1,5 @@
 //
-//  GASettingsInspectorVC.h
+//  GASettingsMasterVC.h
 //  Gallery
 //
 //  Created by Tanguy Hélesbeux on 08/05/2015.
@@ -10,7 +10,7 @@
 
 @protocol GASettingsInspectorDelegate;
 
-@interface GASettingsInspectorVC : UITableViewController
+@interface GASettingsMasterVC : UITableViewController
 
 @property (weak, nonatomic) id<GASettingsInspectorDelegate> delegate;
 

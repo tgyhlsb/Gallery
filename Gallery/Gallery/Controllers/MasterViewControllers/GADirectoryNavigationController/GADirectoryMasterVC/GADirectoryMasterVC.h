@@ -15,7 +15,7 @@
 static NSString *GADirectoryInspectorNotificationSelectedDirectory = @"GADirectoryInspectorNotificationSelectedDirectory";
 static NSString *GADirectoryInspectorNotificationSelectedImageFile = @"GADirectoryInspectorNotificationSelectedImageFile";
 
-@interface GADirectoryInspectorVC : UITableViewController
+@interface GADirectoryMasterVC : UITableViewController
 
 @property (strong, nonatomic) GADirectory *directory;
 

@@ -1,32 +1,32 @@
 //
-//  GAMasterNavigationController.m
+//  GADirectoryNavigationController.m
 //  Gallery
 //
 //  Created by Tanguy Hélesbeux on 03/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "GAMasterNavigationController.h"
+#import "GADirectoryNavigationController.h"
 
 // Controllers
 #import "GASettingsSplitController.h"
 
-@interface GAMasterNavigationController ()
+@interface GADirectoryNavigationController ()
 
 @property (strong, nonatomic) UIBarButtonItem *settingsButton;
 
 @end
 
-@implementation GAMasterNavigationController
+@implementation GADirectoryNavigationController
 
 #pragma mark - Constructors
 
 + (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory {
-    return [[GAMasterNavigationController alloc] initWithRootDirectory:rootDirectory];
+    return [[GADirectoryNavigationController alloc] initWithRootDirectory:rootDirectory];
 }
 
 - (id)initWithRootDirectory:(GADirectory *)rootDirectory {
-    GADirectoryInspectorVC *rootVC = [GADirectoryInspectorVC newWithDirectory:rootDirectory];
+    GADirectoryMasterVC *rootVC = [GADirectoryMasterVC newWithDirectory:rootDirectory];
     self = [super initWithRootViewController:rootVC];
     if (self) {
         self.navigationBar.translucent = NO;
@@ -47,8 +47,8 @@
 
 #pragma mark - Getters & Setters
 
-- (GADirectoryInspectorVC *)rootViewController {
-    return (GADirectoryInspectorVC *)[self.viewControllers firstObject];
+- (GADirectoryMasterVC *)rootViewController {
+    return (GADirectoryMasterVC *)[self.viewControllers firstObject];
 }
 
 - (UIBarButtonItem *)settingsButton {
@@ -81,15 +81,15 @@
 #pragma mark - Overrides
 
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
-    GADirectoryInspectorVC *previousVC = [self.viewControllers objectAtIndex:self.viewControllers.count-2];
+    GADirectoryMasterVC *previousVC = [self.viewControllers objectAtIndex:self.viewControllers.count-2];
     [self notifySelectedDirectory:previousVC.directory];
     return [super popViewControllerAnimated:animated];
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
-    if ([viewController isKindOfClass:[GADirectoryInspectorVC class]]) {
-        [self notifySelectedDirectory:((GADirectoryInspectorVC *)viewController).directory];
+    if ([viewController isKindOfClass:[GADirectoryMasterVC class]]) {
+        [self notifySelectedDirectory:((GADirectoryMasterVC *)viewController).directory];
         [viewController setToolbarItems:self.toolbarItems];
     } else {
         

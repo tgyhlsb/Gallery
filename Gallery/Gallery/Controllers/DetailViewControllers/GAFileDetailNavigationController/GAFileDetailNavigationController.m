@@ -1,24 +1,24 @@
 //
-//  GADetailNavigationController.m
+//  GAFileDetailNavigationController.m
 //  Gallery
 //
 //  Created by Tanguy Hélesbeux on 04/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "GADetailNavigationController.h"
+#import "GAFileDetailNavigationController.h"
 
-@interface GADetailNavigationController ()
+@interface GAFileDetailNavigationController ()
 
 @end
 
-@implementation GADetailNavigationController
+@implementation GAFileDetailNavigationController
 
 #pragma mark - Constructors
 
 + (instancetype)new {
     GADiaporamaVC *rootVC = [GADiaporamaVC new];
-    GADetailNavigationController *navVC = [[GADetailNavigationController alloc] initWithRootViewController:rootVC];
+    GAFileDetailNavigationController *navVC = [[GAFileDetailNavigationController alloc] initWithRootViewController:rootVC];
     navVC.navigationBar.translucent = NO;
     return navVC;
 }

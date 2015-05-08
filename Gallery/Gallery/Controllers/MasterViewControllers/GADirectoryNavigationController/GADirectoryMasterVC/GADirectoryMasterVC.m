@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "GADirectoryInspectorVC.h"
+#import "GADirectoryMasterVC.h"
 
 // Models
 #import "GAFile.h"
@@ -17,16 +17,16 @@
 // Views
 #import "GAImageFileTableViewCell.h"
 
-@interface GADirectoryInspectorVC ()
+@interface GADirectoryMasterVC ()
 
 @end
 
-@implementation GADirectoryInspectorVC
+@implementation GADirectoryMasterVC
 
 #pragma mark - Constructors
 
 + (instancetype)newWithDirectory:(GADirectory *)directory {
-    return [[GADirectoryInspectorVC alloc] initWithDirectory:directory];
+    return [[GADirectoryMasterVC alloc] initWithDirectory:directory];
 }
 
 - (id)initWithDirectory:(GADirectory *)directory {
@@ -97,7 +97,7 @@
 }
 
 - (void)openDirectory:(GADirectory *)directory {
-    GADirectoryInspectorVC *destination = [GADirectoryInspectorVC newWithDirectory:directory];
+    GADirectoryMasterVC *destination = [GADirectoryMasterVC newWithDirectory:directory];
     destination.title = [directory nameWithExtension:YES];
     [self.navigationController pushViewController:destination animated:YES];
 }

@@ -1,12 +1,12 @@
 //
-//  GASettingsInspectorVC.m
+//  GASettingsMasterVC.m
 //  Gallery
 //
 //  Created by Tanguy Hélesbeux on 08/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "GASettingsInspectorVC.h"
+#import "GASettingsMasterVC.h"
 
 typedef NS_ENUM(NSInteger,GASettingSection){
     GASettingSectionGeneral,
@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger,GASettingDevelopment){
     GASettingDevelopmentEnd
 };
 
-@interface GASettingsInspectorVC ()
+@interface GASettingsMasterVC ()
 
 @property (strong, nonatomic) NSArray *cellTitles;
 @property (strong, nonatomic) NSArray *sectionHeaders;
@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger,GASettingDevelopment){
 
 @end
 
-@implementation GASettingsInspectorVC
+@implementation GASettingsMasterVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

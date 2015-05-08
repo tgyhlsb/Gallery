@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 // Controllers
-#import "GADirectoryInspectorVC.h"
+#import "GADirectoryMasterVC.h"
 
 // Models
 #import "GAImageFile.h"
