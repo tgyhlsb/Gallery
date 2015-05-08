@@ -120,7 +120,7 @@
 
 - (void)setRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile {
     PAGED_CONTROLLERS_CLASS *vc = [PAGED_CONTROLLERS_CLASS new];
-    vc.file = imageFile;
+    vc.file = imageFile ? imageFile : rootDirectory.firstImage;
     [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 

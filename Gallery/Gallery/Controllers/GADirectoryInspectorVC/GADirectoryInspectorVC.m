@@ -87,6 +87,12 @@
     [GAImageFileTableViewCell registerToTableView:self.tableView];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self notifySelectedDirectory:self.directory];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -168,26 +174,24 @@
     GADirectoryInspectorVC *destination = [GADirectoryInspectorVC newWithDirectory:directory];
     destination.title = [directory nameWithExtension:YES];
     [self.navigationController pushViewController:destination animated:YES];
-    
+}
+
+- (void)openImagefile:(GAImageFile *)imageFile {
+    [self notifySelectedImageFile:imageFile];
+}
+
+#pragma mark - Broadcast
+
+- (void)notifySelectedDirectory:(GADirectory *)directory {
     [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedDirectory
                                                         object:self
                                                       userInfo:@{@"directory": directory}];
 }
 
-- (void)openImagefile:(GAImageFile *)imageFile {
+- (void)notifySelectedImageFile:(GAImageFile *)imageFile {
     [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedImageFile
                                                         object:self
                                                       userInfo:@{@"imageFile": imageFile}];
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end
