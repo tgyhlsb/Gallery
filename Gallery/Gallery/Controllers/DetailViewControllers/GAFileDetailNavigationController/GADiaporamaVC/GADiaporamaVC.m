@@ -23,11 +23,19 @@
 
 #define PAGED_CONTROLLERS_CLASS GARightVC
 
+typedef NS_ENUM(NSInteger,GAFileType){
+    GAFileTypeAll,
+    GAFileTypeImages,
+    GAFileTypeDirectories
+};
+
 @interface GADiaporamaVC () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) UIBarButtonItem *showMasterViewButton;
 @property (strong, nonatomic) UIBarButtonItem *hideMasterViewButton;
+@property (strong, nonatomic) UISegmentedControl *fileTypeSegmentedControl;
+@property (strong, nonatomic) GARightVC *activeViewController;
 
 @end
 
@@ -51,7 +59,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initializeNavigationBarItems];
+    
+    // Force show/hide button to appear
     [self splitViewController:self.navigationController.splitViewController willChangeToDisplayMode:self.navigationController.splitViewController.displayMode];
+    
+    
     [self registerToDirectoryInspectorsNotifications];
 }
 
@@ -62,6 +75,14 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Configuration
+
+- (void)initializeNavigationBarItems {
+    self.fileTypeSegmentedControl.selectedSegmentIndex = GAFileTypeAll;
+    UIBarButtonItem *fileTypeBarItem = [[UIBarButtonItem alloc] initWithCustomView:self.fileTypeSegmentedControl];
+    self.navigationItem.rightBarButtonItems = @[fileTypeBarItem];
 }
 
 #pragma mark - Broadcasting
@@ -115,6 +136,18 @@
     return _hideMasterViewButton;
 }
 
+- (UISegmentedControl *)fileTypeSegmentedControl {
+    if (!_fileTypeSegmentedControl) {
+        _fileTypeSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[
+                                                                                NSLocalizedString(@"LOCALIZE_ALL", nil),
+                                                                                NSLocalizedString(@"LOCALIZE_IMAGES", nil),
+                                                                                NSLocalizedString(@"LOCALIZE_DIRECTORIES", nil)
+                                                                                ]];
+        [_fileTypeSegmentedControl addTarget:self action:@selector(fileTypeValueDidChangeHandler) forControlEvents:UIControlEventValueChanged];
+    }
+    return _fileTypeSegmentedControl;
+}
+
 - (void)setRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile {
     PAGED_CONTROLLERS_CLASS *vc = [PAGED_CONTROLLERS_CLASS new];
     
@@ -133,6 +166,10 @@
         }
     }
     [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+}
+
+- (GAFileType)selectedFileType {
+    return self.fileTypeSegmentedControl.selectedSegmentIndex;
 }
 
 #pragma mark - Handlers
@@ -163,6 +200,19 @@
     [self setRootDirectory:imageFile.parent withImageFile:imageFile];
 }
 
+- (void)fileTypeValueDidChangeHandler {
+    switch ([self selectedFileType]) {
+        case GAFileTypeAll:
+            break;
+        case GAFileTypeImages:
+            if (![self.activeViewController.file isImage]) [self forceNextFile];
+            break;
+        case GAFileTypeDirectories:
+            if (![self.activeViewController.file isDirectory]) [self forceNextFile];
+            break;
+    }
+}
+
 #pragma mark - UIPageViewControllerDataSource
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
@@ -180,11 +230,25 @@
 }
 
 - (GAFile *)previousFile:(GAFile *)file {
-    return [file previous];
+    switch ([self selectedFileType]) {
+        case GAFileTypeAll:
+            return [file previous];
+        case GAFileTypeImages:
+            return [file previousImage];
+        case GAFileTypeDirectories:
+            return [file previousDirectory];
+    }
 }
 
 - (GAFile *)nextFile:(GAFile *)file {
-    return [file next];
+    switch ([self selectedFileType]) {
+        case GAFileTypeAll:
+            return [file next];
+        case GAFileTypeImages:
+            return [file nextImage];
+        case GAFileTypeDirectories:
+            return [file nextDirectory];
+    }
 }
 
 #pragma mark - UIPageViewControllerDelegate
@@ -194,6 +258,9 @@
    previousViewControllers:(NSArray *)previousViewControllers
        transitionCompleted:(BOOL)completed {
     
+    if (finished && completed) {
+        self.activeViewController = [pageViewController.viewControllers firstObject];
+    }
 }
 
 #pragma mark - UISplitViewControllerDelegate
@@ -204,6 +271,16 @@
     } else if (displayMode == UISplitViewControllerDisplayModePrimaryHidden) {
         [self.navigationItem setLeftBarButtonItem:self.showMasterViewButton animated:YES];
     }
+}
+
+#pragma mark - Helpers
+
+- (void)forceNextFile {
+    PAGED_CONTROLLERS_CLASS *afterVC = [PAGED_CONTROLLERS_CLASS new];
+    afterVC.file = [self nextFile:self.activeViewController.file];
+    [self.pageViewController setViewControllers:@[afterVC] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+        
+    }];
 }
 
 @end
