@@ -35,20 +35,20 @@
 
 - (void)settingsInspectorDidSelectThumbnailsSettings {
     GASettingsDetailThumbnailsVC *destination = [GASettingsDetailThumbnailsVC new];
-    destination.title = NSLocalizedString(@"SETTINGS_THUMBNAILS_TITLE", nil);
+    destination.title = NSLocalizedString(@"LOCALIZE_SETTINGS_THUMBNAILS_TITLE", nil);
     [self setViewControllers:@[destination]];
 }
 
 - (void)settingsInspectorDidSelectDirectoryNavigationSettings {
     GASettingsDetailDirectoryNavigation *destination = [GASettingsDetailDirectoryNavigation new];
-    destination.title = NSLocalizedString(@"SETTINGS_DIRECTORY_NAVIGATION_TITLE", nil);
+    destination.title = NSLocalizedString(@"LOCALIZE_SETTINGS_DIRECTORY_NAVIGATION_TITLE", nil);
     [self setViewControllers:@[destination]];
     
 }
 
 - (void)settingsInspectorDidSelectLoggerSettings {
     GASettingsDetailVC *destination = [GASettingsDetailVC new];
-    destination.title = NSLocalizedString(@"SETTINGS_LOGGER_TITLE", nil);
+    destination.title = NSLocalizedString(@"LOCALIZE_SETTINGS_LOGGER_TITLE", nil);
     [self setViewControllers:@[destination]];
     
 }

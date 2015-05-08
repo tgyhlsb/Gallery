@@ -44,7 +44,7 @@ typedef NS_ENUM(NSInteger,GASettingDevelopment){
     [self initializeSectionFooters];
     [self initializeSelectors];
     
-    self.title = NSLocalizedString(@"SETTINGS", nil);
+    self.title = NSLocalizedString(@"LOCALIZE_SETTINGS", nil);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -66,26 +66,26 @@ typedef NS_ENUM(NSInteger,GASettingDevelopment){
 - (void)initializeCellTitles {
     self.cellTitles = @[
                        @[
-                           NSLocalizedString(@"SETTINGS_THUMBNAILS_TITLE", nil),
-                           NSLocalizedString(@"SETTINGS_DIRECTORY_NAVIGATION_TITLE", nil)
+                           NSLocalizedString(@"LOCALIZE_SETTINGS_THUMBNAILS_TITLE", nil),
+                           NSLocalizedString(@"LOCALIZE_SETTINGS_DIRECTORY_NAVIGATION_TITLE", nil)
                            ],
                        @[
-                           NSLocalizedString(@"SETTINGS_LOGGER_TITLE", nil)
+                           NSLocalizedString(@"LOCALIZE_SETTINGS_LOGGER_TITLE", nil)
                            ]
                        ];
 }
 
 - (void)initializeSectionHeaders {
     self.sectionHeaders = @[
-                           NSLocalizedString(@"SETTINGS_GENERAL_HEADER", nil),
-                           NSLocalizedString(@"SETTINGS_DEVELOPMENT_HEADER", nil)
+                           NSLocalizedString(@"LOCALIZE_SETTINGS_GENERAL_HEADER", nil),
+                           NSLocalizedString(@"LOCALIZE_SETTINGS_DEVELOPMENT_HEADER", nil)
                            ];
 }
 
 - (void)initializeSectionFooters {
     self.sectionFooters = @[
-                            NSLocalizedString(@"SETTINGS_GENERAL_FOOTER", nil),
-                            NSLocalizedString(@"SETTINGS_DEVELOPMENT_FOOTER", nil)
+                            NSLocalizedString(@"LOCALIZE_SETTINGS_GENERAL_FOOTER", nil),
+                            NSLocalizedString(@"LOCALIZE_SETTINGS_DEVELOPMENT_FOOTER", nil)
                             ];
 }
 
