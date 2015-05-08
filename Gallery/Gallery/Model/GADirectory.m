@@ -87,6 +87,7 @@
             if (isFirstChild) self.firstChild = imageFile;
             if (isFirstImage) self.firstImage = imageFile;
             [tree addObject:imageFile];
+            previous = imageFile;
             
         } else if ([GADirectory isDirectory:fullPath]) {
             
@@ -96,6 +97,7 @@
             if (isFirstChild) self.firstChild = directory;
             if (isFirstDirectory) self.firstDirectory = directory;
             [tree addObject:directory];
+            previous = directory;
             
         } else {
             [GALogger addError:@"Failed to read : %@", file];
