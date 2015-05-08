@@ -17,6 +17,7 @@ typedef void (^GAThumbnailLoadingBlock)(UIImage *thumbnail);
 
 + (instancetype)sharedManager;
 
++ (BOOL)shouldCacheThumbnails;
 + (void)shouldCacheThumbnails:(BOOL)shouldCacheThumbnails;
 + (void)clearThumbnails;
 

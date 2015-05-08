@@ -44,6 +44,10 @@ static GACacheManager *sharedManager;
     [[GACacheManager sharedManager] thumbnailForFile:file inBackgroundWithBlock:block];
 }
 
++ (BOOL)shouldCacheThumbnails {
+    return [GACacheManager sharedManager].shouldCacheThumbnails;
+}
+
 + (void)shouldCacheThumbnails:(BOOL)shouldCacheThumbnails {
     [GACacheManager sharedManager].shouldCacheThumbnails = shouldCacheThumbnails;
 }

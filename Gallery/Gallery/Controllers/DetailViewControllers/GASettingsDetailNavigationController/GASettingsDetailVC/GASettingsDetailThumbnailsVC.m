@@ -10,6 +10,7 @@
 
 // Managers
 #import "GASettingsManager.h"
+#import "GACacheManager.h"
 #import "GALogger.h"
 
 #define CACHE_LIMIT_UNLIMITED 1000
@@ -73,7 +74,7 @@
 - (void)initializeSelectedValues {
     self.selectedValues = @[
                             @[
-                                @YES,
+                                @([GACacheManager shouldCacheThumbnails]),
                                 @([GASettingsManager thumbnailCacheLimit])
                                 ]
                             ];
@@ -94,22 +95,17 @@
 #pragma mark - Handlers
 
 - (void)setShouldCache:(NSObject *)value {
-    
+    BOOL boolValue = [((NSNumber *)value) boolValue];
+    [GACacheManager shouldCacheThumbnails:boolValue];
 }
 
 - (void)setCacheLimit:(NSObject *)value {
-    if ([value isKindOfClass:[NSNumber class]]) {
-        NSInteger intValue = [((NSNumber *)value) integerValue];
-        [GASettingsManager setTumbnailCacheLimit:intValue];
-    } else if ([value isKindOfClass:[NSString class]]) {
-        [GASettingsManager setTumbnailCacheLimit:CACHE_LIMIT_UNLIMITED];
-    } else {
-        [GALogger addError:@"Invalid value \"%@\" for setting %@", value, self.title];
-    }
+    NSInteger intValue = [((NSNumber *)value) integerValue];
+    [GASettingsManager setTumbnailCacheLimit:intValue];
 }
 
 - (void)resetCache {
-    
+    [GACacheManager clearThumbnails];
 }
 
 @end
