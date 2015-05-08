@@ -17,10 +17,6 @@
 		5A4570791AF6C96100A436AC /* GADirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570721AF6C96100A436AC /* GADirectory.m */; };
 		5A45707B1AF6C96100A436AC /* GAImageFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570761AF6C96100A436AC /* GAImageFile.m */; };
 		5A45707C1AF6C96100A436AC /* GAFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570781AF6C96100A436AC /* GAFile.m */; };
-		5A4570801AF6CA8500A436AC /* GADirectoryInspectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A45707E1AF6CA8500A436AC /* GADirectoryInspectorVC.m */; };
-		5A4570811AF6CA8500A436AC /* GADirectoryInspectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A45707F1AF6CA8500A436AC /* GADirectoryInspectorVC.xib */; };
-		5A4570921AF73F8A00A436AC /* GARightVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570901AF73F8A00A436AC /* GARightVC.m */; };
-		5A4570931AF73F8A00A436AC /* GARightVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4570911AF73F8A00A436AC /* GARightVC.xib */; };
 		5A51E9851AF95CC3000B3576 /* GACacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9821AF95CC3000B3576 /* GACacheManager.m */; };
 		5A51E9861AF95CC3000B3576 /* GAFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9841AF95CC3000B3576 /* GAFileManager.m */; };
 		5A51E98A1AF96194000B3576 /* GAThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9891AF96194000B3576 /* GAThumbnailView.m */; };
@@ -30,14 +26,20 @@
 		5A51E99F1AFBE5C9000B3576 /* GASettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E99E1AFBE5C9000B3576 /* GASettingsManager.m */; };
 		5A51E9A21AFBFBF0000B3576 /* GALogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9A11AFBFBF0000B3576 /* GALogger.m */; };
 		5A51E9A51AFBFEDE000B3576 /* GALog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9A41AFBFEDE000B3576 /* GALog.m */; };
-		5A51E9AF1AFCA7C4000B3576 /* GADiaporamaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9AD1AFCA7C4000B3576 /* GADiaporamaVC.m */; };
-		5A51E9B01AFCA7C4000B3576 /* GADiaporamaVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A51E9AE1AFCA7C4000B3576 /* GADiaporamaVC.xib */; };
 		5A51E9B41AFCBAAA000B3576 /* NSMutableArray+GAStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9B31AFCBAAA000B3576 /* NSMutableArray+GAStack.m */; };
 		5A51E9B71AFCC686000B3576 /* GAFile+Pointers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9B61AFCC686000B3576 /* GAFile+Pointers.m */; };
 		5A8664AF1AFCF995002578F7 /* GAMasterNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664AD1AFCF995002578F7 /* GAMasterNavigationController.m */; };
 		5A8664B01AFCF995002578F7 /* GAMasterNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664AE1AFCF995002578F7 /* GAMasterNavigationController.xib */; };
 		5A8664B51AFCFA4A002578F7 /* GADetailNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664B31AFCFA4A002578F7 /* GADetailNavigationController.m */; };
 		5A8664B61AFCFA4A002578F7 /* GADetailNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664B41AFCFA4A002578F7 /* GADetailNavigationController.xib */; };
+		5A8664BD1AFCFB02002578F7 /* GADirectoryInspectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664BB1AFCFB02002578F7 /* GADirectoryInspectorVC.m */; };
+		5A8664BE1AFCFB02002578F7 /* GADirectoryInspectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664BC1AFCFB02002578F7 /* GADirectoryInspectorVC.xib */; };
+		5A8664C81AFCFB19002578F7 /* GADiaporamaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664C21AFCFB19002578F7 /* GADiaporamaVC.m */; };
+		5A8664C91AFCFB19002578F7 /* GADiaporamaVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664C31AFCFB19002578F7 /* GADiaporamaVC.xib */; };
+		5A8664CA1AFCFB19002578F7 /* GARightVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664C61AFCFB19002578F7 /* GARightVC.m */; };
+		5A8664CB1AFCFB19002578F7 /* GARightVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664C71AFCFB19002578F7 /* GARightVC.xib */; };
+		5A8664CF1AFCFB77002578F7 /* GASettingsInspectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664CD1AFCFB77002578F7 /* GASettingsInspectorVC.m */; };
+		5A8664D01AFCFB77002578F7 /* GASettingsInspectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664CE1AFCFB77002578F7 /* GASettingsInspectorVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,12 +72,6 @@
 		5A4570761AF6C96100A436AC /* GAImageFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAImageFile.m; sourceTree = "<group>"; };
 		5A4570771AF6C96100A436AC /* GAFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFile.h; sourceTree = "<group>"; };
 		5A4570781AF6C96100A436AC /* GAFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAFile.m; sourceTree = "<group>"; };
-		5A45707D1AF6CA8500A436AC /* GADirectoryInspectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADirectoryInspectorVC.h; path = GADirectoryInspectorVC/GADirectoryInspectorVC.h; sourceTree = "<group>"; };
-		5A45707E1AF6CA8500A436AC /* GADirectoryInspectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GADirectoryInspectorVC.m; path = GADirectoryInspectorVC/GADirectoryInspectorVC.m; sourceTree = "<group>"; };
-		5A45707F1AF6CA8500A436AC /* GADirectoryInspectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GADirectoryInspectorVC.xib; path = GADirectoryInspectorVC/GADirectoryInspectorVC.xib; sourceTree = "<group>"; };
-		5A45708F1AF73F8A00A436AC /* GARightVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GARightVC.h; path = GARightVC/GARightVC.h; sourceTree = "<group>"; };
-		5A4570901AF73F8A00A436AC /* GARightVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GARightVC.m; path = GARightVC/GARightVC.m; sourceTree = "<group>"; };
-		5A4570911AF73F8A00A436AC /* GARightVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GARightVC.xib; path = GARightVC/GARightVC.xib; sourceTree = "<group>"; };
 		5A51E9811AF95CC3000B3576 /* GACacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GACacheManager.h; sourceTree = "<group>"; };
 		5A51E9821AF95CC3000B3576 /* GACacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GACacheManager.m; sourceTree = "<group>"; };
 		5A51E9831AF95CC3000B3576 /* GAFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFileManager.h; sourceTree = "<group>"; };
@@ -93,9 +89,6 @@
 		5A51E9A11AFBFBF0000B3576 /* GALogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GALogger.m; sourceTree = "<group>"; };
 		5A51E9A31AFBFEDE000B3576 /* GALog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GALog.h; sourceTree = "<group>"; };
 		5A51E9A41AFBFEDE000B3576 /* GALog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GALog.m; sourceTree = "<group>"; };
-		5A51E9AC1AFCA7C4000B3576 /* GADiaporamaVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADiaporamaVC.h; path = GADiaporamaVC/GADiaporamaVC.h; sourceTree = "<group>"; };
-		5A51E9AD1AFCA7C4000B3576 /* GADiaporamaVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GADiaporamaVC.m; path = GADiaporamaVC/GADiaporamaVC.m; sourceTree = "<group>"; };
-		5A51E9AE1AFCA7C4000B3576 /* GADiaporamaVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GADiaporamaVC.xib; path = GADiaporamaVC/GADiaporamaVC.xib; sourceTree = "<group>"; };
 		5A51E9B21AFCBAAA000B3576 /* NSMutableArray+GAStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+GAStack.h"; sourceTree = "<group>"; };
 		5A51E9B31AFCBAAA000B3576 /* NSMutableArray+GAStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+GAStack.m"; sourceTree = "<group>"; };
 		5A51E9B51AFCC686000B3576 /* GAFile+Pointers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GAFile+Pointers.h"; sourceTree = "<group>"; };
@@ -106,6 +99,18 @@
 		5A8664B21AFCFA4A002578F7 /* GADetailNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADetailNavigationController.h; sourceTree = "<group>"; };
 		5A8664B31AFCFA4A002578F7 /* GADetailNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADetailNavigationController.m; sourceTree = "<group>"; };
 		5A8664B41AFCFA4A002578F7 /* GADetailNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GADetailNavigationController.xib; sourceTree = "<group>"; };
+		5A8664BA1AFCFB02002578F7 /* GADirectoryInspectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADirectoryInspectorVC.h; sourceTree = "<group>"; };
+		5A8664BB1AFCFB02002578F7 /* GADirectoryInspectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADirectoryInspectorVC.m; sourceTree = "<group>"; };
+		5A8664BC1AFCFB02002578F7 /* GADirectoryInspectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GADirectoryInspectorVC.xib; sourceTree = "<group>"; };
+		5A8664C11AFCFB19002578F7 /* GADiaporamaVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADiaporamaVC.h; sourceTree = "<group>"; };
+		5A8664C21AFCFB19002578F7 /* GADiaporamaVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADiaporamaVC.m; sourceTree = "<group>"; };
+		5A8664C31AFCFB19002578F7 /* GADiaporamaVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GADiaporamaVC.xib; sourceTree = "<group>"; };
+		5A8664C51AFCFB19002578F7 /* GARightVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GARightVC.h; sourceTree = "<group>"; };
+		5A8664C61AFCFB19002578F7 /* GARightVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GARightVC.m; sourceTree = "<group>"; };
+		5A8664C71AFCFB19002578F7 /* GARightVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GARightVC.xib; sourceTree = "<group>"; };
+		5A8664CC1AFCFB77002578F7 /* GASettingsInspectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GASettingsInspectorVC.h; path = GASettingsInspectorVC/GASettingsInspectorVC.h; sourceTree = "<group>"; };
+		5A8664CD1AFCFB77002578F7 /* GASettingsInspectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GASettingsInspectorVC.m; path = GASettingsInspectorVC/GASettingsInspectorVC.m; sourceTree = "<group>"; };
+		5A8664CE1AFCFB77002578F7 /* GASettingsInspectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GASettingsInspectorVC.xib; path = GASettingsInspectorVC/GASettingsInspectorVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,9 +196,8 @@
 				5A45706F1AF6C94700A436AC /* GASplitVC */,
 				5A8664B11AFCFA4A002578F7 /* GADetailNavigationController */,
 				5A8664AB1AFCF995002578F7 /* GAMasterNavigationController */,
-				5A4570821AF6CA8800A436AC /* GADirectoryInspectorVC */,
-				5A4570941AF73F8D00A436AC /* GARightVC */,
-				5A51E9B11AFCA7C8000B3576 /* GADiaporamaVC */,
+				5A8664BF1AFCFB19002578F7 /* DetailViewControllers */,
+				5A8664B81AFCFB02002578F7 /* MasterViewControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -226,26 +230,6 @@
 				5A51E9B31AFCBAAA000B3576 /* NSMutableArray+GAStack.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		5A4570821AF6CA8800A436AC /* GADirectoryInspectorVC */ = {
-			isa = PBXGroup;
-			children = (
-				5A45707D1AF6CA8500A436AC /* GADirectoryInspectorVC.h */,
-				5A45707E1AF6CA8500A436AC /* GADirectoryInspectorVC.m */,
-				5A45707F1AF6CA8500A436AC /* GADirectoryInspectorVC.xib */,
-			);
-			name = GADirectoryInspectorVC;
-			sourceTree = "<group>";
-		};
-		5A4570941AF73F8D00A436AC /* GARightVC */ = {
-			isa = PBXGroup;
-			children = (
-				5A45708F1AF73F8A00A436AC /* GARightVC.h */,
-				5A4570901AF73F8A00A436AC /* GARightVC.m */,
-				5A4570911AF73F8A00A436AC /* GARightVC.xib */,
-			);
-			name = GARightVC;
 			sourceTree = "<group>";
 		};
 		5A51E9801AF95CC3000B3576 /* Managers */ = {
@@ -309,16 +293,6 @@
 			name = GATableViewCell;
 			sourceTree = "<group>";
 		};
-		5A51E9B11AFCA7C8000B3576 /* GADiaporamaVC */ = {
-			isa = PBXGroup;
-			children = (
-				5A51E9AC1AFCA7C4000B3576 /* GADiaporamaVC.h */,
-				5A51E9AD1AFCA7C4000B3576 /* GADiaporamaVC.m */,
-				5A51E9AE1AFCA7C4000B3576 /* GADiaporamaVC.xib */,
-			);
-			name = GADiaporamaVC;
-			sourceTree = "<group>";
-		};
 		5A8664AB1AFCF995002578F7 /* GAMasterNavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +311,64 @@
 				5A8664B41AFCFA4A002578F7 /* GADetailNavigationController.xib */,
 			);
 			path = GADetailNavigationController;
+			sourceTree = "<group>";
+		};
+		5A8664B81AFCFB02002578F7 /* MasterViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664B91AFCFB02002578F7 /* GADirectoryInspectorVC */,
+				5A8664D11AFCFB7A002578F7 /* GASettingsInspectorVC */,
+			);
+			path = MasterViewControllers;
+			sourceTree = "<group>";
+		};
+		5A8664B91AFCFB02002578F7 /* GADirectoryInspectorVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664BA1AFCFB02002578F7 /* GADirectoryInspectorVC.h */,
+				5A8664BB1AFCFB02002578F7 /* GADirectoryInspectorVC.m */,
+				5A8664BC1AFCFB02002578F7 /* GADirectoryInspectorVC.xib */,
+			);
+			path = GADirectoryInspectorVC;
+			sourceTree = "<group>";
+		};
+		5A8664BF1AFCFB19002578F7 /* DetailViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664C01AFCFB19002578F7 /* GADiaporamaVC */,
+				5A8664C41AFCFB19002578F7 /* GARightVC */,
+			);
+			path = DetailViewControllers;
+			sourceTree = "<group>";
+		};
+		5A8664C01AFCFB19002578F7 /* GADiaporamaVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664C11AFCFB19002578F7 /* GADiaporamaVC.h */,
+				5A8664C21AFCFB19002578F7 /* GADiaporamaVC.m */,
+				5A8664C31AFCFB19002578F7 /* GADiaporamaVC.xib */,
+			);
+			path = GADiaporamaVC;
+			sourceTree = "<group>";
+		};
+		5A8664C41AFCFB19002578F7 /* GARightVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664C51AFCFB19002578F7 /* GARightVC.h */,
+				5A8664C61AFCFB19002578F7 /* GARightVC.m */,
+				5A8664C71AFCFB19002578F7 /* GARightVC.xib */,
+			);
+			path = GARightVC;
+			sourceTree = "<group>";
+		};
+		5A8664D11AFCFB7A002578F7 /* GASettingsInspectorVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664CC1AFCFB77002578F7 /* GASettingsInspectorVC.h */,
+				5A8664CD1AFCFB77002578F7 /* GASettingsInspectorVC.m */,
+				5A8664CE1AFCFB77002578F7 /* GASettingsInspectorVC.xib */,
+			);
+			name = GASettingsInspectorVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,14 +451,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A4570811AF6CA8500A436AC /* GADirectoryInspectorVC.xib in Resources */,
 				5A51E9971AF969CC000B3576 /* GAImageFileTableViewCell.xib in Resources */,
+				5A8664D01AFCFB77002578F7 /* GASettingsInspectorVC.xib in Resources */,
+				5A8664C91AFCFB19002578F7 /* GADiaporamaVC.xib in Resources */,
 				5A8664B61AFCFA4A002578F7 /* GADetailNavigationController.xib in Resources */,
 				5A4570541AF6C3D900A436AC /* LaunchScreen.xib in Resources */,
+				5A8664BE1AFCFB02002578F7 /* GADirectoryInspectorVC.xib in Resources */,
 				5A4570511AF6C3D900A436AC /* Images.xcassets in Resources */,
-				5A51E9B01AFCA7C4000B3576 /* GADiaporamaVC.xib in Resources */,
-				5A4570931AF73F8A00A436AC /* GARightVC.xib in Resources */,
 				5A45706E1AF6C66800A436AC /* GASplitVC.xib in Resources */,
+				5A8664CB1AFCFB19002578F7 /* GARightVC.xib in Resources */,
 				5A8664B01AFCF995002578F7 /* GAMasterNavigationController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,7 +478,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A4570801AF6CA8500A436AC /* GADirectoryInspectorVC.m in Sources */,
 				5A4570491AF6C3D900A436AC /* AppDelegate.m in Sources */,
 				5A51E9B41AFCBAAA000B3576 /* NSMutableArray+GAStack.m in Sources */,
 				5A51E99F1AFBE5C9000B3576 /* GASettingsManager.m in Sources */,
@@ -455,15 +487,17 @@
 				5A51E9A51AFBFEDE000B3576 /* GALog.m in Sources */,
 				5A45707C1AF6C96100A436AC /* GAFile.m in Sources */,
 				5A45707B1AF6C96100A436AC /* GAImageFile.m in Sources */,
+				5A8664C81AFCFB19002578F7 /* GADiaporamaVC.m in Sources */,
 				5A51E9B71AFCC686000B3576 /* GAFile+Pointers.m in Sources */,
+				5A8664CF1AFCFB77002578F7 /* GASettingsInspectorVC.m in Sources */,
 				5A4570791AF6C96100A436AC /* GADirectory.m in Sources */,
+				5A8664CA1AFCFB19002578F7 /* GARightVC.m in Sources */,
 				5A51E99B1AF96B8D000B3576 /* GATableViewCell.m in Sources */,
 				5A8664B51AFCFA4A002578F7 /* GADetailNavigationController.m in Sources */,
+				5A8664BD1AFCFB02002578F7 /* GADirectoryInspectorVC.m in Sources */,
 				5A45706D1AF6C66800A436AC /* GASplitVC.m in Sources */,
 				5A51E9861AF95CC3000B3576 /* GAFileManager.m in Sources */,
 				5A51E9851AF95CC3000B3576 /* GACacheManager.m in Sources */,
-				5A4570921AF73F8A00A436AC /* GARightVC.m in Sources */,
-				5A51E9AF1AFCA7C4000B3576 /* GADiaporamaVC.m in Sources */,
 				5A51E9A21AFBFBF0000B3576 /* GALogger.m in Sources */,
 				5A51E9961AF969CC000B3576 /* GAImageFileTableViewCell.m in Sources */,
 			);

@@ -8,6 +8,9 @@
 
 #import "GAMasterNavigationController.h"
 
+// Controllers
+#import "GASettingsInspectorVC.h"
+
 @interface GAMasterNavigationController ()
 
 @property (strong, nonatomic) UIBarButtonItem *settingsButton;
@@ -61,7 +64,7 @@
 #pragma mark - Handlers
 
 - (void)settingsButtonHandler {
-    [self pushViewController:[UIViewController new] animated:YES];
+    [self pushViewController:[GASettingsInspectorVC new] animated:YES];
 }
 
 @end
