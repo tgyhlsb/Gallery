@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic, readwrite) NSString *path;
 @property (strong, nonatomic, readwrite) UIImage *thumbnail;
-@property (weak, nonatomic, readwrite) GAFile *parent;
+@property (weak, nonatomic, readwrite) GADirectory *parent;
 @property (weak, nonatomic, readwrite) GAFile *next;
 @property (weak, nonatomic, readwrite) GAFile *previous;
 
@@ -24,7 +24,7 @@
 
 
 - (id)initFromPath:(NSString *)path
-            parent:(GAFile *)parent {
+            parent:(GADirectory *)parent {
     
     self = [super init];
     if (self) {

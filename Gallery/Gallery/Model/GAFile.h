@@ -9,18 +9,20 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIImage.h>
 
+@class GADirectory;
+
 @interface GAFile : NSObject
 
 @property (strong, nonatomic, readonly) NSString *path;
 @property (strong, nonatomic, readonly) UIImage *thumbnail;
-@property (weak, nonatomic, readonly) GAFile *parent;
+@property (weak, nonatomic, readonly) GADirectory *parent;
 @property (weak, nonatomic, readonly) GAFile *next;
 @property (weak, nonatomic, readonly) GAFile *previous;
 
 @property (nonatomic) BOOL shouldCache;
 
 - (id)initFromPath:(NSString *)path
-            parent:(GAFile *)parent;
+            parent:(GADirectory *)parent;
 
 - (void)setNext:(GAFile *)next;
 - (void)setPrevious:(GAFile *)previous;

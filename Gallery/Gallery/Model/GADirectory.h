@@ -17,8 +17,11 @@
 
 @property (strong, nonatomic, readonly) NSArray *tree;
 @property (weak, nonatomic, readonly) GAFile *firstChild;
+@property (weak, nonatomic, readonly) GAFile *lastChild;
 @property (weak, nonatomic, readonly) GAImageFile *firstImage;
+@property (weak, nonatomic, readonly) GAImageFile *lastImage;
 @property (weak, nonatomic, readonly) GADirectory *firstDirectory;
+@property (weak, nonatomic, readonly) GADirectory *lastDirectory;
 
 + (instancetype)directoryFromPath:(NSString *)path
                            parent:(GAFile *)parent;
