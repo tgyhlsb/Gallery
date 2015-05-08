@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger,GASettingDirectoryNavigationMode){
+    GASettingDirectoryNavigationModeIgnore,
+    GASettingDirectoryNavigationModeShowDirectory,
+    GASettingDirectoryNavigationModeShowFirstImage
+};
+
 @interface GASettingsManager : NSObject
 
 + (UIViewContentMode)thumbnailMode;
@@ -16,5 +22,8 @@
 
 + (NSInteger)thumbnailCacheLimit;
 + (void)setTumbnailCacheLimit:(NSInteger)cacheLimit;
+
++ (GASettingDirectoryNavigationMode)directoryNavigationMode;
++ (void)setDirectoryNavigationMode:(GASettingDirectoryNavigationMode)mode;
 
 @end

@@ -17,6 +17,9 @@
 #define KEY_THUMBNAIL_CACHE_LIMIT @"GAThumbnailCacheLimit"
 #define DEFAULT_THUMBNAIL_CACHE_LIMIT 100
 
+#define KEY_DIRECTORY_NAVIGATION_MODE @"GASettingDirectoryNavigationMode"
+#define DEFAULT_DIRECTORY_NAVIGATION_MODE GASettingDirectoryNavigationModeShowFirstImage
+
 static GASettingsManager *sharedManager;
 
 @implementation GASettingsManager
@@ -59,6 +62,15 @@ static GASettingsManager *sharedManager;
 
 + (void)setTumbnailCacheLimit:(NSInteger)cacheLimit {
     [[GASettingsManager sharedManager] setValue:@(cacheLimit) forKey:KEY_THUMBNAIL_CACHE_LIMIT];
+}
+
++ (GASettingDirectoryNavigationMode)directoryNavigationMode {
+    NSNumber *value = [[GASettingsManager sharedManager] objectForKey:KEY_DIRECTORY_NAVIGATION_MODE];
+    return value ? [value integerValue] : DEFAULT_DIRECTORY_NAVIGATION_MODE;
+}
+
++ (void)setDirectoryNavigationMode:(GASettingDirectoryNavigationMode)mode {
+    [[GASettingsManager sharedManager] setValue:@(mode) forKey:KEY_DIRECTORY_NAVIGATION_MODE];
 }
 
 @end

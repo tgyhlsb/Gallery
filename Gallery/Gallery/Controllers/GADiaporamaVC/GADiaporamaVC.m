@@ -10,6 +10,9 @@
 
 #import "GARightVC.h"
 
+// Managers
+#import "GASettingsManager.h"
+
 // Models
 #import "GAFile+Pointers.h"
 #import "GAImageFile.h"
@@ -120,7 +123,21 @@
 
 - (void)setRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile {
     PAGED_CONTROLLERS_CLASS *vc = [PAGED_CONTROLLERS_CLASS new];
-    vc.file = imageFile ? imageFile : rootDirectory.firstImage;
+    
+    if (imageFile) { // show specific file
+        vc.file = imageFile;
+    } else { // show directory
+        switch ([GASettingsManager directoryNavigationMode]) {
+            case GASettingDirectoryNavigationModeIgnore:
+                break;
+            case GASettingDirectoryNavigationModeShowDirectory:
+                vc.file = rootDirectory;
+                break;
+            case GASettingDirectoryNavigationModeShowFirstImage:
+                vc.file = rootDirectory.firstImage;
+                break;
+        }
+    }
     [self.pageViewController setViewControllers:@[vc] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 }
 
