@@ -28,5 +28,6 @@
 @protocol GADirectoryNavigationDelegate <NSObject>
 
 - (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectImageFile:(GAImageFile *)imageFile;
+- (void)directoryInspector:(GADirectoryInspectorVC *)inspectorVC didSelectDirectory:(GADirectory *)directory;
 
 @end
