@@ -42,7 +42,7 @@ static GAFileManager *sharedManager;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *publicDocumentsDir = [paths objectAtIndex:0];
     [GALogger addInformation:@"%@", publicDocumentsDir];
-    self.rootDirectory = [GADirectory directoryFromPath:publicDocumentsDir];
+    self.rootDirectory = [GADirectory directoryFromPath:publicDocumentsDir parent:nil];
     
     return self.rootDirectory;
 }
