@@ -74,7 +74,7 @@
 }
 
 - (void)fileDirectoryDidChange {
-    self.masterNavigationController.rootDirectory = [GAFileManager rootDirectory];
+    self.masterNavigationController.toolbar.tintColor = [UIColor redColor];
 }
 
 

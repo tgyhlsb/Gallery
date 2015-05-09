@@ -83,9 +83,9 @@ static GAFileManager *sharedManager;
 - (void)generateTreeInBackgroundWithBlock:(GAFileReadingCompletionBlock)block {
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         GADirectory *root = [self generateTree];
-        if (block) {
-            block(root, nil);
-        }
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (block) block(root, nil);
+        });
     });
 }
 
