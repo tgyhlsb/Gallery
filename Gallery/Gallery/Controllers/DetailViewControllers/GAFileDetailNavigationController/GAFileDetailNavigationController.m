@@ -21,6 +21,7 @@
     GAFileDetailNavigationController *navVC = [[GAFileDetailNavigationController alloc] initWithRootViewController:rootVC];
     navVC.navigationBar.translucent = NO;
     navVC.toolbarHidden = NO;
+    navVC.toolbar.translucent = NO;
     return navVC;
 }
 
