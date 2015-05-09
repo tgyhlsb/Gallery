@@ -12,6 +12,8 @@
 #import "GADirectory.h"
 #import "GAImageFile.h"
 
+@protocol GADiaporamaPagedControllerDelegate;
+
 typedef NS_ENUM(NSInteger,GADiaporamaFileType){
     GADiaporamaFileTypeAll,
     GADiaporamaFileTypeImages,
@@ -19,6 +21,8 @@ typedef NS_ENUM(NSInteger,GADiaporamaFileType){
 };
 
 @interface GADiaporamaPagedController : UIPageViewController
+
+@property (weak, nonatomic) id<GADiaporamaPagedControllerDelegate> diaporamDelegate;
 
 @property (nonatomic) GADiaporamaFileType diaporamaFileType;
 
@@ -32,5 +36,17 @@ typedef NS_ENUM(NSInteger,GADiaporamaFileType){
 - (void)showDirectory:(GADirectory *)directory;
 - (void)showNext;
 - (void)showPrevious;
+
+@end
+
+@protocol GADiaporamaPagedControllerDelegate <NSObject>
+
+- (void)diaporamaPagedController:(GADiaporamaPagedController *)diaporamaPagedController didUpdateRightNavigationItems:(NSArray *)rightItems;
+- (void)diaporamaPagedController:(GADiaporamaPagedController *)diaporamaPagedController didUpdateLeftNavigationItems:(NSArray *)rightItems;
+
+@optional
+
+- (void)diaporamaPagedController:(GADiaporamaPagedController *)diaporamaPagedController willShowFile:(GAFile *)file;
+- (void)diaporamaPagedController:(GADiaporamaPagedController *)diaporamaPagedController didShowFile:(GAFile *)file;
 
 @end
