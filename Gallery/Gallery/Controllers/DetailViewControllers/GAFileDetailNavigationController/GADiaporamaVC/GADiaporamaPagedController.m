@@ -111,6 +111,7 @@
 #pragma mark - Handlers
 
 - (void)diaporamaFileTypeValueDidChangeHandler {
+    [self reloadCenterViewController]; // needed if left and right VC are already dequeued
     self.diaporamaFileType = self.diaporamaFileTypeSegmentedControl.selectedSegmentIndex;
     
     switch (self.diaporamaFileTypeSegmentedControl.selectedSegmentIndex) {
