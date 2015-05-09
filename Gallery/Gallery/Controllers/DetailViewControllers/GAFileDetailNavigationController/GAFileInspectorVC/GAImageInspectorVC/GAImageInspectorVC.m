@@ -80,9 +80,13 @@
         
         self.imageView.frame = frame;
         self.scrollView.contentSize = self.imageView.image.size;
-        [self.scrollView setZoomScale:ratio animated:NO];
-//        [self.scrollView setMinimumZoomScale:ratio];
+        [self setScaleToFit:ratio];
     }
+}
+
+- (void)setScaleToFit:(CGFloat)scale {
+    [self.scrollView setMinimumZoomScale:scale];
+    [self.scrollView setZoomScale:scale animated:NO];
 }
 
 #pragma mark - UIScrollViewDelegate
