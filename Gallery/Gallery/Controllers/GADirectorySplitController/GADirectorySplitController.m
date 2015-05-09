@@ -18,6 +18,9 @@
 
 @interface GADirectorySplitController ()
 
+@property (strong, nonatomic) GADirectoryNavigationController *masterNavigationController;
+@property (strong, nonatomic) GAFileDetailNavigationController *detailNavigationController;
+
 @end
 
 @implementation GADirectorySplitController
@@ -27,14 +30,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        GADirectory *rootDirectory = [GAFileManager readSharedDirectory];
-        
-        GADirectoryNavigationController *mainVC = [GADirectoryNavigationController newWithRootDirectory:rootDirectory];
-        GAFileDetailNavigationController *detailVC = [GAFileDetailNavigationController new];
-        
-        self.viewControllers = @[mainVC, detailVC];
         self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
-        self.delegate = [detailVC rootViewController];
         self.presentsWithGesture = NO;
     }
     return self;
@@ -46,6 +42,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self setInterfaceForRootDirectory:[GAFileManager rootDirectory]];
+    [self registerToFileMangerNotifications];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,7 +51,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Getters & Setters
+
+- (void)setInterfaceForRootDirectory:(GADirectory *)rootDirectory {
+    
+    self.masterNavigationController = [GADirectoryNavigationController newWithRootDirectory:rootDirectory];
+    self.detailNavigationController = [GAFileDetailNavigationController new];
+    
+    self.viewControllers = @[self.masterNavigationController, self.detailNavigationController];
+    self.delegate = [self.detailNavigationController rootViewController];
+}
+
+#pragma mark - Broadcast
+
+- (void)registerToFileMangerNotifications {
+    [GAFileManager startMonitoring];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fileDirectoryDidChange) name:GANotificationFileDirectoryChanged object:nil];
+}
+
+- (void)fileDirectoryDidChange {
+    self.masterNavigationController.rootDirectory = [GAFileManager rootDirectory];
+}
 
 
 @end
