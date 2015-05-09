@@ -22,9 +22,14 @@ typedef NS_ENUM(NSInteger,GADiaporamaFileType){
 
 @interface GADiaporamaPagedController : UIViewController
 
-@property (weak, nonatomic) id<GADiaporamaPagedControllerDelegate> diaporamDelegate;
+@property (weak, nonatomic) id<GADiaporamaPagedControllerDelegate> delegate;
 
 @property (nonatomic) GADiaporamaFileType diaporamaFileType;
+
+@property (strong, nonatomic) NSArray *topLeftBarItems;
+@property (strong, nonatomic) NSArray *topRightBarItems;
+@property (strong, nonatomic) NSArray *bottomLeftBarItems;
+@property (strong, nonatomic) NSArray *bottomRightBarItems;
 
 - (UIBarButtonItem *)diaporamaFileTypeBarButton;
 
@@ -41,12 +46,12 @@ typedef NS_ENUM(NSInteger,GADiaporamaFileType){
 
 @protocol GADiaporamaPagedControllerDelegate <NSObject>
 
-- (void)diaporamaPagedController:(GADiaporamaPagedController *)diaporamaPagedController didUpdateRightNavigationItems:(NSArray *)rightItems;
-- (void)diaporamaPagedController:(GADiaporamaPagedController *)diaporamaPagedController didUpdateLeftNavigationItems:(NSArray *)rightItems;
+- (void)diaporamaPagedControllerDidUpdateBarItems:(GADiaporamaPagedController *)diaporamaPagedController;
 
 @optional
 
 - (void)diaporamaPagedController:(GADiaporamaPagedController *)diaporamaPagedController willShowFile:(GAFile *)file;
+- (void)diaporamaPagedController:(GADiaporamaPagedController *)diaporamaPagedController mayShowFile:(GAFile *)file;
 - (void)diaporamaPagedController:(GADiaporamaPagedController *)diaporamaPagedController didShowFile:(GAFile *)file;
 
 @end

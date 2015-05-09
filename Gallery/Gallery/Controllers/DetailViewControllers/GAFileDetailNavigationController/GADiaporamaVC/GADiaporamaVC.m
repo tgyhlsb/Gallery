@@ -19,7 +19,7 @@
 #import "GAImageFile.h"
 #import "GADirectory.h"
 
-@interface GADiaporamaVC ()
+@interface GADiaporamaVC () <GADiaporamaPagedControllerDelegate>
 
 @property (strong, nonatomic) GADiaporamaPagedController *diaporamaController;
 @property (strong, nonatomic) UIBarButtonItem *showMasterViewButton;
@@ -85,7 +85,7 @@
     if (!_diaporamaController) {
         _diaporamaController = [GADiaporamaPagedController new];
         [_diaporamaController setParentViewController:self withView:self.view];
-        self.navigationItem.rightBarButtonItem = [_diaporamaController diaporamaFileTypeBarButton];
+        _diaporamaController.delegate = self;
     }
     return _diaporamaController;
 }
@@ -166,6 +166,20 @@
     } else if (displayMode == UISplitViewControllerDisplayModePrimaryHidden) {
         [self.navigationItem setLeftBarButtonItem:self.showMasterViewButton animated:YES];
     }
+}
+
+#pragma mark - GADiaporamaPagedControllerDelegate
+
+- (void)diaporamaPagedControllerDidUpdateBarItems:(GADiaporamaPagedController *)diaporamaPagedController {
+    self.navigationItem.rightBarButtonItems = diaporamaPagedController.topRightBarItems;
+}
+
+- (void)diaporamaPagedController:(GADiaporamaPagedController *)diaporamaPagedController didShowFile:(GAFile *)file {
+    
+}
+
+- (void)diaporamaPagedController:(GADiaporamaPagedController *)diaporamaPagedController willShowFile:(GAFile *)file {
+    
 }
 
 @end

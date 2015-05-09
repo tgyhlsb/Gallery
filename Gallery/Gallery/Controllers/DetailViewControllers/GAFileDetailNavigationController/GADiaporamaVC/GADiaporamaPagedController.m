@@ -32,18 +32,6 @@
 
 #pragma mark - Constructors
 
-//- (id)initWithTransitionStyle:(UIPageViewControllerTransitionStyle)style
-//        navigationOrientation:(UIPageViewControllerNavigationOrientation)navigationOrientation
-//                      options:(NSDictionary *)options {
-//    
-//    self = [super initWithTransitionStyle:style navigationOrientation:navigationOrientation options:options];
-//    if (self) {
-//        self.dataSource = self;
-//        self.delegate = self;
-//    }
-//    return self;
-//}
-
 #pragma mark - View life cycle
 
 - (void)viewDidLoad {
@@ -101,6 +89,36 @@
     return [[UIBarButtonItem alloc] initWithCustomView:self.diaporamaFileTypeSegmentedControl];
 }
 
+#pragma mark Bar item
+
+- (NSArray *)topRightBarItems {
+    if (!_topRightBarItems) {
+        _topRightBarItems = [NSArray arrayWithObjects:self.diaporamaFileTypeBarButton, nil];
+    }
+    return _topRightBarItems;
+}
+
+- (NSArray *)topLeftBarItems {
+    if (!_topLeftBarItems) {
+        _topLeftBarItems = [NSArray arrayWithObjects:nil];
+    }
+    return _topLeftBarItems;
+}
+
+- (NSArray *)bottomRightBarItems {
+    if (!_bottomRightBarItems) {
+        _bottomRightBarItems = [NSArray arrayWithObjects:nil];
+    }
+    return _bottomRightBarItems;
+}
+
+- (NSArray *)bottomLeftBarItems {
+    if (!_bottomLeftBarItems) {
+        _bottomLeftBarItems = [NSArray arrayWithObjects:nil];
+    }
+    return _bottomLeftBarItems;
+}
+
 #pragma mark - Handlers
 
 - (void)diaporamaFileTypeValueDidChangeHandler {
@@ -121,6 +139,7 @@
 #pragma mark - Navigation
 
 - (PAGED_CONTROLLERS_CLASS *)dequeueControllerForFile:(GAFile *)file {
+    [self notifyMayShowFile:file];
     return [PAGED_CONTROLLERS_CLASS inspectorForFile:file];
 }
 
@@ -129,8 +148,13 @@
 }
 
 - (void)setCenterViewController:(GAFileInspectorVC *)controller animated:(BOOL)animated {
+    [self notifyWillShowFile:controller.file];
     _centerViewController = controller;
+    __weak GADiaporamaPagedController *weakSelf = self;
     [self.pageViewController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionForward animated:animated completion:^(BOOL finished) {
+        if (finished) {
+            [weakSelf notifyDidShowFile:controller.file];
+        }
     }];
 }
 
@@ -223,7 +247,7 @@
     PAGED_CONTROLLERS_CLASS *activeVC = ((PAGED_CONTROLLERS_CLASS *)viewController);
     GAFile *file = [self nextFile:activeVC.file];
     if (!file) return nil;
-    PAGED_CONTROLLERS_CLASS *afterVC = [self dequeueControllerForFile:file];;
+    PAGED_CONTROLLERS_CLASS *afterVC = [self dequeueControllerForFile:file];
     return afterVC;
 }
 
@@ -235,7 +259,39 @@
        transitionCompleted:(BOOL)completed {
     
     if (finished && completed) {
-        _centerViewController = [pageViewController.viewControllers firstObject];
+        [self userChangedCenterViewController:[pageViewController.viewControllers firstObject]];
+    }
+}
+
+- (void)userChangedCenterViewController:(GAFileInspectorVC *)centerViewController {
+    _centerViewController = centerViewController;
+    [self notifyDidShowFile:centerViewController.file];
+}
+
+#pragma mark - GADiaporamaPagedControllerDelegate
+
+- (void)notifyDidChangeBarItems {
+    if ([self.delegate respondsToSelector:@selector(diaporamaPagedControllerDidUpdateBarItems:)]) {
+        [self.delegate diaporamaPagedControllerDidUpdateBarItems:self];
+    }
+}
+
+- (void)notifyMayShowFile:(GAFile *)file {
+    if ([self.delegate respondsToSelector:@selector(diaporamaPagedController:mayShowFile:)]) {
+        [self.delegate diaporamaPagedController:self mayShowFile:file];
+    }
+}
+
+- (void)notifyWillShowFile:(GAFile *)file {
+    if ([self.delegate respondsToSelector:@selector(diaporamaPagedController:willShowFile:)]) {
+        [self.delegate diaporamaPagedController:self willShowFile:file];
+    }
+}
+
+- (void)notifyDidShowFile:(GAFile *)file {
+    [self notifyDidChangeBarItems];
+    if ([self.delegate respondsToSelector:@selector(diaporamaPagedController:didShowFile:)]) {
+        [self.delegate diaporamaPagedController:self didShowFile:file];
     }
 }
 
