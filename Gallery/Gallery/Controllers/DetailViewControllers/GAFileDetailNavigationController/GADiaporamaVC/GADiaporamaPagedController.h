@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger,GADiaporamaFileType){
     GADiaporamaFileTypeDirectories
 };
 
-@interface GADiaporamaPagedController : UIPageViewController
+@interface GADiaporamaPagedController : UIViewController
 
 @property (weak, nonatomic) id<GADiaporamaPagedControllerDelegate> diaporamDelegate;
 

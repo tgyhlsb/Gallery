@@ -21,6 +21,7 @@
 
 @interface GADiaporamaPagedController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
+@property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) PAGED_CONTROLLERS_CLASS *centerViewController;
 
 @property (strong, nonatomic) UISegmentedControl *diaporamaFileTypeSegmentedControl;
@@ -31,17 +32,17 @@
 
 #pragma mark - Constructors
 
-- (id)initWithTransitionStyle:(UIPageViewControllerTransitionStyle)style
-        navigationOrientation:(UIPageViewControllerNavigationOrientation)navigationOrientation
-                      options:(NSDictionary *)options {
-    
-    self = [super initWithTransitionStyle:style navigationOrientation:navigationOrientation options:options];
-    if (self) {
-        self.dataSource = self;
-        self.delegate = self;
-    }
-    return self;
-}
+//- (id)initWithTransitionStyle:(UIPageViewControllerTransitionStyle)style
+//        navigationOrientation:(UIPageViewControllerNavigationOrientation)navigationOrientation
+//                      options:(NSDictionary *)options {
+//    
+//    self = [super initWithTransitionStyle:style navigationOrientation:navigationOrientation options:options];
+//    if (self) {
+//        self.dataSource = self;
+//        self.delegate = self;
+//    }
+//    return self;
+//}
 
 #pragma mark - View life cycle
 
@@ -63,6 +64,21 @@
 }
 
 #pragma mark - Getters & Setters
+
+- (UIPageViewController *)pageViewController {
+    if (!_pageViewController) {
+        _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+                                                              navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+                                                                            options:nil];
+        [self addChildViewController:_pageViewController];
+        _pageViewController.dataSource = self;
+        _pageViewController.delegate = self;
+        _pageViewController.view.frame = self.view.bounds;
+        [self.view addSubview:_pageViewController.view];
+        [_pageViewController didMoveToParentViewController:self];
+    }
+    return _pageViewController;
+}
 
 - (void)setDiaporamaFileType:(GADiaporamaFileType)diaporamaFileType {
     _diaporamaFileType = diaporamaFileType;
@@ -114,7 +130,7 @@
 
 - (void)setCenterViewController:(GAFileInspectorVC *)controller animated:(BOOL)animated {
     _centerViewController = controller;
-    [self setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionForward animated:animated completion:^(BOOL finished) {
+    [self.pageViewController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionForward animated:animated completion:^(BOOL finished) {
     }];
 }
 

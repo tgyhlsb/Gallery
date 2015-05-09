@@ -21,7 +21,7 @@
 
 @interface GADiaporamaVC ()
 
-@property (strong, nonatomic) GADiaporamaPagedController *pageViewController;
+@property (strong, nonatomic) GADiaporamaPagedController *diaporamaController;
 @property (strong, nonatomic) UIBarButtonItem *showMasterViewButton;
 @property (strong, nonatomic) UIBarButtonItem *hideMasterViewButton;
 
@@ -81,15 +81,13 @@
 
 #pragma mark - Getters & Setters
 
-- (UIPageViewController *)pageViewController {
-    if (!_pageViewController) {
-        _pageViewController = [[GADiaporamaPagedController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
-                                                              navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-                                                                            options:nil];
-        [_pageViewController setParentViewController:self withView:self.view];
-        self.navigationItem.rightBarButtonItem = [_pageViewController diaporamaFileTypeBarButton];
+- (GADiaporamaPagedController *)diaporamaController {
+    if (!_diaporamaController) {
+        _diaporamaController = [GADiaporamaPagedController new];
+        [_diaporamaController setParentViewController:self withView:self.view];
+        self.navigationItem.rightBarButtonItem = [_diaporamaController diaporamaFileTypeBarButton];
     }
-    return _pageViewController;
+    return _diaporamaController;
 }
 
 - (UIBarButtonItem *)showMasterViewButton {
@@ -117,16 +115,16 @@
 - (void)setRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile {
     
     if (imageFile) { // show specific file
-        [self.pageViewController showImage:imageFile];
+        [self.diaporamaController showImage:imageFile];
     } else { // show directory
         switch ([GASettingsManager directoryNavigationMode]) {
             case GASettingDirectoryNavigationModeIgnore:
                 break;
             case GASettingDirectoryNavigationModeShowDirectory:
-                [self.pageViewController showDirectory:rootDirectory];
+                [self.diaporamaController showDirectory:rootDirectory];
                 break;
             case GASettingDirectoryNavigationModeShowFirstImage:
-                [self.pageViewController showImage:rootDirectory.firstImage];
+                [self.diaporamaController showImage:rootDirectory.firstImage];
                 break;
         }
     }
