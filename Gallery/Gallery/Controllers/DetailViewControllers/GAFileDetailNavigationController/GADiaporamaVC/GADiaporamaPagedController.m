@@ -26,6 +26,11 @@
 
 @property (strong, nonatomic) UISegmentedControl *diaporamaFileTypeSegmentedControl;
 
+@property (strong, nonatomic) NSArray *topLeftBarItems;
+@property (strong, nonatomic) NSArray *topRightBarItems;
+@property (strong, nonatomic) NSArray *bottomLeftBarItems;
+@property (strong, nonatomic) NSArray *bottomRightBarItems;
+
 @end
 
 @implementation GADiaporamaPagedController
@@ -89,34 +94,18 @@
     return [[UIBarButtonItem alloc] initWithCustomView:self.diaporamaFileTypeSegmentedControl];
 }
 
-#pragma mark Bar item
+- (void)setBarItemDataSource:(id<GAFileInspectorBarButtonsDataSource>)barItemDataSource {
+    _barItemDataSource = barItemDataSource;
+    [self notifyDidChangeBarItems];
+}
+
+#pragma mark - BarItems
 
 - (NSArray *)topRightBarItems {
     if (!_topRightBarItems) {
-        _topRightBarItems = [NSArray arrayWithObjects:self.diaporamaFileTypeBarButton, nil];
+        _topRightBarItems = @[self.diaporamaFileTypeBarButton];
     }
     return _topRightBarItems;
-}
-
-- (NSArray *)topLeftBarItems {
-    if (!_topLeftBarItems) {
-        _topLeftBarItems = [NSArray arrayWithObjects:nil];
-    }
-    return _topLeftBarItems;
-}
-
-- (NSArray *)bottomRightBarItems {
-    if (!_bottomRightBarItems) {
-        _bottomRightBarItems = [NSArray arrayWithObjects:nil];
-    }
-    return _bottomRightBarItems;
-}
-
-- (NSArray *)bottomLeftBarItems {
-    if (!_bottomLeftBarItems) {
-        _bottomLeftBarItems = [NSArray arrayWithObjects:nil];
-    }
-    return _bottomLeftBarItems;
 }
 
 #pragma mark - Handlers
@@ -149,11 +138,10 @@
 
 - (void)setCenterViewController:(GAFileInspectorVC *)controller animated:(BOOL)animated {
     [self notifyWillShowFile:controller.file];
-    _centerViewController = controller;
     __weak GADiaporamaPagedController *weakSelf = self;
     [self.pageViewController setViewControllers:@[controller] direction:UIPageViewControllerNavigationDirectionForward animated:animated completion:^(BOOL finished) {
         if (finished) {
-            [weakSelf notifyDidShowFile:controller.file];
+            [weakSelf centerViewControllerWasReplaced:controller];
         }
     }];
 }
@@ -259,11 +247,12 @@
        transitionCompleted:(BOOL)completed {
     
     if (finished && completed) {
-        [self userChangedCenterViewController:[pageViewController.viewControllers firstObject]];
+        [self centerViewControllerWasReplaced:[pageViewController.viewControllers firstObject]];
     }
 }
 
-- (void)userChangedCenterViewController:(GAFileInspectorVC *)centerViewController {
+- (void)centerViewControllerWasReplaced:(GAFileInspectorVC *)centerViewController {
+    self.barItemDataSource = centerViewController;
     _centerViewController = centerViewController;
     [self notifyDidShowFile:centerViewController.file];
 }
@@ -289,10 +278,47 @@
 }
 
 - (void)notifyDidShowFile:(GAFile *)file {
-    [self notifyDidChangeBarItems];
     if ([self.delegate respondsToSelector:@selector(diaporamaPagedController:didShowFile:)]) {
         [self.delegate diaporamaPagedController:self didShowFile:file];
     }
+}
+
+#pragma mark - Bar items
+
+- (NSArray *)topLeftBarItemsForDisplayedFile {
+    if ([self.barItemDataSource respondsToSelector:@selector(topLeftBarItemsForDisplayedFile)]) {
+        return [self arrayWithArray:self.topLeftBarItems andArray:[self.barItemDataSource topLeftBarItemsForDisplayedFile]];
+    }
+    return self.topLeftBarItems;
+}
+
+- (NSArray *)topRightBarItemsForDisplayedFile {
+    if ([self.barItemDataSource respondsToSelector:@selector(topRightBarItemsForDisplayedFile)]) {
+        return [self arrayWithArray:self.topRightBarItems andArray:[self.barItemDataSource topRightBarItemsForDisplayedFile]];
+    }
+    return self.topRightBarItems;
+}
+
+- (NSArray *)bottomLeftBarItemsForDisplayedFile {
+    if ([self.barItemDataSource respondsToSelector:@selector(bottomLeftBarItemsForDisplayedFile)]) {
+        return [self arrayWithArray:self.bottomLeftBarItems andArray:[self.barItemDataSource bottomLeftBarItemsForDisplayedFile]];
+    }
+    return self.bottomLeftBarItems;
+}
+
+- (NSArray *)bottomRightBarItemsForDisplayedFile {
+    if ([self.barItemDataSource respondsToSelector:@selector(bottomRightBarItemsForDisplayedFile)]) {
+        return [self arrayWithArray:self.bottomRightBarItems andArray:[self.barItemDataSource bottomRightBarItemsForDisplayedFile]];
+    }
+    return self.bottomRightBarItems;
+}
+
+#pragma mark - Helpers
+
+- (NSArray *)arrayWithArray:(NSArray *)array1 andArray:(NSArray *)array2 {
+    NSMutableArray *result = [NSMutableArray arrayWithArray:array1];
+    [result addObjectsFromArray:array2];
+    return result;
 }
 
 @end

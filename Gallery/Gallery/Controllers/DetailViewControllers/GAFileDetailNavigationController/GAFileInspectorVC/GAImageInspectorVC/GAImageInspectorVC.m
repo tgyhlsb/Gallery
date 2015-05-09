@@ -10,6 +10,7 @@
 
 @interface GAImageInspectorVC () <UIScrollViewDelegate>
 
+@property (strong, nonatomic) UIBarButtonItem *zoomResetButton;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (nonatomic) BOOL isScrollViewInitialized;
@@ -55,6 +56,20 @@
     return _imageView;
 }
 
+- (UIBarButtonItem *)zoomResetButton {
+    if (!_zoomResetButton) {
+        NSString *title = NSLocalizedString(@"LOCALIZE_ZOOM_RESET", nil);
+        _zoomResetButton = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:@selector(zoomResetButtonHandler)];
+    }
+    return _zoomResetButton;
+}
+
+#pragma mark - Handlers
+
+- (void)zoomResetButtonHandler {
+    [self setScaleToFit];
+}
+
 #pragma mark - View
 
 - (void)updateViewWithFile:(GAFile *)file {
@@ -80,13 +95,17 @@
         
         self.imageView.frame = frame;
         self.scrollView.contentSize = self.imageView.image.size;
-        [self setScaleToFit:ratio];
+        [self saveScaleToFit:ratio];
     }
 }
 
-- (void)setScaleToFit:(CGFloat)scale {
+- (void)saveScaleToFit:(CGFloat)scale {
     [self.scrollView setMinimumZoomScale:scale];
     [self.scrollView setZoomScale:scale animated:NO];
+}
+
+- (void)setScaleToFit {
+    [self.scrollView setZoomScale:self.scrollView.minimumZoomScale animated:YES];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -97,6 +116,12 @@
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
     
+}
+
+#pragma mark - GAFileInspectorBarButtonsDataSource
+
+- (NSArray *)topRightBarItemsForDisplayedFile {
+    return @[self.zoomResetButton];
 }
 
 @end

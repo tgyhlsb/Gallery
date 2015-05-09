@@ -25,6 +25,11 @@
 @property (strong, nonatomic) UIBarButtonItem *showMasterViewButton;
 @property (strong, nonatomic) UIBarButtonItem *hideMasterViewButton;
 
+@property (strong, nonatomic) NSArray *topLeftBarItems;
+@property (strong, nonatomic) NSArray *topRightBarItems;
+@property (strong, nonatomic) NSArray *bottomLeftBarItems;
+@property (strong, nonatomic) NSArray *bottomRightBarItems;
+
 @end
 
 @implementation GADiaporamaVC
@@ -130,10 +135,32 @@
     }
 }
 
+#pragma mark Bar items
+
+- (void)setTopLeftBarItems:(NSArray *)topLeftBarItems {
+    _topLeftBarItems = topLeftBarItems;
+    [self updateNavigationBarLeftItems];
+}
+
+- (void)setTopRightBarItems:(NSArray *)topRightBarItems {
+    _topRightBarItems = topRightBarItems;
+    [self updateNavigationBarRightItems];
+}
+
+- (void)setBottomLeftBarItems:(NSArray *)bottomLeftBarItems {
+    _bottomLeftBarItems = bottomLeftBarItems;
+    [self updateToolBarItems];
+}
+
+- (void)setBottomRightBarItems:(NSArray *)bottomRightBarItems {
+    _bottomRightBarItems = bottomRightBarItems;
+    [self updateToolBarItems];
+}
+
 #pragma mark - Handlers
 
 - (void)showMasterViewButtonHandler {
-    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+    self.topLeftBarItems = nil;
     [UIView animateWithDuration:0.5 animations:^{
         self.navigationController.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
     } completion:^(BOOL finished) {
@@ -141,7 +168,7 @@
 }
 
 - (void)hideMasterViewButtonHandler {
-    [self.navigationItem setLeftBarButtonItem:nil animated:YES];
+    self.topLeftBarItems = nil;
     [UIView animateWithDuration:0.5 animations:^{
         self.navigationController.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
     } completion:^(BOOL finished) {
@@ -162,23 +189,43 @@
 
 - (void)splitViewController:(UISplitViewController *)svc willChangeToDisplayMode:(UISplitViewControllerDisplayMode)displayMode {
     if (displayMode == UISplitViewControllerDisplayModeAllVisible) {
-        [self.navigationItem setLeftBarButtonItem:self.hideMasterViewButton animated:YES];
+        self.topLeftBarItems = @[self.hideMasterViewButton];
     } else if (displayMode == UISplitViewControllerDisplayModePrimaryHidden) {
-        [self.navigationItem setLeftBarButtonItem:self.showMasterViewButton animated:YES];
+        self.topLeftBarItems = @[self.showMasterViewButton];
     }
 }
 
 #pragma mark - GADiaporamaPagedControllerDelegate
 
 - (void)diaporamaPagedControllerDidUpdateBarItems:(GADiaporamaPagedController *)diaporamaPagedController {
-    self.navigationItem.rightBarButtonItems = diaporamaPagedController.topRightBarItems;
+    [self updateNavigationBarLeftItems];
+    [self updateNavigationBarRightItems];
+    [self updateToolBarItems];
 }
 
-- (void)diaporamaPagedController:(GADiaporamaPagedController *)diaporamaPagedController didShowFile:(GAFile *)file {
-    
+#define ANIMATED NO
+
+- (void)updateNavigationBarLeftItems {
+    if ([self.diaporamaController respondsToSelector:@selector(topLeftBarItems)]) {
+        NSMutableArray *items = [NSMutableArray arrayWithArray:self.topLeftBarItems];
+        [items addObjectsFromArray:[self.diaporamaController topLeftBarItemsForDisplayedFile]];
+        [self.navigationItem setLeftBarButtonItems:items animated:ANIMATED];
+    } else {
+        [self.navigationItem setLeftBarButtonItems:self.topLeftBarItems animated:ANIMATED];
+    }
 }
 
-- (void)diaporamaPagedController:(GADiaporamaPagedController *)diaporamaPagedController willShowFile:(GAFile *)file {
+- (void)updateNavigationBarRightItems {
+    if ([self.diaporamaController respondsToSelector:@selector(topRightBarItems)]) {
+        NSMutableArray *items = [NSMutableArray arrayWithArray:self.topRightBarItems];
+        [items addObjectsFromArray:[self.diaporamaController topRightBarItemsForDisplayedFile]];
+        [self.navigationItem setRightBarButtonItems:items animated:ANIMATED];
+    } else {
+        [self.navigationItem setRightBarButtonItems:self.topRightBarItems animated:ANIMATED];
+    }
+}
+
+- (void)updateToolBarItems {
     
 }
 

@@ -8,6 +8,6 @@
 
 #import "GAFileInspectorVC.h"
 
-@interface GAImageInspectorVC : GAFileInspectorVC
+@interface GAImageInspectorVC : GAFileInspectorVC 
 
 @end
