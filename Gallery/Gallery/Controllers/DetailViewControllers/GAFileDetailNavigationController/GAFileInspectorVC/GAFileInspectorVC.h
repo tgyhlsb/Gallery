@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+// Controllers
+#import "GADiaporamaPagedController.h"
+
 // Models
 #import "GAFile+Pointers.h"
 
 // Managers
 #import "GALogger.h"
 
-@interface GAFileInspectorVC : UIViewController
+@interface GAFileInspectorVC : UIViewController <GAFileInspectorBarButtonsDataSource>
 
 @property (strong, nonatomic) GAFile *file;
 
