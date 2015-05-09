@@ -54,7 +54,7 @@
     [super viewDidLoad];
     
     // Force show/hide button to appear
-    [self splitViewController:self.navigationController.splitViewController willChangeToDisplayMode:self.navigationController.splitViewController.displayMode];
+    self.topLeftBarItems = @[self.hideMasterViewButton];
     
     [self registerToDirectoryInspectorsNotifications];
 }
