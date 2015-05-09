@@ -99,7 +99,6 @@ static dispatch_queue_t _dispatchQueue;
 static dispatch_source_t _source;
 
 - (void)startMonitoring {
-#define fileChangedNotification @"fileChangedNotification"
     
     // Get the path to the home directory
     NSString * homeDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
