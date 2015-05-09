@@ -95,6 +95,7 @@
     
     
     cell.textLabel.text = [self objectInArray:self.cellTitles atIndexPath:indexPath];
+    cell.detailTextLabel.text = [self titleForSelectedValueAtIndexPath:indexPath];
     
     NSArray *possibleValues = [self objectInArray:self.possibleValues atIndexPath:indexPath];
     cell.accessoryType = possibleValues ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
@@ -102,6 +103,18 @@
     return cell;
 }
 
+- (NSString *)titleForSelectedValueAtIndexPath:(NSIndexPath *)indexPath {
+    NSObject *selectedValue = [self objectInArray:self.selectedValues atIndexPath:indexPath];
+    NSArray *possibleValues = [self objectInArray:self.possibleValues atIndexPath:indexPath];
+    NSArray *possibleValueTitles = [self objectInArray:self.possibleValueTitles atIndexPath:indexPath];
+    for (int i = 0; i < possibleValues.count; i++) {
+        NSObject *possibleValue = [self objectInArray:possibleValues atIndex:i];
+        if ([possibleValue isEqual:selectedValue]) {
+            return [self objectInArray:possibleValueTitles atIndex:i];
+        }
+    }
+    return nil;
+}
 
 #pragma mark - Table view delegate
 
