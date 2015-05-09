@@ -38,6 +38,7 @@
         self.viewControllers = @[masterNavController, self.detailNavigationController];
         self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
         self.delegate = self.detailNavigationController;
+        self.presentsWithGesture = NO;
     }
     return self;
 }
