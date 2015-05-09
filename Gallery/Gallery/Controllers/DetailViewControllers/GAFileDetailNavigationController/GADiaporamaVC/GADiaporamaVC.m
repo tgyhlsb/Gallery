@@ -9,7 +9,7 @@
 #import "GADiaporamaVC.h"
 
 // Controllers
-#import "GADiaporamaController.h"
+#import "GADiaporamaPagedController.h"
 
 // Managers
 #import "GASettingsManager.h"
@@ -25,7 +25,7 @@
 
 @interface GADiaporamaVC ()
 
-@property (strong, nonatomic) GADiaporamaController *pageViewController;
+@property (strong, nonatomic) GADiaporamaPagedController *pageViewController;
 @property (strong, nonatomic) UIBarButtonItem *showMasterViewButton;
 @property (strong, nonatomic) UIBarButtonItem *hideMasterViewButton;
 
@@ -87,7 +87,7 @@
 
 - (UIPageViewController *)pageViewController {
     if (!_pageViewController) {
-        _pageViewController = [[GADiaporamaController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+        _pageViewController = [[GADiaporamaPagedController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                               navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                             options:nil];
         [_pageViewController setParentViewController:self withView:self.view];

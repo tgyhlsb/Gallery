@@ -1,12 +1,12 @@
 //
-//  GADiaporamaController.m
+//  GADiaporamaPagedController.m
 //  Gallery
 //
 //  Created by Tanguy Hélesbeux on 09/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "GADiaporamaController.h"
+#import "GADiaporamaPagedController.h"
 
 // Managers
 #import "GALogger.h"
@@ -19,7 +19,7 @@
 
 #define PAGED_CONTROLLERS_CLASS GAFileInspectorVC
 
-@interface GADiaporamaController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface GADiaporamaPagedController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (strong, nonatomic) PAGED_CONTROLLERS_CLASS *centerViewController;
 
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation GADiaporamaController
+@implementation GADiaporamaPagedController
 
 #pragma mark - Constructors
 

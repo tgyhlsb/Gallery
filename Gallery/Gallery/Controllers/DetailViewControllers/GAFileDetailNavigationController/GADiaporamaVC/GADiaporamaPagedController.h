@@ -1,5 +1,5 @@
 //
-//  GADiaporamaController.h
+//  GADiaporamaPagedController.h
 //  Gallery
 //
 //  Created by Tanguy Hélesbeux on 09/05/2015.
@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger,GADiaporamaFileType){
     GADiaporamaFileTypeDirectories
 };
 
-@interface GADiaporamaController : UIPageViewController
+@interface GADiaporamaPagedController : UIPageViewController
 
 @property (nonatomic) GADiaporamaFileType diaporamaFileType;
 
