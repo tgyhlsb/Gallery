@@ -106,9 +106,12 @@ static GACacheManager *sharedManager;
 - (void)thumbnailForFile:(GAFile *)file inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         UIImage *thumbnail = [self thumbnailForFile:file];
-        if (block) {
-            block(thumbnail);
-        }
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (block) {
+                block(thumbnail);
+            }
+        });
     });
 }
 

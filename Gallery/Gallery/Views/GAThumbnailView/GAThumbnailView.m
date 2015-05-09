@@ -50,8 +50,8 @@
 - (void)updateImageView {
     [self startLoading];
     [GACacheManager thumbnailForFile:self.file inBackgroundWithBlock:^(UIImage *thumbnail) {
-        [self performSelectorOnMainThread:@selector(setImage:) withObject:thumbnail waitUntilDone:YES];
-        [self performSelectorOnMainThread:@selector(stopLoading) withObject:nil waitUntilDone:YES];
+        self.image = thumbnail;
+        [self stopLoading];
     }];
 }
 
