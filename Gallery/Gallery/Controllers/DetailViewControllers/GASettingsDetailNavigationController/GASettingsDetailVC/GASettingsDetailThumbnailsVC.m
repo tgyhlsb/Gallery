@@ -8,6 +8,9 @@
 
 #import "GASettingsDetailThumbnailsVC.h"
 
+// Views
+#import "GAAlertFactoy.h"
+
 #define CACHE_LIMIT_UNLIMITED 1000
 
 @interface GASettingsDetailThumbnailsVC ()
@@ -117,7 +120,14 @@
 }
 
 - (void)resetCache {
+    
     [GACacheManager clearThumbnails];
+    
+    NSString *title = NSLocalizedString(@"LOCALIZE_CACHE_RESET_CONFIRMATION_TITLE", nil);
+    NSString *message = NSLocalizedString(@"LOCALIZE_CACHE_RESET_CONFIRMATION_MESSAGE", nil);
+    NSString *button = NSLocalizedString(@"LOCALIZE_OK", nil);
+    UIAlertController *alertController = [GAAlertFactoy confirmationControllerWithTitle:title message:message buttonTitle:button];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end
