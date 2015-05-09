@@ -20,6 +20,7 @@
     GADiaporamaVC *rootVC = [GADiaporamaVC new];
     GAFileDetailNavigationController *navVC = [[GAFileDetailNavigationController alloc] initWithRootViewController:rootVC];
     navVC.navigationBar.translucent = NO;
+    navVC.toolbarHidden = NO;
     return navVC;
 }
 

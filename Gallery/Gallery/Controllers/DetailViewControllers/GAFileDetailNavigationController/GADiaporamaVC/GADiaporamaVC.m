@@ -207,8 +207,8 @@
 
 - (void)updateNavigationBarLeftItems {
     if ([self.diaporamaController respondsToSelector:@selector(topLeftBarItems)]) {
-        NSMutableArray *items = [NSMutableArray arrayWithArray:self.topLeftBarItems];
-        [items addObjectsFromArray:[self.diaporamaController topLeftBarItemsForDisplayedFile]];
+        NSArray *childItems = [self.diaporamaController topLeftBarItemsForDisplayedFile];
+        NSArray *items = [self arrayWithArray:self.topLeftBarItems andArray:childItems];
         [self.navigationItem setLeftBarButtonItems:items animated:ANIMATED];
     } else {
         [self.navigationItem setLeftBarButtonItems:self.topLeftBarItems animated:ANIMATED];
@@ -217,8 +217,8 @@
 
 - (void)updateNavigationBarRightItems {
     if ([self.diaporamaController respondsToSelector:@selector(topRightBarItems)]) {
-        NSMutableArray *items = [NSMutableArray arrayWithArray:self.topRightBarItems];
-        [items addObjectsFromArray:[self.diaporamaController topRightBarItemsForDisplayedFile]];
+        NSArray *childItems = [self.diaporamaController topRightBarItemsForDisplayedFile];
+        NSArray *items = [self arrayWithArray:self.topRightBarItems andArray:childItems];
         [self.navigationItem setRightBarButtonItems:items animated:ANIMATED];
     } else {
         [self.navigationItem setRightBarButtonItems:self.topRightBarItems animated:ANIMATED];
@@ -226,7 +226,33 @@
 }
 
 - (void)updateToolBarItems {
+    NSArray *childLeftItems = nil;
+    NSArray *childRightItems = nil;
+    if ([self.diaporamaController respondsToSelector:@selector(bottomLeftBarItemsForDisplayedFile)]) {
+        childLeftItems = [self.diaporamaController bottomLeftBarItemsForDisplayedFile];
+    }
+    if ([self.diaporamaController respondsToSelector:@selector(bottomRightBarItemsForDisplayedFile)]) {
+        childRightItems = [self.diaporamaController bottomRightBarItemsForDisplayedFile];
+    }
     
+    NSArray *leftItems = [self arrayWithArray:self.bottomLeftBarItems andArray:childLeftItems];
+    NSArray *rightItems = [self arrayWithArray:self.bottomRightBarItems andArray:childRightItems];
+    UIBarButtonItem *flexibleItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
+    NSMutableArray *toolBarItems = [[NSMutableArray alloc] init];
+    [toolBarItems addObjectsFromArray:leftItems];
+    [toolBarItems addObject:flexibleItem];
+    [toolBarItems addObjectsFromArray:rightItems];
+    
+    self.toolbarItems = toolBarItems;
+}
+
+#pragma mark - Helpers
+
+- (NSArray *)arrayWithArray:(NSArray *)array1 andArray:(NSArray *)array2 {
+    NSMutableArray *result = [NSMutableArray arrayWithArray:array1];
+    [result addObjectsFromArray:array2];
+    return result;
 }
 
 @end

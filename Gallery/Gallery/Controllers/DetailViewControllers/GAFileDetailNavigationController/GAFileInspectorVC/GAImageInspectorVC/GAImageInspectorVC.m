@@ -120,7 +120,7 @@
 
 #pragma mark - GAFileInspectorBarButtonsDataSource
 
-- (NSArray *)topRightBarItemsForDisplayedFile {
+- (NSArray *)bottomRightBarItemsForDisplayedFile {
     return @[self.zoomResetButton];
 }
 
