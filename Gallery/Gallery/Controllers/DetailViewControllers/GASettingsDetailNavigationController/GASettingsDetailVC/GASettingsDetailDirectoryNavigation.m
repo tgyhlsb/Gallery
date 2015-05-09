@@ -42,7 +42,7 @@
 - (void)initializePossibleValues {
     self.possibleValues = @[
                             @[
-                                @[@(GASettingDirectoryNavigationModeIgnore), @(GASettingDirectoryNavigationModeShowDirectory), @(GASettingDirectoryNavigationModeShowFirstImage)]
+                                @[@(GASettingDirectoryNavigationModeIgnore), @(GASettingDirectoryNavigationModeShowFirstImage)]
                                 ]
                             ];
 }
@@ -50,7 +50,7 @@
 - (void)initializePossibleValueTitles {
     self.possibleValueTitles = @[
                                  @[
-                                     @[NSLocalizedString(@"LOCALIZE_DIRECTORY_NAVIGATION_MODE_IGNORE", nil), NSLocalizedString(@"LOCALIZE_DIRECTORY_NAVIGATION_MODE_SHOW_DIRECTORY", nil), NSLocalizedString(@"LOCALIZE_DIRECTORY_NAVIGATION_MODE_SHOW_IMAGE", nil)]
+                                     @[NSLocalizedString(@"LOCALIZE_DIRECTORY_NAVIGATION_MODE_IGNORE", nil), NSLocalizedString(@"LOCALIZE_DIRECTORY_NAVIGATION_MODE_SHOW_IMAGE", nil)]
                                      ]
                                  ];
 }
