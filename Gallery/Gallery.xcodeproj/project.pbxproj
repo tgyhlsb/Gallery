@@ -13,6 +13,7 @@
 		5A36B99C1AFD76B9009098CB /* GADirectoryInspectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A36B99A1AFD76B9009098CB /* GADirectoryInspectorVC.xib */; };
 		5A36B9A11AFD76D7009098CB /* GAImageInspectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A36B99F1AFD76D7009098CB /* GAImageInspectorVC.m */; };
 		5A36B9A21AFD76D7009098CB /* GAImageInspectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A36B9A01AFD76D7009098CB /* GAImageInspectorVC.xib */; };
+		5A36B9AC1AFE1B41009098CB /* GADiaporamaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A36B9AB1AFE1B41009098CB /* GADiaporamaController.m */; };
 		5A4570461AF6C3D900A436AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570451AF6C3D900A436AC /* main.m */; };
 		5A4570491AF6C3D900A436AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570481AF6C3D900A436AC /* AppDelegate.m */; };
 		5A4570511AF6C3D900A436AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4570501AF6C3D900A436AC /* Images.xcassets */; };
@@ -79,6 +80,8 @@
 		5A36B99E1AFD76D7009098CB /* GAImageInspectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAImageInspectorVC.h; path = GAFileInspectorVC/GAImageInspectorVC/GAImageInspectorVC.h; sourceTree = "<group>"; };
 		5A36B99F1AFD76D7009098CB /* GAImageInspectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAImageInspectorVC.m; path = GAFileInspectorVC/GAImageInspectorVC/GAImageInspectorVC.m; sourceTree = "<group>"; };
 		5A36B9A01AFD76D7009098CB /* GAImageInspectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAImageInspectorVC.xib; path = GAFileInspectorVC/GAImageInspectorVC/GAImageInspectorVC.xib; sourceTree = "<group>"; };
+		5A36B9AA1AFE1B41009098CB /* GADiaporamaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADiaporamaController.h; sourceTree = "<group>"; };
+		5A36B9AB1AFE1B41009098CB /* GADiaporamaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADiaporamaController.m; sourceTree = "<group>"; };
 		5A4570401AF6C3D900A436AC /* Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4570441AF6C3D900A436AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A4570451AF6C3D900A436AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -409,6 +412,8 @@
 				5A8664EA1AFD1AC2002578F7 /* GADiaporamaVC.h */,
 				5A8664EB1AFD1AC2002578F7 /* GADiaporamaVC.m */,
 				5A8664EC1AFD1AC2002578F7 /* GADiaporamaVC.xib */,
+				5A36B9AA1AFE1B41009098CB /* GADiaporamaController.h */,
+				5A36B9AB1AFE1B41009098CB /* GADiaporamaController.m */,
 			);
 			path = GADiaporamaVC;
 			sourceTree = "<group>";
@@ -624,6 +629,7 @@
 				5A8665031AFD1AC2002578F7 /* GAFileDetailNavigationController.m in Sources */,
 				5A36B9A11AFD76D7009098CB /* GAImageInspectorVC.m in Sources */,
 				5A4570461AF6C3D900A436AC /* main.m in Sources */,
+				5A36B9AC1AFE1B41009098CB /* GADiaporamaController.m in Sources */,
 				5A51E98A1AF96194000B3576 /* GAThumbnailView.m in Sources */,
 				5A51E9A51AFBFEDE000B3576 /* GALog.m in Sources */,
 				5A45707C1AF6C96100A436AC /* GAFile.m in Sources */,
