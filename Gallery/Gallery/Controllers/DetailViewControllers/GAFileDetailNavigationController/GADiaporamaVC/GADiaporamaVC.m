@@ -10,7 +10,6 @@
 
 // Controllers
 #import "GAFileInspectorVC.h"
-#import "GAPageViewController.h"
 
 // Managers
 #import "GASettingsManager.h"
@@ -33,7 +32,7 @@ typedef NS_ENUM(NSInteger,GAFileType){
 
 @interface GADiaporamaVC () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
-@property (strong, nonatomic) GAPageViewController *pageViewController;
+@property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) UIBarButtonItem *showMasterViewButton;
 @property (strong, nonatomic) UIBarButtonItem *hideMasterViewButton;
 @property (strong, nonatomic) UISegmentedControl *fileTypeSegmentedControl;
@@ -103,9 +102,9 @@ typedef NS_ENUM(NSInteger,GAFileType){
 
 #pragma mark - Getters & Setters
 
-- (GAPageViewController *)pageViewController {
+- (UIPageViewController *)pageViewController {
     if (!_pageViewController) {
-        _pageViewController = [[GAPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+        _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                               navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                             options:nil];
         _pageViewController.delegate = self;
@@ -115,10 +114,6 @@ typedef NS_ENUM(NSInteger,GAFileType){
         [self.view addSubview:_pageViewController.view];
         [_pageViewController didMoveToParentViewController:self];    }
     return _pageViewController;
-}
-
-- (BOOL)shouldAutomaticallyForwardAppearanceMethods {
-    return NO;
 }
 
 - (UIBarButtonItem *)showMasterViewButton {
@@ -317,27 +312,6 @@ typedef NS_ENUM(NSInteger,GAFileType){
     } else {
         self.fileTypeSegmentedControl.selectedSegmentIndex = GAFileTypeAll;
     }
-}
-
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-{
-    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    
-    // Code here will execute before the rotation begins.
-    // Equivalent to placing it in the deprecated method -[willRotateToInterfaceOrientation:duration:]
-    [self.activeViewController viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    
-    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        
-        // Place code here to perform animations during the rotation.
-        // You can pass nil or leave this block empty if not necessary.
-        
-    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        
-        // Code here will execute after the rotation has finished.
-        // Equivalent to placing it in the deprecated method -[didRotateFromInterfaceOrientation:]
-        
-    }];
 }
 
 @end
