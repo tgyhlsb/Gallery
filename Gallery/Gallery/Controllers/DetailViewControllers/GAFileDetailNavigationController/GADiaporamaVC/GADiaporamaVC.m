@@ -18,11 +18,6 @@
 #import "GAImageFile.h"
 #import "GADirectory.h"
 
-// Others
-#import "NSMutableArray+GAStack.h"
-
-#define PAGED_CONTROLLERS_CLASS GAFileInspectorVC
-
 @interface GADiaporamaVC ()
 
 @property (strong, nonatomic) GADiaporamaPagedController *pageViewController;
