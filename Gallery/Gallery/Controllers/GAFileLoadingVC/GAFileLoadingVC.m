@@ -27,7 +27,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
     [self startProcessing];
 }
 
@@ -36,13 +35,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Getters & Setters
+
+- (void)setCompletionBLock:(GAFileLoadingCompletionBlock)completionBLock {
+    _completionBLock = completionBLock;
+}
+
 #pragma mark - Processing
 
 - (void)startProcessing {
     [self.activityIndicator startAnimating];
     [GAFileManager readSharedDirectoryInBackgroundWithBlock:^(GADirectory *root, NSError *error) {
         if (root && !error) {
-            [self performSelector:@selector(didEndProcessing)];
+            [self didEndProcessing];
         }
     }];
 }

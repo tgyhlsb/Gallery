@@ -17,4 +17,6 @@ typedef void (^GAFileLoadingCompletionBlock)();
 
 @property (strong, nonatomic) GAFileLoadingCompletionBlock completionBLock;
 
+- (void)setCompletionBLock:(GAFileLoadingCompletionBlock)completionBLock;
+
 @end

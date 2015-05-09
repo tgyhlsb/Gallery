@@ -147,7 +147,6 @@ static dispatch_source_t _source;
     // This block will be called when teh file changes
     dispatch_source_set_event_handler(_source, ^(){
         [GALogger addInformation:@"File directory changed"];
-        self.rootDirectory = [self generateTree];
         // We call an NSNotification so the file can change can be detected anywhere
         [[NSNotificationCenter defaultCenter] postNotificationName:GANotificationFileDirectoryChanged object:Nil];
     });
