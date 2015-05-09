@@ -35,6 +35,7 @@
         self.viewControllers = @[mainVC, detailVC];
         self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
         self.delegate = [detailVC rootViewController];
+        self.presentsWithGesture = NO;
     }
     return self;
 }
