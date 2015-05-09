@@ -171,6 +171,7 @@
     if (selectorName) {
         [self performSelectorWithName:selectorName withObject:value];
     }
+    [self.tableView reloadData];
 }
 
 @end
