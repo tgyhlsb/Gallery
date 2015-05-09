@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-// Controllers
-#import "GADirectoryMasterVC.h"
-
 // Models
 #import "GAImageFile.h"
 #import "GADirectory.h"

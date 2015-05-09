@@ -9,6 +9,7 @@
 #import "GADiaporamaVC.h"
 
 // Controllers
+#import "GADirectoryMasterVC.h"
 #import "GADiaporamaPagedController.h"
 
 // Managers
