@@ -30,6 +30,7 @@
 - (id)init {
     self = [super init];
     if (self) {
+        [self setInterfaceForRootDirectory:[GAFileManager rootDirectory]];
         self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
         self.presentsWithGesture = NO;
     }
@@ -41,9 +42,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    [self setInterfaceForRootDirectory:[GAFileManager rootDirectory]];
-    [self registerToFileMangerNotifications];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,17 +62,6 @@
     
     self.viewControllers = @[self.masterNavigationController, self.detailNavigationController];
     self.delegate = [self.detailNavigationController rootViewController];
-}
-
-#pragma mark - Broadcast
-
-- (void)registerToFileMangerNotifications {
-    [GAFileManager startMonitoring];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fileDirectoryDidChange) name:GANotificationFileDirectoryChanged object:nil];
-}
-
-- (void)fileDirectoryDidChange {
-    self.masterNavigationController.toolbar.tintColor = [UIColor redColor];
 }
 
 

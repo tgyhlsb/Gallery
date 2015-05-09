@@ -29,7 +29,6 @@
     
     [self setWindowForFileDirectories];
     [self registerToFileManagerNotifications];
-    [GAFileManager startMonitoring];
     
     return YES;
 }
@@ -38,6 +37,7 @@
     GAFileLoadingVC *loaderVC = [GAFileLoadingVC new];
     
     [loaderVC setCompletionBLock:^{
+        [GAFileManager startMonitoring];
         self.window.rootViewController = [GADirectorySplitController new];
     }];
     
