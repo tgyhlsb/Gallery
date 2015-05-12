@@ -7,14 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A36B9931AFD648A009098CB /* GAInternationalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A36B9921AFD648A009098CB /* GAInternationalization.m */; };
+		5A36B9961AFD768C009098CB /* GAFileInspectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A36B9951AFD768C009098CB /* GAFileInspectorVC.m */; };
+		5A36B99B1AFD76B9009098CB /* GADirectoryInspectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A36B9991AFD76B9009098CB /* GADirectoryInspectorVC.m */; };
+		5A36B99C1AFD76B9009098CB /* GADirectoryInspectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A36B99A1AFD76B9009098CB /* GADirectoryInspectorVC.xib */; };
+		5A36B9A11AFD76D7009098CB /* GAImageInspectorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A36B99F1AFD76D7009098CB /* GAImageInspectorVC.m */; };
+		5A36B9A21AFD76D7009098CB /* GAImageInspectorVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A36B9A01AFD76D7009098CB /* GAImageInspectorVC.xib */; };
+		5A36B9AC1AFE1B41009098CB /* GADiaporamaPagedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A36B9AB1AFE1B41009098CB /* GADiaporamaPagedController.m */; };
+		5A36B9AF1AFE455C009098CB /* GAAlertFactoy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A36B9AE1AFE455C009098CB /* GAAlertFactoy.m */; };
+		5A36B9B41AFE5670009098CB /* GAFileLoadingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A36B9B21AFE5670009098CB /* GAFileLoadingVC.m */; };
+		5A36B9B51AFE5670009098CB /* GAFileLoadingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A36B9B31AFE5670009098CB /* GAFileLoadingVC.xib */; };
 		5A4570461AF6C3D900A436AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570451AF6C3D900A436AC /* main.m */; };
 		5A4570491AF6C3D900A436AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570481AF6C3D900A436AC /* AppDelegate.m */; };
-		5A45704F1AF6C3D900A436AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A45704D1AF6C3D900A436AC /* Main.storyboard */; };
 		5A4570511AF6C3D900A436AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4570501AF6C3D900A436AC /* Images.xcassets */; };
 		5A4570541AF6C3D900A436AC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4570521AF6C3D900A436AC /* LaunchScreen.xib */; };
 		5A4570601AF6C3D900A436AC /* GalleryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A45705F1AF6C3D900A436AC /* GalleryTests.m */; };
-		5A45706D1AF6C66800A436AC /* GASplitVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A45706B1AF6C66700A436AC /* GASplitVC.m */; };
-		5A45706E1AF6C66800A436AC /* GASplitVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A45706C1AF6C66800A436AC /* GASplitVC.xib */; };
+		5A4570791AF6C96100A436AC /* GADirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570721AF6C96100A436AC /* GADirectory.m */; };
+		5A45707B1AF6C96100A436AC /* GAImageFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570761AF6C96100A436AC /* GAImageFile.m */; };
+		5A45707C1AF6C96100A436AC /* GAFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570781AF6C96100A436AC /* GAFile.m */; };
+		5A51E9851AF95CC3000B3576 /* GACacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9821AF95CC3000B3576 /* GACacheManager.m */; };
+		5A51E9861AF95CC3000B3576 /* GAFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9841AF95CC3000B3576 /* GAFileManager.m */; };
+		5A51E98A1AF96194000B3576 /* GAThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9891AF96194000B3576 /* GAThumbnailView.m */; };
+		5A51E9961AF969CC000B3576 /* GAImageFileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9941AF969CC000B3576 /* GAImageFileTableViewCell.m */; };
+		5A51E9971AF969CC000B3576 /* GAImageFileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A51E9951AF969CC000B3576 /* GAImageFileTableViewCell.xib */; };
+		5A51E99B1AF96B8D000B3576 /* GATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E99A1AF96B8D000B3576 /* GATableViewCell.m */; };
+		5A51E99F1AFBE5C9000B3576 /* GASettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E99E1AFBE5C9000B3576 /* GASettingsManager.m */; };
+		5A51E9A21AFBFBF0000B3576 /* GALogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9A11AFBFBF0000B3576 /* GALogger.m */; };
+		5A51E9A51AFBFEDE000B3576 /* GALog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9A41AFBFEDE000B3576 /* GALog.m */; };
+		5A51E9B41AFCBAAA000B3576 /* NSMutableArray+GAStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9B31AFCBAAA000B3576 /* NSMutableArray+GAStack.m */; };
+		5A51E9B71AFCC686000B3576 /* GAFile+Pointers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9B61AFCC686000B3576 /* GAFile+Pointers.m */; };
+		5A7E0A2C1AFD57AA00DB09D7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E0A2E1AFD57AA00DB09D7 /* Localizable.strings */; };
+		5A7E0A341AFD5C0600DB09D7 /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E0A331AFD5C0600DB09D7 /* localization.sh */; };
+		5A8664D51AFD0EB3002578F7 /* GASettingsSplitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664D31AFD0EB3002578F7 /* GASettingsSplitController.m */; };
+		5A8664D61AFD0EB3002578F7 /* GASettingsSplitController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664D41AFD0EB3002578F7 /* GASettingsSplitController.xib */; };
+		5A8664DC1AFD0F13002578F7 /* GADirectorySplitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664DA1AFD0F13002578F7 /* GADirectorySplitController.m */; };
+		5A8664DD1AFD0F13002578F7 /* GADirectorySplitController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664DB1AFD0F13002578F7 /* GADirectorySplitController.xib */; };
+		5A8665031AFD1AC2002578F7 /* GAFileDetailNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664E71AFD1AC2002578F7 /* GAFileDetailNavigationController.m */; };
+		5A8665041AFD1AC2002578F7 /* GAFileDetailNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664E81AFD1AC2002578F7 /* GAFileDetailNavigationController.xib */; };
+		5A8665051AFD1AC2002578F7 /* GADiaporamaVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664EB1AFD1AC2002578F7 /* GADiaporamaVC.m */; };
+		5A8665061AFD1AC2002578F7 /* GADiaporamaVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664EC1AFD1AC2002578F7 /* GADiaporamaVC.xib */; };
+		5A8665091AFD1AC2002578F7 /* GASettingsDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664F41AFD1AC2002578F7 /* GASettingsDetailVC.m */; };
+		5A86650A1AFD1AC2002578F7 /* GASettingsDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664F51AFD1AC2002578F7 /* GASettingsDetailVC.xib */; };
+		5A86650B1AFD1AC2002578F7 /* GADirectoryMasterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664FA1AFD1AC2002578F7 /* GADirectoryMasterVC.m */; };
+		5A86650C1AFD1AC2002578F7 /* GADirectoryMasterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664FB1AFD1AC2002578F7 /* GADirectoryMasterVC.xib */; };
+		5A86650D1AFD1AC2002578F7 /* GADirectoryNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664FD1AFD1AC2002578F7 /* GADirectoryNavigationController.m */; };
+		5A86650E1AFD1AC2002578F7 /* GADirectoryNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8664FE1AFD1AC2002578F7 /* GADirectoryNavigationController.xib */; };
+		5A8665151AFD1B17002578F7 /* GASettingsMasterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8665131AFD1B17002578F7 /* GASettingsMasterVC.m */; };
+		5A8665161AFD1B17002578F7 /* GASettingsMasterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8665141AFD1B17002578F7 /* GASettingsMasterVC.xib */; };
+		5A86651A1AFD1D4D002578F7 /* GASettingsDetailNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8665181AFD1D4D002578F7 /* GASettingsDetailNavigationController.m */; };
+		5A86651B1AFD1D4D002578F7 /* GASettingsDetailNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8665191AFD1D4D002578F7 /* GASettingsDetailNavigationController.xib */; };
+		5A86651E1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A86651D1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.m */; };
+		5A8665221AFD24E5002578F7 /* GASettingChoiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8665201AFD24E5002578F7 /* GASettingChoiceVC.m */; };
+		5A8665231AFD24E5002578F7 /* GASettingChoiceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8665211AFD24E5002578F7 /* GASettingChoiceVC.xib */; };
+		5A8665271AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8665261AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,20 +73,100 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A36B9911AFD648A009098CB /* GAInternationalization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAInternationalization.h; sourceTree = "<group>"; };
+		5A36B9921AFD648A009098CB /* GAInternationalization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAInternationalization.m; sourceTree = "<group>"; };
+		5A36B9941AFD768C009098CB /* GAFileInspectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAFileInspectorVC.h; path = GAFileInspectorVC/GAFileInspectorVC.h; sourceTree = "<group>"; };
+		5A36B9951AFD768C009098CB /* GAFileInspectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAFileInspectorVC.m; path = GAFileInspectorVC/GAFileInspectorVC.m; sourceTree = "<group>"; };
+		5A36B9981AFD76B9009098CB /* GADirectoryInspectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GADirectoryInspectorVC.h; path = GAFileInspectorVC/GADirectoryInspectorVC/GADirectoryInspectorVC.h; sourceTree = "<group>"; };
+		5A36B9991AFD76B9009098CB /* GADirectoryInspectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GADirectoryInspectorVC.m; path = GAFileInspectorVC/GADirectoryInspectorVC/GADirectoryInspectorVC.m; sourceTree = "<group>"; };
+		5A36B99A1AFD76B9009098CB /* GADirectoryInspectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GADirectoryInspectorVC.xib; path = GAFileInspectorVC/GADirectoryInspectorVC/GADirectoryInspectorVC.xib; sourceTree = "<group>"; };
+		5A36B99E1AFD76D7009098CB /* GAImageInspectorVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAImageInspectorVC.h; path = GAFileInspectorVC/GAImageInspectorVC/GAImageInspectorVC.h; sourceTree = "<group>"; };
+		5A36B99F1AFD76D7009098CB /* GAImageInspectorVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAImageInspectorVC.m; path = GAFileInspectorVC/GAImageInspectorVC/GAImageInspectorVC.m; sourceTree = "<group>"; };
+		5A36B9A01AFD76D7009098CB /* GAImageInspectorVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAImageInspectorVC.xib; path = GAFileInspectorVC/GAImageInspectorVC/GAImageInspectorVC.xib; sourceTree = "<group>"; };
+		5A36B9AA1AFE1B41009098CB /* GADiaporamaPagedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADiaporamaPagedController.h; sourceTree = "<group>"; };
+		5A36B9AB1AFE1B41009098CB /* GADiaporamaPagedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADiaporamaPagedController.m; sourceTree = "<group>"; };
+		5A36B9AD1AFE455C009098CB /* GAAlertFactoy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAAlertFactoy.h; path = GAAlertFactoy/GAAlertFactoy.h; sourceTree = "<group>"; };
+		5A36B9AE1AFE455C009098CB /* GAAlertFactoy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAAlertFactoy.m; path = GAAlertFactoy/GAAlertFactoy.m; sourceTree = "<group>"; };
+		5A36B9B11AFE5670009098CB /* GAFileLoadingVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAFileLoadingVC.h; path = GAFileLoadingVC/GAFileLoadingVC.h; sourceTree = "<group>"; };
+		5A36B9B21AFE5670009098CB /* GAFileLoadingVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAFileLoadingVC.m; path = GAFileLoadingVC/GAFileLoadingVC.m; sourceTree = "<group>"; };
+		5A36B9B31AFE5670009098CB /* GAFileLoadingVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAFileLoadingVC.xib; path = GAFileLoadingVC/GAFileLoadingVC.xib; sourceTree = "<group>"; };
 		5A4570401AF6C3D900A436AC /* Gallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4570441AF6C3D900A436AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A4570451AF6C3D900A436AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5A4570471AF6C3D900A436AC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5A4570481AF6C3D900A436AC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5A45704E1AF6C3D900A436AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5A4570501AF6C3D900A436AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5A4570531AF6C3D900A436AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5A4570591AF6C3D900A436AC /* GalleryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GalleryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A45705E1AF6C3D900A436AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A45705F1AF6C3D900A436AC /* GalleryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GalleryTests.m; sourceTree = "<group>"; };
-		5A45706A1AF6C66700A436AC /* GASplitVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GASplitVC.h; path = GASplitVC/GASplitVC.h; sourceTree = "<group>"; };
-		5A45706B1AF6C66700A436AC /* GASplitVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GASplitVC.m; path = GASplitVC/GASplitVC.m; sourceTree = "<group>"; };
-		5A45706C1AF6C66800A436AC /* GASplitVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GASplitVC.xib; path = GASplitVC/GASplitVC.xib; sourceTree = "<group>"; };
+		5A4570711AF6C96100A436AC /* GADirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADirectory.h; sourceTree = "<group>"; };
+		5A4570721AF6C96100A436AC /* GADirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADirectory.m; sourceTree = "<group>"; };
+		5A4570751AF6C96100A436AC /* GAImageFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAImageFile.h; sourceTree = "<group>"; };
+		5A4570761AF6C96100A436AC /* GAImageFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAImageFile.m; sourceTree = "<group>"; };
+		5A4570771AF6C96100A436AC /* GAFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFile.h; sourceTree = "<group>"; };
+		5A4570781AF6C96100A436AC /* GAFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAFile.m; sourceTree = "<group>"; };
+		5A51E9811AF95CC3000B3576 /* GACacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GACacheManager.h; sourceTree = "<group>"; };
+		5A51E9821AF95CC3000B3576 /* GACacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GACacheManager.m; sourceTree = "<group>"; };
+		5A51E9831AF95CC3000B3576 /* GAFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFileManager.h; sourceTree = "<group>"; };
+		5A51E9841AF95CC3000B3576 /* GAFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAFileManager.m; sourceTree = "<group>"; };
+		5A51E9881AF96194000B3576 /* GAThumbnailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAThumbnailView.h; path = GAThumbnailView/GAThumbnailView.h; sourceTree = "<group>"; };
+		5A51E9891AF96194000B3576 /* GAThumbnailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAThumbnailView.m; path = GAThumbnailView/GAThumbnailView.m; sourceTree = "<group>"; };
+		5A51E9931AF969CC000B3576 /* GAImageFileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAImageFileTableViewCell.h; path = GAImageFileTableViewCell/GAImageFileTableViewCell.h; sourceTree = "<group>"; };
+		5A51E9941AF969CC000B3576 /* GAImageFileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAImageFileTableViewCell.m; path = GAImageFileTableViewCell/GAImageFileTableViewCell.m; sourceTree = "<group>"; };
+		5A51E9951AF969CC000B3576 /* GAImageFileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAImageFileTableViewCell.xib; path = GAImageFileTableViewCell/GAImageFileTableViewCell.xib; sourceTree = "<group>"; };
+		5A51E9991AF96B8D000B3576 /* GATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GATableViewCell.h; path = GATableViewCell/GATableViewCell.h; sourceTree = "<group>"; };
+		5A51E99A1AF96B8D000B3576 /* GATableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GATableViewCell.m; path = GATableViewCell/GATableViewCell.m; sourceTree = "<group>"; };
+		5A51E99D1AFBE5C9000B3576 /* GASettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GASettingsManager.h; sourceTree = "<group>"; };
+		5A51E99E1AFBE5C9000B3576 /* GASettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GASettingsManager.m; sourceTree = "<group>"; };
+		5A51E9A01AFBFBF0000B3576 /* GALogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GALogger.h; sourceTree = "<group>"; };
+		5A51E9A11AFBFBF0000B3576 /* GALogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GALogger.m; sourceTree = "<group>"; };
+		5A51E9A31AFBFEDE000B3576 /* GALog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GALog.h; sourceTree = "<group>"; };
+		5A51E9A41AFBFEDE000B3576 /* GALog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GALog.m; sourceTree = "<group>"; };
+		5A51E9B21AFCBAAA000B3576 /* NSMutableArray+GAStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+GAStack.h"; sourceTree = "<group>"; };
+		5A51E9B31AFCBAAA000B3576 /* NSMutableArray+GAStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+GAStack.m"; sourceTree = "<group>"; };
+		5A51E9B51AFCC686000B3576 /* GAFile+Pointers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GAFile+Pointers.h"; sourceTree = "<group>"; };
+		5A51E9B61AFCC686000B3576 /* GAFile+Pointers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GAFile+Pointers.m"; sourceTree = "<group>"; };
+		5A7E0A2B1AFD571400DB09D7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5A7E0A2D1AFD57AA00DB09D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5A7E0A2F1AFD57AF00DB09D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5A7E0A301AFD57B100DB09D7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5A7E0A321AFD57E200DB09D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		5A7E0A331AFD5C0600DB09D7 /* localization.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = localization.sh; sourceTree = "<group>"; };
+		5A8664D21AFD0EB3002578F7 /* GASettingsSplitController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GASettingsSplitController.h; path = GASettingsSplitController/GASettingsSplitController.h; sourceTree = "<group>"; };
+		5A8664D31AFD0EB3002578F7 /* GASettingsSplitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GASettingsSplitController.m; path = GASettingsSplitController/GASettingsSplitController.m; sourceTree = "<group>"; };
+		5A8664D41AFD0EB3002578F7 /* GASettingsSplitController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GASettingsSplitController.xib; path = GASettingsSplitController/GASettingsSplitController.xib; sourceTree = "<group>"; };
+		5A8664D91AFD0F13002578F7 /* GADirectorySplitController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADirectorySplitController.h; sourceTree = "<group>"; };
+		5A8664DA1AFD0F13002578F7 /* GADirectorySplitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADirectorySplitController.m; sourceTree = "<group>"; };
+		5A8664DB1AFD0F13002578F7 /* GADirectorySplitController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GADirectorySplitController.xib; sourceTree = "<group>"; };
+		5A8664E61AFD1AC2002578F7 /* GAFileDetailNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFileDetailNavigationController.h; sourceTree = "<group>"; };
+		5A8664E71AFD1AC2002578F7 /* GAFileDetailNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAFileDetailNavigationController.m; sourceTree = "<group>"; };
+		5A8664E81AFD1AC2002578F7 /* GAFileDetailNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GAFileDetailNavigationController.xib; sourceTree = "<group>"; };
+		5A8664EA1AFD1AC2002578F7 /* GADiaporamaVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADiaporamaVC.h; sourceTree = "<group>"; };
+		5A8664EB1AFD1AC2002578F7 /* GADiaporamaVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADiaporamaVC.m; sourceTree = "<group>"; };
+		5A8664EC1AFD1AC2002578F7 /* GADiaporamaVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GADiaporamaVC.xib; sourceTree = "<group>"; };
+		5A8664F31AFD1AC2002578F7 /* GASettingsDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GASettingsDetailVC.h; sourceTree = "<group>"; };
+		5A8664F41AFD1AC2002578F7 /* GASettingsDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GASettingsDetailVC.m; sourceTree = "<group>"; };
+		5A8664F51AFD1AC2002578F7 /* GASettingsDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GASettingsDetailVC.xib; sourceTree = "<group>"; };
+		5A8664F91AFD1AC2002578F7 /* GADirectoryMasterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADirectoryMasterVC.h; sourceTree = "<group>"; };
+		5A8664FA1AFD1AC2002578F7 /* GADirectoryMasterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADirectoryMasterVC.m; sourceTree = "<group>"; };
+		5A8664FB1AFD1AC2002578F7 /* GADirectoryMasterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GADirectoryMasterVC.xib; sourceTree = "<group>"; };
+		5A8664FC1AFD1AC2002578F7 /* GADirectoryNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADirectoryNavigationController.h; sourceTree = "<group>"; };
+		5A8664FD1AFD1AC2002578F7 /* GADirectoryNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADirectoryNavigationController.m; sourceTree = "<group>"; };
+		5A8664FE1AFD1AC2002578F7 /* GADirectoryNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GADirectoryNavigationController.xib; sourceTree = "<group>"; };
+		5A8665121AFD1B17002578F7 /* GASettingsMasterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GASettingsMasterVC.h; sourceTree = "<group>"; };
+		5A8665131AFD1B17002578F7 /* GASettingsMasterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GASettingsMasterVC.m; sourceTree = "<group>"; };
+		5A8665141AFD1B17002578F7 /* GASettingsMasterVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GASettingsMasterVC.xib; sourceTree = "<group>"; };
+		5A8665171AFD1D4D002578F7 /* GASettingsDetailNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GASettingsDetailNavigationController.h; sourceTree = "<group>"; };
+		5A8665181AFD1D4D002578F7 /* GASettingsDetailNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GASettingsDetailNavigationController.m; sourceTree = "<group>"; };
+		5A8665191AFD1D4D002578F7 /* GASettingsDetailNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GASettingsDetailNavigationController.xib; sourceTree = "<group>"; };
+		5A86651C1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GASettingsDetailThumbnailsVC.h; sourceTree = "<group>"; };
+		5A86651D1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GASettingsDetailThumbnailsVC.m; sourceTree = "<group>"; };
+		5A86651F1AFD24E5002578F7 /* GASettingChoiceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GASettingChoiceVC.h; path = GASettingChoiceVC/GASettingChoiceVC.h; sourceTree = "<group>"; };
+		5A8665201AFD24E5002578F7 /* GASettingChoiceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GASettingChoiceVC.m; path = GASettingChoiceVC/GASettingChoiceVC.m; sourceTree = "<group>"; };
+		5A8665211AFD24E5002578F7 /* GASettingChoiceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GASettingChoiceVC.xib; path = GASettingChoiceVC/GASettingChoiceVC.xib; sourceTree = "<group>"; };
+		5A8665251AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GASettingsDetailDirectoryNavigation.h; sourceTree = "<group>"; };
+		5A8665261AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GASettingsDetailDirectoryNavigation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +187,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A36B9971AFD7691009098CB /* GAFileInspectorVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A36B9941AFD768C009098CB /* GAFileInspectorVC.h */,
+				5A36B9951AFD768C009098CB /* GAFileInspectorVC.m */,
+				5A36B9A31AFD76DA009098CB /* GAImageInspectorVC */,
+				5A36B99D1AFD76BC009098CB /* GADirectoryInspectorVC */,
+			);
+			name = GAFileInspectorVC;
+			sourceTree = "<group>";
+		};
+		5A36B99D1AFD76BC009098CB /* GADirectoryInspectorVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A36B9981AFD76B9009098CB /* GADirectoryInspectorVC.h */,
+				5A36B9991AFD76B9009098CB /* GADirectoryInspectorVC.m */,
+				5A36B99A1AFD76B9009098CB /* GADirectoryInspectorVC.xib */,
+			);
+			name = GADirectoryInspectorVC;
+			sourceTree = "<group>";
+		};
+		5A36B9A31AFD76DA009098CB /* GAImageInspectorVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A36B99E1AFD76D7009098CB /* GAImageInspectorVC.h */,
+				5A36B99F1AFD76D7009098CB /* GAImageInspectorVC.m */,
+				5A36B9A01AFD76D7009098CB /* GAImageInspectorVC.xib */,
+			);
+			name = GAImageInspectorVC;
+			sourceTree = "<group>";
+		};
+		5A36B9B01AFE4563009098CB /* GAAlertFactoy */ = {
+			isa = PBXGroup;
+			children = (
+				5A36B9AD1AFE455C009098CB /* GAAlertFactoy.h */,
+				5A36B9AE1AFE455C009098CB /* GAAlertFactoy.m */,
+			);
+			name = GAAlertFactoy;
+			sourceTree = "<group>";
+		};
+		5A36B9B61AFE5673009098CB /* GAFileLoadingVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A36B9B11AFE5670009098CB /* GAFileLoadingVC.h */,
+				5A36B9B21AFE5670009098CB /* GAFileLoadingVC.m */,
+				5A36B9B31AFE5670009098CB /* GAFileLoadingVC.xib */,
+			);
+			name = GAFileLoadingVC;
+			sourceTree = "<group>";
+		};
 		5A4570371AF6C3D900A436AC = {
 			isa = PBXGroup;
 			children = (
@@ -85,8 +260,9 @@
 			children = (
 				5A4570471AF6C3D900A436AC /* AppDelegate.h */,
 				5A4570481AF6C3D900A436AC /* AppDelegate.m */,
+				5A4570701AF6C96100A436AC /* Model */,
+				5A51E9871AF96129000B3576 /* Views */,
 				5A4570691AF6C63700A436AC /* Controllers */,
-				5A45704D1AF6C3D900A436AC /* Main.storyboard */,
 				5A4570501AF6C3D900A436AC /* Images.xcassets */,
 				5A4570521AF6C3D900A436AC /* LaunchScreen.xib */,
 				5A4570431AF6C3D900A436AC /* Supporting Files */,
@@ -97,6 +273,8 @@
 		5A4570431AF6C3D900A436AC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5A7E0A331AFD5C0600DB09D7 /* localization.sh */,
+				5A7E0A2E1AFD57AA00DB09D7 /* Localizable.strings */,
 				5A4570441AF6C3D900A436AC /* Info.plist */,
 				5A4570451AF6C3D900A436AC /* main.m */,
 			);
@@ -123,11 +301,234 @@
 		5A4570691AF6C63700A436AC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5A45706A1AF6C66700A436AC /* GASplitVC.h */,
-				5A45706B1AF6C66700A436AC /* GASplitVC.m */,
-				5A45706C1AF6C66800A436AC /* GASplitVC.xib */,
+				5A8664D81AFD0F13002578F7 /* GADirectorySplitController */,
+				5A8664D71AFD0EB6002578F7 /* GASettingsSplitController */,
+				5A8664F61AFD1AC2002578F7 /* MasterViewControllers */,
+				5A8664E41AFD1AC2002578F7 /* DetailViewControllers */,
+				5A36B9B61AFE5673009098CB /* GAFileLoadingVC */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5A4570701AF6C96100A436AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5A51E9801AF95CC3000B3576 /* Managers */,
+				5A4570711AF6C96100A436AC /* GADirectory.h */,
+				5A4570721AF6C96100A436AC /* GADirectory.m */,
+				5A4570751AF6C96100A436AC /* GAImageFile.h */,
+				5A4570761AF6C96100A436AC /* GAImageFile.m */,
+				5A4570771AF6C96100A436AC /* GAFile.h */,
+				5A4570781AF6C96100A436AC /* GAFile.m */,
+				5A51E9B51AFCC686000B3576 /* GAFile+Pointers.h */,
+				5A51E9B61AFCC686000B3576 /* GAFile+Pointers.m */,
+				5A51E9A31AFBFEDE000B3576 /* GALog.h */,
+				5A51E9A41AFBFEDE000B3576 /* GALog.m */,
+				5A51E9B21AFCBAAA000B3576 /* NSMutableArray+GAStack.h */,
+				5A51E9B31AFCBAAA000B3576 /* NSMutableArray+GAStack.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5A51E9801AF95CC3000B3576 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5A51E9811AF95CC3000B3576 /* GACacheManager.h */,
+				5A51E9821AF95CC3000B3576 /* GACacheManager.m */,
+				5A51E9831AF95CC3000B3576 /* GAFileManager.h */,
+				5A51E9841AF95CC3000B3576 /* GAFileManager.m */,
+				5A51E99D1AFBE5C9000B3576 /* GASettingsManager.h */,
+				5A51E99E1AFBE5C9000B3576 /* GASettingsManager.m */,
+				5A51E9A01AFBFBF0000B3576 /* GALogger.h */,
+				5A51E9A11AFBFBF0000B3576 /* GALogger.m */,
+				5A36B9911AFD648A009098CB /* GAInternationalization.h */,
+				5A36B9921AFD648A009098CB /* GAInternationalization.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		5A51E9871AF96129000B3576 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5A51E98C1AF96964000B3576 /* TableViewCells */,
+				5A51E98B1AF967F5000B3576 /* GAThumbnailView */,
+				5A36B9B01AFE4563009098CB /* GAAlertFactoy */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5A51E98B1AF967F5000B3576 /* GAThumbnailView */ = {
+			isa = PBXGroup;
+			children = (
+				5A51E9881AF96194000B3576 /* GAThumbnailView.h */,
+				5A51E9891AF96194000B3576 /* GAThumbnailView.m */,
+			);
+			name = GAThumbnailView;
+			sourceTree = "<group>";
+		};
+		5A51E98C1AF96964000B3576 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				5A51E99C1AF96B92000B3576 /* GATableViewCell */,
+				5A51E9981AF969D1000B3576 /* GAImageFileTableViewCell */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		5A51E9981AF969D1000B3576 /* GAImageFileTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5A51E9931AF969CC000B3576 /* GAImageFileTableViewCell.h */,
+				5A51E9941AF969CC000B3576 /* GAImageFileTableViewCell.m */,
+				5A51E9951AF969CC000B3576 /* GAImageFileTableViewCell.xib */,
+			);
+			name = GAImageFileTableViewCell;
+			sourceTree = "<group>";
+		};
+		5A51E99C1AF96B92000B3576 /* GATableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5A51E9991AF96B8D000B3576 /* GATableViewCell.h */,
+				5A51E99A1AF96B8D000B3576 /* GATableViewCell.m */,
+			);
+			name = GATableViewCell;
+			sourceTree = "<group>";
+		};
+		5A8664D71AFD0EB6002578F7 /* GASettingsSplitController */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664D21AFD0EB3002578F7 /* GASettingsSplitController.h */,
+				5A8664D31AFD0EB3002578F7 /* GASettingsSplitController.m */,
+				5A8664D41AFD0EB3002578F7 /* GASettingsSplitController.xib */,
+			);
+			name = GASettingsSplitController;
+			sourceTree = "<group>";
+		};
+		5A8664D81AFD0F13002578F7 /* GADirectorySplitController */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664D91AFD0F13002578F7 /* GADirectorySplitController.h */,
+				5A8664DA1AFD0F13002578F7 /* GADirectorySplitController.m */,
+				5A8664DB1AFD0F13002578F7 /* GADirectorySplitController.xib */,
+			);
+			path = GADirectorySplitController;
+			sourceTree = "<group>";
+		};
+		5A8664E41AFD1AC2002578F7 /* DetailViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664E51AFD1AC2002578F7 /* GAFileDetailNavigationController */,
+				5A8664F11AFD1AC2002578F7 /* GASettingsDetailNavigationController */,
+			);
+			path = DetailViewControllers;
+			sourceTree = "<group>";
+		};
+		5A8664E51AFD1AC2002578F7 /* GAFileDetailNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664E61AFD1AC2002578F7 /* GAFileDetailNavigationController.h */,
+				5A8664E71AFD1AC2002578F7 /* GAFileDetailNavigationController.m */,
+				5A8664E81AFD1AC2002578F7 /* GAFileDetailNavigationController.xib */,
+				5A8664E91AFD1AC2002578F7 /* GADiaporamaVC */,
+				5A36B9971AFD7691009098CB /* GAFileInspectorVC */,
+			);
+			path = GAFileDetailNavigationController;
+			sourceTree = "<group>";
+		};
+		5A8664E91AFD1AC2002578F7 /* GADiaporamaVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664EA1AFD1AC2002578F7 /* GADiaporamaVC.h */,
+				5A8664EB1AFD1AC2002578F7 /* GADiaporamaVC.m */,
+				5A8664EC1AFD1AC2002578F7 /* GADiaporamaVC.xib */,
+				5A36B9AA1AFE1B41009098CB /* GADiaporamaPagedController.h */,
+				5A36B9AB1AFE1B41009098CB /* GADiaporamaPagedController.m */,
+			);
+			path = GADiaporamaVC;
+			sourceTree = "<group>";
+		};
+		5A8664F11AFD1AC2002578F7 /* GASettingsDetailNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				5A8665171AFD1D4D002578F7 /* GASettingsDetailNavigationController.h */,
+				5A8665181AFD1D4D002578F7 /* GASettingsDetailNavigationController.m */,
+				5A8665191AFD1D4D002578F7 /* GASettingsDetailNavigationController.xib */,
+				5A8664F21AFD1AC2002578F7 /* GASettingsDetailVC */,
+			);
+			path = GASettingsDetailNavigationController;
+			sourceTree = "<group>";
+		};
+		5A8664F21AFD1AC2002578F7 /* GASettingsDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664F31AFD1AC2002578F7 /* GASettingsDetailVC.h */,
+				5A8664F41AFD1AC2002578F7 /* GASettingsDetailVC.m */,
+				5A8664F51AFD1AC2002578F7 /* GASettingsDetailVC.xib */,
+				5A8665281AFD3C42002578F7 /* Specific settings */,
+				5A8665241AFD24E9002578F7 /* GASettingChoiceVC */,
+			);
+			path = GASettingsDetailVC;
+			sourceTree = "<group>";
+		};
+		5A8664F61AFD1AC2002578F7 /* MasterViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5A8665111AFD1B17002578F7 /* GASettingsMasterVC */,
+				5A8664F71AFD1AC2002578F7 /* GADirectoryNavigationController */,
+			);
+			path = MasterViewControllers;
+			sourceTree = "<group>";
+		};
+		5A8664F71AFD1AC2002578F7 /* GADirectoryNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664FC1AFD1AC2002578F7 /* GADirectoryNavigationController.h */,
+				5A8664FD1AFD1AC2002578F7 /* GADirectoryNavigationController.m */,
+				5A8664FE1AFD1AC2002578F7 /* GADirectoryNavigationController.xib */,
+				5A8664F81AFD1AC2002578F7 /* GADirectoryMasterVC */,
+			);
+			path = GADirectoryNavigationController;
+			sourceTree = "<group>";
+		};
+		5A8664F81AFD1AC2002578F7 /* GADirectoryMasterVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A8664F91AFD1AC2002578F7 /* GADirectoryMasterVC.h */,
+				5A8664FA1AFD1AC2002578F7 /* GADirectoryMasterVC.m */,
+				5A8664FB1AFD1AC2002578F7 /* GADirectoryMasterVC.xib */,
+			);
+			path = GADirectoryMasterVC;
+			sourceTree = "<group>";
+		};
+		5A8665111AFD1B17002578F7 /* GASettingsMasterVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A8665121AFD1B17002578F7 /* GASettingsMasterVC.h */,
+				5A8665131AFD1B17002578F7 /* GASettingsMasterVC.m */,
+				5A8665141AFD1B17002578F7 /* GASettingsMasterVC.xib */,
+			);
+			path = GASettingsMasterVC;
+			sourceTree = "<group>";
+		};
+		5A8665241AFD24E9002578F7 /* GASettingChoiceVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A86651F1AFD24E5002578F7 /* GASettingChoiceVC.h */,
+				5A8665201AFD24E5002578F7 /* GASettingChoiceVC.m */,
+				5A8665211AFD24E5002578F7 /* GASettingChoiceVC.xib */,
+			);
+			name = GASettingChoiceVC;
+			sourceTree = "<group>";
+		};
+		5A8665281AFD3C42002578F7 /* Specific settings */ = {
+			isa = PBXGroup;
+			children = (
+				5A86651C1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.h */,
+				5A86651D1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.m */,
+				5A8665251AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.h */,
+				5A8665261AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.m */,
+			);
+			name = "Specific settings";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +580,7 @@
 				TargetAttributes = {
 					5A45703F1AF6C3D900A436AC = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 5Y997TN8JS;
 					};
 					5A4570581AF6C3D900A436AC = {
 						CreatedOnToolsVersion = 6.2;
@@ -193,6 +595,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 5A4570371AF6C3D900A436AC;
 			productRefGroup = 5A4570411AF6C3D900A436AC /* Products */;
@@ -210,10 +613,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A45704F1AF6C3D900A436AC /* Main.storyboard in Resources */,
+				5A8665061AFD1AC2002578F7 /* GADiaporamaVC.xib in Resources */,
+				5A7E0A341AFD5C0600DB09D7 /* localization.sh in Resources */,
+				5A51E9971AF969CC000B3576 /* GAImageFileTableViewCell.xib in Resources */,
+				5A86650A1AFD1AC2002578F7 /* GASettingsDetailVC.xib in Resources */,
+				5A36B99C1AFD76B9009098CB /* GADirectoryInspectorVC.xib in Resources */,
+				5A36B9B51AFE5670009098CB /* GAFileLoadingVC.xib in Resources */,
+				5A8665161AFD1B17002578F7 /* GASettingsMasterVC.xib in Resources */,
+				5A86651B1AFD1D4D002578F7 /* GASettingsDetailNavigationController.xib in Resources */,
+				5A8664DD1AFD0F13002578F7 /* GADirectorySplitController.xib in Resources */,
+				5A8665231AFD24E5002578F7 /* GASettingChoiceVC.xib in Resources */,
+				5A86650E1AFD1AC2002578F7 /* GADirectoryNavigationController.xib in Resources */,
+				5A86650C1AFD1AC2002578F7 /* GADirectoryMasterVC.xib in Resources */,
+				5A8665041AFD1AC2002578F7 /* GAFileDetailNavigationController.xib in Resources */,
+				5A7E0A2C1AFD57AA00DB09D7 /* Localizable.strings in Resources */,
 				5A4570541AF6C3D900A436AC /* LaunchScreen.xib in Resources */,
 				5A4570511AF6C3D900A436AC /* Images.xcassets in Resources */,
-				5A45706E1AF6C66800A436AC /* GASplitVC.xib in Resources */,
+				5A36B9A21AFD76D7009098CB /* GAImageInspectorVC.xib in Resources */,
+				5A8664D61AFD0EB3002578F7 /* GASettingsSplitController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,9 +648,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A36B9931AFD648A009098CB /* GAInternationalization.m in Sources */,
 				5A4570491AF6C3D900A436AC /* AppDelegate.m in Sources */,
+				5A8665221AFD24E5002578F7 /* GASettingChoiceVC.m in Sources */,
+				5A8664D51AFD0EB3002578F7 /* GASettingsSplitController.m in Sources */,
+				5A36B99B1AFD76B9009098CB /* GADirectoryInspectorVC.m in Sources */,
+				5A51E9B41AFCBAAA000B3576 /* NSMutableArray+GAStack.m in Sources */,
+				5A51E99F1AFBE5C9000B3576 /* GASettingsManager.m in Sources */,
+				5A36B9961AFD768C009098CB /* GAFileInspectorVC.m in Sources */,
+				5A8665271AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.m in Sources */,
+				5A8665031AFD1AC2002578F7 /* GAFileDetailNavigationController.m in Sources */,
+				5A36B9A11AFD76D7009098CB /* GAImageInspectorVC.m in Sources */,
 				5A4570461AF6C3D900A436AC /* main.m in Sources */,
-				5A45706D1AF6C66800A436AC /* GASplitVC.m in Sources */,
+				5A36B9AC1AFE1B41009098CB /* GADiaporamaPagedController.m in Sources */,
+				5A36B9AF1AFE455C009098CB /* GAAlertFactoy.m in Sources */,
+				5A51E98A1AF96194000B3576 /* GAThumbnailView.m in Sources */,
+				5A51E9A51AFBFEDE000B3576 /* GALog.m in Sources */,
+				5A45707C1AF6C96100A436AC /* GAFile.m in Sources */,
+				5A86651A1AFD1D4D002578F7 /* GASettingsDetailNavigationController.m in Sources */,
+				5A45707B1AF6C96100A436AC /* GAImageFile.m in Sources */,
+				5A8664DC1AFD0F13002578F7 /* GADirectorySplitController.m in Sources */,
+				5A8665151AFD1B17002578F7 /* GASettingsMasterVC.m in Sources */,
+				5A51E9B71AFCC686000B3576 /* GAFile+Pointers.m in Sources */,
+				5A86650D1AFD1AC2002578F7 /* GADirectoryNavigationController.m in Sources */,
+				5A4570791AF6C96100A436AC /* GADirectory.m in Sources */,
+				5A86650B1AFD1AC2002578F7 /* GADirectoryMasterVC.m in Sources */,
+				5A36B9B41AFE5670009098CB /* GAFileLoadingVC.m in Sources */,
+				5A51E99B1AF96B8D000B3576 /* GATableViewCell.m in Sources */,
+				5A51E9861AF95CC3000B3576 /* GAFileManager.m in Sources */,
+				5A51E9851AF95CC3000B3576 /* GACacheManager.m in Sources */,
+				5A86651E1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.m in Sources */,
+				5A8665091AFD1AC2002578F7 /* GASettingsDetailVC.m in Sources */,
+				5A8665051AFD1AC2002578F7 /* GADiaporamaVC.m in Sources */,
+				5A51E9A21AFBFBF0000B3576 /* GALogger.m in Sources */,
+				5A51E9961AF969CC000B3576 /* GAImageFileTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,20 +704,24 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5A45704D1AF6C3D900A436AC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5A45704E1AF6C3D900A436AC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5A4570521AF6C3D900A436AC /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5A4570531AF6C3D900A436AC /* Base */,
+				5A7E0A2B1AFD571400DB09D7 /* fr */,
+				5A7E0A321AFD57E200DB09D7 /* en */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		5A7E0A2E1AFD57AA00DB09D7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A7E0A2D1AFD57AA00DB09D7 /* Base */,
+				5A7E0A2F1AFD57AF00DB09D7 /* en */,
+				5A7E0A301AFD57B100DB09D7 /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -357,6 +809,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Gallery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -368,6 +822,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Gallery/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -428,6 +884,7 @@
 				5A4570651AF6C3D900A436AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A4570661AF6C3D900A436AC /* Build configuration list for PBXNativeTarget "GalleryTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +893,7 @@
 				5A4570681AF6C3D900A436AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

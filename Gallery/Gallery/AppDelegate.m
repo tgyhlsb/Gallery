@@ -8,8 +8,12 @@
 
 #import "AppDelegate.h"
 
+// Managers
+#import "GAFileManager.h"
+
 // Controllers
-#import "GASplitVC.h"
+#import "GAFileLoadingVC.h"
+#import "GADirectorySplitController.h"
 
 @interface AppDelegate ()
 
@@ -22,9 +26,22 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
-    self.window.rootViewController = [GASplitVC new];
+    
+    [self setWindowForFileDirectories];
+    [self registerToFileManagerNotifications];
     
     return YES;
+}
+
+- (void)setWindowForFileDirectories {
+    GAFileLoadingVC *loaderVC = [GAFileLoadingVC new];
+    
+    [loaderVC setCompletionBLock:^{
+        [GAFileManager startMonitoring];
+        self.window.rootViewController = [GADirectorySplitController new];
+    }];
+    
+    self.window.rootViewController = loaderVC;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -47,6 +64,16 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Broadcast
+
+- (void)registerToFileManagerNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fileDirectoryDidChange) name:GANotificationFileDirectoryChanged object:nil];
+}
+
+- (void)fileDirectoryDidChange {
+    [self setWindowForFileDirectories];
 }
 
 @end
