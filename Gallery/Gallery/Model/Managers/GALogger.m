@@ -8,8 +8,6 @@
 
 #import "GALogger.h"
 
-#define ARCHIVE_PATH @"/archives/logs"
-
 #define PRINT_LOGS YES
 
 static GALogger *sharedLogger;
@@ -71,27 +69,40 @@ static GALogger *sharedLogger;
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        self.logs = [aDecoder decodeObjectForKey:ENCODE_KEY_LOGS];
+        self.logs = [[aDecoder decodeObjectForKey:ENCODE_KEY_LOGS] mutableCopy];
         [self generateSortedLogs];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.logs forKey:ENCODE_KEY_LOGS];
+    [aCoder encodeObject:[self.logs copy] forKey:ENCODE_KEY_LOGS];
 }
 
 - (void)synchronize {
-    [NSKeyedArchiver archiveRootObject:self toFile:ARCHIVE_PATH];
+    [NSKeyedArchiver archiveRootObject:sharedLogger toFile:[GALogger storePath]];
 }
 
 + (instancetype)loadFromDisk {
-    GALogger *logger = [NSKeyedUnarchiver unarchiveObjectWithFile:ARCHIVE_PATH];
+    GALogger *logger = [NSKeyedUnarchiver unarchiveObjectWithFile:[self storePath]];
     if (!logger) logger = [GALogger new];
     return logger;
 }
 
++ (NSString *)storePath {
+    NSString *rootPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *filePath = [[rootPath stringByAppendingPathComponent:@"gallery.logs"] stringByExpandingTildeInPath];
+    return filePath;
+}
+
 #pragma mark - Getters & Setters
+
+- (NSMutableArray *)logs {
+    if (!_logs) {
+        _logs = [[NSMutableArray alloc] init];
+    }
+    return _logs;
+}
 
 - (NSArray *)sortedLogs {
     if (!_sortedLogs) {
