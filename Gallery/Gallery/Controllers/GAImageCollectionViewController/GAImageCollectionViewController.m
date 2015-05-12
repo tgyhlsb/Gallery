@@ -10,6 +10,7 @@
 
 // Managers
 #import "GALogger.h"
+#import "GASettingsManager.h"
 
 // Views
 #import "GAImageCollectionViewCell.h"
@@ -37,8 +38,6 @@
 #pragma mark - Initialization
 
 #define MARGIN 10
-#define NUMBER_OF_ITEM_PORTRAIT 4.0
-#define NUMBER_OF_ITEM_LANDSCAPE 6.0
 
 - (void)initializeCollectionView {
     
@@ -59,7 +58,7 @@
 }
 
 - (CGSize)sizeForItem {
-    CGFloat numberOfItem = UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation) ? NUMBER_OF_ITEM_PORTRAIT : NUMBER_OF_ITEM_LANDSCAPE;
+    CGFloat numberOfItem = UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation) ? [GASettingsManager pictureNumberPortrait] : [GASettingsManager pictureNumberLandscape];
     CGFloat numberOfSpacing = numberOfItem + 1;
     CGFloat collectionViewWidth = [[UIScreen mainScreen] bounds].size.width;
     CGFloat totalItemsWidth = collectionViewWidth - numberOfSpacing*MARGIN;
