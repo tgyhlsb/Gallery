@@ -36,6 +36,10 @@
 
 #pragma mark - Initialization
 
+#define MARGIN 10
+#define NUMBER_OF_ITEM_PORTRAIT 4.0
+#define NUMBER_OF_ITEM_LANDSCAPE 6.0
+
 - (void)initializeCollectionView {
     
     [GAImageCollectionViewCell registerToCollectionView:self.collectionView];
@@ -46,10 +50,21 @@
     self.collectionView.dataSource = self;
     
     UICollectionViewFlowLayout *collectionViewLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
-    collectionViewLayout.sectionInset = UIEdgeInsetsMake(50, 20, 50, 20);
-    collectionViewLayout.itemSize = CGSizeMake(50, 50);
+    collectionViewLayout.sectionInset = UIEdgeInsetsMake(MARGIN, MARGIN, MARGIN, MARGIN);
+    collectionViewLayout.itemSize = [self sizeForItem];
+    collectionViewLayout.minimumInteritemSpacing = MARGIN;
+    collectionViewLayout.minimumLineSpacing = MARGIN;
     collectionViewLayout.headerReferenceSize = CGSizeMake(50, 50);
     collectionViewLayout.footerReferenceSize = CGSizeMake(50, 50);
+}
+
+- (CGSize)sizeForItem {
+    CGFloat numberOfItem = UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation) ? NUMBER_OF_ITEM_PORTRAIT : NUMBER_OF_ITEM_LANDSCAPE;
+    CGFloat numberOfSpacing = numberOfItem + 1;
+    CGFloat collectionViewWidth = [[UIScreen mainScreen] bounds].size.width;
+    CGFloat totalItemsWidth = collectionViewWidth - numberOfSpacing*MARGIN;
+    CGFloat itemWidth = totalItemsWidth/numberOfItem;
+    return CGSizeMake(itemWidth, itemWidth);
 }
 
 #pragma mark - UICollectionViewDataSource
