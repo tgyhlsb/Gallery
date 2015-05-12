@@ -14,6 +14,7 @@
 // Controllers
 #import "GAFileLoadingVC.h"
 #import "GADirectorySplitController.h"
+#import "GAImageCollectionViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,11 +26,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window makeKeyAndVisible];
     
-    [self setWindowForFileDirectories];
+//    [self setWindowForFileDirectories];
+    self.window.rootViewController = [GAImageCollectionViewController new];
     [self registerToFileManagerNotifications];
     
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
