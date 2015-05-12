@@ -19,8 +19,6 @@
 @property (weak, nonatomic, readonly) GAFile *next;
 @property (weak, nonatomic, readonly) GAFile *previous;
 
-@property (nonatomic) BOOL shouldCache;
-
 - (id)initFromPath:(NSString *)path
             parent:(GADirectory *)parent;
 

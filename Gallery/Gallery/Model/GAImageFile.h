@@ -15,6 +15,8 @@
 
 @interface GAImageFile : GAFile
 
++ (NSMutableArray *)existingObjects;
+
 + (instancetype)imageFileFromPath:(NSString *)path
                            parent:(GADirectory *)parent;
 

@@ -8,15 +8,13 @@
 
 #import "GAImageCollectionViewCell.h"
 
+@interface GAImageCollectionViewCell()
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+@end
+
 @implementation GAImageCollectionViewCell
-
-#pragma mark - Class
-
-//+ (void)registerToCollectionView:(UICollectionView *)collectionView {
-//    NSString *name = [[self class] description];
-//    UINib *nib = [UINib nibWithNibName:name bundle:nil];
-//    [collectionView registerNib:nib forCellWithReuseIdentifier:name];
-//}
 
 #pragma mark - Initialization
 

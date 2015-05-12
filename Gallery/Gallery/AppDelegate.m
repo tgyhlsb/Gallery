@@ -15,6 +15,7 @@
 #import "GAFileLoadingVC.h"
 #import "GADirectorySplitController.h"
 #import "GAImageCollectionViewController.h"
+#import "GAImageCollectionViewController.h"
 
 @interface AppDelegate ()
 
@@ -27,20 +28,31 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-//    [self setWindowForFileDirectories];
-    self.window.rootViewController = [GAImageCollectionViewController new];
+//    [self setWindowForFileInspector];
+    [self setWindowForPictureCollection];
     [self registerToFileManagerNotifications];
     
     [self.window makeKeyAndVisible];
     return YES;
 }
 
-- (void)setWindowForFileDirectories {
+- (void)setWindowForFileInspector {
     GAFileLoadingVC *loaderVC = [GAFileLoadingVC new];
     
     [loaderVC setCompletionBLock:^{
         [GAFileManager startMonitoring];
         self.window.rootViewController = [GADirectorySplitController new];
+    }];
+    
+    self.window.rootViewController = loaderVC;
+}
+
+- (void)setWindowForPictureCollection{
+    GAFileLoadingVC *loaderVC = [GAFileLoadingVC new];
+    
+    [loaderVC setCompletionBLock:^{
+        [GAFileManager startMonitoring];
+        self.window.rootViewController = [GAImageCollectionViewController new];
     }];
     
     self.window.rootViewController = loaderVC;
@@ -75,7 +87,7 @@
 }
 
 - (void)fileDirectoryDidChange {
-    [self setWindowForFileDirectories];
+    [self setWindowForPictureCollection];
 }
 
 @end

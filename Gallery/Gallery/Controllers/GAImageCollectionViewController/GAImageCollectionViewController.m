@@ -11,6 +11,7 @@
 // Managers
 #import "GALogger.h"
 #import "GASettingsManager.h"
+#import "GAFileManager.h"
 
 // Views
 #import "GAImageCollectionViewCell.h"
@@ -21,6 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (strong, nonatomic) NSArray *directories;
+
 @end
 
 @implementation GAImageCollectionViewController
@@ -28,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeCollectionView];
+    self.directories = [GADirectory existingObjects];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,17 +72,27 @@
 
 #pragma mark - UICollectionViewDataSource
 
+- (GAImageFile *)imageFileAtIndexPath:(NSIndexPath *)indexPath {
+    return [[self directoryAtIndex:indexPath.section].images objectAtIndex:indexPath.row];
+}
+
+- (GADirectory *)directoryAtIndex:(NSInteger)index {
+    return [self.directories objectAtIndex:index];
+}
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 10;
+    return [self.directories count];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return section;
+    return [[self directoryAtIndex:section].images count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *identifier = [GAImageCollectionViewCell reusableIdentifier];
     GAImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
+    cell.imageFile = [self imageFileAtIndexPath:indexPath];
     
     return cell;
 }
