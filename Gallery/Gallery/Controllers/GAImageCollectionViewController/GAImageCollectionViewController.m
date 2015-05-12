@@ -97,6 +97,8 @@
     
     cell.imageFile = [self imageFileAtIndexPath:indexPath];
     
+    [cell.layer shouldRasterize];
+    
     return cell;
 }
 

@@ -56,7 +56,7 @@
     }];
 }
 
-#define MIN_SCALE 3
+#define MIN_SCALE 2
 
 - (CGSize)imageSizeFromScale {
     CGFloat scale = MAX(self.scale, MIN_SCALE);
