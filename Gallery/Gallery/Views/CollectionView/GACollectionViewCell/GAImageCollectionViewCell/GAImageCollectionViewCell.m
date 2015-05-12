@@ -8,9 +8,12 @@
 
 #import "GAImageCollectionViewCell.h"
 
+// Views
+#import "GAThumbnailView.h"
+
 @interface GAImageCollectionViewCell()
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet GAThumbnailView *imageView;
 
 @end
 
@@ -19,7 +22,14 @@
 #pragma mark - Initialization
 
 - (void)awakeFromNib {
-    self.backgroundColor = [UIColor redColor];
+    self.backgroundColor = [UIColor clearColor];
+}
+
+#pragma mark - Getters & Setters
+
+- (void)setImageFile:(GAImageFile *)imageFile {
+    _imageFile = imageFile;
+    self.imageView.file = imageFile;
 }
 
 @end

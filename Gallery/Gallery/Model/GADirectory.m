@@ -43,8 +43,8 @@
     
     self = [super initFromPath:path parent:parent];
     if (self) {
-        self.tree = [self readTreeFromPath:path];
         [GADirectory newObject:self];
+        self.tree = [self readTreeFromPath:path];
     }
     return self;
 }

@@ -32,6 +32,8 @@
     [super viewDidLoad];
     [self initializeCollectionView];
     self.directories = [GADirectory existingObjects];
+    
+    self.collectionView.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +42,7 @@
 }
 
 #pragma mark - Initialization
+
 
 #define MARGIN 10
 
@@ -116,6 +119,7 @@
                                                                             withReuseIdentifier:identifier
                                                                                    forIndexPath:indexPath];
     
+    header.directory = [self directoryAtIndex:indexPath.section];
     return header;
 }
 

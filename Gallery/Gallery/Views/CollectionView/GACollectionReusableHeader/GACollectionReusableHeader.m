@@ -8,6 +8,12 @@
 
 #import "GACollectionReusableHeader.h"
 
+@interface GACollectionReusableHeader()
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
+@end
+
 @implementation GACollectionReusableHeader
 
 + (NSString *)preferredKind {
@@ -16,6 +22,11 @@
 
 - (void)awakeFromNib {
     self.backgroundColor = [UIColor purpleColor];
+}
+
+- (void)setDirectory:(GADirectory *)directory {
+    _directory = directory;
+    self.titleLabel.text = [directory nameWithExtension:NO];
 }
 
 @end
