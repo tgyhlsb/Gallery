@@ -29,4 +29,11 @@ typedef NS_ENUM(NSInteger,GASettingDirectoryNavigationMode){
 + (GASettingDirectoryNavigationMode)directoryNavigationMode;
 + (void)setDirectoryNavigationMode:(GASettingDirectoryNavigationMode)mode;
 
++ (NSInteger)pictureNumberPortrait;
++ (void)setPictureNumberPortrait:(NSInteger)pictureNumber;
+
++ (NSInteger)pictureNumberLandscape;
++ (void)setPictureNumberLandscape:(NSInteger)pictureNumber;
+
+
 @end

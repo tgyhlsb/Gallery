@@ -23,6 +23,12 @@
 #define KEY_DIRECTORY_NAVIGATION_MODE @"GASettingDirectoryNavigationMode"
 #define DEFAULT_DIRECTORY_NAVIGATION_MODE GASettingDirectoryNavigationModeShowFirstImage
 
+#define KEY_PICTURE_NUMBER_PORTRAIT @"GAPictureNumberPortrait"
+#define DEFAULT_PICTURE_NUMBER_PORTRAIT 4
+
+#define KEY_PICTURE_NUMBER_LANDSCAPE @"GAPictureNumberLandscape"
+#define DEFAULT_PICTURE_NUMBER_LANDSCAPE 6
+
 static GASettingsManager *sharedManager;
 
 @implementation GASettingsManager
@@ -83,6 +89,24 @@ static GASettingsManager *sharedManager;
 
 + (void)setDirectoryNavigationMode:(GASettingDirectoryNavigationMode)mode {
     [[GASettingsManager sharedManager] setValue:@(mode) forKey:KEY_DIRECTORY_NAVIGATION_MODE];
+}
+
++ (NSInteger)pictureNumberPortrait {
+    NSNumber *value = [[GASettingsManager sharedManager] objectForKey:KEY_PICTURE_NUMBER_PORTRAIT];
+    return value ? [value integerValue] : DEFAULT_PICTURE_NUMBER_PORTRAIT;
+}
+
++ (void)setPictureNumberPortrait:(NSInteger)pictureNumber {
+    [[GASettingsManager sharedManager] setValue:@(pictureNumber) forKey:KEY_PICTURE_NUMBER_PORTRAIT];
+}
+
++ (NSInteger)pictureNumberLandscape {
+    NSNumber *value = [[GASettingsManager sharedManager] objectForKey:KEY_PICTURE_NUMBER_LANDSCAPE];
+    return value ? [value integerValue] : DEFAULT_PICTURE_NUMBER_LANDSCAPE;
+}
+
++ (void)setPictureNumberLandscape:(NSInteger)pictureNumber {
+    [[GASettingsManager sharedManager] setValue:@(pictureNumber) forKey:KEY_PICTURE_NUMBER_LANDSCAPE];
 }
 
 @end
