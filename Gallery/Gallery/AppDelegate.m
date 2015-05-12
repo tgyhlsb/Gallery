@@ -28,7 +28,6 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-//    [self setWindowForFileInspector];
     [self setWindowForPictureCollection];
     [self registerToFileManagerNotifications];
     

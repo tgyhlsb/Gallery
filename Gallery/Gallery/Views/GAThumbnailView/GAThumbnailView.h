@@ -14,5 +14,6 @@
 @interface GAThumbnailView : UIImageView
 
 @property (strong, nonatomic) GAFile *file;
+@property (nonatomic) CGFloat scale;
 
 @end

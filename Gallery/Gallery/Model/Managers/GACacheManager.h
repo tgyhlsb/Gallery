@@ -18,7 +18,7 @@ typedef void (^GAThumbnailLoadingBlock)(UIImage *thumbnail);
 + (instancetype)sharedManager;
 + (void)clearThumbnails;
 
-+ (UIImage *)thumbnailForFile:(GAFile *)file;
-+ (void)thumbnailForFile:(GAFile *)file inBackgroundWithBlock:(GAThumbnailLoadingBlock)block;
++ (UIImage *)thumbnailForFile:(GAFile *)file andSize:(CGSize)size;
++ (void)thumbnailForFile:(GAFile *)file andSize:(CGSize)size inBackgroundWithBlock:(GAThumbnailLoadingBlock)block;
 
 @end

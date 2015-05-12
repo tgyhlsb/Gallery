@@ -19,9 +19,8 @@ static GACacheManager *sharedManager;
 
 @interface GACacheManager()
 
-@property (nonatomic) BOOL shouldCacheThumbnails;
 @property (strong, nonatomic) NSMutableDictionary *thumbnails;
-@property (strong, nonatomic) NSMutableArray *thumbnailPathStack;
+@property (strong, nonatomic) NSMutableArray *thumbnailKeyStack;
 
 @end
 
@@ -36,12 +35,12 @@ static GACacheManager *sharedManager;
     return sharedManager;
 }
 
-+ (UIImage *)thumbnailForFile:(GAFile *)file {
-    return [[GACacheManager sharedManager] thumbnailForFile:file];
++ (UIImage *)thumbnailForFile:(GAFile *)file andSize:(CGSize)size {
+    return [[GACacheManager sharedManager] thumbnailForFile:file andSize:size];
 }
 
-+ (void)thumbnailForFile:(GAFile *)file inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
-    [[GACacheManager sharedManager] thumbnailForFile:file inBackgroundWithBlock:block];
++ (void)thumbnailForFile:(GAFile *)file andSize:(CGSize)size inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
+    [[GACacheManager sharedManager] thumbnailForFile:file andSize:size inBackgroundWithBlock:block];
 }
 
 + (void)clearThumbnails {
@@ -55,9 +54,9 @@ static GACacheManager *sharedManager;
     return _thumbnails;
 }
 
-- (NSMutableArray *)thumbnailPathStack {
-    if (!_thumbnailPathStack) _thumbnailPathStack = [[NSMutableArray alloc] init];
-    return _thumbnailPathStack;
+- (NSMutableArray *)thumbnailKeyStack {
+    if (!_thumbnailKeyStack) _thumbnailKeyStack = [[NSMutableArray alloc] init];
+    return _thumbnailKeyStack;
 }
 
 #pragma mark - Thumbnails
@@ -67,14 +66,16 @@ static GACacheManager *sharedManager;
     [GALogger addInformation:@"Logs cleared"];
 }
 
-- (UIImage *)thumbnailForFile:(GAFile *)file {
-    UIImage *thumbnail = [self.thumbnails objectForKey:file.path];
+- (UIImage *)thumbnailForFile:(GAFile *)file andSize:(CGSize)size {
+    NSString *key = [self keyForPath:file.path andSize:size];
+    UIImage *thumbnail = [self.thumbnails objectForKey:key];
     if (thumbnail) return thumbnail;
     
-    thumbnail = [self createThumbnailFromImage:[file imageForThumbnail] withSize:CGSizeMake(44.0, 44.0)];
+    thumbnail = [self createThumbnailFromImage:[file imageForThumbnail] withSize:size];
+    [GALogger addInformation:@"New thumbnail\n'%@'", key];
     
-    if (thumbnail && self.shouldCacheThumbnails) {
-        [self cacheThumbnail:thumbnail forPath:file.path];
+    if (thumbnail && [GASettingsManager shouldCacheThumbnails]) {
+        [self cacheThumbnail:thumbnail forPath:file.path andSize:size];
     }
     
     return thumbnail;
@@ -103,9 +104,9 @@ static GACacheManager *sharedManager;
  */
 
 // Reference http://stackoverflow.com/questions/16283652/understanding-dispatch-async
-- (void)thumbnailForFile:(GAFile *)file inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
+- (void)thumbnailForFile:(GAFile *)file andSize:(CGSize)size inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImage *thumbnail = [self thumbnailForFile:file];
+        UIImage *thumbnail = [self thumbnailForFile:file andSize:size];
         
         dispatch_sync(dispatch_get_main_queue(), ^{
             if (block) {
@@ -126,27 +127,33 @@ static GACacheManager *sharedManager;
     UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
+    
     return destImage;
 }
 
-- (void)cacheThumbnail:(UIImage *)thumbnail forPath:(NSString *)path {
+- (void)cacheThumbnail:(UIImage *)thumbnail forPath:(NSString *)path andSize:(CGSize)size {
     if (thumbnail) {
-        if ([self.thumbnailPathStack count] >= [GASettingsManager thumbnailCacheLimit]) {
+        if ([self.thumbnailKeyStack count] >= [GASettingsManager thumbnailCacheLimit]) {
             [self popThumbnail];
         }
-        [self pushThumbnail:thumbnail forPath:path];
+        [self pushThumbnail:thumbnail forPath:path andSize:size];
     }
 }
 
-- (void)pushThumbnail:(UIImage *)thumbnail forPath:(NSString *)path {
-    [self.thumbnails setObject:thumbnail forKey:path];
-    [self.thumbnailPathStack addObject:path];
+- (void)pushThumbnail:(UIImage *)thumbnail forPath:(NSString *)path andSize:(CGSize)size {
+    NSString *key = [self keyForPath:path andSize:size];
+    [self.thumbnails setObject:thumbnail forKey:key];
+    [self.thumbnailKeyStack addObject:key];
 }
 
 - (void)popThumbnail {
-    NSString *removedThumbnailPath = [self.thumbnailPathStack firstObject];
+    NSString *removedThumbnailPath = [self.thumbnailKeyStack firstObject];
     [self.thumbnails removeObjectForKey:removedThumbnailPath];
-    [self.thumbnailPathStack removeObjectAtIndex:0];
+    [self.thumbnailKeyStack removeObjectAtIndex:0];
+}
+
+- (NSString *)keyForPath:(NSString *)path andSize:(CGSize)size {
+    return [NSString stringWithFormat:@"%@_%.0fx%.0f", path, size.width, size.height];
 }
 
 @end
