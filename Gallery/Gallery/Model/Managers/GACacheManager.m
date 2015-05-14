@@ -63,7 +63,7 @@ static GACacheManager *sharedManager;
 
 - (void)clearThumbnails {
     self.thumbnails = nil;
-    [GALogger addInformation:@"Logs cleared"];
+    [GALogger addInformation:@"Cache cleared"];
 }
 
 - (UIImage *)thumbnailForFile:(GAFile *)file andSize:(CGSize)size {

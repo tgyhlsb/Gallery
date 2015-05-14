@@ -70,6 +70,8 @@
 		5AE27DE41B0283C000102C43 /* GACollectionReusableFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE27DE21B0283C000102C43 /* GACollectionReusableFooter.m */; };
 		5AE27DE51B0283C000102C43 /* GACollectionReusableFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AE27DE31B0283C000102C43 /* GACollectionReusableFooter.xib */; };
 		5AE27DE81B02852400102C43 /* GACollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE27DE71B02852400102C43 /* GACollectionReusableView.m */; };
+		5AE27DEC1B0499FD00102C43 /* GAImageCollectionNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE27DEA1B0499FD00102C43 /* GAImageCollectionNavigationController.m */; };
+		5AE27DED1B0499FD00102C43 /* GAImageCollectionNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AE27DEB1B0499FD00102C43 /* GAImageCollectionNavigationController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +195,9 @@
 		5AE27DE31B0283C000102C43 /* GACollectionReusableFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GACollectionReusableFooter.xib; path = Gallery/Views/CollectionView/GACollectionReusableFooter/GACollectionReusableFooter.xib; sourceTree = SOURCE_ROOT; };
 		5AE27DE61B02852400102C43 /* GACollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GACollectionReusableView.h; sourceTree = "<group>"; };
 		5AE27DE71B02852400102C43 /* GACollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GACollectionReusableView.m; sourceTree = "<group>"; };
+		5AE27DE91B0499FD00102C43 /* GAImageCollectionNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAImageCollectionNavigationController.h; path = GAImageCollectionNavigationController/GAImageCollectionNavigationController.h; sourceTree = "<group>"; };
+		5AE27DEA1B0499FD00102C43 /* GAImageCollectionNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAImageCollectionNavigationController.m; path = GAImageCollectionNavigationController/GAImageCollectionNavigationController.m; sourceTree = "<group>"; };
+		5AE27DEB1B0499FD00102C43 /* GAImageCollectionNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAImageCollectionNavigationController.xib; path = GAImageCollectionNavigationController/GAImageCollectionNavigationController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +338,7 @@
 				5A8664E41AFD1AC2002578F7 /* DetailViewControllers */,
 				5A36B9B61AFE5673009098CB /* GAFileLoadingVC */,
 				5AE27DB31B0279D400102C43 /* GAImageCollectionViewController */,
+				5AE27DEE1B049A0000102C43 /* GAImageCollectionNavigationController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -622,6 +628,16 @@
 			name = GAImageCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		5AE27DEE1B049A0000102C43 /* GAImageCollectionNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				5AE27DE91B0499FD00102C43 /* GAImageCollectionNavigationController.h */,
+				5AE27DEA1B0499FD00102C43 /* GAImageCollectionNavigationController.m */,
+				5AE27DEB1B0499FD00102C43 /* GAImageCollectionNavigationController.xib */,
+			);
+			name = GAImageCollectionNavigationController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -719,6 +735,7 @@
 				5A86650C1AFD1AC2002578F7 /* GADirectoryMasterVC.xib in Resources */,
 				5AE27DE51B0283C000102C43 /* GACollectionReusableFooter.xib in Resources */,
 				5AE27DE01B02837E00102C43 /* GACollectionReusableHeader.xib in Resources */,
+				5AE27DED1B0499FD00102C43 /* GAImageCollectionNavigationController.xib in Resources */,
 				5A8665041AFD1AC2002578F7 /* GAFileDetailNavigationController.xib in Resources */,
 				5A7E0A2C1AFD57AA00DB09D7 /* Localizable.strings in Resources */,
 				5A4570541AF6C3D900A436AC /* LaunchScreen.xib in Resources */,
@@ -783,6 +800,7 @@
 				5A8665051AFD1AC2002578F7 /* GADiaporamaVC.m in Sources */,
 				5A51E9A21AFBFBF0000B3576 /* GALogger.m in Sources */,
 				5A51E9961AF969CC000B3576 /* GAImageFileTableViewCell.m in Sources */,
+				5AE27DEC1B0499FD00102C43 /* GAImageCollectionNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

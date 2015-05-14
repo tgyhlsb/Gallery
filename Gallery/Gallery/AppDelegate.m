@@ -14,8 +14,7 @@
 // Controllers
 #import "GAFileLoadingVC.h"
 #import "GADirectorySplitController.h"
-#import "GAImageCollectionViewController.h"
-#import "GAImageCollectionViewController.h"
+#import "GAImageCollectionNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -51,7 +50,7 @@
     
     [loaderVC setCompletionBLock:^{
         [GAFileManager startMonitoring];
-        self.window.rootViewController = [GAImageCollectionViewController new];
+        self.window.rootViewController = [GAImageCollectionNavigationController new];
     }];
     
     self.window.rootViewController = loaderVC;
