@@ -66,15 +66,13 @@
 
 - (void)setWindowForFileInspector {
     GADirectory *directory = [GAFileManager rootDirectory];
-    GAFileNavigator *fileNavigator = [GAFileNavigator newWithRootDirectory:directory];
-    GADirectorySplitController *controller = [GADirectorySplitController newWithFileNavigator:fileNavigator];
+    GADirectorySplitController *controller = [GADirectorySplitController newWithRootDirectory:directory];
     [self setWindowForViewController:controller animated:NO];
 }
 
 - (void)setWindowForPictureCollection{
     GADirectory *directory = [GAFileManager rootDirectory];
-    GAFileNavigator *fileNavigator = [GAFileNavigator newWithRootDirectory:directory];
-    GAImageCollectionNavigationController *controller = [GAImageCollectionNavigationController newWithFileNavigator:fileNavigator];
+    GAImageCollectionNavigationController *controller = [GAImageCollectionNavigationController newWithRootDirectory:directory];
     [self setWindowForViewController:controller animated:NO];
 }
 

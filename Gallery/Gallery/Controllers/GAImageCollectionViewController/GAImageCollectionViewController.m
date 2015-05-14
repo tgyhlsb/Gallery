@@ -26,8 +26,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) CGSize itemSize;
 
-@property (strong, nonatomic) GAFileNavigator *fileNavigator;
-@property (strong, nonatomic) NSArray *directories;
+@property (strong, nonatomic) GADirectory *directory;
 
 @end
 
@@ -35,14 +34,14 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator {
-    return [[GAImageCollectionViewController alloc] initWithFileNavigator:fileNavigator];
++ (instancetype)newWithRootDirectory:(GADirectory *)directory {
+    return [[GAImageCollectionViewController alloc] initWithRootDirectory:directory];
 }
 
-- (id)initWithFileNavigator:(GAFileNavigator *)fileNavigator {
+- (id)initWithRootDirectory:(GADirectory *)directory {
     self = [super init];
     if (self) {
-        self.fileNavigator = fileNavigator;
+        self.directory = directory;
     }
     return self;
 }
@@ -53,7 +52,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeCollectionView];
-    self.directories = [GADirectory existingObjects];
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
 }
@@ -103,11 +101,11 @@
 }
 
 - (GADirectory *)directoryAtIndex:(NSInteger)index {
-    return [self.directories objectAtIndex:index];
+    return [self.directory.directories objectAtIndex:index];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [self.directories count];
+    return [self.directory.directories count];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -164,9 +162,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     GAImageFile *imageFile = [self imageFileAtIndexPath:indexPath];
-    [self.fileNavigator selectFile:imageFile];
-    GADiaporamaVC *destination = [GADiaporamaVC newWithFileNavigator:self.fileNavigator];
-    [self.navigationController pushViewController:destination animated:YES];
+//    GADiaporamaVC *destination = [GADiaporamaVC newWithDirectory:imageFile.];
+//    [self.navigationController pushViewController:destination animated:YES];
 }
 
 @end

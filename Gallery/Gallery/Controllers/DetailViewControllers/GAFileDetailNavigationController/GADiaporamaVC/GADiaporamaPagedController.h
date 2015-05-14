@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 // Models
-#import "GAFileNavigator.h"
+#import "GADirectory.h"
 
 @protocol GADiaporamaPagedControllerDelegate;
 @protocol GAFileInspectorBarButtonsDataSource;
@@ -19,18 +19,9 @@
 @property (weak, nonatomic) id<GADiaporamaPagedControllerDelegate> delegate;
 @property (weak, nonatomic) id<GAFileInspectorBarButtonsDataSource> barItemDataSource;
 
-@property (strong, nonatomic) GAFileNavigator *fileNavigator;
-
-- (UIBarButtonItem *)diaporamaFileTypeBarButton;
+@property (strong, nonatomic) NSArray *files;
 
 - (void)setParentViewController:(UIViewController *)parent withView:(UIView *)view;
-
-- (void)reloadCenterViewController;
-- (void)showFile:(GAFile *)file;
-- (void)showImage:(GAImageFile *)imageFile;
-- (void)showDirectory:(GADirectory *)directory;
-- (void)showNext;
-- (void)showPrevious;
 
 - (NSArray *)topLeftBarItemsForDisplayedFile;
 - (NSArray *)topRightBarItemsForDisplayedFile;

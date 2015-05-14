@@ -36,15 +36,15 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator {
-    return [[GADiaporamaVC alloc] initWithFileNavigator:fileNavigator];
++ (instancetype)newWithDirectory:(GADirectory *)directory {
+    return [[GADiaporamaVC alloc] initWithDirectory:directory];
 }
 
-- (id)initWithFileNavigator:(GAFileNavigator *)fileNavigator {
+- (id)initWithDirectory:(GADirectory *)directory {
     self = [super init];
     if (self) {
-        self.fileNavigator = fileNavigator;
-        self.diaporamaController.fileNavigator = fileNavigator;
+        self.directory = directory;
+        self.diaporamaController.files = directory.images;
     }
     return self;
 }

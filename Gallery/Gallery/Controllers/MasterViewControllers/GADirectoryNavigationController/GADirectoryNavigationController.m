@@ -116,11 +116,15 @@
 #pragma mark - Broadcast
 
 - (void)notifyDidSelectDirectory:(GADirectory *)directory {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:GANotificationFileNavigationDidSelectDirectory
+                                                        object:self
+                                                      userInfo:@{@"directory": directory}];
 }
 
 - (void)notifyDidSelectImageFile:(GAImageFile *)imageFile {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:GANotificationFileNavigarionDidSelectImageFile
+                                                        object:self
+                                                      userInfo:@{@"imageFile": imageFile}];
 }
 
 @end

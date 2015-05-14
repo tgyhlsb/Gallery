@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 // Models
-#import "GAFileNavigator.h"
+#import "GADirectory.h"
 
 @interface GADirectorySplitController : UISplitViewController
 
-+ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator;
++ (instancetype)newWithRootDirectory:(GADirectory *)directory;
 
 @end

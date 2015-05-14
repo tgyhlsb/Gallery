@@ -14,6 +14,9 @@
 // Models
 #import "GADirectory.h"
 
+static NSString *GANotificationFileNavigationDidSelectDirectory = @"GANotificationFileNavigationDidSelectDirectory";
+static NSString *GANotificationFileNavigarionDidSelectImageFile = @"GANotificationFileNavigarionDidSelectImageFile";
+
 @interface GADirectoryNavigationController : UINavigationController
 
 + (instancetype)newWithRootDirectory:(GADirectory *)directory;
