@@ -65,14 +65,6 @@
     return _settingsButton;
 }
 
-#pragma mark - Broadcast
-
-//- (void)notifySelectedDirectory:(GADirectory *)directory {
-//    [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedDirectory
-//                                                        object:self
-//                                                      userInfo:@{@"directory": directory}];
-//}
-
 #pragma mark - Handlers
 
 - (void)settingsButtonHandler {
@@ -86,20 +78,12 @@
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
     GADirectoryMasterVC *previousVC = [self.viewControllers objectAtIndex:self.viewControllers.count-2];
     previousVC.delegate = self;
-//    [self notifySelectedDirectory:previousVC.directory];
+    [self.fileNavigator selectDirectory:previousVC.directory];
     return [super popViewControllerAnimated:animated];
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    
-    if ([viewController isKindOfClass:[GADirectoryMasterVC class]]) {
-        GADirectoryMasterVC *directoryController = (GADirectoryMasterVC *)viewController;
-//        [self notifySelectedDirectory:directoryController];
-        directoryController.delegate = self;
-        [viewController setToolbarItems:self.toolbarItems];
-    } else {
-        
-    }
+    [viewController setToolbarItems:self.toolbarItems];
     [super pushViewController:viewController animated:animated];
 }
 
@@ -118,7 +102,9 @@
 - (void)openDirectory:(GADirectory *)directory {
     GADirectoryMasterVC *destination = [GADirectoryMasterVC newWithDirectory:directory];
     destination.title = [directory nameWithExtension:YES];
+    destination.delegate = self;
     [self pushViewController:destination animated:YES];
+    [self.fileNavigator selectDirectory:destination.directory];
 }
 
 - (void)openImagefile:(GAImageFile *)imageFile {

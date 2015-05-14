@@ -50,6 +50,11 @@
     self.rootDirectory = directory;
 }
 
+- (void)selectDirectory:(GADirectory *)directory {
+    [self notifyDidSelectDirectory:directory];
+    [self setDirectory:directory];
+}
+
 - (void)setFile:(GAFile *)file {
     self.activeFile = file;
 }

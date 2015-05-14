@@ -57,8 +57,6 @@
         // Force show/hide button to appear
         self.topLeftBarItems = @[self.hideMasterViewButton];
     }
-    
-//    [self registerToDirectoryInspectorsNotifications];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,18 +71,6 @@
 #pragma mark - Configuration
 
 #pragma mark - Broadcasting
-
-//- (void)registerToDirectoryInspectorsNotifications {
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(directoryInspectorDidSelectDirectory:)
-//                                                 name:GANotificationFileNavigatorDidSelectDirectory
-//                                               object:self.fileNavigator];
-//    
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(directoryInspectorDidSelectImageFile:)
-//                                                 name:GANotificationFileNavigatorDidSelectImageFile
-//                                               object:self.fileNavigator];
-//}
 
 #pragma mark - Getters & Setters
 
@@ -118,24 +104,6 @@
                                                                 action:@selector(hideMasterViewButtonHandler)];
     }
     return _hideMasterViewButton;
-}
-
-- (void)setRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile {
-    
-    if (imageFile) { // show specific file
-        [self.diaporamaController showImage:imageFile];
-    } else { // show directory
-        switch ([GASettingsManager directoryNavigationMode]) {
-            case GASettingDirectoryNavigationModeIgnore:
-                break;
-            case GASettingDirectoryNavigationModeShowDirectory:
-                [self.diaporamaController showDirectory:rootDirectory];
-                break;
-            case GASettingDirectoryNavigationModeShowFirstImage:
-                [self.diaporamaController showImage:rootDirectory.firstImage];
-                break;
-        }
-    }
 }
 
 #pragma mark Bar items
@@ -177,18 +145,6 @@
     } completion:^(BOOL finished) {
     }];
 }
-
-//- (void)directoryInspectorDidSelectDirectory:(NSNotification *)notification {
-//    GADirectory *directory = [notification.userInfo objectForKey:@"directory"];
-////    [self.fileNavigator setDirectory:directory];
-////    [self setRootDirectory:directory withImageFile:nil];
-//}
-//
-//- (void)directoryInspectorDidSelectImageFile:(NSNotification *)notification {
-//    GAImageFile *imageFile = [notification.userInfo objectForKey:@"imageFile"];
-////    [self.fileNavigator setFile:imageFile];
-////    [self setRootDirectory:imageFile.parent withImageFile:imageFile];
-//}
 
 #pragma mark - UISplitViewControllerDelegate
 

@@ -120,15 +120,11 @@
 
 - (void)directoryInspectorDidSelectDirectory:(NSNotification *)notification {
     GADirectory *directory = [notification.userInfo objectForKey:@"directory"];
-    //    [self.fileNavigator setDirectory:directory];
-    //    [self setRootDirectory:directory withImageFile:nil];
     [self showDirectory:directory];
 }
 
 - (void)directoryInspectorDidSelectImageFile:(NSNotification *)notification {
     GAImageFile *imageFile = [notification.userInfo objectForKey:@"imageFile"];
-    //    [self.fileNavigator setFile:imageFile];
-    //    [self setRootDirectory:imageFile.parent withImageFile:imageFile];
     [self showImage:imageFile];
 }
 
@@ -201,7 +197,7 @@
         PAGED_CONTROLLERS_CLASS *controller = [self dequeueControllerForFile:nextFile];
         [self setCenterViewController:controller animated:YES];
     } else {
-//        self.diaporamaFileType = GADiaporamaFileTypeAll;
+        [GASettingsManager setNavigationFileType:GASettingNavigationFileTypeAll];
     }
 }
 
@@ -211,7 +207,7 @@
         PAGED_CONTROLLERS_CLASS *controller = [self dequeueControllerForFile:previousFile];
         [self setCenterViewController:controller animated:YES];
     } else {
-//        self.diaporamaFileType = GADiaporamaFileTypeAll;
+        [GASettingsManager setNavigationFileType:GASettingNavigationFileTypeAll];
     }
 }
 

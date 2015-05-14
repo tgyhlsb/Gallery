@@ -25,6 +25,7 @@ static NSString *GANotificationFileNavigatorDidSelectImageFile = @"GANotificatio
 + (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory;
 
 - (void)setDirectory:(GADirectory *)directory;
+- (void)selectDirectory:(GADirectory *)directory;
 - (void)setFile:(GAFile *)file;
 - (void)selectFile:(GAFile *)file;
 - (GAFile *)getFile;
