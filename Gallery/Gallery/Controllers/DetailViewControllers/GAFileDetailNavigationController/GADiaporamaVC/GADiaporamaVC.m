@@ -53,8 +53,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Force show/hide button to appear
-    self.topLeftBarItems = @[self.hideMasterViewButton];
+    if (self.showSplitButton) {
+        // Force show/hide button to appear
+        self.topLeftBarItems = @[self.hideMasterViewButton];
+    }
     
     [self registerToDirectoryInspectorsNotifications];
 }

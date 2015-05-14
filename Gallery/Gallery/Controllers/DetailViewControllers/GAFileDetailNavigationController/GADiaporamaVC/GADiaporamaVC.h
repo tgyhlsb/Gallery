@@ -14,6 +14,8 @@
 
 @interface GADiaporamaVC : UIViewController <UISplitViewControllerDelegate>
 
+@property (nonatomic) BOOL showSplitButton;
+
 + (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile;
 
 - (void)setRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile;

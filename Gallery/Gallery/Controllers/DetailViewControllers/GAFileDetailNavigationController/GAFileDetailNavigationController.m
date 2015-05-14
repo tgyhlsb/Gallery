@@ -18,6 +18,7 @@
 
 + (instancetype)new {
     GADiaporamaVC *rootVC = [GADiaporamaVC new];
+    rootVC.showSplitButton = YES;
     GAFileDetailNavigationController *navVC = [[GAFileDetailNavigationController alloc] initWithRootViewController:rootVC];
     navVC.navigationBar.translucent = NO;
     navVC.toolbarHidden = NO;

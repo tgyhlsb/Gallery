@@ -18,6 +18,9 @@
 #import "GACollectionReusableHeader.h"
 #import "GACollectionReusableFooter.h"
 
+// Controllers
+#import "GADiaporamaVC.h"
+
 @interface GAImageCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -136,6 +139,12 @@
 }
 
 #pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    GAImageFile *imageFile = [self imageFileAtIndexPath:indexPath];
+    GADiaporamaVC *destination = [GADiaporamaVC newWithRootDirectory:imageFile.parent withImageFile:imageFile];
+    [self.navigationController pushViewController:destination animated:YES];
+}
 
 
 #pragma mark - UICollectionViewDelegateFlowLayout
