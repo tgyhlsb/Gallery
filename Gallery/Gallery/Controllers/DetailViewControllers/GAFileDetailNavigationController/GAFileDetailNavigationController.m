@@ -16,8 +16,8 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)new {
-    GADiaporamaVC *rootVC = [GADiaporamaVC new];
++ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator {
+    GADiaporamaVC *rootVC = [GADiaporamaVC newWithFileNavigator:fileNavigator];
     rootVC.showSplitButton = YES;
     GAFileDetailNavigationController *navVC = [[GAFileDetailNavigationController alloc] initWithRootViewController:rootVC];
     navVC.navigationBar.translucent = NO;

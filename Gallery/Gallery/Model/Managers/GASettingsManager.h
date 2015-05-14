@@ -15,6 +15,12 @@ typedef NS_ENUM(NSInteger,GASettingDirectoryNavigationMode){
     GASettingDirectoryNavigationModeShowFirstImage
 };
 
+typedef NS_ENUM(NSInteger,GASettingNavigationFileType){
+    GASettingNavigationFileTypeAll,
+    GASettingNavigationFileTypeImages,
+    GASettingNavigationFileTypeDirectories
+};
+
 @interface GASettingsManager : NSObject
 
 + (UIViewContentMode)thumbnailMode;
@@ -34,6 +40,9 @@ typedef NS_ENUM(NSInteger,GASettingDirectoryNavigationMode){
 
 + (NSInteger)pictureNumberLandscape;
 + (void)setPictureNumberLandscape:(NSInteger)pictureNumber;
+
++ (GASettingNavigationFileType)navigationFileType;
++ (void)setNavigationFileType:(GASettingNavigationFileType)type;
 
 
 @end

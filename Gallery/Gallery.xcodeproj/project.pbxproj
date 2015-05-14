@@ -74,6 +74,7 @@
 		5AE27DED1B0499FD00102C43 /* GAImageCollectionNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AE27DEB1B0499FD00102C43 /* GAImageCollectionNavigationController.xib */; };
 		5AE27DF21B04A53600102C43 /* GAHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE27DF01B04A53600102C43 /* GAHomeViewController.m */; };
 		5AE27DF31B04A53600102C43 /* GAHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AE27DF11B04A53600102C43 /* GAHomeViewController.xib */; };
+		5AE27DF71B04BD8600102C43 /* GAFileNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE27DF61B04BD8600102C43 /* GAFileNavigator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +204,8 @@
 		5AE27DEF1B04A53600102C43 /* GAHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAHomeViewController.h; path = GAHomeViewController/GAHomeViewController.h; sourceTree = "<group>"; };
 		5AE27DF01B04A53600102C43 /* GAHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAHomeViewController.m; path = GAHomeViewController/GAHomeViewController.m; sourceTree = "<group>"; };
 		5AE27DF11B04A53600102C43 /* GAHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAHomeViewController.xib; path = GAHomeViewController/GAHomeViewController.xib; sourceTree = "<group>"; };
+		5AE27DF51B04BD8600102C43 /* GAFileNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFileNavigator.h; sourceTree = "<group>"; };
+		5AE27DF61B04BD8600102C43 /* GAFileNavigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAFileNavigator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +362,8 @@
 				5A4570761AF6C96100A436AC /* GAImageFile.m */,
 				5A4570771AF6C96100A436AC /* GAFile.h */,
 				5A4570781AF6C96100A436AC /* GAFile.m */,
+				5AE27DF51B04BD8600102C43 /* GAFileNavigator.h */,
+				5AE27DF61B04BD8600102C43 /* GAFileNavigator.m */,
 				5A51E9B51AFCC686000B3576 /* GAFile+Pointers.h */,
 				5A51E9B61AFCC686000B3576 /* GAFile+Pointers.m */,
 				5A51E9A31AFBFEDE000B3576 /* GALog.h */,
@@ -817,6 +822,7 @@
 				5A8665091AFD1AC2002578F7 /* GASettingsDetailVC.m in Sources */,
 				5A8665051AFD1AC2002578F7 /* GADiaporamaVC.m in Sources */,
 				5A51E9A21AFBFBF0000B3576 /* GALogger.m in Sources */,
+				5AE27DF71B04BD8600102C43 /* GAFileNavigator.m in Sources */,
 				5A51E9961AF969CC000B3576 /* GAImageFileTableViewCell.m in Sources */,
 				5AE27DEC1B0499FD00102C43 /* GAImageCollectionNavigationController.m in Sources */,
 			);

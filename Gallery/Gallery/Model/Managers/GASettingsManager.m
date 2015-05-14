@@ -31,6 +31,9 @@
 #define KEY_PICTURE_NUMBER_LANDSCAPE @"GAPictureNumberLandscape"
 #define DEFAULT_PICTURE_NUMBER_LANDSCAPE 6
 
+#define KEY_NAVIGATION_FILE_TYPE @"GASettingNavigationFileType"
+#define DEFAULT_NAVIGATION_FILE_TYPE GASettingNavigationFileTypeImages
+
 static GASettingsManager *sharedManager;
 
 @interface GASettingsManager()
@@ -43,6 +46,7 @@ static GASettingsManager *sharedManager;
 @property (nonatomic) GASettingDirectoryNavigationMode navigationMode;
 @property (nonatomic) NSInteger pictureNumberPortrait;
 @property (nonatomic) NSInteger pictureNumberLandscape;
+@property (nonatomic) GASettingNavigationFileType navigationFileType;
 
 @end
 
@@ -81,6 +85,7 @@ static GASettingsManager *sharedManager;
     _navigationMode = [[self objectForKey:KEY_DIRECTORY_NAVIGATION_MODE] integerValue];
     _pictureNumberPortrait = [[self objectForKey:KEY_PICTURE_NUMBER_PORTRAIT] integerValue];
     _pictureNumberLandscape = [[self objectForKey:KEY_PICTURE_NUMBER_LANDSCAPE] integerValue];
+    _navigationFileType = [[self objectForKey:KEY_NAVIGATION_FILE_TYPE] integerValue];
 }
 
 - (void)loadDefaultValues {
@@ -90,6 +95,7 @@ static GASettingsManager *sharedManager;
     _navigationMode = DEFAULT_DIRECTORY_NAVIGATION_MODE;
     _pictureNumberPortrait = DEFAULT_PICTURE_NUMBER_PORTRAIT;
     _pictureNumberLandscape = DEFAULT_PICTURE_NUMBER_LANDSCAPE;
+    _navigationFileType = DEFAULT_NAVIGATION_FILE_TYPE;
 }
 
 - (void)synchronize {
@@ -102,6 +108,7 @@ static GASettingsManager *sharedManager;
     [self setValue:@(self.navigationMode) forKey:KEY_DIRECTORY_NAVIGATION_MODE];
     [self setValue:@(self.pictureNumberPortrait) forKey:KEY_PICTURE_NUMBER_PORTRAIT];
     [self setValue:@(self.pictureNumberLandscape) forKey:KEY_PICTURE_NUMBER_LANDSCAPE];
+    [self setValue:@(self.navigationFileType) forKey:KEY_NAVIGATION_FILE_TYPE];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -158,6 +165,14 @@ static GASettingsManager *sharedManager;
     [[GASettingsManager sharedManager] setPictureNumberLandscape:pictureNumber];
 }
 
++ (GASettingNavigationFileType)navigationFileType {
+    return [GASettingsManager sharedManager].navigationFileType;
+}
+
++ (void)setNavigationFileType:(GASettingNavigationFileType)type {
+    [[GASettingsManager sharedManager] setNavigationFileType:type];
+}
+
 #pragma mark Instance
 
 - (void)setThumbnailMode:(UIViewContentMode)thumbnailMode {
@@ -187,6 +202,11 @@ static GASettingsManager *sharedManager;
 
 - (void)setPictureNumberLandscape:(NSInteger)pictureNumberLandscape {
     _pictureNumberLandscape = pictureNumberLandscape;
+    [self synchronize];
+}
+
+- (void)setNavigationFileType:(GASettingNavigationFileType)navigationFileType {
+    _navigationFileType = navigationFileType;
     [self synchronize];
 }
 

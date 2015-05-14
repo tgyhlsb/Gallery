@@ -65,27 +65,17 @@
 }
 
 - (void)setWindowForFileInspector {
-    GAFileLoadingVC *loaderVC = [GAFileLoadingVC new];
-    
-    [loaderVC setCompletionBLock:^{
-        [GAFileManager startMonitoring];
-        [self setWindowForViewController:[GADirectorySplitController new] animated:NO];
-    }];
-    
-    [self setWindowForViewController:loaderVC animated:NO];
+    GADirectory *directory = [GAFileManager rootDirectory];
+    GAFileNavigator *fileNavigator = [GAFileNavigator newWithRootDirectory:directory];
+    GADirectorySplitController *controller = [GADirectorySplitController newWithFileNavigator:fileNavigator];
+    [self setWindowForViewController:controller animated:NO];
 }
 
 - (void)setWindowForPictureCollection{
-//    GAFileLoadingVC *loaderVC = [GAFileLoadingVC new];
-//    
-//    [loaderVC setCompletionBLock:^{
-//        [GAFileManager startMonitoring];
-//        [self dismissViewControllerAnimated:NO completion:^{
-//        }];
-//    }];
-//    
-//    [self setWindowForViewController:loaderVC animated:NO];
-    [self setWindowForViewController:[GAImageCollectionNavigationController new] animated:NO];
+//    GADirectory *directory = [GAFileManager rootDirectory];
+//    GAFileNavigator *fileNavigator = [GAFileNavigator newWithRootDirectory:directory];
+//    GAImageCollectionNavigationController *controller = [GAImageCollectionNavigationController neww];
+//    [self setWindowForViewController:controller animated:NO];
 }
 
 #pragma mark - Broadcast
@@ -101,7 +91,7 @@
 #pragma mark - Handlers
 
 - (IBAction)fileInspectorButtonHandler:(UIButton *)sender {
-    [self setWindowForPictureCollection];
+    [self setWindowForFileInspector];
 }
 
 - (IBAction)imageCollectionButtonHandler:(UIButton *)sender {

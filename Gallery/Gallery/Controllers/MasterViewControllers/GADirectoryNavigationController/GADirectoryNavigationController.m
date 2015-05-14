@@ -11,9 +11,10 @@
 // Controllers
 #import "GASettingsSplitController.h"
 
-@interface GADirectoryNavigationController ()
+@interface GADirectoryNavigationController () <GADirectoryViewControllerDelegate>
 
 @property (strong, nonatomic) UIBarButtonItem *settingsButton;
+@property (strong, nonatomic) GAFileNavigator *fileNavigator;
 
 @end
 
@@ -21,15 +22,17 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory {
-    return [[GADirectoryNavigationController alloc] initWithRootDirectory:rootDirectory];
++ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator {
+    return [[GADirectoryNavigationController alloc] initWithFileNavigator:fileNavigator];
 }
 
-- (id)initWithRootDirectory:(GADirectory *)rootDirectory {
-    GADirectoryMasterVC *rootVC = [GADirectoryMasterVC newWithDirectory:rootDirectory];
+- (id)initWithFileNavigator:(GAFileNavigator *)fileNavigator {
+    GADirectoryMasterVC *rootVC = [GADirectoryMasterVC newWithDirectory:[fileNavigator getRootDirectory]];
     self = [super initWithRootViewController:rootVC];
     if (self) {
         self.navigationBar.translucent = NO;
+        rootVC.delegate = self;
+        self.fileNavigator = fileNavigator;
         [self initializeToolbar];
     }
     return self;
@@ -64,11 +67,11 @@
 
 #pragma mark - Broadcast
 
-- (void)notifySelectedDirectory:(GADirectory *)directory {
-    [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedDirectory
-                                                        object:self
-                                                      userInfo:@{@"directory": directory}];
-}
+//- (void)notifySelectedDirectory:(GADirectory *)directory {
+//    [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedDirectory
+//                                                        object:self
+//                                                      userInfo:@{@"directory": directory}];
+//}
 
 #pragma mark - Handlers
 
@@ -82,19 +85,44 @@
 
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
     GADirectoryMasterVC *previousVC = [self.viewControllers objectAtIndex:self.viewControllers.count-2];
-    [self notifySelectedDirectory:previousVC.directory];
+    previousVC.delegate = self;
+//    [self notifySelectedDirectory:previousVC.directory];
     return [super popViewControllerAnimated:animated];
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
     if ([viewController isKindOfClass:[GADirectoryMasterVC class]]) {
-        [self notifySelectedDirectory:((GADirectoryMasterVC *)viewController).directory];
+        GADirectoryMasterVC *directoryController = (GADirectoryMasterVC *)viewController;
+//        [self notifySelectedDirectory:directoryController];
+        directoryController.delegate = self;
         [viewController setToolbarItems:self.toolbarItems];
     } else {
         
     }
     [super pushViewController:viewController animated:animated];
+}
+
+#pragma mark - GADirectoryViewControllerDelegate
+
+- (void)directoryViewController:(GADirectoryMasterVC *)controller didSelectFile:(GAFile *)file {
+    if (file.isImage) {
+        [self openImagefile:(GAImageFile *)file];
+    } else if (file.isDirectory) {
+        [self openDirectory:(GADirectory *)file];
+    } else {
+        
+    }
+}
+
+- (void)openDirectory:(GADirectory *)directory {
+    GADirectoryMasterVC *destination = [GADirectoryMasterVC newWithDirectory:directory];
+    destination.title = [directory nameWithExtension:YES];
+    [self pushViewController:destination animated:YES];
+}
+
+- (void)openImagefile:(GAImageFile *)imageFile {
+    [self.fileNavigator selectFile:imageFile];
 }
 
 @end

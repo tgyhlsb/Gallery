@@ -12,12 +12,11 @@
 #import "GADirectoryMasterVC.h"
 
 // Models
-#import "GADirectory.h"
-#import "GAImageFile.h"
+#import "GAFileNavigator.h"
 
 @interface GADirectoryNavigationController : UINavigationController
 
-+ (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory;
++ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator;
 
 - (GADirectoryMasterVC *)rootViewController;
 

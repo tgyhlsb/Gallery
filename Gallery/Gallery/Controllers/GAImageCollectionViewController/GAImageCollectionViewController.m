@@ -146,8 +146,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     GAImageFile *imageFile = [self imageFileAtIndexPath:indexPath];
-    GADiaporamaVC *destination = [GADiaporamaVC newWithRootDirectory:imageFile.parent withImageFile:imageFile];
-    [self.navigationController pushViewController:destination animated:YES];
+//    GADiaporamaVC *destination = [GADiaporamaVC newWithRootDirectory:imageFile.parent withImageFile:imageFile];
+//    [self.navigationController pushViewController:destination animated:YES];
 }
 
 

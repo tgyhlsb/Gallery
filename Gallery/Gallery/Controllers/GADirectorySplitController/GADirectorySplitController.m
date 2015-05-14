@@ -27,10 +27,14 @@
 
 #pragma mark - Constructors
 
-- (id)init {
++ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator {
+    return [[GADirectorySplitController alloc] initWithFileNavigator:fileNavigator];
+}
+
+- (id)initWithFileNavigator:(GAFileNavigator *)fileNavigator {
     self = [super init];
     if (self) {
-        [self setInterfaceForRootDirectory:[GAFileManager rootDirectory]];
+        [self setInterfaceForFileNavigator:fileNavigator];
         self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
         self.presentsWithGesture = NO;
     }
@@ -55,10 +59,10 @@
 
 #pragma mark - Getters & Setters
 
-- (void)setInterfaceForRootDirectory:(GADirectory *)rootDirectory {
+- (void)setInterfaceForFileNavigator:(GAFileNavigator *)fileNavigator {
     
-    self.masterNavigationController = [GADirectoryNavigationController newWithRootDirectory:rootDirectory];
-    self.detailNavigationController = [GAFileDetailNavigationController new];
+    self.masterNavigationController = [GADirectoryNavigationController newWithFileNavigator:fileNavigator];
+    self.detailNavigationController = [GAFileDetailNavigationController newWithFileNavigator:fileNavigator];
     
     self.viewControllers = @[self.masterNavigationController, self.detailNavigationController];
     self.delegate = [self.detailNavigationController rootViewController];
