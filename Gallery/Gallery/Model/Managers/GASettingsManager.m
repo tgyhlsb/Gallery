@@ -55,9 +55,9 @@ static GASettingsManager *sharedManager;
         sharedManager = [GASettingsManager new];
         NSNumber *userSettingsExist = [sharedManager objectForKey:KEY_USER_SETTINGS_EXIST];
         if ([userSettingsExist boolValue]) {
-            [sharedManager loadDefaultValues];
-        } else {
             [sharedManager loadFromUserSettings];
+        } else {
+            [sharedManager loadDefaultValues];
         }
     }
     return sharedManager;
@@ -74,22 +74,22 @@ static GASettingsManager *sharedManager;
 }
 
 - (void)loadFromUserSettings {
-    self.userSettingsExist = [[self objectForKey:KEY_USER_SETTINGS_EXIST] boolValue];
-    self.thumbnailMode = [[self objectForKey:KEY_THUMBNAIL_MODE] integerValue];
-    self.thumbnailCacheLimit = [[self objectForKey:KEY_THUMBNAIL_CACHE_LIMIT] integerValue];
-    self.shouldCacheThumbnails = [[self objectForKey:KEY_THUMBNAIL_SHOULD_CACHE] boolValue];
-    self.navigationMode = [[self objectForKey:KEY_DIRECTORY_NAVIGATION_MODE] integerValue];
-    self.pictureNumberPortrait = [[self objectForKey:KEY_PICTURE_NUMBER_PORTRAIT] integerValue];
-    self.pictureNumberLandscape = [[self objectForKey:KEY_PICTURE_NUMBER_LANDSCAPE] integerValue];
+    _userSettingsExist = [[self objectForKey:KEY_USER_SETTINGS_EXIST] boolValue];
+    _thumbnailMode = [[self objectForKey:KEY_THUMBNAIL_MODE] integerValue];
+    _thumbnailCacheLimit = [[self objectForKey:KEY_THUMBNAIL_CACHE_LIMIT] integerValue];
+    _shouldCacheThumbnails = [[self objectForKey:KEY_THUMBNAIL_SHOULD_CACHE] boolValue];
+    _navigationMode = [[self objectForKey:KEY_DIRECTORY_NAVIGATION_MODE] integerValue];
+    _pictureNumberPortrait = [[self objectForKey:KEY_PICTURE_NUMBER_PORTRAIT] integerValue];
+    _pictureNumberLandscape = [[self objectForKey:KEY_PICTURE_NUMBER_LANDSCAPE] integerValue];
 }
 
 - (void)loadDefaultValues {
-    self.thumbnailMode = DEFAULT_THUMBNAIL_MODE;
-    self.thumbnailCacheLimit = DEFAULT_THUMBNAIL_CACHE_LIMIT;
-    self.shouldCacheThumbnails = DEFAULT_THUMBNAIL_SHOULD_CACHE;
-    self.navigationMode = DEFAULT_DIRECTORY_NAVIGATION_MODE;
-    self.pictureNumberPortrait = DEFAULT_PICTURE_NUMBER_PORTRAIT;
-    self.pictureNumberLandscape = DEFAULT_PICTURE_NUMBER_LANDSCAPE;
+    _thumbnailMode = DEFAULT_THUMBNAIL_MODE;
+    _thumbnailCacheLimit = DEFAULT_THUMBNAIL_CACHE_LIMIT;
+    _shouldCacheThumbnails = DEFAULT_THUMBNAIL_SHOULD_CACHE;
+    _navigationMode = DEFAULT_DIRECTORY_NAVIGATION_MODE;
+    _pictureNumberPortrait = DEFAULT_PICTURE_NUMBER_PORTRAIT;
+    _pictureNumberLandscape = DEFAULT_PICTURE_NUMBER_LANDSCAPE;
 }
 
 - (void)synchronize {
