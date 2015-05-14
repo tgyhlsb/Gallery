@@ -18,12 +18,6 @@
 @property (strong, nonatomic, readonly) NSArray *tree;
 @property (strong, nonatomic, readonly) NSArray *images;
 @property (strong, nonatomic, readonly) NSArray *directories;
-@property (weak, nonatomic, readonly) GAFile *firstChild;
-@property (weak, nonatomic, readonly) GAFile *lastChild;
-@property (weak, nonatomic, readonly) GAImageFile *firstImage;
-@property (weak, nonatomic, readonly) GAImageFile *lastImage;
-@property (weak, nonatomic, readonly) GADirectory *firstDirectory;
-@property (weak, nonatomic, readonly) GADirectory *lastDirectory;
 
 + (NSMutableArray *)existingObjects;
 
