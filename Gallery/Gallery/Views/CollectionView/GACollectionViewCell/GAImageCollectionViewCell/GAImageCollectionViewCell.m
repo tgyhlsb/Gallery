@@ -13,7 +13,7 @@
 
 @interface GAImageCollectionViewCell()
 
-@property (weak, nonatomic) IBOutlet GAThumbnailView *imageView;
+@property (weak, nonatomic) IBOutlet GAThumbnailView *thumbnailView;
 
 @end
 
@@ -29,7 +29,23 @@
 
 - (void)setImageFile:(GAImageFile *)imageFile {
     _imageFile = imageFile;
-    self.imageView.file = imageFile;
+    self.thumbnailView.file = imageFile;
+}
+
+- (void)setThumbnailView:(GAThumbnailView *)thumbnailView {
+    thumbnailView.preferredSize = self.thumbnailPreferredSize;
+    thumbnailView.scale = self.thumbnailScale;
+    _thumbnailView = thumbnailView;
+}
+
+- (void)setThumbnailPreferredSize:(CGSize)thumbnailPreferredSize {
+    _thumbnailPreferredSize = thumbnailPreferredSize;
+    self.thumbnailView.preferredSize = thumbnailPreferredSize;
+}
+
+- (void)setThumbnailScale:(CGFloat)thumbnailScale {
+    _thumbnailScale = thumbnailScale;
+    self.thumbnailView.scale = thumbnailScale;
 }
 
 @end

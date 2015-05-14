@@ -24,6 +24,7 @@
 @interface GAImageCollectionViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic) CGSize itemSize;
 
 @property (strong, nonatomic) NSArray *directories;
 
@@ -65,6 +66,7 @@
     collectionViewLayout.minimumLineSpacing = MARGIN;
     collectionViewLayout.headerReferenceSize = CGSizeMake(50, 50);
     collectionViewLayout.footerReferenceSize = CGSizeMake(50, 50);
+    self.itemSize = collectionViewLayout.itemSize;
 }
 
 - (CGSize)sizeForItem {
@@ -98,6 +100,8 @@
     NSString *identifier = [GAImageCollectionViewCell reusableIdentifier];
     GAImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
+    cell.thumbnailPreferredSize = self.itemSize;
+    cell.thumbnailScale = 10.0;
     cell.imageFile = [self imageFileAtIndexPath:indexPath];
     
     [cell.layer shouldRasterize];

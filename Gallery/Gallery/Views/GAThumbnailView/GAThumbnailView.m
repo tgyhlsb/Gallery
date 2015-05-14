@@ -59,8 +59,9 @@
 #define MIN_SCALE 2
 
 - (CGSize)imageSizeFromScale {
+    CGSize size = (self.preferredSize.width*self.preferredSize.height > 0) ? self.preferredSize : self.frame.size;
     CGFloat scale = MAX(self.scale, MIN_SCALE);
-    return CGSizeMake(self.frame.size.width*scale, self.frame.size.height*scale);
+    return CGSizeMake(size.width*scale, size.height*scale);
 }
 
 #pragma mark - Activity Indicator

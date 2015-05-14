@@ -26,7 +26,7 @@
                 <constraint firstItem="8XC-Z3-4oX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="muE-wl-Sgn"/>
             </constraints>
             <connections>
-                <outlet property="imageView" destination="8XC-Z3-4oX" id="JFK-x2-fGT"/>
+                <outlet property="thumbnailView" destination="8XC-Z3-4oX" id="ayf-68-8vy"/>
             </connections>
             <point key="canvasLocation" x="100" y="454"/>
         </collectionViewCell>

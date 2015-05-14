@@ -13,5 +13,7 @@
 @interface GAImageCollectionViewCell : GACollectionViewCell
 
 @property (strong, nonatomic) GAImageFile *imageFile;
+@property (nonatomic) CGSize thumbnailPreferredSize;
+@property (nonatomic) CGFloat thumbnailScale;
 
 @end
