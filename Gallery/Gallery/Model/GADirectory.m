@@ -19,12 +19,8 @@
 @property (strong, nonatomic, readwrite) NSArray *tree;
 @property (strong, nonatomic, readwrite) NSArray *images;
 @property (strong, nonatomic, readwrite) NSArray *directories;
-@property (weak, nonatomic, readwrite) GAFile *firstChild;
-@property (weak, nonatomic, readwrite) GAFile *lastChild;
-@property (weak, nonatomic, readwrite) GAImageFile *firstImage;
-@property (weak, nonatomic, readwrite) GAImageFile *lastImage;
-@property (weak, nonatomic, readwrite) GADirectory *firstDirectory;
-@property (weak, nonatomic, readwrite) GADirectory *lastDirectory;
+@property (strong, nonatomic, readwrite) NSArray *recursiveImages;
+@property (strong, nonatomic, readwrite) NSArray *recursiveDirectories;
 
 @end
 
@@ -114,8 +110,6 @@ static NSMutableArray *existingObjects;
             GAImageFile *imageFile = [GAImageFile imageFileFromPath:fullPath parent:self];
             [imageFile setPrevious:previous];
             [previous setNext:imageFile];
-            if (!self.firstChild) self.firstChild = imageFile;
-            if (!self.firstImage) self.firstImage = imageFile;
             [tree addObject:imageFile];
             [images addObject:imageFile];
             previous = imageFile;
@@ -126,8 +120,6 @@ static NSMutableArray *existingObjects;
             GADirectory *directory = [GADirectory directoryFromPath:fullPath parent:self];
             [directory setPrevious:previous];
             [previous setNext:directory];
-            if (!self.firstChild) self.firstChild = directory;
-            if (!self.firstDirectory) self.firstDirectory = directory;
             [tree addObject:directory];
             [directories addObject:directory];
             previous = directory;
@@ -137,15 +129,11 @@ static NSMutableArray *existingObjects;
             [GALogger addError:@"Failed to read : %@", file];
         }
     }
-    self.lastChild = previous;
-    self.lastImage = previousImage;
-    self.lastDirectory = previousDirectory;
-    
-    [self.firstChild setPrevious:self.lastChild];
-    [self.lastChild setNext:self.firstChild];
     
     self.images = images;
     self.directories = directories;
+    self.recursiveImages = images;
+    self.recursiveDirectories = directories;
     
     return tree;
 }

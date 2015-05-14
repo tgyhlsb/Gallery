@@ -27,6 +27,7 @@
 @property (nonatomic) CGSize itemSize;
 
 @property (strong, nonatomic) GADirectory *directory;
+@property (strong, nonatomic) NSArray *directories;
 
 @end
 
@@ -59,6 +60,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Getters & Setters
+
+- (void)setDirectory:(GADirectory *)directory {
+    _directory = directory;
+    NSMutableArray *tempDirectories = [NSMutableArray arrayWithObject:directory];
+    [tempDirectories addObjectsFromArray:directory.recursiveDirectories];
+    self.directories = tempDirectories;
 }
 
 #pragma mark - Initialization
@@ -101,11 +111,11 @@
 }
 
 - (GADirectory *)directoryAtIndex:(NSInteger)index {
-    return [self.directory.directories objectAtIndex:index];
+    return [self.directories objectAtIndex:index];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return [self.directory.directories count];
+    return [self.directories count];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -162,8 +172,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     GAImageFile *imageFile = [self imageFileAtIndexPath:indexPath];
-//    GADiaporamaVC *destination = [GADiaporamaVC newWithDirectory:imageFile.];
-//    [self.navigationController pushViewController:destination animated:YES];
+    GADiaporamaVC *destination = [GADiaporamaVC newWithFiles:self.directory.recursiveImages andSelectedImageFile:imageFile];
+    [self.navigationController pushViewController:destination animated:YES];
 }
 
 @end

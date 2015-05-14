@@ -17,7 +17,7 @@
 #pragma mark - Constructors
 
 + (instancetype)newWithDirectory:(GADirectory *)directory {
-    GADiaporamaVC *rootVC = [GADiaporamaVC newWithDirectory:directory];
+    GADiaporamaVC *rootVC = [GADiaporamaVC newWithFiles:directory.images andSelectedImageFile:nil];
     rootVC.showSplitButton = YES;
     GAFileDetailNavigationController *navVC = [[GAFileDetailNavigationController alloc] initWithRootViewController:rootVC];
     navVC.navigationBar.translucent = NO;

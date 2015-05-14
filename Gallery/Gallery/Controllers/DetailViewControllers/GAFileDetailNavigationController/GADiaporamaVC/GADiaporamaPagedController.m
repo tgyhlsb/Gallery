@@ -36,11 +36,35 @@
 
 #pragma mark - Constructors
 
++ (instancetype)newWithFiles:(NSArray *)files andSelectedImageFile:(GAImageFile *)imageFile {
+    return [[GADiaporamaPagedController alloc] initWithFiles:files andSelectedImageFile:imageFile];
+}
+
+
+- (id)initWithFiles:(NSArray *)files andSelectedImageFile:(GAImageFile *)imageFile {
+    self = [super init];
+    if (self) {
+        self.files = files;
+        self.selectedImageFile = imageFile;
+    }
+    return self;
+}
+
 #pragma mark - View life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self registerToDirectoryInspectorsNotifications];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.selectedImageFile) {
+        [self showImage:self.selectedImageFile];
+    } else {
+        [self showFiles:self.files];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -127,7 +151,7 @@
 
 - (void)directoryInspectorDidSelectDirectory:(NSNotification *)notification {
     GADirectory *directory = [notification.userInfo objectForKey:@"directory"];
-    [self showDirectory:directory];
+    [self showFiles:directory.images];
 }
 
 - (void)directoryInspectorDidSelectImageFile:(NSNotification *)notification {
@@ -183,16 +207,15 @@
 //}
 
 - (void)showImage:(GAImageFile *)imageFile {
+    self.selectedImageFile = imageFile;
     PAGED_CONTROLLERS_CLASS *controller = [self dequeueControllerForFile:imageFile];
-    [self setCenterViewController:controller animated:YES];
+    [self setCenterViewController:controller animated:NO];
     if ([GASettingsManager navigationFileType] == GASettingNavigationFileTypeDirectories) [GASettingsManager setNavigationFileType:GASettingNavigationFileTypeAll];
 }
 
-- (void)showDirectory:(GADirectory *)directory {
-    self.files = directory.images;
-    PAGED_CONTROLLERS_CLASS *controller = [self dequeueControllerForFile:[self.files firstObject]];
-    [self setCenterViewController:controller animated:NO];
-    if ([GASettingsManager navigationFileType] == GASettingNavigationFileTypeImages) [GASettingsManager setNavigationFileType:GASettingNavigationFileTypeAll];
+- (void)showFiles:(NSArray *)files {
+    self.files = files;
+    [self showImage:[files firstObject]];
 }
 
 - (void)reloadCenterViewController {
@@ -220,13 +243,29 @@
 }
 
 - (GAFile *)getNextFile {
-    NSInteger index = [self.files indexOfObject:self.centerViewController.file];
-    return [self.files objectAtIndex:index+1];
+    NSInteger index = [self indexForImageFile:self.selectedImageFile];
+    if (++index == self.files.count) index = 0; // Loop
+    
+    GAFile *file = [self.files objectAtIndex:index];
+    return [file isEqual:self.selectedImageFile] ? nil : file;
 }
 
 - (GAFile *)getPreviousFile {
-    NSInteger index = [self.files indexOfObject:self.centerViewController.file];
-    return [self.files objectAtIndex:index-1];
+    NSInteger index = [self indexForImageFile:self.selectedImageFile];
+    
+    if (--index < 0) index = self.files.count-1; // Loop
+    
+    GAFile *file = [self.files objectAtIndex:index];
+    return [file isEqual:self.selectedImageFile] ? nil : file;
+}
+
+- (NSInteger)indexForImageFile:(GAImageFile *)imageFile {
+    if (![self.files containsObject:imageFile]) {
+        [GALogger addError:@"Tried to acces image which is not in diaporama"];
+        return 0;
+    } else {
+        return [self.files indexOfObject:self.centerViewController.file];
+    }
 }
 
 #pragma mark - UIPageViewControllerDataSource

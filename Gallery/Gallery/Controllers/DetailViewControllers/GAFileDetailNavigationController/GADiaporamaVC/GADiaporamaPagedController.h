@@ -20,6 +20,9 @@
 @property (weak, nonatomic) id<GAFileInspectorBarButtonsDataSource> barItemDataSource;
 
 @property (strong, nonatomic) NSArray *files;
+@property (strong, nonatomic) GAImageFile *selectedImageFile;
+
++ (instancetype)newWithFiles:(NSArray *)files andSelectedImageFile:(GAImageFile *)imageFile;
 
 - (void)setParentViewController:(UIViewController *)parent withView:(UIView *)view;
 

@@ -18,6 +18,8 @@
 @property (strong, nonatomic, readonly) NSArray *tree;
 @property (strong, nonatomic, readonly) NSArray *images;
 @property (strong, nonatomic, readonly) NSArray *directories;
+@property (strong, nonatomic, readonly) NSArray *recursiveImages;
+@property (strong, nonatomic, readonly) NSArray *recursiveDirectories;
 
 + (NSMutableArray *)existingObjects;
 

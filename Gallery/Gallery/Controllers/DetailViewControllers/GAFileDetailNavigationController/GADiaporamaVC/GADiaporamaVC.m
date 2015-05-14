@@ -36,15 +36,15 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)newWithDirectory:(GADirectory *)directory {
-    return [[GADiaporamaVC alloc] initWithDirectory:directory];
++ (instancetype)newWithFiles:(NSArray *)files andSelectedImageFile:(GAImageFile *)imageFile {
+    return [[GADiaporamaVC alloc] initWithFiles:files andSelectedImageFile:imageFile];
 }
 
-- (id)initWithDirectory:(GADirectory *)directory {
+- (id)initWithFiles:(NSArray *)files andSelectedImageFile:(GAImageFile *)imageFile {
     self = [super init];
     if (self) {
-        self.directory = directory;
-        self.diaporamaController.files = directory.images;
+        self.diaporamaController.files = files;
+        self.diaporamaController.selectedImageFile = imageFile;
     }
     return self;
 }
@@ -53,6 +53,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     if (self.showSplitButton) {
         // Force show/hide button to appear
