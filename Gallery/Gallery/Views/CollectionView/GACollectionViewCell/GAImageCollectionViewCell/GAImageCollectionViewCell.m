@@ -1,36 +1,35 @@
 //
-//  GAImageFileTableViewCell.m
+//  GAImageCollectionViewCell.m
 //  Gallery
 //
-//  Created by Tanguy Hélesbeux on 05/05/2015.
+//  Created by Tanguy Hélesbeux on 12/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "GAImageFileTableViewCell.h"
+#import "GAImageCollectionViewCell.h"
 
 // Views
 #import "GAThumbnailView.h"
 
-@interface GAImageFileTableViewCell()
+@interface GAImageCollectionViewCell()
 
 @property (weak, nonatomic) IBOutlet GAThumbnailView *thumbnailView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-
 
 @end
 
-@implementation GAImageFileTableViewCell
+@implementation GAImageCollectionViewCell
+
+#pragma mark - Initialization
 
 - (void)awakeFromNib {
-    [super awakeFromNib];
-    [self configureView];
+    self.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark - Getters & Setters
 
-- (void)setImageFile:(GAFile *)imageFile {
+- (void)setImageFile:(GAImageFile *)imageFile {
     _imageFile = imageFile;
-    [self updateView];
+    self.thumbnailView.file = imageFile;
 }
 
 - (void)setThumbnailView:(GAThumbnailView *)thumbnailView {
@@ -47,23 +46,6 @@
 - (void)setThumbnailScale:(CGFloat)thumbnailScale {
     _thumbnailScale = thumbnailScale;
     self.thumbnailView.scale = thumbnailScale;
-}
-
-#pragma mark - View processing
-
-- (void)configureView {
-    
-}
-
-- (void)updateView {
-    self.thumbnailView.file = self.imageFile;
-    self.titleLabel.text = [self.imageFile nameWithExtension:YES];
-    
-    if ([self.imageFile isDirectory]) {
-        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    } else {
-        self.accessoryType = UITableViewCellAccessoryNone;
-    }
 }
 
 @end

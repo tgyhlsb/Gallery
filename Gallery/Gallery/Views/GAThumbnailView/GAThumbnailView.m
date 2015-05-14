@@ -49,10 +49,19 @@
 
 - (void)updateImageView {
     [self startLoading];
-    [GACacheManager thumbnailForFile:self.file inBackgroundWithBlock:^(UIImage *thumbnail) {
+    CGSize imageSize = [self imageSizeFromScale];
+    [GACacheManager thumbnailForFile:self.file andSize:imageSize inBackgroundWithBlock:^(UIImage *thumbnail) {
         self.image = thumbnail;
         [self stopLoading];
     }];
+}
+
+#define MIN_SCALE 2
+
+- (CGSize)imageSizeFromScale {
+    CGSize size = (self.preferredSize.width*self.preferredSize.height > 0) ? self.preferredSize : self.frame.size;
+    CGFloat scale = MAX(self.scale, MIN_SCALE);
+    return CGSizeMake(size.width*scale, size.height*scale);
 }
 
 #pragma mark - Activity Indicator

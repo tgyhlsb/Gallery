@@ -17,6 +17,8 @@
 @interface GADirectory()
 
 @property (strong, nonatomic, readwrite) NSArray *tree;
+@property (strong, nonatomic, readwrite) NSArray *images;
+@property (strong, nonatomic, readwrite) NSArray *directories;
 @property (weak, nonatomic, readwrite) GAFile *firstChild;
 @property (weak, nonatomic, readwrite) GAFile *lastChild;
 @property (weak, nonatomic, readwrite) GAImageFile *firstImage;
@@ -41,9 +43,33 @@
     
     self = [super initFromPath:path parent:parent];
     if (self) {
+        [GADirectory newObject:self];
         self.tree = [self readTreeFromPath:path];
     }
     return self;
+}
+
+#pragma mark - Factory
+
+static NSMutableArray *existingObjects;
+
++ (NSMutableArray *)existingObjects {
+    if (!existingObjects) {
+        existingObjects = [[NSMutableArray alloc] init];
+    }
+    return existingObjects;
+}
+
++ (void)newObject:(GADirectory *)imageFile {
+    [[self existingObjects] addObject:imageFile];
+}
+
++ (void)deleteObject:(GADirectory *)imageFile {
+    [[self existingObjects] removeObject:imageFile];
+}
+
+- (void)dealloc {
+    [GADirectory deleteObject:self];
 }
 
 #pragma mark - Getters & Setters
@@ -73,6 +99,8 @@
     }
     
     NSMutableArray *tree = [[NSMutableArray alloc] init];
+    NSMutableArray *images = [[NSMutableArray alloc] init];
+    NSMutableArray *directories = [[NSMutableArray alloc] init];
     NSString *fullPath = nil;
     
     GAFile *previous = nil;
@@ -89,6 +117,7 @@
             if (!self.firstChild) self.firstChild = imageFile;
             if (!self.firstImage) self.firstImage = imageFile;
             [tree addObject:imageFile];
+            [images addObject:imageFile];
             previous = imageFile;
             previousImage = imageFile;
             
@@ -100,6 +129,7 @@
             if (!self.firstChild) self.firstChild = directory;
             if (!self.firstDirectory) self.firstDirectory = directory;
             [tree addObject:directory];
+            [directories addObject:directory];
             previous = directory;
             previousDirectory = directory;
             
@@ -113,6 +143,9 @@
     
     [self.firstChild setPrevious:self.lastChild];
     [self.lastChild setNext:self.firstChild];
+    
+    self.images = images;
+    self.directories = directories;
     
     return tree;
 }

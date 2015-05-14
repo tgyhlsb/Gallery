@@ -73,6 +73,8 @@
     NSString *identifier = [GAImageFileTableViewCell reusableIdentifier];
     GAImageFileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
+    cell.thumbnailPreferredSize = CGSizeMake(44.0, 44.0);
+    cell.thumbnailScale = 10.0;
     cell.imageFile = [self.directory.tree objectAtIndex:indexPath.row];
     
     return cell;
