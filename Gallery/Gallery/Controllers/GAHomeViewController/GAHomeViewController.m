@@ -72,10 +72,10 @@
 }
 
 - (void)setWindowForPictureCollection{
-//    GADirectory *directory = [GAFileManager rootDirectory];
-//    GAFileNavigator *fileNavigator = [GAFileNavigator newWithRootDirectory:directory];
-//    GAImageCollectionNavigationController *controller = [GAImageCollectionNavigationController neww];
-//    [self setWindowForViewController:controller animated:NO];
+    GADirectory *directory = [GAFileManager rootDirectory];
+    GAFileNavigator *fileNavigator = [GAFileNavigator newWithRootDirectory:directory];
+    GAImageCollectionNavigationController *controller = [GAImageCollectionNavigationController newWithFileNavigator:fileNavigator];
+    [self setWindowForViewController:controller animated:NO];
 }
 
 #pragma mark - Broadcast

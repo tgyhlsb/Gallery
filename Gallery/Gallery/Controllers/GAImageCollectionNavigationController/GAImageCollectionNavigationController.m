@@ -23,8 +23,8 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)new {
-    GAImageCollectionViewController *controller = [GAImageCollectionViewController new];
++ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator {
+    GAImageCollectionViewController *controller = [GAImageCollectionViewController newWithFileNavigator:fileNavigator];
     return [[GAImageCollectionNavigationController alloc] initWithRootViewController:controller];
 }
 

@@ -44,6 +44,7 @@
     self = [super init];
     if (self) {
         self.fileNavigator = fileNavigator;
+        self.diaporamaController.fileNavigator = fileNavigator;
     }
     return self;
 }
@@ -79,7 +80,6 @@
         _diaporamaController = [GADiaporamaPagedController new];
         [_diaporamaController setParentViewController:self withView:self.view];
         _diaporamaController.delegate = self;
-        _diaporamaController.fileNavigator = self.fileNavigator;
     }
     return _diaporamaController;
 }

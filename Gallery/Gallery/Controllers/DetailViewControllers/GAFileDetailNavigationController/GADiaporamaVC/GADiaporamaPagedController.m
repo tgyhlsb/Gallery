@@ -93,6 +93,11 @@
     [self notifyDidChangeBarItems];
 }
 
+- (void)setFileNavigator:(GAFileNavigator *)fileNavigator {
+    _fileNavigator = fileNavigator;
+    [self showFile:[fileNavigator getFile]];
+}
+
 #pragma mark - BarItems
 
 - (NSArray *)topRightBarItems {
