@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+// Models
+#import "GAFileNavigator.h"
+
 @interface GADirectorySplitController : UISplitViewController
+
++ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator;
 
 @end

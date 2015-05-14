@@ -15,6 +15,8 @@
 
 @interface GAFileDetailNavigationController : UINavigationController
 
++ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator;
+
 - (GADiaporamaVC *)rootViewController;
 
 @end

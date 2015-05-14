@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVe-ON-ChT">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVe-ON-ChT">
                     <rect key="frame" x="277" y="285" width="46" height="30"/>
                     <state key="normal" title="Button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -26,7 +26,7 @@
                         <action selector="fileInspectorButtonHandler:" destination="-1" eventType="touchUpInside" id="Ogr-tG-AY7"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qW9-2t-cTV">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qW9-2t-cTV">
                     <rect key="frame" x="277" y="323" width="46" height="30"/>
                     <state key="normal" title="Button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -37,6 +37,12 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="qW9-2t-cTV" firstAttribute="top" secondItem="vVe-ON-ChT" secondAttribute="bottom" constant="8" id="3bz-Yc-N4h"/>
+                <constraint firstAttribute="centerX" secondItem="vVe-ON-ChT" secondAttribute="centerX" id="48G-Bk-t4I"/>
+                <constraint firstAttribute="centerX" secondItem="qW9-2t-cTV" secondAttribute="centerX" id="KGX-cG-Ej1"/>
+                <constraint firstAttribute="centerY" secondItem="vVe-ON-ChT" secondAttribute="centerY" id="enD-P7-dJt"/>
+            </constraints>
         </view>
     </objects>
 </document>

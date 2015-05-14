@@ -26,11 +26,29 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) CGSize itemSize;
 
+@property (strong, nonatomic) GAFileNavigator *fileNavigator;
 @property (strong, nonatomic) NSArray *directories;
 
 @end
 
 @implementation GAImageCollectionViewController
+
+#pragma mark - Constructors
+
++ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator {
+    return [[GAImageCollectionViewController alloc] initWithFileNavigator:fileNavigator];
+}
+
+- (id)initWithFileNavigator:(GAFileNavigator *)fileNavigator {
+    self = [super init];
+    if (self) {
+        self.fileNavigator = fileNavigator;
+    }
+    return self;
+}
+
+
+#pragma mark - View life cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -146,27 +164,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     GAImageFile *imageFile = [self imageFileAtIndexPath:indexPath];
-    GADiaporamaVC *destination = [GADiaporamaVC newWithRootDirectory:imageFile.parent withImageFile:imageFile];
+    [self.fileNavigator selectFile:imageFile];
+    GADiaporamaVC *destination = [GADiaporamaVC newWithFileNavigator:self.fileNavigator];
     [self.navigationController pushViewController:destination animated:YES];
 }
-
-
-#pragma mark - UICollectionViewDelegateFlowLayout
-
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    return CGSizeMake(50, 50);
-//}
-//
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
-//    return CGSizeMake(50, 50);
-//}
-//
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-//    return CGSizeMake(50, 50);
-//}
-//
-//- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-//    return UIEdgeInsetsMake(50, 20, 50, 20);
-//}
 
 @end

@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+// Models
+#import "GAFileNavigator.h"
+
 @interface GAImageCollectionNavigationController : UINavigationController
+
++ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator;
 
 @end
