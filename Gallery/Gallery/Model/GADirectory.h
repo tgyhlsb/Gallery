@@ -21,8 +21,6 @@
 @property (strong, nonatomic, readonly) NSArray *recursiveImages;
 @property (strong, nonatomic, readonly) NSArray *recursiveDirectories;
 
-+ (NSMutableArray *)existingObjects;
-
 + (instancetype)directoryFromPath:(NSString *)path
                            parent:(GAFile *)parent;
 

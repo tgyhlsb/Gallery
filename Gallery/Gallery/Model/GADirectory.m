@@ -39,33 +39,9 @@
     
     self = [super initFromPath:path parent:parent];
     if (self) {
-        [GADirectory newObject:self];
         self.tree = [self readTreeFromPath:path];
     }
     return self;
-}
-
-#pragma mark - Factory
-
-static NSMutableArray *existingObjects;
-
-+ (NSMutableArray *)existingObjects {
-    if (!existingObjects) {
-        existingObjects = [[NSMutableArray alloc] init];
-    }
-    return existingObjects;
-}
-
-+ (void)newObject:(GADirectory *)imageFile {
-    [[self existingObjects] addObject:imageFile];
-}
-
-+ (void)deleteObject:(GADirectory *)imageFile {
-    [[self existingObjects] removeObject:imageFile];
-}
-
-- (void)dealloc {
-    [GADirectory deleteObject:self];
 }
 
 #pragma mark - Getters & Setters
@@ -86,6 +62,8 @@ static NSMutableArray *existingObjects;
     return isDirectory;
 }
 
+#pragma mark - Factory
+
 - (NSArray *)readTreeFromPath:(NSString *)path {
     
     NSError *error;
@@ -97,14 +75,15 @@ static NSMutableArray *existingObjects;
     NSMutableArray *tree = [[NSMutableArray alloc] init];
     NSMutableArray *images = [[NSMutableArray alloc] init];
     NSMutableArray *directories = [[NSMutableArray alloc] init];
+    NSMutableArray *recursiveImages = [[NSMutableArray alloc] init];
+    NSMutableArray *recursiveDirectories = [[NSMutableArray alloc] init];
+    
     NSString *fullPath = nil;
     
     GAFile *previous = nil;
-    GAImageFile *previousImage = nil;
-    GADirectory *previousDirectory = nil;
     
     for (NSString *file in files) {
-        fullPath = [self.path stringByAppendingPathComponent:file];
+        fullPath = [path stringByAppendingPathComponent:file];
         if ([GAImageFile isImageFile:fullPath]) {
             
             GAImageFile *imageFile = [GAImageFile imageFileFromPath:fullPath parent:self];
@@ -112,8 +91,6 @@ static NSMutableArray *existingObjects;
             [previous setNext:imageFile];
             [tree addObject:imageFile];
             [images addObject:imageFile];
-            previous = imageFile;
-            previousImage = imageFile;
             
         } else if ([GADirectory isDirectory:fullPath]) {
             
@@ -122,8 +99,9 @@ static NSMutableArray *existingObjects;
             [previous setNext:directory];
             [tree addObject:directory];
             [directories addObject:directory];
-            previous = directory;
-            previousDirectory = directory;
+            [recursiveDirectories addObject:directory];
+            [recursiveDirectories addObjectsFromArray:directory.directories];
+            [recursiveImages addObjectsFromArray:directory.images];
             
         } else {
             [GALogger addError:@"Failed to read : %@", file];
@@ -132,10 +110,12 @@ static NSMutableArray *existingObjects;
     
     self.images = images;
     self.directories = directories;
-    self.recursiveImages = images;
-    self.recursiveDirectories = directories;
+    self.recursiveImages = recursiveImages;
+    self.recursiveDirectories = recursiveDirectories;
     
     return tree;
 }
+
+
 
 @end
