@@ -25,6 +25,7 @@
 		5A4570791AF6C96100A436AC /* GADirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570721AF6C96100A436AC /* GADirectory.m */; };
 		5A45707B1AF6C96100A436AC /* GAImageFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570761AF6C96100A436AC /* GAImageFile.m */; };
 		5A45707C1AF6C96100A436AC /* GAFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570781AF6C96100A436AC /* GAFile.m */; };
+		5A4D92A41B066CBA0008EF93 /* Gallery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92A21B066CBA0008EF93 /* Gallery.xcdatamodeld */; };
 		5A51E9851AF95CC3000B3576 /* GACacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9821AF95CC3000B3576 /* GACacheManager.m */; };
 		5A51E9861AF95CC3000B3576 /* GAFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9841AF95CC3000B3576 /* GAFileManager.m */; };
 		5A51E98A1AF96194000B3576 /* GAThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9891AF96194000B3576 /* GAThumbnailView.m */; };
@@ -119,6 +120,7 @@
 		5A4570761AF6C96100A436AC /* GAImageFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAImageFile.m; sourceTree = "<group>"; };
 		5A4570771AF6C96100A436AC /* GAFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFile.h; sourceTree = "<group>"; };
 		5A4570781AF6C96100A436AC /* GAFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAFile.m; sourceTree = "<group>"; };
+		5A4D92A31B066CBA0008EF93 /* Gallery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gallery.xcdatamodel; sourceTree = "<group>"; };
 		5A51E9811AF95CC3000B3576 /* GACacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GACacheManager.h; sourceTree = "<group>"; };
 		5A51E9821AF95CC3000B3576 /* GACacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GACacheManager.m; sourceTree = "<group>"; };
 		5A51E9831AF95CC3000B3576 /* GAFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFileManager.h; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				5A51E9A41AFBFEDE000B3576 /* GALog.m */,
 				5A51E9B21AFCBAAA000B3576 /* NSMutableArray+GAStack.h */,
 				5A51E9B31AFCBAAA000B3576 /* NSMutableArray+GAStack.m */,
+				5A4D92A21B066CBA0008EF93 /* Gallery.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 				5A8664D51AFD0EB3002578F7 /* GASettingsSplitController.m in Sources */,
 				5A36B99B1AFD76B9009098CB /* GADirectoryInspectorVC.m in Sources */,
 				5A51E9B41AFCBAAA000B3576 /* NSMutableArray+GAStack.m in Sources */,
+				5A4D92A41B066CBA0008EF93 /* Gallery.xcdatamodeld in Sources */,
 				5A51E99F1AFBE5C9000B3576 /* GASettingsManager.m in Sources */,
 				5AE27DD91B027DEF00102C43 /* GAImageCollectionViewCell.m in Sources */,
 				5A36B9961AFD768C009098CB /* GAFileInspectorVC.m in Sources */,
@@ -1027,6 +1031,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5A4D92A21B066CBA0008EF93 /* Gallery.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5A4D92A31B066CBA0008EF93 /* Gallery.xcdatamodel */,
+			);
+			currentVersion = 5A4D92A31B066CBA0008EF93 /* Gallery.xcdatamodel */;
+			path = Gallery.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5A4570381AF6C3D900A436AC /* Project object */;
 }
