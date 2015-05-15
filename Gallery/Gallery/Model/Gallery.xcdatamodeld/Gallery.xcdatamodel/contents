@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14C1510" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+    <entity name="GADirectory" representedClassName="" parentEntity="GAFile" syncable="YES">
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="GAImage" inverseName="directory" inverseEntity="GAImage" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GADirectory" inverseName="subDirectories" inverseEntity="GADirectory" syncable="YES"/>
+        <relationship name="subDirectories" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="GADirectory" inverseName="parent" inverseEntity="GADirectory" syncable="YES"/>
+    </entity>
+    <entity name="GAFile" isAbstract="YES" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="GAImage" representedClassName="" parentEntity="GAFile" syncable="YES">
+        <attribute name="extension" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="thumbnail" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="directory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GADirectory" inverseName="images" inverseEntity="GADirectory" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="GAFile" positionX="-207" positionY="-135" width="128" height="73"/>
+        <element name="GAImage" positionX="-81" positionY="-45" width="128" height="118"/>
+        <element name="GADirectory" positionX="-299" positionY="-34" width="128" height="88"/>
+    </elements>
 </model>
