@@ -15,7 +15,7 @@
 #import "SRProviderLocal.h"
 
 // Controllers
-#import "SRImagesCollectionViewController.h"
+#import "SRImageNavigationController.h"
 
 @interface SRAppDelegate ()
 
@@ -29,7 +29,7 @@
     SRDirectory *rootDirectory = [[SRProviderLocal defaultProvider] readPublicDocumentDirectory];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [SRImagesCollectionViewController newWithDirectory:rootDirectory];
+    self.window.rootViewController = [SRImageNavigationController newWithDirectory:rootDirectory];
     [self.window makeKeyAndVisible];
     
     return YES;

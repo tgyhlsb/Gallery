@@ -46,7 +46,7 @@
 #pragma mark - Fetch request
 
 - (void)updateFetchedResultController {
-    self.fetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectoryRecursively:self.directory];
+    self.fetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForFilesInDirectory:self.directory];
 }
 
 #pragma mark - UITableViewDataSource
