@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 // Models
-#import "GAFileNavigator.h"
+#import "GADirectory.h"
 
 @interface GAImageCollectionNavigationController : UINavigationController
 
-+ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator;
++ (instancetype)newWithRootDirectory:(GADirectory *)directory;
 
 @end

@@ -23,8 +23,8 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator {
-    GAImageCollectionViewController *controller = [GAImageCollectionViewController newWithFileNavigator:fileNavigator];
++ (instancetype)newWithRootDirectory:(GADirectory *)directory {
+    GAImageCollectionViewController *controller = [GAImageCollectionViewController newWithRootDirectory:directory];
     return [[GAImageCollectionNavigationController alloc] initWithRootViewController:controller];
 }
 
@@ -32,6 +32,8 @@
     self = [super initWithRootViewController:rootViewController];
     if (self) {
         self.toolbarHidden = NO;
+        self.toolbar.translucent = NO;
+        self.navigationBar.translucent = NO;
         rootViewController.toolbarItems = @[self.settingsButton];
     }
     return self;

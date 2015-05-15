@@ -12,7 +12,8 @@
 #import "GADiaporamaPagedController.h"
 
 // Models
-#import "GAFile+Pointers.h"
+#import "GAImageFile.h"
+#import "GADirectory.h"
 
 // Managers
 #import "GALogger.h"

@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic) CGSize itemSize;
 
-@property (strong, nonatomic) GAFileNavigator *fileNavigator;
+@property (strong, nonatomic) GADirectory *directory;
 @property (strong, nonatomic) NSArray *directories;
 
 @end
@@ -35,14 +35,14 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator {
-    return [[GAImageCollectionViewController alloc] initWithFileNavigator:fileNavigator];
++ (instancetype)newWithRootDirectory:(GADirectory *)directory {
+    return [[GAImageCollectionViewController alloc] initWithRootDirectory:directory];
 }
 
-- (id)initWithFileNavigator:(GAFileNavigator *)fileNavigator {
+- (id)initWithRootDirectory:(GADirectory *)directory {
     self = [super init];
     if (self) {
-        self.fileNavigator = fileNavigator;
+        self.directory = directory;
     }
     return self;
 }
@@ -53,7 +53,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeCollectionView];
-    self.directories = [GADirectory existingObjects];
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
 }
@@ -61,6 +60,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Getters & Setters
+
+- (void)setDirectory:(GADirectory *)directory {
+    _directory = directory;
+    NSMutableArray *tempDirectories = [NSMutableArray arrayWithObject:directory];
+    [tempDirectories addObjectsFromArray:directory.recursiveDirectories];
+    self.directories = tempDirectories;
 }
 
 #pragma mark - Initialization
@@ -119,7 +127,7 @@
     GAImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     cell.thumbnailPreferredSize = self.itemSize;
-    cell.thumbnailScale = 10.0;
+    cell.thumbnailScale = 2.0;
     cell.imageFile = [self imageFileAtIndexPath:indexPath];
     
     [cell.layer shouldRasterize];
@@ -164,8 +172,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     GAImageFile *imageFile = [self imageFileAtIndexPath:indexPath];
-    [self.fileNavigator selectFile:imageFile];
-    GADiaporamaVC *destination = [GADiaporamaVC newWithFileNavigator:self.fileNavigator];
+    GADiaporamaVC *destination = [GADiaporamaVC newWithFiles:self.directory.recursiveImages andSelectedImageFile:imageFile];
     [self.navigationController pushViewController:destination animated:YES];
 }
 

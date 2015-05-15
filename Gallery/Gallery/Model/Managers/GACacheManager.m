@@ -19,8 +19,7 @@ static GACacheManager *sharedManager;
 
 @interface GACacheManager()
 
-@property (strong, nonatomic) NSMutableDictionary *thumbnails;
-@property (strong, nonatomic) NSMutableArray *thumbnailKeyStack;
+@property (strong, nonatomic) NSCache *cachedThumbnails;
 
 @end
 
@@ -49,33 +48,31 @@ static GACacheManager *sharedManager;
 
 #pragma mark - Getters & Setters
 
-- (NSMutableDictionary *)thumbnails {
-    if (!_thumbnails) _thumbnails = [[NSMutableDictionary alloc] init];
-    return _thumbnails;
-}
-
-- (NSMutableArray *)thumbnailKeyStack {
-    if (!_thumbnailKeyStack) _thumbnailKeyStack = [[NSMutableArray alloc] init];
-    return _thumbnailKeyStack;
+- (NSCache *)cachedThumbnails {
+    if (!_cachedThumbnails) {
+        _cachedThumbnails = [[NSCache alloc] init];
+//        _cachedThumbnails.countLimit = [GASettingsManager thumbnailCacheLimit];
+    }
+    return _cachedThumbnails;
 }
 
 #pragma mark - Thumbnails
 
 - (void)clearThumbnails {
-    self.thumbnails = nil;
+    [self.cachedThumbnails removeAllObjects];
     [GALogger addInformation:@"Cache cleared"];
 }
 
 - (UIImage *)thumbnailForFile:(GAFile *)file andSize:(CGSize)size {
     NSString *key = [self keyForPath:file.path andSize:size];
-    UIImage *thumbnail = [self.thumbnails objectForKey:key];
+    UIImage *thumbnail = [self.cachedThumbnails objectForKey:key];
     if (thumbnail) return thumbnail;
     
     thumbnail = [self createThumbnailFromImage:[file imageForThumbnail] withSize:size];
     [GALogger addInformation:@"New thumbnail\n'%@'", key];
     
     if (thumbnail && [GASettingsManager shouldCacheThumbnails]) {
-        [self cacheThumbnail:thumbnail forPath:file.path andSize:size];
+        [self.cachedThumbnails setObject:thumbnail forKey:key];
     }
     
     return thumbnail;
@@ -131,29 +128,8 @@ static GACacheManager *sharedManager;
     return destImage;
 }
 
-- (void)cacheThumbnail:(UIImage *)thumbnail forPath:(NSString *)path andSize:(CGSize)size {
-    if (thumbnail) {
-        if ([self.thumbnailKeyStack count] >= [GASettingsManager thumbnailCacheLimit]) {
-            [self popThumbnail];
-        }
-        [self pushThumbnail:thumbnail forPath:path andSize:size];
-    }
-}
-
-- (void)pushThumbnail:(UIImage *)thumbnail forPath:(NSString *)path andSize:(CGSize)size {
-    NSString *key = [self keyForPath:path andSize:size];
-    [self.thumbnails setObject:thumbnail forKey:key];
-    [self.thumbnailKeyStack addObject:key];
-}
-
-- (void)popThumbnail {
-    NSString *removedThumbnailPath = [self.thumbnailKeyStack firstObject];
-    [self.thumbnails removeObjectForKey:removedThumbnailPath];
-    [self.thumbnailKeyStack removeObjectAtIndex:0];
-}
-
 - (NSString *)keyForPath:(NSString *)path andSize:(CGSize)size {
-    return [NSString stringWithFormat:@"%@_%.0fx%.0f", path, size.width, size.height];
+    return path;
 }
 
 @end

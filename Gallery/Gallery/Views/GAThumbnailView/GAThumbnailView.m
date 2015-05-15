@@ -48,6 +48,7 @@
 #pragma mark - Image processing
 
 - (void)updateImageView {
+    self.image = nil;
     [self startLoading];
     CGSize imageSize = [self imageSizeFromScale];
     [GACacheManager thumbnailForFile:self.file andSize:imageSize inBackgroundWithBlock:^(UIImage *thumbnail) {
@@ -56,7 +57,7 @@
     }];
 }
 
-#define MIN_SCALE 2
+#define MIN_SCALE 0.5
 
 - (CGSize)imageSizeFromScale {
     CGSize size = (self.preferredSize.width*self.preferredSize.height > 0) ? self.preferredSize : self.frame.size;

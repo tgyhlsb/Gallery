@@ -22,7 +22,8 @@
 #pragma mark - Initialization
 
 - (void)awakeFromNib {
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor whiteColor];
+    self.opaque = YES;
 }
 
 #pragma mark - Getters & Setters

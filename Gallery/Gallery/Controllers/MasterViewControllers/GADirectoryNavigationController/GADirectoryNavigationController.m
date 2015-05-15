@@ -11,10 +11,12 @@
 // Controllers
 #import "GASettingsSplitController.h"
 
+// Managers
+#import "GALogger.h"
+
 @interface GADirectoryNavigationController () <GADirectoryViewControllerDelegate>
 
 @property (strong, nonatomic) UIBarButtonItem *settingsButton;
-@property (strong, nonatomic) GAFileNavigator *fileNavigator;
 
 @end
 
@@ -22,17 +24,16 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator {
-    return [[GADirectoryNavigationController alloc] initWithFileNavigator:fileNavigator];
++ (instancetype)newWithRootDirectory:(GADirectory *)directory {
+    return [[GADirectoryNavigationController alloc] initWithRootDirectory:directory];
 }
 
-- (id)initWithFileNavigator:(GAFileNavigator *)fileNavigator {
-    GADirectoryMasterVC *rootVC = [GADirectoryMasterVC newWithDirectory:[fileNavigator getRootDirectory]];
+- (id)initWithRootDirectory:(GADirectory *)directory {
+    GADirectoryMasterVC *rootVC = [GADirectoryMasterVC newWithDirectory:directory];
     self = [super initWithRootViewController:rootVC];
     if (self) {
         self.navigationBar.translucent = NO;
         rootVC.delegate = self;
-        self.fileNavigator = fileNavigator;
         [self initializeToolbar];
     }
     return self;
@@ -41,6 +42,7 @@
 #pragma mark - Configuration
 
 - (void)initializeToolbar {
+    self.toolbar.translucent = NO;
     self.toolbarHidden = NO;
     self.toolbarItems = @[self.settingsButton];
     
@@ -78,7 +80,7 @@
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
     GADirectoryMasterVC *previousVC = [self.viewControllers objectAtIndex:self.viewControllers.count-2];
     previousVC.delegate = self;
-    [self.fileNavigator selectDirectory:previousVC.directory];
+    [self notifyDidSelectDirectory:previousVC.directory];
     return [super popViewControllerAnimated:animated];
 }
 
@@ -95,20 +97,38 @@
     } else if (file.isDirectory) {
         [self openDirectory:(GADirectory *)file];
     } else {
-        
+        [GALogger addError:@"User selected invalid file '%@'", file];
     }
 }
 
 - (void)openDirectory:(GADirectory *)directory {
+    [self pushControllerForDirectory:directory];
+    [self notifyDidSelectDirectory:directory];
+}
+
+- (void)pushControllerForDirectory:(GADirectory *)directory {
     GADirectoryMasterVC *destination = [GADirectoryMasterVC newWithDirectory:directory];
     destination.title = [directory nameWithExtension:YES];
     destination.delegate = self;
     [self pushViewController:destination animated:YES];
-    [self.fileNavigator selectDirectory:destination.directory];
 }
 
 - (void)openImagefile:(GAImageFile *)imageFile {
-    [self.fileNavigator selectFile:imageFile];
+    [self notifyDidSelectImageFile:imageFile];
+}
+
+#pragma mark - Broadcast
+
+- (void)notifyDidSelectDirectory:(GADirectory *)directory {
+    [[NSNotificationCenter defaultCenter] postNotificationName:GANotificationFileNavigationDidSelectDirectory
+                                                        object:self
+                                                      userInfo:@{@"directory": directory}];
+}
+
+- (void)notifyDidSelectImageFile:(GAImageFile *)imageFile {
+    [[NSNotificationCenter defaultCenter] postNotificationName:GANotificationFileNavigarionDidSelectImageFile
+                                                        object:self
+                                                      userInfo:@{@"imageFile": imageFile}];
 }
 
 @end

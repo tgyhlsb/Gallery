@@ -36,15 +36,15 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)newWithFileNavigator:(GAFileNavigator *)fileNavigator {
-    return [[GADiaporamaVC alloc] initWithFileNavigator:fileNavigator];
++ (instancetype)newWithFiles:(NSArray *)files andSelectedImageFile:(GAImageFile *)imageFile {
+    return [[GADiaporamaVC alloc] initWithFiles:files andSelectedImageFile:imageFile];
 }
 
-- (id)initWithFileNavigator:(GAFileNavigator *)fileNavigator {
+- (id)initWithFiles:(NSArray *)files andSelectedImageFile:(GAImageFile *)imageFile {
     self = [super init];
     if (self) {
-        self.fileNavigator = fileNavigator;
-        self.diaporamaController.fileNavigator = fileNavigator;
+        self.diaporamaController.files = files;
+        self.diaporamaController.selectedImageFile = imageFile;
     }
     return self;
 }
@@ -53,6 +53,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     if (self.showSplitButton) {
         // Force show/hide button to appear

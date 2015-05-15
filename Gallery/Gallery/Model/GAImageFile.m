@@ -30,38 +30,14 @@
     
     self = [super initFromPath:path parent:parent];
     if (self) {
-        [GAImageFile newObject:self];
     }
     return self;
-}
-
-#pragma mark - Factory
-
-static NSMutableArray *existingObjects;
-
-+ (NSMutableArray *)existingObjects {
-    if (!existingObjects) {
-        existingObjects = [[NSMutableArray alloc] init];
-    }
-    return existingObjects;
-}
-
-+ (void)newObject:(GAImageFile *)imageFile {
-    [[self existingObjects] addObject:imageFile];
-}
-
-+ (void)deleteObject:(GAImageFile *)imageFile {
-    [[self existingObjects] removeObject:imageFile];
-}
-
-- (void)dealloc {
-    [GAImageFile deleteObject:self];
 }
 
 #pragma mark - Getters & Setters
 
 - (UIImage *)imageForThumbnail {
-    return [UIImage imageWithContentsOfFile:self.path];
+    return [UIImage imageNamed:self.path];
 }
 
 - (BOOL)isImage {

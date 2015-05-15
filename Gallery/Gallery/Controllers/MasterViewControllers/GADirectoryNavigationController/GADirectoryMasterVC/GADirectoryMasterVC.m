@@ -8,9 +8,6 @@
 
 #import "GADirectoryMasterVC.h"
 
-// Models
-#import "GAFileNavigator.h"
-
 // Managers
 #import "GACacheManager.h"
 

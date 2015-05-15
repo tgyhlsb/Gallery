@@ -21,7 +21,6 @@
 }
 
 - (void)awakeFromNib {
-    self.backgroundColor = [UIColor purpleColor];
 }
 
 - (void)setDirectory:(GADirectory *)directory {

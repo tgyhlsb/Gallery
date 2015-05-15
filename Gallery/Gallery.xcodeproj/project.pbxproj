@@ -35,7 +35,6 @@
 		5A51E9A21AFBFBF0000B3576 /* GALogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9A11AFBFBF0000B3576 /* GALogger.m */; };
 		5A51E9A51AFBFEDE000B3576 /* GALog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9A41AFBFEDE000B3576 /* GALog.m */; };
 		5A51E9B41AFCBAAA000B3576 /* NSMutableArray+GAStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9B31AFCBAAA000B3576 /* NSMutableArray+GAStack.m */; };
-		5A51E9B71AFCC686000B3576 /* GAFile+Pointers.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9B61AFCC686000B3576 /* GAFile+Pointers.m */; };
 		5A7E0A2C1AFD57AA00DB09D7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E0A2E1AFD57AA00DB09D7 /* Localizable.strings */; };
 		5A7E0A341AFD5C0600DB09D7 /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5A7E0A331AFD5C0600DB09D7 /* localization.sh */; };
 		5A8664D51AFD0EB3002578F7 /* GASettingsSplitController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8664D31AFD0EB3002578F7 /* GASettingsSplitController.m */; };
@@ -74,7 +73,6 @@
 		5AE27DED1B0499FD00102C43 /* GAImageCollectionNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AE27DEB1B0499FD00102C43 /* GAImageCollectionNavigationController.xib */; };
 		5AE27DF21B04A53600102C43 /* GAHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE27DF01B04A53600102C43 /* GAHomeViewController.m */; };
 		5AE27DF31B04A53600102C43 /* GAHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AE27DF11B04A53600102C43 /* GAHomeViewController.xib */; };
-		5AE27DF71B04BD8600102C43 /* GAFileNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE27DF61B04BD8600102C43 /* GAFileNavigator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,8 +138,6 @@
 		5A51E9A41AFBFEDE000B3576 /* GALog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GALog.m; sourceTree = "<group>"; };
 		5A51E9B21AFCBAAA000B3576 /* NSMutableArray+GAStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+GAStack.h"; sourceTree = "<group>"; };
 		5A51E9B31AFCBAAA000B3576 /* NSMutableArray+GAStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+GAStack.m"; sourceTree = "<group>"; };
-		5A51E9B51AFCC686000B3576 /* GAFile+Pointers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GAFile+Pointers.h"; sourceTree = "<group>"; };
-		5A51E9B61AFCC686000B3576 /* GAFile+Pointers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GAFile+Pointers.m"; sourceTree = "<group>"; };
 		5A7E0A2B1AFD571400DB09D7 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5A7E0A2D1AFD57AA00DB09D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5A7E0A2F1AFD57AF00DB09D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -204,8 +200,6 @@
 		5AE27DEF1B04A53600102C43 /* GAHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAHomeViewController.h; path = GAHomeViewController/GAHomeViewController.h; sourceTree = "<group>"; };
 		5AE27DF01B04A53600102C43 /* GAHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GAHomeViewController.m; path = GAHomeViewController/GAHomeViewController.m; sourceTree = "<group>"; };
 		5AE27DF11B04A53600102C43 /* GAHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GAHomeViewController.xib; path = GAHomeViewController/GAHomeViewController.xib; sourceTree = "<group>"; };
-		5AE27DF51B04BD8600102C43 /* GAFileNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFileNavigator.h; sourceTree = "<group>"; };
-		5AE27DF61B04BD8600102C43 /* GAFileNavigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAFileNavigator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,10 +356,6 @@
 				5A4570761AF6C96100A436AC /* GAImageFile.m */,
 				5A4570771AF6C96100A436AC /* GAFile.h */,
 				5A4570781AF6C96100A436AC /* GAFile.m */,
-				5AE27DF51B04BD8600102C43 /* GAFileNavigator.h */,
-				5AE27DF61B04BD8600102C43 /* GAFileNavigator.m */,
-				5A51E9B51AFCC686000B3576 /* GAFile+Pointers.h */,
-				5A51E9B61AFCC686000B3576 /* GAFile+Pointers.m */,
 				5A51E9A31AFBFEDE000B3576 /* GALog.h */,
 				5A51E9A41AFBFEDE000B3576 /* GALog.m */,
 				5A51E9B21AFCBAAA000B3576 /* NSMutableArray+GAStack.h */,
@@ -806,7 +796,6 @@
 				5A8664DC1AFD0F13002578F7 /* GADirectorySplitController.m in Sources */,
 				5AE27DDF1B02837E00102C43 /* GACollectionReusableHeader.m in Sources */,
 				5A8665151AFD1B17002578F7 /* GASettingsMasterVC.m in Sources */,
-				5A51E9B71AFCC686000B3576 /* GAFile+Pointers.m in Sources */,
 				5AE27DF21B04A53600102C43 /* GAHomeViewController.m in Sources */,
 				5AE27DE41B0283C000102C43 /* GACollectionReusableFooter.m in Sources */,
 				5A86650D1AFD1AC2002578F7 /* GADirectoryNavigationController.m in Sources */,
@@ -822,7 +811,6 @@
 				5A8665091AFD1AC2002578F7 /* GASettingsDetailVC.m in Sources */,
 				5A8665051AFD1AC2002578F7 /* GADiaporamaVC.m in Sources */,
 				5A51E9A21AFBFBF0000B3576 /* GALogger.m in Sources */,
-				5AE27DF71B04BD8600102C43 /* GAFileNavigator.m in Sources */,
 				5A51E9961AF969CC000B3576 /* GAImageFileTableViewCell.m in Sources */,
 				5AE27DEC1B0499FD00102C43 /* GAImageCollectionNavigationController.m in Sources */,
 			);
