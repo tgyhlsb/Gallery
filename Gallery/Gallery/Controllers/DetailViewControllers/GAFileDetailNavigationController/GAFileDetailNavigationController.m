@@ -20,10 +20,17 @@
     GADiaporamaVC *rootVC = [GADiaporamaVC newWithFiles:directory.images andSelectedImageFile:nil];
     rootVC.showSplitButton = YES;
     GAFileDetailNavigationController *navVC = [[GAFileDetailNavigationController alloc] initWithRootViewController:rootVC];
-    navVC.navigationBar.translucent = NO;
-    navVC.toolbarHidden = NO;
-    navVC.toolbar.translucent = NO;
     return navVC;
+}
+
+- (id)initWithRootViewController:(UIViewController *)rootViewController {
+    self = [super initWithRootViewController:rootViewController];
+    if (self) {
+        self.navigationBar.translucent = NO;
+        self.toolbarHidden = NO;
+        self.toolbar.translucent = NO;
+    }
+    return self;
 }
 
 #pragma mark - Getters & Setters
