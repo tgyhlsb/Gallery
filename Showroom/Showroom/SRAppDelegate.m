@@ -15,7 +15,7 @@
 #import "SRProviderLocal.h"
 
 // Controllers
-#import "SRFilesTableViewController.h"
+#import "SRFilesNavigationController.h"
 
 @interface SRAppDelegate ()
 
@@ -29,7 +29,7 @@
     SRDirectory *rootDirectory = [[SRProviderLocal defaultProvider] readPublicDocumentDirectory];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [SRFilesTableViewController newWithDirectory:rootDirectory];
+    self.window.rootViewController = [SRFilesNavigationController newWithDirectory:rootDirectory];
     [self.window makeKeyAndVisible];
     
     return YES;

@@ -11,6 +11,9 @@
 // Models
 #import "SRModel.h"
 
+// Manager
+#import "SRLogger.h"
+
 @interface SRFilesTableViewController()
 
 @property (strong, nonatomic) SRDirectory *directory;
@@ -61,6 +64,38 @@
     cell.accessoryType = file.isDirectory ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
     
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    SRFile *file = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    if (file.isImage) {
+        [self didSelectImage:(SRImage *)file];
+    } else if (file.isDirectory) {
+        [self didSelectDirectory:(SRDirectory *)file];
+    } else {
+        [SRLogger addError:@"Tried to open invalid file '%@'", file];
+    }
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)didSelectImage:(SRImage *)image {
+    if ([self.delegate respondsToSelector:@selector(filesTableViewController:didSelectImage:)]) {
+        [self.delegate filesTableViewController:self didSelectImage:image];
+    }
+}
+
+- (void)didSelectDirectory:(SRDirectory *)directory {
+    if ([self.delegate respondsToSelector:@selector(filesTableViewController:didSelectDirectory:)]) {
+        [self.delegate filesTableViewController:self didSelectDirectory:directory];
+    }
+    
+    SRFilesTableViewController *destination = [SRFilesTableViewController newWithDirectory:directory];
+    destination.delegate = self.delegate;
+    [self.navigationController pushViewController:destination animated:YES];
 }
 
 @end
