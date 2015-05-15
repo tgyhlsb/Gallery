@@ -45,6 +45,24 @@ static SRModel *defaultModel;
                                                           cacheName:nil];
 }
 
+- (NSFetchedResultsController *)fetchedResultControllerForImagesInDirectory:(SRDirectory *)directory{
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRImage className]];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"parent = %@", directory];
+    
+    NSSortDescriptor *categorySortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name"
+                                                                             ascending:YES
+                                                                              selector:@selector(compare:)];
+    
+    request.sortDescriptors = @[categorySortDescriptor];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:self.managedObjectContext
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
+}
+
 #pragma mark - Core Data stack
 
 @synthesize managedObjectContext = _managedObjectContext;

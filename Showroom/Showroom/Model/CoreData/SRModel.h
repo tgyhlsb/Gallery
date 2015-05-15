@@ -26,5 +26,6 @@
 
 #define Request factory
 - (NSFetchedResultsController *)fetchedResultControllerForFilesInDirectory:(SRDirectory *)directory;
+- (NSFetchedResultsController *)fetchedResultControllerForImagesInDirectory:(SRDirectory *)directory;
 
 @end

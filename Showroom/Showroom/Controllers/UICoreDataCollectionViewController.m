@@ -49,15 +49,14 @@
     }
 }
 
-#pragma mark - UITableViewDataSource
+#pragma mark - UICollectionViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     NSInteger sections = [[self.fetchedResultsController sections] count];
     return sections;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     NSInteger rows = 0;
     if ([[self.fetchedResultsController sections] count] > 0) {
@@ -65,21 +64,6 @@
         rows = [sectionInfo numberOfObjects];
     }
     return rows;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return [[[self.fetchedResultsController sections] objectAtIndex:section] name];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
-{
-    return [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
-}
-
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    return [self.fetchedResultsController sectionIndexTitles];
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
