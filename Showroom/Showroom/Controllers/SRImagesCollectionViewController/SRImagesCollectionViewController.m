@@ -42,12 +42,20 @@
     self = [super initWithCollectionViewLayout:collectionViewLayout];
     if (self) {
         self.directory = directory;
-        
-        [SRCollectionReusableHeader registerToCollectionView:self.collectionView];
-        [SRCollectionReusableFooter registerToCollectionView:self.collectionView];
-        [SRImageCollectionViewCell registerToCollectionView:self.collectionView];
     }
     return self;
+}
+
+#pragma mark - View life cycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self initializaView];
+    
+    [SRCollectionReusableHeader registerToCollectionView:self.collectionView];
+    [SRCollectionReusableFooter registerToCollectionView:self.collectionView];
+    [SRImageCollectionViewCell registerToCollectionView:self.collectionView];
 }
 
 #pragma mark - Initialization
@@ -61,6 +69,10 @@
     return CGSizeMake(itemWidth, itemWidth);
 }
 
+- (void)initializaView {
+    self.collectionView.backgroundColor = [UIColor whiteColor];
+}
+
 #pragma mark - Getters & Setters
 
 - (void)setDirectory:(SRDirectory *)directory {
@@ -71,7 +83,8 @@
 #pragma mark - Fetch request
 
 - (void)updateFetchedResultController {
-    self.fetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectoryRecursively:self.directory];
+    self.sectionFetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForDirectoriesInDirectoryRecursively:self.directory];
+    self.cellFetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectoryRecursively:self.directory];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -80,7 +93,7 @@
     NSString *identifier = [SRImageCollectionViewCell reusableIdentifier];
     SRImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    SRImage *image = [self.cellFetchedResultsController objectAtIndexPath:indexPath];
     cell.titleLabel.text = image.name;
     
     return cell;
@@ -92,7 +105,9 @@
                                                                             withReuseIdentifier:identifier
                                                                                    forIndexPath:indexPath];
     
-//    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:indexPath.section];
+    NSIndexPath *isectionIndexPath = [NSIndexPath indexPathForRow:indexPath.section inSection:0];
+    SRDirectory *directory = [self.sectionFetchedResultsController objectAtIndexPath:isectionIndexPath];
+    header.titleLabel.text = directory.name;
     return header;
 }
 

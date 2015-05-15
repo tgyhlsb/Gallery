@@ -12,7 +12,8 @@
 @interface UICoreDataCollectionViewController : UICollectionViewController <NSFetchedResultsControllerDelegate>
 
 // The controller (this class fetches nothing if this is not set).
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSFetchedResultsController *cellFetchedResultsController;
+@property (strong, nonatomic) NSFetchedResultsController *sectionFetchedResultsController;
 
 // Causes the fetchedResultsController to refetch the data.
 // You almost certainly never need to call this.

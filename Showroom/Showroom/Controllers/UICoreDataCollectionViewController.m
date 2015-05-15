@@ -14,14 +14,22 @@
 
 - (void)performFetch
 {
-    if (self.fetchedResultsController) {
-        if (self.fetchedResultsController.fetchRequest.predicate) {
-            if (self.debug) NSLog(@"[%@ %@] fetching %@ with predicate: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName, self.fetchedResultsController.fetchRequest.predicate);
+    if (self.cellFetchedResultsController) {
+        if (self.cellFetchedResultsController.fetchRequest.predicate) {
+            if (self.debug) NSLog(@"[%@ %@] fetching %@ with predicate: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.cellFetchedResultsController.fetchRequest.entityName, self.cellFetchedResultsController.fetchRequest.predicate);
         } else {
-            if (self.debug) NSLog(@"[%@ %@] fetching all %@ (i.e., no predicate)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName);
+            if (self.debug) NSLog(@"[%@ %@] fetching all %@ (i.e., no predicate)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.cellFetchedResultsController.fetchRequest.entityName);
         }
         NSError *error;
-        BOOL success = [self.fetchedResultsController performFetch:&error];
+        BOOL success = NO;
+        
+        // Cells
+        success = [self.cellFetchedResultsController performFetch:&error];
+        if (!success) NSLog(@"[%@ %@] performFetch: failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+        if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
+
+        // Sections
+        success = [self.sectionFetchedResultsController performFetch:&error];
         if (!success) NSLog(@"[%@ %@] performFetch: failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
         if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
     } else {
@@ -30,11 +38,11 @@
     [self.collectionView reloadData];
 }
 
-- (void)setFetchedResultsController:(NSFetchedResultsController *)newfrc
+- (void)setCellFetchedResultsController:(NSFetchedResultsController *)newfrc
 {
-    NSFetchedResultsController *oldfrc = _fetchedResultsController;
+    NSFetchedResultsController *oldfrc = _cellFetchedResultsController;
     if (newfrc != oldfrc) {
-        _fetchedResultsController = newfrc;
+        _cellFetchedResultsController = newfrc;
         newfrc.delegate = self;
         if ((!self.title || [self.title isEqualToString:oldfrc.fetchRequest.entity.name]) && (!self.navigationController || !self.navigationItem.title)) {
             self.title = newfrc.fetchRequest.entity.name;
@@ -52,15 +60,15 @@
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    NSInteger sections = [[self.fetchedResultsController sections] count];
+    NSInteger sections = [[self.cellFetchedResultsController sections] count];
     return sections;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     NSInteger rows = 0;
-    if ([[self.fetchedResultsController sections] count] > 0) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    if ([[self.cellFetchedResultsController sections] count] > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.cellFetchedResultsController sections] objectAtIndex:section];
         rows = [sectionInfo numberOfObjects];
     }
     return rows;

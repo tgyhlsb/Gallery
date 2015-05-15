@@ -25,19 +25,41 @@ static SRModel *defaultModel;
     return defaultModel;
 }
 
+#pragma mark - Sort descriptor factory
+
+- (NSSortDescriptor *)fileSortDescriptor {
+    return[NSSortDescriptor sortDescriptorWithKey:@"name"
+                                        ascending:YES
+                                         selector:@selector(compare:)];
+}
+
+- (NSSortDescriptor *)imageSortDescriptor {
+    return[NSSortDescriptor sortDescriptorWithKey:@"name"
+                                        ascending:YES
+                                         selector:@selector(compare:)];
+}
+
+- (NSSortDescriptor *)directorySortDescriptor {
+    return[NSSortDescriptor sortDescriptorWithKey:@"name"
+                                        ascending:YES
+                                         selector:@selector(compare:)];
+}
+
+- (NSSortDescriptor *)parentSortDescriptor {
+    return[NSSortDescriptor sortDescriptorWithKey:@"parent.name"
+                                        ascending:YES
+                                         selector:@selector(compare:)];
+}
+
 #pragma mark - Request factory
 
-- (NSFetchedResultsController *)fetchedResultControllerForFilesInDirectory:(SRDirectory *)directory{
+- (NSFetchedResultsController *)fetchedResultControllerForFilesInDirectory:(SRDirectory *)directory {
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRFile className]];
     
     request.predicate = [NSPredicate predicateWithFormat:@"parent = %@", directory];
     
-    NSSortDescriptor *categorySortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name"
-                                                                             ascending:YES
-                                                                              selector:@selector(compare:)];
-    
-    request.sortDescriptors = @[categorySortDescriptor];
+    request.sortDescriptors = @[[self fileSortDescriptor]];
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                managedObjectContext:self.managedObjectContext
@@ -45,17 +67,27 @@ static SRModel *defaultModel;
                                                           cacheName:nil];
 }
 
-- (NSFetchedResultsController *)fetchedResultControllerForImagesInDirectoryRecursively:(SRDirectory *)directory{
+- (NSFetchedResultsController *)fetchedResultControllerForImagesInDirectoryRecursively:(SRDirectory *)directory {
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRImage className]];
     
     request.predicate = [NSPredicate predicateWithFormat:@"path contains[cd] %@", directory.path];
     
-    NSSortDescriptor *categorySortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name"
-                                                                             ascending:YES
-                                                                              selector:@selector(compare:)];
+    request.sortDescriptors = @[[self parentSortDescriptor], [self imageSortDescriptor]];
     
-    request.sortDescriptors = @[categorySortDescriptor];
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:self.managedObjectContext
+                                                 sectionNameKeyPath:@"parent.name"
+                                                          cacheName:nil];
+}
+
+- (NSFetchedResultsController *)fetchedResultControllerForDirectoriesInDirectoryRecursively:(SRDirectory *)directory {
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRDirectory className]];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"path contains[cd] %@", directory.path];
+    
+    request.sortDescriptors = @[[self directorySortDescriptor]];
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                managedObjectContext:self.managedObjectContext
