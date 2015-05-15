@@ -32,6 +32,8 @@
     self = [super initWithRootViewController:rootViewController];
     if (self) {
         self.toolbarHidden = NO;
+        self.toolbar.translucent = NO;
+        self.navigationBar.translucent = NO;
         rootViewController.toolbarItems = @[self.settingsButton];
     }
     return self;
