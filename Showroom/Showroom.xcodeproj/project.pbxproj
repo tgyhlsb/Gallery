@@ -13,6 +13,7 @@
 		5A4D92DE1B0673EC0008EF93 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D92DC1B0673EC0008EF93 /* LaunchScreen.xib */; };
 		5A4D92EA1B0673EC0008EF93 /* ShowroomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92E91B0673EC0008EF93 /* ShowroomTests.m */; };
 		5A4D92FA1B0675B40008EF93 /* Showroom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92F71B0675B40008EF93 /* Showroom.xcdatamodeld */; };
+		5A4D92FC1B0676010008EF93 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4D92FB1B0676010008EF93 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		5A4D92E81B0673EC0008EF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A4D92E91B0673EC0008EF93 /* ShowroomTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowroomTests.m; sourceTree = "<group>"; };
 		5A4D92F81B0675B40008EF93 /* Showroom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Showroom.xcdatamodel; sourceTree = "<group>"; };
+		5A4D92FB1B0676010008EF93 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A4D92FC1B0676010008EF93 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +63,7 @@
 		5A4D92BE1B0673EB0008EF93 = {
 			isa = PBXGroup;
 			children = (
+				5A4D92FB1B0676010008EF93 /* CoreData.framework */,
 				5A4D92C91B0673EC0008EF93 /* Showroom */,
 				5A4D92E61B0673EC0008EF93 /* ShowroomTests */,
 				5A4D92C81B0673EC0008EF93 /* Products */,
