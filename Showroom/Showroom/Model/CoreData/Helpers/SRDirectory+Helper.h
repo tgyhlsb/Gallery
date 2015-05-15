@@ -1,5 +1,5 @@
 //
-//  SRDirectory+Serializer.h
+//  SRDirectory+Helper.h
 //  Showroom
 //
 //  Created by Tanguy Hélesbeux on 15/05/2015.
@@ -8,8 +8,8 @@
 
 #import "SRDirectory.h"
 
-@interface SRDirectory (Serializer)
+@interface SRDirectory (Helper)
 
-+ (SRDirectory *)directoryWithAttributes:(NSDictionary *)attributes;
++ (BOOL)fileAtPathIsDirectory:(NSString *)path;
 
 @end

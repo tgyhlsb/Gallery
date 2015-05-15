@@ -10,4 +10,8 @@
 
 @implementation SRImage (Serializer)
 
++ (SRImage *)imageWithAttributes:(NSDictionary *)attributes {
+    return nil;
+}
+
 @end

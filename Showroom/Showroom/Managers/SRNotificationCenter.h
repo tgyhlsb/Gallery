@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString *SRNotificationProviderLocalFilesDidChange = @"SRNotificationProviderLocalFilesDidChange";
+
 @interface SRNotificationCenter : NSNotificationCenter
 
 @end

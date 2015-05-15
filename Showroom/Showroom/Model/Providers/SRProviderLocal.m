@@ -8,8 +8,74 @@
 
 #import "SRProviderLocal.h"
 
+// Managers
+#import "SRNotificationCenter.h"
+#import "SRLogger.h"
+
+// Models
+#import "SRDirectory+Serializer.h"
+#import "SRImage+Serializer.h"
+#import "SRFile+Helper.h"
+#import "SRImage+Helper.h"
+#import "SRDirectory+Helper.h"
+
 @implementation SRProviderLocal
 
+#pragma mark - Factory
+
+- (SRDirectory *)readPublicDocumentDirectory {
+    NSString *publicDocumentsDir = [[self applicationDocumentsDirectory] absoluteString];
+    return [self directoryFromPath:publicDocumentsDir];
+}
+
+- (SRDirectory *)directoryFromPath:(NSString *)path {
+    
+    NSDictionary *attributes = [self getAttributesForFileAtPath:path];
+    SRDirectory *rootDirectory = [SRDirectory directoryWithAttributes:attributes];
+    
+    NSArray *files = [self getFileNamesAtPath:path];
+    NSString *fullPath = nil;
+    
+    for (NSString *file in files) {
+        fullPath = [path stringByAppendingPathComponent:file];
+        if ([SRImage fileAtPathIsImage:fullPath]) {
+            
+            SRImage *image = [self imageFromPath:fullPath];
+            
+        } else if ([SRDirectory fileAtPathIsDirectory:fullPath]) {
+            
+            SRDirectory *directory = [self directoryFromPath:fullPath];
+            
+        } else {
+            [SRLogger addError:@"Failed to read : %@", file];
+        }
+    }
+    
+    return rootDirectory;
+}
+
+- (SRImage *)imageFromPath:(NSString *)path {
+    NSDictionary *attributes = [self getAttributesForFileAtPath:path];
+    return [SRImage imageWithAttributes:attributes];
+}
+
+- (NSArray *)getFileNamesAtPath:(NSString *)path {
+    NSError *error;
+    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
+    if (error) {
+        [SRLogger addError:@"Error reading contents of documents directory: %@", [error localizedDescription]];
+    }
+    return files;
+}
+
+- (NSDictionary *)getAttributesForFileAtPath:(NSString *)path {
+    NSError *error;
+    NSDictionary *info = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:&error];
+    if (error) {
+        [SRLogger addError:@"Error reading attributes of documents directory: %@", [error localizedDescription]];
+    }
+    return info;
+}
 
 #pragma mark - Monitoring
 
@@ -19,13 +85,19 @@ static dispatch_queue_t _dispatchQueue;
 // A source of potential notifications
 static dispatch_source_t _source;
 
+
+- (NSURL *)applicationDocumentsDirectory {
+    // The directory the application uses to store the Core Data store file. This code uses a directory named "com.helesbeux.Showroom" in the application's documents directory.
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+}
+
 - (void)startMonitoring {
     
     // Get the path to the home directory
-    NSString * homeDirectory = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSURL * homeDirectory = [self applicationDocumentsDirectory];
     
     // Create a new file descriptor - we need to convert the NSString to a char * i.e. C style string
-    int filedes = open([homeDirectory cStringUsingEncoding:NSASCIIStringEncoding], O_EVTONLY);
+    int filedes = open([[homeDirectory absoluteString] cStringUsingEncoding:NSASCIIStringEncoding], O_EVTONLY);
     
     // Create a dispatch queue - when a file changes the event will be sent to this queue
     _dispatchQueue = dispatch_queue_create("FileMonitorQueue", 0);
@@ -67,10 +139,7 @@ static dispatch_source_t _source;
     
     // This block will be called when teh file changes
     dispatch_source_set_event_handler(_source, ^(){
-        [self stopMonitoring];
-        [GALogger addInformation:@"File directory changed"];
-        // We call an NSNotification so the file can change can be detected anywhere
-        [[NSNotificationCenter defaultCenter] postNotificationName:GANotificationFileDirectoryChanged object:Nil];
+        [self filesDidChange];
     });
     
     // When we stop monitoring the file this will be called and it will close the file descriptor
@@ -91,6 +160,10 @@ static dispatch_source_t _source;
 - (void)stopMonitoring {
     // When we want to stop monitoring the file we call this
     dispatch_source_cancel(_source);
+}
+
+- (void)filesDidChange {
+    [self stopMonitoring];
 }
 
 @end

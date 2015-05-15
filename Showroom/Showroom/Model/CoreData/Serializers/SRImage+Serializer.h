@@ -10,4 +10,6 @@
 
 @interface SRImage (Serializer)
 
++ (SRImage *)imageWithAttributes:(NSDictionary *)attributes;
+
 @end

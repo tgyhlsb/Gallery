@@ -1,13 +1,16 @@
 //
-//  SRFile+Serializer.m
+//  SRFile+Helper.h
 //  Showroom
 //
 //  Created by Tanguy Hélesbeux on 15/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "SRFile+Serializer.h"
+#import "SRFile.h"
 
-@implementation SRFile (Serializer)
+@interface SRFile (Helper)
+
+- (BOOL)isImage;
+- (BOOL)isDirectory;
 
 @end

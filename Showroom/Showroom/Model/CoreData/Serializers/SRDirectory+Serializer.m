@@ -10,4 +10,8 @@
 
 @implementation SRDirectory (Serializer)
 
++ (SRDirectory *)directoryWithAttributes:(NSDictionary *)attributes {
+    return nil;
+}
+
 @end
