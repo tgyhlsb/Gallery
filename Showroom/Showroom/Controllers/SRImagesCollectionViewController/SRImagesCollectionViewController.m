@@ -13,6 +13,9 @@
 #import "SRCollectionReusableHeader.h"
 #import "SRImageCollectionViewCell.h"
 
+// Controllers
+#import "SRImageViewController.h"
+
 #define MARGIN 10
 
 @interface SRImagesCollectionViewController ()
@@ -118,6 +121,17 @@
                                                                                    forIndexPath:indexPath];
     
     return footer;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    SRImage *image = [self.cellFetchedResultsController objectAtIndexPath:indexPath];
+    
+    SRImageViewController *destination = [SRImageViewController newWithImage:image];
+    [self.navigationController pushViewController:destination animated:YES];
+    
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 
 @end

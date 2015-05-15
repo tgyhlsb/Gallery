@@ -43,6 +43,8 @@
 		5A4D93CE1B06A2060008EF93 /* SRImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93CC1B06A2060008EF93 /* SRImageCollectionViewCell.m */; };
 		5A4D93CF1B06A2060008EF93 /* SRImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D93CD1B06A2060008EF93 /* SRImageCollectionViewCell.xib */; };
 		5A4D93D21B06AA8C0008EF93 /* SRImageNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93D11B06AA8C0008EF93 /* SRImageNavigationController.m */; };
+		5A4D93D71B06AB7F0008EF93 /* SRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93D51B06AB7F0008EF93 /* SRImageViewController.m */; };
+		5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,9 @@
 		5A4D93CD1B06A2060008EF93 /* SRImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		5A4D93D01B06AA8C0008EF93 /* SRImageNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRImageNavigationController.h; path = SRImageNavigationController/SRImageNavigationController.h; sourceTree = "<group>"; };
 		5A4D93D11B06AA8C0008EF93 /* SRImageNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRImageNavigationController.m; path = SRImageNavigationController/SRImageNavigationController.m; sourceTree = "<group>"; };
+		5A4D93D41B06AB7F0008EF93 /* SRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRImageViewController.h; path = SRImageViewController/SRImageViewController.h; sourceTree = "<group>"; };
+		5A4D93D51B06AB7F0008EF93 /* SRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRImageViewController.m; path = SRImageViewController/SRImageViewController.m; sourceTree = "<group>"; };
+		5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRImageViewController.xib; path = SRImageViewController/SRImageViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +221,7 @@
 				5A4D93731B068FC30008EF93 /* UICoreDataTableViewController.m */,
 				5A4D938F1B069ABF0008EF93 /* UICoreDataCollectionViewController.h */,
 				5A4D93901B069ABF0008EF93 /* UICoreDataCollectionViewController.m */,
+				5A4D93D91B06AB840008EF93 /* SRImageViewController */,
 				5A4D93D31B06AA900008EF93 /* SRImageNavigationController */,
 				5A4D93951B069C3B0008EF93 /* SRImagesCollectionViewController */,
 				5A4D938E1B06967D0008EF93 /* SRFilesNavigationController */,
@@ -411,6 +417,16 @@
 			name = SRImageNavigationController;
 			sourceTree = "<group>";
 		};
+		5A4D93D91B06AB840008EF93 /* SRImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5A4D93D41B06AB7F0008EF93 /* SRImageViewController.h */,
+				5A4D93D51B06AB7F0008EF93 /* SRImageViewController.m */,
+				5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */,
+			);
+			name = SRImageViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -498,6 +514,7 @@
 				5A4D93C61B06A13D0008EF93 /* SRCollectionReusableHeader.xib in Resources */,
 				5A4D93C41B06A13D0008EF93 /* SRCollectionReusableFooter.xib in Resources */,
 				5A4D93001B0676730008EF93 /* Localizable.strings in Resources */,
+				5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */,
 				5A4D92DB1B0673EC0008EF93 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,6 +551,7 @@
 				5A4D93C71B06A13D0008EF93 /* SRCollectionViewCell.m in Sources */,
 				5A4D93D21B06AA8C0008EF93 /* SRImageNavigationController.m in Sources */,
 				5A4D92CD1B0673EC0008EF93 /* main.m in Sources */,
+				5A4D93D71B06AB7F0008EF93 /* SRImageViewController.m in Sources */,
 				5A4D935F1B068A0B0008EF93 /* SRFile+Serializer.m in Sources */,
 				5A4D93841B0695240008EF93 /* SRImage.m in Sources */,
 				5A4D93251B067AF80008EF93 /* SRProvider.m in Sources */,
