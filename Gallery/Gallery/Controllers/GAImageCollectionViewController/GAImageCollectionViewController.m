@@ -127,7 +127,7 @@
     GAImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     cell.thumbnailPreferredSize = self.itemSize;
-    cell.thumbnailScale = 10.0;
+    cell.thumbnailScale = 2.0;
     cell.imageFile = [self imageFileAtIndexPath:indexPath];
     
     [cell.layer shouldRasterize];

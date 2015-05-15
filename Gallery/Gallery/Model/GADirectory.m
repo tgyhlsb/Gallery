@@ -10,6 +10,7 @@
 
 // Managers
 #import "GALogger.h"
+#import "GACacheManager.h"
 
 // Models
 #import "GAImageFile.h"
@@ -91,6 +92,7 @@
             [previous setNext:imageFile];
             [tree addObject:imageFile];
             [images addObject:imageFile];
+            [self preloadImageThumbnail:imageFile];
             
         } else if ([GADirectory isDirectory:fullPath]) {
             
@@ -114,6 +116,12 @@
     self.recursiveDirectories = recursiveDirectories;
     
     return tree;
+}
+
+- (void)preloadImageThumbnail:(GAImageFile *)imageFile {
+    [GACacheManager thumbnailForFile:imageFile andSize:CGSizeMake(200, 200) inBackgroundWithBlock:^(UIImage *thumbnail) {
+        
+    }];
 }
 
 
