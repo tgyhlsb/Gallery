@@ -25,6 +25,11 @@
 		5A4570791AF6C96100A436AC /* GADirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570721AF6C96100A436AC /* GADirectory.m */; };
 		5A45707B1AF6C96100A436AC /* GAImageFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570761AF6C96100A436AC /* GAImageFile.m */; };
 		5A45707C1AF6C96100A436AC /* GAFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4570781AF6C96100A436AC /* GAFile.m */; };
+		5A4D92A81B0670EC0008EF93 /* Gallery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92A61B0670EC0008EF93 /* Gallery.xcdatamodeld */; };
+		5A4D92B41B0672DA0008EF93 /* GAModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92B31B0672DA0008EF93 /* GAModel.m */; };
+		5A4D92B71B0672F00008EF93 /* GADirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92B61B0672F00008EF93 /* GADirectory.m */; };
+		5A4D92BA1B0672F00008EF93 /* GAFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92B91B0672F00008EF93 /* GAFile.m */; };
+		5A4D92BD1B0672F10008EF93 /* GAImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92BC1B0672F10008EF93 /* GAImage.m */; };
 		5A51E9851AF95CC3000B3576 /* GACacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9821AF95CC3000B3576 /* GACacheManager.m */; };
 		5A51E9861AF95CC3000B3576 /* GAFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9841AF95CC3000B3576 /* GAFileManager.m */; };
 		5A51E98A1AF96194000B3576 /* GAThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A51E9891AF96194000B3576 /* GAThumbnailView.m */; };
@@ -119,6 +124,15 @@
 		5A4570761AF6C96100A436AC /* GAImageFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAImageFile.m; sourceTree = "<group>"; };
 		5A4570771AF6C96100A436AC /* GAFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFile.h; sourceTree = "<group>"; };
 		5A4570781AF6C96100A436AC /* GAFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAFile.m; sourceTree = "<group>"; };
+		5A4D92A71B0670EC0008EF93 /* Gallery.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gallery.xcdatamodel; sourceTree = "<group>"; };
+		5A4D92B21B0672DA0008EF93 /* GAModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAModel.h; sourceTree = "<group>"; };
+		5A4D92B31B0672DA0008EF93 /* GAModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAModel.m; sourceTree = "<group>"; };
+		5A4D92B51B0672F00008EF93 /* GADirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADirectory.h; sourceTree = "<group>"; };
+		5A4D92B61B0672F00008EF93 /* GADirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADirectory.m; sourceTree = "<group>"; };
+		5A4D92B81B0672F00008EF93 /* GAFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFile.h; sourceTree = "<group>"; };
+		5A4D92B91B0672F00008EF93 /* GAFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAFile.m; sourceTree = "<group>"; };
+		5A4D92BB1B0672F10008EF93 /* GAImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAImage.h; sourceTree = "<group>"; };
+		5A4D92BC1B0672F10008EF93 /* GAImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GAImage.m; sourceTree = "<group>"; };
 		5A51E9811AF95CC3000B3576 /* GACacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GACacheManager.h; sourceTree = "<group>"; };
 		5A51E9821AF95CC3000B3576 /* GACacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GACacheManager.m; sourceTree = "<group>"; };
 		5A51E9831AF95CC3000B3576 /* GAFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAFileManager.h; sourceTree = "<group>"; };
@@ -349,6 +363,7 @@
 		5A4570701AF6C96100A436AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5A4D92A51B0670EC0008EF93 /* CoreData */,
 				5A51E9801AF95CC3000B3576 /* Managers */,
 				5A4570711AF6C96100A436AC /* GADirectory.h */,
 				5A4570721AF6C96100A436AC /* GADirectory.m */,
@@ -362,6 +377,22 @@
 				5A51E9B31AFCBAAA000B3576 /* NSMutableArray+GAStack.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5A4D92A51B0670EC0008EF93 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				5A4D92BB1B0672F10008EF93 /* GAImage.h */,
+				5A4D92BC1B0672F10008EF93 /* GAImage.m */,
+				5A4D92B81B0672F00008EF93 /* GAFile.h */,
+				5A4D92B91B0672F00008EF93 /* GAFile.m */,
+				5A4D92B51B0672F00008EF93 /* GADirectory.h */,
+				5A4D92B61B0672F00008EF93 /* GADirectory.m */,
+				5A4D92A61B0670EC0008EF93 /* Gallery.xcdatamodeld */,
+				5A4D92B21B0672DA0008EF93 /* GAModel.h */,
+				5A4D92B31B0672DA0008EF93 /* GAModel.m */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		5A51E9801AF95CC3000B3576 /* Managers */ = {
@@ -693,6 +724,7 @@
 		5A4570381AF6C3D900A436AC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = GA;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Tanguy Hélesbeux";
 				TargetAttributes = {
@@ -781,8 +813,10 @@
 				5A51E99F1AFBE5C9000B3576 /* GASettingsManager.m in Sources */,
 				5AE27DD91B027DEF00102C43 /* GAImageCollectionViewCell.m in Sources */,
 				5A36B9961AFD768C009098CB /* GAFileInspectorVC.m in Sources */,
+				5A4D92B71B0672F00008EF93 /* GADirectory.m in Sources */,
 				5A8665271AFD3A27002578F7 /* GASettingsDetailDirectoryNavigation.m in Sources */,
 				5A8665031AFD1AC2002578F7 /* GAFileDetailNavigationController.m in Sources */,
+				5A4D92BA1B0672F00008EF93 /* GAFile.m in Sources */,
 				5A36B9A11AFD76D7009098CB /* GAImageInspectorVC.m in Sources */,
 				5A4570461AF6C3D900A436AC /* main.m in Sources */,
 				5A36B9AC1AFE1B41009098CB /* GADiaporamaPagedController.m in Sources */,
@@ -793,6 +827,7 @@
 				5A45707C1AF6C96100A436AC /* GAFile.m in Sources */,
 				5A86651A1AFD1D4D002578F7 /* GASettingsDetailNavigationController.m in Sources */,
 				5A45707B1AF6C96100A436AC /* GAImageFile.m in Sources */,
+				5A4D92BD1B0672F10008EF93 /* GAImage.m in Sources */,
 				5A8664DC1AFD0F13002578F7 /* GADirectorySplitController.m in Sources */,
 				5AE27DDF1B02837E00102C43 /* GACollectionReusableHeader.m in Sources */,
 				5A8665151AFD1B17002578F7 /* GASettingsMasterVC.m in Sources */,
@@ -803,11 +838,13 @@
 				5A86650B1AFD1AC2002578F7 /* GADirectoryMasterVC.m in Sources */,
 				5AE27DD11B027DB300102C43 /* GACollectionViewCell.m in Sources */,
 				5A36B9B41AFE5670009098CB /* GAFileLoadingVC.m in Sources */,
+				5A4D92A81B0670EC0008EF93 /* Gallery.xcdatamodeld in Sources */,
 				5A51E99B1AF96B8D000B3576 /* GATableViewCell.m in Sources */,
 				5A51E9861AF95CC3000B3576 /* GAFileManager.m in Sources */,
 				5A51E9851AF95CC3000B3576 /* GACacheManager.m in Sources */,
 				5A86651E1AFD205B002578F7 /* GASettingsDetailThumbnailsVC.m in Sources */,
 				5AE27DB11B0279CC00102C43 /* GAImageCollectionViewController.m in Sources */,
+				5A4D92B41B0672DA0008EF93 /* GAModel.m in Sources */,
 				5A8665091AFD1AC2002578F7 /* GASettingsDetailVC.m in Sources */,
 				5A8665051AFD1AC2002578F7 /* GADiaporamaVC.m in Sources */,
 				5A51E9A21AFBFBF0000B3576 /* GALogger.m in Sources */,
@@ -1027,6 +1064,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5A4D92A61B0670EC0008EF93 /* Gallery.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5A4D92A71B0670EC0008EF93 /* Gallery.xcdatamodel */,
+			);
+			currentVersion = 5A4D92A71B0670EC0008EF93 /* Gallery.xcdatamodel */;
+			path = Gallery.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5A4570381AF6C3D900A436AC /* Project object */;
 }
