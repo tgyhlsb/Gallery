@@ -86,8 +86,7 @@
 #pragma mark - Fetch request
 
 - (void)updateFetchedResultController {
-    self.sectionFetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForDirectoriesInDirectoryRecursively:self.directory];
-    self.cellFetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectoryRecursively:self.directory];
+    self.fetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectoryRecursively:self.directory];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -96,8 +95,9 @@
     NSString *identifier = [SRImageCollectionViewCell reusableIdentifier];
     SRImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    SRImage *image = [self.cellFetchedResultsController objectAtIndexPath:indexPath];
+    SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.titleLabel.text = image.name;
+    cell.backgroundColor = [UIColor redColor];
     
     return cell;
 }
@@ -108,9 +108,7 @@
                                                                             withReuseIdentifier:identifier
                                                                                    forIndexPath:indexPath];
     
-    NSIndexPath *isectionIndexPath = [NSIndexPath indexPathForRow:indexPath.section inSection:0];
-    SRDirectory *directory = [self.sectionFetchedResultsController objectAtIndexPath:isectionIndexPath];
-    header.titleLabel.text = directory.name;
+    header.titleLabel.text = [[[self.fetchedResultsController sections] objectAtIndex:indexPath.section] name];
     return header;
 }
 
@@ -126,7 +124,7 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    SRImage *image = [self.cellFetchedResultsController objectAtIndexPath:indexPath];
+    SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     SRImageViewController *destination = [SRImageViewController newWithImage:image];
     [self.navigationController pushViewController:destination animated:YES];

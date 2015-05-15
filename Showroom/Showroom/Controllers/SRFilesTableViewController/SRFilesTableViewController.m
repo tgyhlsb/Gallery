@@ -36,6 +36,12 @@
     return self;
 }
 
+#pragma mark - View life cycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
 #pragma mark - Getters & Setters
 
 - (void)setDirectory:(SRDirectory *)directory {

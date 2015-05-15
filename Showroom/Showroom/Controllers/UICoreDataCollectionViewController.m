@@ -8,28 +8,27 @@
 
 #import "UICoreDataCollectionViewController.h"
 
+@interface UICoreDataCollectionViewController()
+
+@property (strong, nonatomic) NSMutableArray *sectionModifications;
+@property (strong, nonatomic) NSMutableArray *itemModifications;
+
+@end
+
 @implementation UICoreDataCollectionViewController
 
 #pragma mark - Fetching
 
 - (void)performFetch
 {
-    if (self.cellFetchedResultsController) {
-        if (self.cellFetchedResultsController.fetchRequest.predicate) {
-            if (self.debug) NSLog(@"[%@ %@] fetching %@ with predicate: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.cellFetchedResultsController.fetchRequest.entityName, self.cellFetchedResultsController.fetchRequest.predicate);
+    if (self.fetchedResultsController) {
+        if (self.fetchedResultsController.fetchRequest.predicate) {
+            if (self.debug) NSLog(@"[%@ %@] fetching %@ with predicate: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName, self.fetchedResultsController.fetchRequest.predicate);
         } else {
-            if (self.debug) NSLog(@"[%@ %@] fetching all %@ (i.e., no predicate)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.cellFetchedResultsController.fetchRequest.entityName);
+            if (self.debug) NSLog(@"[%@ %@] fetching all %@ (i.e., no predicate)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), self.fetchedResultsController.fetchRequest.entityName);
         }
         NSError *error;
-        BOOL success = NO;
-        
-        // Cells
-        success = [self.cellFetchedResultsController performFetch:&error];
-        if (!success) NSLog(@"[%@ %@] performFetch: failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
-        if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
-
-        // Sections
-        success = [self.sectionFetchedResultsController performFetch:&error];
+        BOOL success = [self.fetchedResultsController performFetch:&error];
         if (!success) NSLog(@"[%@ %@] performFetch: failed", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
         if (error) NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
     } else {
@@ -38,11 +37,11 @@
     [self.collectionView reloadData];
 }
 
-- (void)setCellFetchedResultsController:(NSFetchedResultsController *)newfrc
+- (void)setFetchedResultsController:(NSFetchedResultsController *)newfrc
 {
-    NSFetchedResultsController *oldfrc = _cellFetchedResultsController;
+    NSFetchedResultsController *oldfrc = _fetchedResultsController;
     if (newfrc != oldfrc) {
-        _cellFetchedResultsController = newfrc;
+        _fetchedResultsController = newfrc;
         newfrc.delegate = self;
         if ((!self.title || [self.title isEqualToString:oldfrc.fetchRequest.entity.name]) && (!self.navigationController || !self.navigationItem.title)) {
             self.title = newfrc.fetchRequest.entity.name;
@@ -60,15 +59,15 @@
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    NSInteger sections = [[self.cellFetchedResultsController sections] count];
+    NSInteger sections = [[self.fetchedResultsController sections] count];
     return sections;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     NSInteger rows = 0;
-    if ([[self.cellFetchedResultsController sections] count] > 0) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.cellFetchedResultsController sections] objectAtIndex:section];
+    if ([[self.fetchedResultsController sections] count] > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
         rows = [sectionInfo numberOfObjects];
     }
     return rows;
@@ -97,9 +96,15 @@
 
 #pragma mark - NSFetchedResultsControllerDelegate
 
+#define KEY_SECTION_INDEX @"sectionIndex"
+#define KEY_CHANGE_TYPE @"changeType"
+#define KEY_NEW_INDEXPATH @"newIndexPath"
+#define KEY_OLD_INDEXPATH @"oldIndexPath"
+
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-//    [self.collectionView beginUpdates];
+    self.sectionModifications = [[NSMutableArray alloc] init];
+    self.itemModifications = [[NSMutableArray alloc] init];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -107,24 +112,11 @@
            atIndex:(NSUInteger)sectionIndex
      forChangeType:(NSFetchedResultsChangeType)type
 {
-    switch(type)
-    {
-        case NSFetchedResultsChangeInsert:
-//            [self.collectionView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-//            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeUpdate:
-//            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-//            [self.tableView reloadData];
-            break;
-    }
+    
+    [self.sectionModifications addObject:@{
+                                           KEY_SECTION_INDEX: @(sectionIndex),
+                                           KEY_CHANGE_TYPE: @(type)
+                                           }];
 }
 
 
@@ -134,32 +126,85 @@
      forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
 {
-    switch(type)
-    {
-        case NSFetchedResultsChangeInsert:
-//            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-//            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeUpdate:
-//            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-//            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
+    if (type == NSFetchedResultsChangeMove) {
+        [self.itemModifications addObject:@{
+                                               KEY_NEW_INDEXPATH: newIndexPath,
+                                               KEY_OLD_INDEXPATH: indexPath,
+                                               KEY_CHANGE_TYPE: @(type)
+                                               }];
+    } else {
+        [self.itemModifications addObject:@{
+                                               KEY_NEW_INDEXPATH: newIndexPath,
+                                               KEY_CHANGE_TYPE: @(type)
+                                               }];
     }
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-//    [self.tableView endUpdates];
+    [self.collectionView performBatchUpdates:^{
+        for (NSDictionary *change in self.sectionModifications) {
+            [self performSectionChange:change];
+        }
+        for (NSDictionary *change in self.itemModifications) {
+            [self performItemChange:change];
+        }
+    } completion:^(BOOL finished) {
+        if (finished) {
+            self.sectionModifications = nil;
+            self.itemModifications = nil;
+        }
+    }];
 }
 
+- (void)performItemChange:(NSDictionary *)change {
+    
+    NSFetchedResultsChangeType type = [[change objectForKey:KEY_CHANGE_TYPE] integerValue];
+    NSIndexPath *newIndexPath = [change objectForKey:KEY_NEW_INDEXPATH];
+    NSIndexPath *indexPath = [change objectForKey:KEY_OLD_INDEXPATH];
+    switch(type)
+    {
+        case NSFetchedResultsChangeInsert:
+            [self.collectionView insertItemsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self.collectionView reloadItemsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [self.collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+            [self.collectionView insertItemsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]];
+            break;
+    }
+}
 
+- (void)performSectionChange:(NSDictionary *)change {
+    
+    NSFetchedResultsChangeType type = [[change objectForKey:KEY_CHANGE_TYPE] integerValue];
+    NSInteger sectionIndex = [[change objectForKey:KEY_SECTION_INDEX] integerValue];
+    switch(type)
+    {
+        case NSFetchedResultsChangeInsert:
+            [self.collectionView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.collectionView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:sectionIndex]];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [self.collectionView reloadData];
+            break;
+    }
+}
 
 @end

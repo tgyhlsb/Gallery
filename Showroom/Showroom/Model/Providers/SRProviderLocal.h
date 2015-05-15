@@ -8,12 +8,17 @@
 
 #import "SRProvider.h"
 
-@class SRDirectory;
+// Model
+#import "SRDirectory.h"
 
 @interface SRProviderLocal : SRProvider
 
+@property (readonly, strong, nonatomic) SRDirectory *rootDirectory;
+
 + (SRProviderLocal *)defaultProvider;
 
-- (SRDirectory *)readPublicDocumentDirectory;
+- (void)initialize;
+- (void)reloadFiles;
+- (SRDirectory *)getRootDirectory;
 
 @end

@@ -26,12 +26,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    SRDirectory *rootDirectory = [[SRProviderLocal defaultProvider] readPublicDocumentDirectory];
+    [[SRProviderLocal defaultProvider] initialize];
+    SRDirectory *rootDirectory = [[SRProviderLocal defaultProvider] getRootDirectory];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [SRImageNavigationController newWithDirectory:rootDirectory];
     [self.window makeKeyAndVisible];
     
+    [[SRProviderLocal defaultProvider] reloadFiles];
     return YES;
 }
 
