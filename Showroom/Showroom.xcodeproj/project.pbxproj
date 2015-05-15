@@ -12,16 +12,19 @@
 		5A4D92DB1B0673EC0008EF93 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D92DA1B0673EC0008EF93 /* Images.xcassets */; };
 		5A4D92DE1B0673EC0008EF93 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D92DC1B0673EC0008EF93 /* LaunchScreen.xib */; };
 		5A4D92EA1B0673EC0008EF93 /* ShowroomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92E91B0673EC0008EF93 /* ShowroomTests.m */; };
-		5A4D92FA1B0675B40008EF93 /* Showroom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92F71B0675B40008EF93 /* Showroom.xcdatamodeld */; };
 		5A4D92FC1B0676010008EF93 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4D92FB1B0676010008EF93 /* CoreData.framework */; };
 		5A4D93001B0676730008EF93 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D92FE1B0676720008EF93 /* Localizable.strings */; };
-		5A4D93091B0676F40008EF93 /* SRModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93081B0676F40008EF93 /* SRModel.m */; };
-		5A4D930C1B0678750008EF93 /* SRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D930B1B0678750008EF93 /* SRImage.m */; };
-		5A4D930F1B0678760008EF93 /* SRDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D930E1B0678760008EF93 /* SRDirectory.m */; };
-		5A4D93121B0678760008EF93 /* SRFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93111B0678760008EF93 /* SRFile.m */; };
-		5A4D931B1B06796E0008EF93 /* SRFile+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D931A1B06796E0008EF93 /* SRFile+Serializer.m */; };
-		5A4D931E1B0679840008EF93 /* SRDirectory+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D931D1B0679840008EF93 /* SRDirectory+Serializer.m */; };
-		5A4D93211B0679940008EF93 /* SRImage+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93201B0679940008EF93 /* SRImage+Serializer.m */; };
+		5A4D93251B067AF80008EF93 /* SRProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93241B067AF80008EF93 /* SRProvider.m */; };
+		5A4D93281B067B080008EF93 /* SRProviderLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93271B067B080008EF93 /* SRProviderLocal.m */; };
+		5A4D933D1B067B3C0008EF93 /* SRDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D932C1B067B3C0008EF93 /* SRDirectory.m */; };
+		5A4D933E1B067B3C0008EF93 /* SRFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D932E1B067B3C0008EF93 /* SRFile.m */; };
+		5A4D933F1B067B3C0008EF93 /* SRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93301B067B3C0008EF93 /* SRImage.m */; };
+		5A4D93401B067B3C0008EF93 /* SRDirectory+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93341B067B3C0008EF93 /* SRDirectory+Serializer.m */; };
+		5A4D93411B067B3C0008EF93 /* SRFile+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93361B067B3C0008EF93 /* SRFile+Serializer.m */; };
+		5A4D93421B067B3C0008EF93 /* SRImage+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93381B067B3C0008EF93 /* SRImage+Serializer.m */; };
+		5A4D93431B067B3C0008EF93 /* Showroom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93391B067B3C0008EF93 /* Showroom.xcdatamodeld */; };
+		5A4D93441B067B3C0008EF93 /* SRModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D933C1B067B3C0008EF93 /* SRModel.m */; };
+		5A4D93471B067B910008EF93 /* SRNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93461B067B910008EF93 /* SRNotificationCenter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,27 +48,33 @@
 		5A4D92E31B0673EC0008EF93 /* ShowroomTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShowroomTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4D92E81B0673EC0008EF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A4D92E91B0673EC0008EF93 /* ShowroomTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowroomTests.m; sourceTree = "<group>"; };
-		5A4D92F81B0675B40008EF93 /* Showroom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Showroom.xcdatamodel; sourceTree = "<group>"; };
 		5A4D92FB1B0676010008EF93 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5A4D92FF1B0676730008EF93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5A4D93011B0676780008EF93 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5A4D93021B0676790008EF93 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5A4D93051B0676A40008EF93 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5A4D93061B0676B80008EF93 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		5A4D93071B0676F40008EF93 /* SRModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRModel.h; sourceTree = "<group>"; };
-		5A4D93081B0676F40008EF93 /* SRModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRModel.m; sourceTree = "<group>"; };
-		5A4D930A1B0678750008EF93 /* SRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRImage.h; sourceTree = "<group>"; };
-		5A4D930B1B0678750008EF93 /* SRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRImage.m; sourceTree = "<group>"; };
-		5A4D930D1B0678760008EF93 /* SRDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDirectory.h; sourceTree = "<group>"; };
-		5A4D930E1B0678760008EF93 /* SRDirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDirectory.m; sourceTree = "<group>"; };
-		5A4D93101B0678760008EF93 /* SRFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRFile.h; sourceTree = "<group>"; };
-		5A4D93111B0678760008EF93 /* SRFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRFile.m; sourceTree = "<group>"; };
-		5A4D93191B06796E0008EF93 /* SRFile+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRFile+Serializer.h"; sourceTree = "<group>"; };
-		5A4D931A1B06796E0008EF93 /* SRFile+Serializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRFile+Serializer.m"; sourceTree = "<group>"; };
-		5A4D931C1B0679840008EF93 /* SRDirectory+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRDirectory+Serializer.h"; sourceTree = "<group>"; };
-		5A4D931D1B0679840008EF93 /* SRDirectory+Serializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRDirectory+Serializer.m"; sourceTree = "<group>"; };
-		5A4D931F1B0679940008EF93 /* SRImage+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRImage+Serializer.h"; sourceTree = "<group>"; };
-		5A4D93201B0679940008EF93 /* SRImage+Serializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRImage+Serializer.m"; sourceTree = "<group>"; };
+		5A4D93231B067AF80008EF93 /* SRProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRProvider.h; sourceTree = "<group>"; };
+		5A4D93241B067AF80008EF93 /* SRProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRProvider.m; sourceTree = "<group>"; };
+		5A4D93261B067B080008EF93 /* SRProviderLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRProviderLocal.h; sourceTree = "<group>"; };
+		5A4D93271B067B080008EF93 /* SRProviderLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRProviderLocal.m; sourceTree = "<group>"; };
+		5A4D932B1B067B3C0008EF93 /* SRDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDirectory.h; sourceTree = "<group>"; };
+		5A4D932C1B067B3C0008EF93 /* SRDirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDirectory.m; sourceTree = "<group>"; };
+		5A4D932D1B067B3C0008EF93 /* SRFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRFile.h; sourceTree = "<group>"; };
+		5A4D932E1B067B3C0008EF93 /* SRFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRFile.m; sourceTree = "<group>"; };
+		5A4D932F1B067B3C0008EF93 /* SRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRImage.h; sourceTree = "<group>"; };
+		5A4D93301B067B3C0008EF93 /* SRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRImage.m; sourceTree = "<group>"; };
+		5A4D93331B067B3C0008EF93 /* SRDirectory+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRDirectory+Serializer.h"; sourceTree = "<group>"; };
+		5A4D93341B067B3C0008EF93 /* SRDirectory+Serializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRDirectory+Serializer.m"; sourceTree = "<group>"; };
+		5A4D93351B067B3C0008EF93 /* SRFile+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRFile+Serializer.h"; sourceTree = "<group>"; };
+		5A4D93361B067B3C0008EF93 /* SRFile+Serializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRFile+Serializer.m"; sourceTree = "<group>"; };
+		5A4D93371B067B3C0008EF93 /* SRImage+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRImage+Serializer.h"; sourceTree = "<group>"; };
+		5A4D93381B067B3C0008EF93 /* SRImage+Serializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRImage+Serializer.m"; sourceTree = "<group>"; };
+		5A4D933A1B067B3C0008EF93 /* Showroom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Showroom.xcdatamodel; sourceTree = "<group>"; };
+		5A4D933B1B067B3C0008EF93 /* SRModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRModel.h; sourceTree = "<group>"; };
+		5A4D933C1B067B3C0008EF93 /* SRModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRModel.m; sourceTree = "<group>"; };
+		5A4D93451B067B910008EF93 /* SRNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRNotificationCenter.h; sourceTree = "<group>"; };
+		5A4D93461B067B910008EF93 /* SRNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRNotificationCenter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +168,8 @@
 		5A4D92F41B0675B40008EF93 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				5A4D93451B067B910008EF93 /* SRNotificationCenter.h */,
+				5A4D93461B067B910008EF93 /* SRNotificationCenter.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -166,27 +177,10 @@
 		5A4D92F51B0675B40008EF93 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5A4D92F61B0675B40008EF93 /* Automatic */,
-				5A4D93141B0679210008EF93 /* Helpers */,
-				5A4D93151B0679210008EF93 /* Serializers */,
-				5A4D92F71B0675B40008EF93 /* Showroom.xcdatamodeld */,
-				5A4D93071B0676F40008EF93 /* SRModel.h */,
-				5A4D93081B0676F40008EF93 /* SRModel.m */,
+				5A4D93291B067B3C0008EF93 /* CoreData */,
+				5A4D93221B067ADA0008EF93 /* Providers */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		5A4D92F61B0675B40008EF93 /* Automatic */ = {
-			isa = PBXGroup;
-			children = (
-				5A4D93101B0678760008EF93 /* SRFile.h */,
-				5A4D93111B0678760008EF93 /* SRFile.m */,
-				5A4D930D1B0678760008EF93 /* SRDirectory.h */,
-				5A4D930E1B0678760008EF93 /* SRDirectory.m */,
-				5A4D930A1B0678750008EF93 /* SRImage.h */,
-				5A4D930B1B0678750008EF93 /* SRImage.m */,
-			);
-			path = Automatic;
 			sourceTree = "<group>";
 		};
 		5A4D92F91B0675B40008EF93 /* Views */ = {
@@ -204,22 +198,59 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5A4D93141B0679210008EF93 /* Helpers */ = {
+		5A4D93221B067ADA0008EF93 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				5A4D93231B067AF80008EF93 /* SRProvider.h */,
+				5A4D93241B067AF80008EF93 /* SRProvider.m */,
+				5A4D93261B067B080008EF93 /* SRProviderLocal.h */,
+				5A4D93271B067B080008EF93 /* SRProviderLocal.m */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		5A4D93291B067B3C0008EF93 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				5A4D932A1B067B3C0008EF93 /* Automatic */,
+				5A4D93311B067B3C0008EF93 /* Helpers */,
+				5A4D93321B067B3C0008EF93 /* Serializers */,
+				5A4D93391B067B3C0008EF93 /* Showroom.xcdatamodeld */,
+				5A4D933B1B067B3C0008EF93 /* SRModel.h */,
+				5A4D933C1B067B3C0008EF93 /* SRModel.m */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		5A4D932A1B067B3C0008EF93 /* Automatic */ = {
+			isa = PBXGroup;
+			children = (
+				5A4D932B1B067B3C0008EF93 /* SRDirectory.h */,
+				5A4D932C1B067B3C0008EF93 /* SRDirectory.m */,
+				5A4D932D1B067B3C0008EF93 /* SRFile.h */,
+				5A4D932E1B067B3C0008EF93 /* SRFile.m */,
+				5A4D932F1B067B3C0008EF93 /* SRImage.h */,
+				5A4D93301B067B3C0008EF93 /* SRImage.m */,
+			);
+			path = Automatic;
+			sourceTree = "<group>";
+		};
+		5A4D93311B067B3C0008EF93 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		5A4D93151B0679210008EF93 /* Serializers */ = {
+		5A4D93321B067B3C0008EF93 /* Serializers */ = {
 			isa = PBXGroup;
 			children = (
-				5A4D93191B06796E0008EF93 /* SRFile+Serializer.h */,
-				5A4D931A1B06796E0008EF93 /* SRFile+Serializer.m */,
-				5A4D931C1B0679840008EF93 /* SRDirectory+Serializer.h */,
-				5A4D931D1B0679840008EF93 /* SRDirectory+Serializer.m */,
-				5A4D931F1B0679940008EF93 /* SRImage+Serializer.h */,
-				5A4D93201B0679940008EF93 /* SRImage+Serializer.m */,
+				5A4D93331B067B3C0008EF93 /* SRDirectory+Serializer.h */,
+				5A4D93341B067B3C0008EF93 /* SRDirectory+Serializer.m */,
+				5A4D93351B067B3C0008EF93 /* SRFile+Serializer.h */,
+				5A4D93361B067B3C0008EF93 /* SRFile+Serializer.m */,
+				5A4D93371B067B3C0008EF93 /* SRImage+Serializer.h */,
+				5A4D93381B067B3C0008EF93 /* SRImage+Serializer.m */,
 			);
 			path = Serializers;
 			sourceTree = "<group>";
@@ -327,15 +358,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A4D92D01B0673EC0008EF93 /* SRAppDelegate.m in Sources */,
-				5A4D93121B0678760008EF93 /* SRFile.m in Sources */,
-				5A4D931E1B0679840008EF93 /* SRDirectory+Serializer.m in Sources */,
+				5A4D93401B067B3C0008EF93 /* SRDirectory+Serializer.m in Sources */,
+				5A4D933F1B067B3C0008EF93 /* SRImage.m in Sources */,
+				5A4D93281B067B080008EF93 /* SRProviderLocal.m in Sources */,
+				5A4D93431B067B3C0008EF93 /* Showroom.xcdatamodeld in Sources */,
 				5A4D92CD1B0673EC0008EF93 /* main.m in Sources */,
-				5A4D931B1B06796E0008EF93 /* SRFile+Serializer.m in Sources */,
-				5A4D930F1B0678760008EF93 /* SRDirectory.m in Sources */,
-				5A4D93091B0676F40008EF93 /* SRModel.m in Sources */,
-				5A4D930C1B0678750008EF93 /* SRImage.m in Sources */,
-				5A4D93211B0679940008EF93 /* SRImage+Serializer.m in Sources */,
-				5A4D92FA1B0675B40008EF93 /* Showroom.xcdatamodeld in Sources */,
+				5A4D93251B067AF80008EF93 /* SRProvider.m in Sources */,
+				5A4D93411B067B3C0008EF93 /* SRFile+Serializer.m in Sources */,
+				5A4D933E1B067B3C0008EF93 /* SRFile.m in Sources */,
+				5A4D93421B067B3C0008EF93 /* SRImage+Serializer.m in Sources */,
+				5A4D93441B067B3C0008EF93 /* SRModel.m in Sources */,
+				5A4D93471B067B910008EF93 /* SRNotificationCenter.m in Sources */,
+				5A4D933D1B067B3C0008EF93 /* SRDirectory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,12 +588,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5A4D92F71B0675B40008EF93 /* Showroom.xcdatamodeld */ = {
+		5A4D93391B067B3C0008EF93 /* Showroom.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				5A4D92F81B0675B40008EF93 /* Showroom.xcdatamodel */,
+				5A4D933A1B067B3C0008EF93 /* Showroom.xcdatamodel */,
 			);
-			currentVersion = 5A4D92F81B0675B40008EF93 /* Showroom.xcdatamodel */;
+			currentVersion = 5A4D933A1B067B3C0008EF93 /* Showroom.xcdatamodel */;
 			path = Showroom.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
