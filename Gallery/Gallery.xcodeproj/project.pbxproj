@@ -696,6 +696,7 @@
 		5A4570381AF6C3D900A436AC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = GA;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Tanguy Hélesbeux";
 				TargetAttributes = {
