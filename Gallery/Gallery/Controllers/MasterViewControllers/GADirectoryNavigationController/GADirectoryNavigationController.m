@@ -42,6 +42,7 @@
 #pragma mark - Configuration
 
 - (void)initializeToolbar {
+    self.toolbar.translucent = NO;
     self.toolbarHidden = NO;
     self.toolbarItems = @[self.settingsButton];
     
