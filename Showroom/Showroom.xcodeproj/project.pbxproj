@@ -15,6 +15,10 @@
 		5A4D92FA1B0675B40008EF93 /* Showroom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92F71B0675B40008EF93 /* Showroom.xcdatamodeld */; };
 		5A4D92FC1B0676010008EF93 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A4D92FB1B0676010008EF93 /* CoreData.framework */; };
 		5A4D93001B0676730008EF93 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D92FE1B0676720008EF93 /* Localizable.strings */; };
+		5A4D93091B0676F40008EF93 /* SRModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93081B0676F40008EF93 /* SRModel.m */; };
+		5A4D930C1B0678750008EF93 /* SRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D930B1B0678750008EF93 /* SRImage.m */; };
+		5A4D930F1B0678760008EF93 /* SRDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D930E1B0678760008EF93 /* SRDirectory.m */; };
+		5A4D93121B0678760008EF93 /* SRFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93111B0678760008EF93 /* SRFile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,14 @@
 		5A4D93021B0676790008EF93 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5A4D93051B0676A40008EF93 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		5A4D93061B0676B80008EF93 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		5A4D93071B0676F40008EF93 /* SRModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRModel.h; sourceTree = "<group>"; };
+		5A4D93081B0676F40008EF93 /* SRModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRModel.m; sourceTree = "<group>"; };
+		5A4D930A1B0678750008EF93 /* SRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRImage.h; sourceTree = "<group>"; };
+		5A4D930B1B0678750008EF93 /* SRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRImage.m; sourceTree = "<group>"; };
+		5A4D930D1B0678760008EF93 /* SRDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDirectory.h; sourceTree = "<group>"; };
+		5A4D930E1B0678760008EF93 /* SRDirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDirectory.m; sourceTree = "<group>"; };
+		5A4D93101B0678760008EF93 /* SRFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRFile.h; sourceTree = "<group>"; };
+		5A4D93111B0678760008EF93 /* SRFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRFile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +81,8 @@
 		5A4D92BE1B0673EB0008EF93 = {
 			isa = PBXGroup;
 			children = (
-				5A4D92FB1B0676010008EF93 /* CoreData.framework */,
 				5A4D92C91B0673EC0008EF93 /* Showroom */,
+				5A4D93131B0678890008EF93 /* Frameworks */,
 				5A4D92E61B0673EC0008EF93 /* ShowroomTests */,
 				5A4D92C81B0673EC0008EF93 /* Products */,
 			);
@@ -147,6 +159,8 @@
 			children = (
 				5A4D92F61B0675B40008EF93 /* Automatic */,
 				5A4D92F71B0675B40008EF93 /* Showroom.xcdatamodeld */,
+				5A4D93071B0676F40008EF93 /* SRModel.h */,
+				5A4D93081B0676F40008EF93 /* SRModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,6 +168,12 @@
 		5A4D92F61B0675B40008EF93 /* Automatic */ = {
 			isa = PBXGroup;
 			children = (
+				5A4D93101B0678760008EF93 /* SRFile.h */,
+				5A4D93111B0678760008EF93 /* SRFile.m */,
+				5A4D930D1B0678760008EF93 /* SRDirectory.h */,
+				5A4D930E1B0678760008EF93 /* SRDirectory.m */,
+				5A4D930A1B0678750008EF93 /* SRImage.h */,
+				5A4D930B1B0678750008EF93 /* SRImage.m */,
 			);
 			path = Automatic;
 			sourceTree = "<group>";
@@ -163,6 +183,14 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5A4D93131B0678890008EF93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5A4D92FB1B0676010008EF93 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,7 +296,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A4D92D01B0673EC0008EF93 /* SRAppDelegate.m in Sources */,
+				5A4D93121B0678760008EF93 /* SRFile.m in Sources */,
 				5A4D92CD1B0673EC0008EF93 /* main.m in Sources */,
+				5A4D930F1B0678760008EF93 /* SRDirectory.m in Sources */,
+				5A4D93091B0676F40008EF93 /* SRModel.m in Sources */,
+				5A4D930C1B0678750008EF93 /* SRImage.m in Sources */,
 				5A4D92FA1B0675B40008EF93 /* Showroom.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
