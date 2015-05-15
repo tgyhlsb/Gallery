@@ -11,6 +11,9 @@
 // Controllers
 #import "GASettingsSplitController.h"
 
+// Managers
+#import "GALogger.h"
+
 @interface GADirectoryNavigationController () <GADirectoryViewControllerDelegate>
 
 @property (strong, nonatomic) UIBarButtonItem *settingsButton;
@@ -93,7 +96,7 @@
     } else if (file.isDirectory) {
         [self openDirectory:(GADirectory *)file];
     } else {
-        
+        [GALogger addError:@"User selected invalid file '%@'", file];
     }
 }
 
