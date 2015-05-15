@@ -92,7 +92,6 @@
             [previous setNext:imageFile];
             [tree addObject:imageFile];
             [images addObject:imageFile];
-            [self preloadImageThumbnail:imageFile];
             
         } else if ([GADirectory isDirectory:fullPath]) {
             
@@ -102,8 +101,9 @@
             [tree addObject:directory];
             [directories addObject:directory];
             [recursiveDirectories addObject:directory];
-            [recursiveDirectories addObjectsFromArray:directory.directories];
+            [recursiveDirectories addObjectsFromArray:directory.recursiveDirectories];
             [recursiveImages addObjectsFromArray:directory.images];
+            [recursiveImages addObjectsFromArray:directory.recursiveImages];
             
         } else {
             [GALogger addError:@"Failed to read : %@", file];

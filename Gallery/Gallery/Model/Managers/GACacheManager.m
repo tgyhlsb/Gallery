@@ -42,6 +42,10 @@ static GACacheManager *sharedManager;
     [[GACacheManager sharedManager] thumbnailForFile:file andSize:size inBackgroundWithBlock:block];
 }
 
++ (void)thumbnailsForFiles:(NSArray *)files andSize:(CGSize)size inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
+    [[GACacheManager sharedManager] thumbnailsForFiles:files andSize:size inBackgroundWithBlock:block];
+}
+
 + (void)clearThumbnails {
     [[GACacheManager sharedManager] clearThumbnails];
 }
@@ -108,6 +112,20 @@ static GACacheManager *sharedManager;
         dispatch_sync(dispatch_get_main_queue(), ^{
             if (block) {
                 block(thumbnail);
+            }
+        });
+    });
+}
+
+- (void)thumbnailsForFiles:(NSArray *)files andSize:(CGSize)size inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (GAFile *file in files) {
+            [self thumbnailForFile:file andSize:size];
+        }
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (block) {
+                block(nil);
             }
         });
     });

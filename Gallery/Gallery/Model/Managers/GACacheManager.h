@@ -20,5 +20,6 @@ typedef void (^GAThumbnailLoadingBlock)(UIImage *thumbnail);
 
 + (UIImage *)thumbnailForFile:(GAFile *)file andSize:(CGSize)size;
 + (void)thumbnailForFile:(GAFile *)file andSize:(CGSize)size inBackgroundWithBlock:(GAThumbnailLoadingBlock)block;
++ (void)thumbnailsForFiles:(NSArray *)files andSize:(CGSize)size inBackgroundWithBlock:(GAThumbnailLoadingBlock)block;
 
 @end

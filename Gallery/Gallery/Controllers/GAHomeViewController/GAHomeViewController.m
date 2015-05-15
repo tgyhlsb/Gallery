@@ -10,6 +10,7 @@
 
 // Managers
 #import "GAFileManager.h"
+#import "GACacheManager.h"
 
 // Controllers
 #import "GAFileLoadingVC.h"
@@ -34,6 +35,8 @@
     
     [GAFileManager readSharedDirectoryInBackgroundWithBlock:^(GADirectory *root, NSError *error) {
         [self showButtons];
+//        [GACacheManager thumbnailsForFiles:root.recursiveImages andSize:CGSizeMake(200, 200) inBackgroundWithBlock:^(UIImage *thumbnail) {
+//        }];
     }];
 }
 
