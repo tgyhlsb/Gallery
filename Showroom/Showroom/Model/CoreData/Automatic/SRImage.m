@@ -7,13 +7,14 @@
 //
 
 #import "SRImage.h"
+#import "SRDirectory.h"
 
 
 @implementation SRImage
 
 @dynamic height;
-@dynamic width;
 @dynamic thumbnail;
+@dynamic width;
 @dynamic directory;
 
 @end

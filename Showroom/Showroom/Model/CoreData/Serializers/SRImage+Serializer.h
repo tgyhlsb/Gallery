@@ -10,6 +10,9 @@
 
 @interface SRImage (Serializer)
 
-+ (SRImage *)imageWithAttributes:(NSDictionary *)attributes;
++ (SRImage *)imageWithPath:(NSString *)path
+                attributes:(NSDictionary *)attributes
+                  provider:(NSString *)provider
+    inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

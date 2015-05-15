@@ -12,9 +12,12 @@
 
 @interface SRFile : NSManagedObject
 
+@property (nonatomic, retain) NSString * extension;
+@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * path;
 @property (nonatomic, retain) NSString * provider;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * extension;
+@property (nonatomic, retain) NSDate * creationDate;
+@property (nonatomic, retain) NSDate * modificationDate;
+@property (nonatomic, retain) NSNumber * size;
 
 @end

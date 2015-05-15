@@ -13,8 +13,8 @@
 
 @implementation SRDirectory
 
-@dynamic subDirectories;
-@dynamic parentDirectory;
 @dynamic images;
+@dynamic parentDirectory;
+@dynamic subDirectories;
 
 @end

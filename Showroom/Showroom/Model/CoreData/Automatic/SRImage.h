@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "SRFile.h"
 
-@class NSManagedObject;
+@class SRDirectory;
 
-@interface SRImage : NSManagedObject
+@interface SRImage : SRFile
 
 @property (nonatomic, retain) NSNumber * height;
-@property (nonatomic, retain) NSNumber * width;
 @property (nonatomic, retain) NSData * thumbnail;
-@property (nonatomic, retain) NSManagedObject *directory;
+@property (nonatomic, retain) NSNumber * width;
+@property (nonatomic, retain) SRDirectory *directory;
 
 @end

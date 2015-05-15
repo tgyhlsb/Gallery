@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString *SRProviderTypeLocal = @"SRProviderTypeLocal";
+
 @interface SRProvider : NSObject
 
 @end

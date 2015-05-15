@@ -11,9 +11,12 @@
 
 @implementation SRFile
 
+@dynamic extension;
+@dynamic name;
 @dynamic path;
 @dynamic provider;
-@dynamic name;
-@dynamic extension;
+@dynamic creationDate;
+@dynamic modificationDate;
+@dynamic size;
 
 @end

@@ -13,6 +13,7 @@
 #import "SRLogger.h"
 
 // Models
+#import "SRModel.h"
 #import "SRDirectory+Serializer.h"
 #import "SRImage+Serializer.h"
 #import "SRFile+Helper.h"
@@ -21,17 +22,31 @@
 
 @implementation SRProviderLocal
 
+#pragma mark - Singleton
+
+static SRProviderLocal *defaultProvider;
+
++ (SRProviderLocal *)defaultProvider {
+    if (!defaultProvider) {
+        defaultProvider = [[SRProviderLocal alloc] init];
+    }
+    return defaultProvider;
+}
+
 #pragma mark - Factory
 
 - (SRDirectory *)readPublicDocumentDirectory {
-    NSString *publicDocumentsDir = [[self applicationDocumentsDirectory] absoluteString];
-    return [self directoryFromPath:publicDocumentsDir];
+    NSString *publicDocumentsDir = [self applicationDocumentsDirectory];
+    [SRLogger addInformation:@"Reading %@", publicDocumentsDir];
+    SRDirectory *rootDirectory = [self directoryFromPath:publicDocumentsDir];
+    return rootDirectory;
 }
 
 - (SRDirectory *)directoryFromPath:(NSString *)path {
     
     NSDictionary *attributes = [self getAttributesForFileAtPath:path];
-    SRDirectory *rootDirectory = [SRDirectory directoryWithAttributes:attributes];
+    NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
+    SRDirectory *rootDirectory = [SRDirectory directoryWithPath:path attributes:attributes provider:SRProviderTypeLocal inManagedObjectContext:context];
     
     NSArray *files = [self getFileNamesAtPath:path];
     NSString *fullPath = nil;
@@ -41,10 +56,12 @@
         if ([SRImage fileAtPathIsImage:fullPath]) {
             
             SRImage *image = [self imageFromPath:fullPath];
+            [rootDirectory addImagesObject:image];
             
         } else if ([SRDirectory fileAtPathIsDirectory:fullPath]) {
             
             SRDirectory *directory = [self directoryFromPath:fullPath];
+            [rootDirectory addSubDirectoriesObject:directory];
             
         } else {
             [SRLogger addError:@"Failed to read : %@", file];
@@ -56,25 +73,26 @@
 
 - (SRImage *)imageFromPath:(NSString *)path {
     NSDictionary *attributes = [self getAttributesForFileAtPath:path];
-    return [SRImage imageWithAttributes:attributes];
+    NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
+    return [SRImage imageWithPath:path attributes:attributes provider:SRProviderTypeLocal inManagedObjectContext:context];
 }
 
 - (NSArray *)getFileNamesAtPath:(NSString *)path {
     NSError *error;
     NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
     if (error) {
-        [SRLogger addError:@"Error reading contents of documents directory: %@", [error localizedDescription]];
+        [SRLogger addError:@"Error reading contents of documents directory: %@", error];
     }
     return files;
 }
 
 - (NSDictionary *)getAttributesForFileAtPath:(NSString *)path {
     NSError *error;
-    NSDictionary *info = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:&error];
+    NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:&error];
     if (error) {
-        [SRLogger addError:@"Error reading attributes of documents directory: %@", [error localizedDescription]];
+        [SRLogger addError:@"Error reading attributes of documents directory: %@", error];
     }
-    return info;
+    return attributes;
 }
 
 #pragma mark - Monitoring
@@ -86,18 +104,18 @@ static dispatch_queue_t _dispatchQueue;
 static dispatch_source_t _source;
 
 
-- (NSURL *)applicationDocumentsDirectory {
+- (NSString *)applicationDocumentsDirectory {
     // The directory the application uses to store the Core Data store file. This code uses a directory named "com.helesbeux.Showroom" in the application's documents directory.
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+    return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
 }
 
 - (void)startMonitoring {
     
     // Get the path to the home directory
-    NSURL * homeDirectory = [self applicationDocumentsDirectory];
+    NSString * homeDirectory = [self applicationDocumentsDirectory];
     
     // Create a new file descriptor - we need to convert the NSString to a char * i.e. C style string
-    int filedes = open([[homeDirectory absoluteString] cStringUsingEncoding:NSASCIIStringEncoding], O_EVTONLY);
+    int filedes = open([homeDirectory cStringUsingEncoding:NSASCIIStringEncoding], O_EVTONLY);
     
     // Create a dispatch queue - when a file changes the event will be sent to this queue
     _dispatchQueue = dispatch_queue_create("FileMonitorQueue", 0);

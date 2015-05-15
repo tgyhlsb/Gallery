@@ -10,6 +10,9 @@
 
 @interface SRDirectory (Serializer)
 
-+ (SRDirectory *)directoryWithAttributes:(NSDictionary *)attributes;
++ (SRDirectory *)directoryWithPath:(NSString *)path
+                        attributes:(NSDictionary *)attributes
+                          provider:(NSString *)provider
+            inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

@@ -8,6 +8,12 @@
 
 #import "SRProvider.h"
 
+@class SRDirectory;
+
 @interface SRProviderLocal : SRProvider
+
++ (SRProviderLocal *)defaultProvider;
+
+- (SRDirectory *)readPublicDocumentDirectory;
 
 @end

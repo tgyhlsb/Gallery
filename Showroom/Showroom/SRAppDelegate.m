@@ -11,6 +11,9 @@
 // Models
 #import "SRModel.h"
 
+// Managers
+#import "SRProviderLocal.h"
+
 @interface SRAppDelegate ()
 
 @end
@@ -20,6 +23,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[SRProviderLocal defaultProvider] readPublicDocumentDirectory];
     return YES;
 }
 
