@@ -10,6 +10,8 @@
 
 @interface SRFile (Serializer)
 
++ (NSString *)className;
+
 - (void)updateWithPath:(NSString *)path attributes:(NSDictionary *)attributes;
 
 @end

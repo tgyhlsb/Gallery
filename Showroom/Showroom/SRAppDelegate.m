@@ -14,6 +14,9 @@
 // Managers
 #import "SRProviderLocal.h"
 
+// Controllers
+#import "SRFilesTableViewController.h"
+
 @interface SRAppDelegate ()
 
 @end
@@ -23,7 +26,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[SRProviderLocal defaultProvider] readPublicDocumentDirectory];
+    SRDirectory *rootDirectory = [[SRProviderLocal defaultProvider] readPublicDocumentDirectory];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = [SRFilesTableViewController newWithDirectory:rootDirectory];
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

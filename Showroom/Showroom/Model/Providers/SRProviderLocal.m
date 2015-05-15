@@ -56,12 +56,12 @@ static SRProviderLocal *defaultProvider;
         if ([SRImage fileAtPathIsImage:fullPath]) {
             
             SRImage *image = [self imageFromPath:fullPath];
-            [rootDirectory addImagesObject:image];
+            [image setParent:rootDirectory];
             
         } else if ([SRDirectory fileAtPathIsDirectory:fullPath]) {
             
             SRDirectory *directory = [self directoryFromPath:fullPath];
-            [rootDirectory addSubDirectoriesObject:directory];
+            [directory setParent:rootDirectory];
             
         } else {
             [SRLogger addError:@"Failed to read : %@", file];

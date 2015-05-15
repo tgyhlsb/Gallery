@@ -10,25 +10,18 @@
 #import <CoreData/CoreData.h>
 #import "SRFile.h"
 
-@class SRDirectory, SRImage;
+@class SRFile;
 
 @interface SRDirectory : SRFile
 
-@property (nonatomic, retain) NSSet *images;
-@property (nonatomic, retain) SRDirectory *parentDirectory;
-@property (nonatomic, retain) NSSet *subDirectories;
+@property (nonatomic, retain) NSSet *children;
 @end
 
 @interface SRDirectory (CoreDataGeneratedAccessors)
 
-- (void)addImagesObject:(SRImage *)value;
-- (void)removeImagesObject:(SRImage *)value;
-- (void)addImages:(NSSet *)values;
-- (void)removeImages:(NSSet *)values;
-
-- (void)addSubDirectoriesObject:(SRDirectory *)value;
-- (void)removeSubDirectoriesObject:(SRDirectory *)value;
-- (void)addSubDirectories:(NSSet *)values;
-- (void)removeSubDirectories:(NSSet *)values;
+- (void)addChildrenObject:(SRFile *)value;
+- (void)removeChildrenObject:(SRFile *)value;
+- (void)addChildren:(NSSet *)values;
+- (void)removeChildren:(NSSet *)values;
 
 @end

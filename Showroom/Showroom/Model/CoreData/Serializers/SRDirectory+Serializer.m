@@ -11,16 +11,18 @@
 // Serializers
 #import "SRFile+Serializer.h"
 
-#define CLASS_NAME_SRDIRECTORY @"SRDirectory"
-
 @implementation SRDirectory (Serializer)
+
++ (NSString *)className {
+    return @"SRDirectory";
+}
 
 + (SRDirectory *)directoryWithPath:(NSString *)path
                         attributes:(NSDictionary *)attributes
                           provider:(NSString *)provider
             inManagedObjectContext:(NSManagedObjectContext *)context {
     
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_SRDIRECTORY];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[self className]];
     request.predicate = [NSPredicate predicateWithFormat:@"path = %@", path];
     SRDirectory *directory = nil;
     
@@ -33,7 +35,7 @@
         if ([matches count]) {
             directory = [matches firstObject];
         } else {
-            directory = [NSEntityDescription insertNewObjectForEntityForName:CLASS_NAME_SRDIRECTORY inManagedObjectContext:context];
+            directory = [NSEntityDescription insertNewObjectForEntityForName:[self className] inManagedObjectContext:context];
         }
         
         //TODO attributes

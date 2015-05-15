@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+// Models
+#import "SRFile+Helper.h"
+#import "SRDirectory+Helper.h"
+#import "SRImage+Helper.h"
+
 @interface SRModel : NSObject
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -18,5 +23,8 @@
 + (SRModel *)defaultModel;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
+#define Request factory
+- (NSFetchedResultsController *)fetchedResultControllerForFilesInDirectory:(SRDirectory *)directory;
 
 @end

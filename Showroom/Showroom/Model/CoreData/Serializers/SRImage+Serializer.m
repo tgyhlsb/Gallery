@@ -11,16 +11,18 @@
 // Serializes
 #import "SRFile+Serializer.h"
 
-#define CLASS_NAME_SRIMAGE @"SRImage"
-
 @implementation SRImage (Serializer)
+
++ (NSString *)className {
+    return @"SRImage";
+}
 
 + (SRImage *)imageWithPath:(NSString *)path
                 attributes:(NSDictionary *)attributes
                   provider:(NSString *)provider
     inManagedObjectContext:(NSManagedObjectContext *)context {
     
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CLASS_NAME_SRIMAGE];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[self className]];
     request.predicate = [NSPredicate predicateWithFormat:@"path = %@", path];
     SRImage *image = nil;
     
@@ -33,7 +35,7 @@
         if ([matches count]) {
             image = [matches firstObject];
         } else {
-            image = [NSEntityDescription insertNewObjectForEntityForName:CLASS_NAME_SRIMAGE inManagedObjectContext:context];
+            image = [NSEntityDescription insertNewObjectForEntityForName:[self className] inManagedObjectContext:context];
         }
         
         //TODO attributes

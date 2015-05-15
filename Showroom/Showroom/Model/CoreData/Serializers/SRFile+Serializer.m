@@ -10,6 +10,10 @@
 
 @implementation SRFile (Serializer)
 
++ (NSString *)className {
+    return @"SRFile";
+}
+
 #define ATTRIBUTE_KEY_CREATIONDATE @"NSFileCreationDate"
 #define ATTRIBUTE_KEY_MODIFICATIONDATE @"NSFileModificationDate"
 #define ATTRIBUTE_KEY_SIZE @"NSFileSize"

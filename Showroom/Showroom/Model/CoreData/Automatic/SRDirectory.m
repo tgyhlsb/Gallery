@@ -7,14 +7,11 @@
 //
 
 #import "SRDirectory.h"
-#import "SRDirectory.h"
-#import "SRImage.h"
+#import "SRFile.h"
 
 
 @implementation SRDirectory
 
-@dynamic images;
-@dynamic parentDirectory;
-@dynamic subDirectories;
+@dynamic children;
 
 @end

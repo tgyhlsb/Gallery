@@ -8,6 +8,10 @@
 
 #import "SRModel.h"
 
+// Models
+#import "SRFile+Serializer.h"
+#import "SRDirectory.h"
+
 @implementation SRModel
 
 #pragma mark - Singleton
@@ -19,6 +23,26 @@ static SRModel *defaultModel;
         defaultModel = [[SRModel alloc] init];
     }
     return defaultModel;
+}
+
+#pragma mark - Request factory
+
+- (NSFetchedResultsController *)fetchedResultControllerForFilesInDirectory:(SRDirectory *)directory{
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRFile className]];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"parent = %@", directory];
+    
+    NSSortDescriptor *categorySortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name"
+                                                                             ascending:YES
+                                                                              selector:@selector(compare:)];
+    
+    request.sortDescriptors = @[categorySortDescriptor];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:self.managedObjectContext
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
 }
 
 #pragma mark - Core Data stack

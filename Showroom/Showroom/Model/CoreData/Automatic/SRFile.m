@@ -7,6 +7,7 @@
 //
 
 #import "SRFile.h"
+#import "SRDirectory.h"
 
 
 @implementation SRFile
@@ -18,5 +19,6 @@
 @dynamic creationDate;
 @dynamic modificationDate;
 @dynamic size;
+@dynamic parent;
 
 @end

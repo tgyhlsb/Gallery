@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class SRDirectory;
 
 @interface SRFile : NSManagedObject
 
@@ -19,5 +20,6 @@
 @property (nonatomic, retain) NSDate * creationDate;
 @property (nonatomic, retain) NSDate * modificationDate;
 @property (nonatomic, retain) NSNumber * size;
+@property (nonatomic, retain) SRDirectory *parent;
 
 @end

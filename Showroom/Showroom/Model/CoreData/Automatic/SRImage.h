@@ -10,13 +10,11 @@
 #import <CoreData/CoreData.h>
 #import "SRFile.h"
 
-@class SRDirectory;
 
 @interface SRImage : SRFile
 
 @property (nonatomic, retain) NSNumber * height;
 @property (nonatomic, retain) NSData * thumbnail;
 @property (nonatomic, retain) NSNumber * width;
-@property (nonatomic, retain) SRDirectory *directory;
 
 @end
