@@ -66,6 +66,27 @@
     return rows;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        return [self collectionView:collectionView viewForHeaderAtIndexPath:indexPath];
+    } else if (kind == UICollectionElementKindSectionFooter) {
+        return [self collectionView:collectionView viewForFooterAtIndexPath:indexPath];
+    } else {
+        return nil;
+    }
+}
+
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForHeaderAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForFooterAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller

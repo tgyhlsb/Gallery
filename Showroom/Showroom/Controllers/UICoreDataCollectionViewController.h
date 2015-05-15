@@ -25,4 +25,7 @@
 // Set to YES to get some debugging output in the console.
 @property BOOL debug;
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForHeaderAtIndexPath:(NSIndexPath *)indexPath;
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForFooterAtIndexPath:(NSIndexPath *)indexPath;
+
 @end

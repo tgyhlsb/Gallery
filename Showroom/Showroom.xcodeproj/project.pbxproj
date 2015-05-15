@@ -34,6 +34,14 @@
 		5A4D938D1B0696790008EF93 /* SRFilesNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D938C1B0696790008EF93 /* SRFilesNavigationController.m */; };
 		5A4D93911B069ABF0008EF93 /* UICoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93901B069ABF0008EF93 /* UICoreDataCollectionViewController.m */; };
 		5A4D93941B069C370008EF93 /* SRImagesCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93931B069C370008EF93 /* SRImagesCollectionViewController.m */; };
+		5A4D93C21B06A13D0008EF93 /* SRCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93B21B06A13D0008EF93 /* SRCollectionReusableView.m */; };
+		5A4D93C31B06A13D0008EF93 /* SRCollectionReusableFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93B51B06A13D0008EF93 /* SRCollectionReusableFooter.m */; };
+		5A4D93C41B06A13D0008EF93 /* SRCollectionReusableFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D93B61B06A13D0008EF93 /* SRCollectionReusableFooter.xib */; };
+		5A4D93C51B06A13D0008EF93 /* SRCollectionReusableHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93B91B06A13D0008EF93 /* SRCollectionReusableHeader.m */; };
+		5A4D93C61B06A13D0008EF93 /* SRCollectionReusableHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D93BA1B06A13D0008EF93 /* SRCollectionReusableHeader.xib */; };
+		5A4D93C71B06A13D0008EF93 /* SRCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93BD1B06A13D0008EF93 /* SRCollectionViewCell.m */; };
+		5A4D93CE1B06A2060008EF93 /* SRImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93CC1B06A2060008EF93 /* SRImageCollectionViewCell.m */; };
+		5A4D93CF1B06A2060008EF93 /* SRImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D93CD1B06A2060008EF93 /* SRImageCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +110,19 @@
 		5A4D93901B069ABF0008EF93 /* UICoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICoreDataCollectionViewController.m; sourceTree = "<group>"; };
 		5A4D93921B069C370008EF93 /* SRImagesCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRImagesCollectionViewController.h; path = SRImagesCollectionViewController/SRImagesCollectionViewController.h; sourceTree = "<group>"; };
 		5A4D93931B069C370008EF93 /* SRImagesCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRImagesCollectionViewController.m; path = SRImagesCollectionViewController/SRImagesCollectionViewController.m; sourceTree = "<group>"; };
+		5A4D93B11B06A13D0008EF93 /* SRCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCollectionReusableView.h; sourceTree = "<group>"; };
+		5A4D93B21B06A13D0008EF93 /* SRCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCollectionReusableView.m; sourceTree = "<group>"; };
+		5A4D93B41B06A13D0008EF93 /* SRCollectionReusableFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCollectionReusableFooter.h; sourceTree = "<group>"; };
+		5A4D93B51B06A13D0008EF93 /* SRCollectionReusableFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCollectionReusableFooter.m; sourceTree = "<group>"; };
+		5A4D93B61B06A13D0008EF93 /* SRCollectionReusableFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRCollectionReusableFooter.xib; sourceTree = "<group>"; };
+		5A4D93B81B06A13D0008EF93 /* SRCollectionReusableHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCollectionReusableHeader.h; sourceTree = "<group>"; };
+		5A4D93B91B06A13D0008EF93 /* SRCollectionReusableHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCollectionReusableHeader.m; sourceTree = "<group>"; };
+		5A4D93BA1B06A13D0008EF93 /* SRCollectionReusableHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRCollectionReusableHeader.xib; sourceTree = "<group>"; };
+		5A4D93BC1B06A13D0008EF93 /* SRCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCollectionViewCell.h; sourceTree = "<group>"; };
+		5A4D93BD1B06A13D0008EF93 /* SRCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCollectionViewCell.m; sourceTree = "<group>"; };
+		5A4D93CB1B06A2060008EF93 /* SRImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRImageCollectionViewCell.h; sourceTree = "<group>"; };
+		5A4D93CC1B06A2060008EF93 /* SRImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRImageCollectionViewCell.m; sourceTree = "<group>"; };
+		5A4D93CD1B06A2060008EF93 /* SRImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRImageCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +243,7 @@
 		5A4D92F91B0675B40008EF93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5A4D93B01B06A13D0008EF93 /* CollectionView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +346,58 @@
 			name = SRImagesCollectionViewController;
 			sourceTree = "<group>";
 		};
+		5A4D93B01B06A13D0008EF93 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				5A4D93B11B06A13D0008EF93 /* SRCollectionReusableView.h */,
+				5A4D93B21B06A13D0008EF93 /* SRCollectionReusableView.m */,
+				5A4D93B31B06A13D0008EF93 /* SRCollectionReusableFooter */,
+				5A4D93B71B06A13D0008EF93 /* SRCollectionReusableHeader */,
+				5A4D93BB1B06A13D0008EF93 /* SRCollectionViewCell */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		5A4D93B31B06A13D0008EF93 /* SRCollectionReusableFooter */ = {
+			isa = PBXGroup;
+			children = (
+				5A4D93B41B06A13D0008EF93 /* SRCollectionReusableFooter.h */,
+				5A4D93B51B06A13D0008EF93 /* SRCollectionReusableFooter.m */,
+				5A4D93B61B06A13D0008EF93 /* SRCollectionReusableFooter.xib */,
+			);
+			path = SRCollectionReusableFooter;
+			sourceTree = "<group>";
+		};
+		5A4D93B71B06A13D0008EF93 /* SRCollectionReusableHeader */ = {
+			isa = PBXGroup;
+			children = (
+				5A4D93B81B06A13D0008EF93 /* SRCollectionReusableHeader.h */,
+				5A4D93B91B06A13D0008EF93 /* SRCollectionReusableHeader.m */,
+				5A4D93BA1B06A13D0008EF93 /* SRCollectionReusableHeader.xib */,
+			);
+			path = SRCollectionReusableHeader;
+			sourceTree = "<group>";
+		};
+		5A4D93BB1B06A13D0008EF93 /* SRCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5A4D93BC1B06A13D0008EF93 /* SRCollectionViewCell.h */,
+				5A4D93BD1B06A13D0008EF93 /* SRCollectionViewCell.m */,
+				5A4D93CA1B06A2060008EF93 /* SRImageCollectionViewCell */,
+			);
+			path = SRCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		5A4D93CA1B06A2060008EF93 /* SRImageCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5A4D93CB1B06A2060008EF93 /* SRImageCollectionViewCell.h */,
+				5A4D93CC1B06A2060008EF93 /* SRImageCollectionViewCell.m */,
+				5A4D93CD1B06A2060008EF93 /* SRImageCollectionViewCell.xib */,
+			);
+			path = SRImageCollectionViewCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -406,7 +480,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A4D93CF1B06A2060008EF93 /* SRImageCollectionViewCell.xib in Resources */,
 				5A4D92DE1B0673EC0008EF93 /* LaunchScreen.xib in Resources */,
+				5A4D93C61B06A13D0008EF93 /* SRCollectionReusableHeader.xib in Resources */,
+				5A4D93C41B06A13D0008EF93 /* SRCollectionReusableFooter.xib in Resources */,
 				5A4D93001B0676730008EF93 /* Localizable.strings in Resources */,
 				5A4D92DB1B0673EC0008EF93 /* Images.xcassets in Resources */,
 			);
@@ -426,10 +503,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A4D93CE1B06A2060008EF93 /* SRImageCollectionViewCell.m in Sources */,
 				5A4D92D01B0673EC0008EF93 /* SRAppDelegate.m in Sources */,
 				5A4D93941B069C370008EF93 /* SRImagesCollectionViewController.m in Sources */,
 				5A4D93401B067B3C0008EF93 /* SRDirectory+Serializer.m in Sources */,
 				5A4D93911B069ABF0008EF93 /* UICoreDataCollectionViewController.m in Sources */,
+				5A4D93C51B06A13D0008EF93 /* SRCollectionReusableHeader.m in Sources */,
 				5A4D934A1B067ED00008EF93 /* SRLogger.m in Sources */,
 				5A4D93781B0690A60008EF93 /* SRFilesTableViewController.m in Sources */,
 				5A4D93501B06803E0008EF93 /* SRDirectory+Helper.m in Sources */,
@@ -439,6 +518,7 @@
 				5A4D938D1B0696790008EF93 /* SRFilesNavigationController.m in Sources */,
 				5A4D93431B067B3C0008EF93 /* Showroom.xcdatamodeld in Sources */,
 				5A4D93871B0695240008EF93 /* SRFile.m in Sources */,
+				5A4D93C71B06A13D0008EF93 /* SRCollectionViewCell.m in Sources */,
 				5A4D92CD1B0673EC0008EF93 /* main.m in Sources */,
 				5A4D935F1B068A0B0008EF93 /* SRFile+Serializer.m in Sources */,
 				5A4D93841B0695240008EF93 /* SRImage.m in Sources */,
@@ -447,6 +527,8 @@
 				5A4D93421B067B3C0008EF93 /* SRImage+Serializer.m in Sources */,
 				5A4D93441B067B3C0008EF93 /* SRModel.m in Sources */,
 				5A4D93471B067B910008EF93 /* SRNotificationCenter.m in Sources */,
+				5A4D93C31B06A13D0008EF93 /* SRCollectionReusableFooter.m in Sources */,
+				5A4D93C21B06A13D0008EF93 /* SRCollectionReusableView.m in Sources */,
 				5A4D934D1B06801B0008EF93 /* SRImage+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

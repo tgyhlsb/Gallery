@@ -8,6 +8,10 @@
 
 #import "SRImagesCollectionViewController.h"
 
+// Views
+#import "SRCollectionReusableFooter.h"
+#import "SRCollectionReusableHeader.h"
+#import "SRImageCollectionViewCell.h"
 
 #define MARGIN 10
 
@@ -38,6 +42,10 @@
     self = [super initWithCollectionViewLayout:collectionViewLayout];
     if (self) {
         self.directory = directory;
+        
+        [SRCollectionReusableHeader registerToCollectionView:self.collectionView];
+        [SRCollectionReusableFooter registerToCollectionView:self.collectionView];
+        [SRImageCollectionViewCell registerToCollectionView:self.collectionView];
     }
     return self;
 }
@@ -63,13 +71,38 @@
 #pragma mark - Fetch request
 
 - (void)updateFetchedResultController {
-    self.fetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectory:self.directory];
+    self.fetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectoryRecursively:self.directory];
 }
 
 #pragma mark - UICollectionViewDataSource
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    NSString *identifier = [SRImageCollectionViewCell reusableIdentifier];
+    SRImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
+    SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.titleLabel.text = image.name;
+    
+    return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForHeaderAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *identifier = [SRCollectionReusableHeader reusableIdentifier];
+    SRCollectionReusableHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                                            withReuseIdentifier:identifier
+                                                                                   forIndexPath:indexPath];
+    
+//    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:indexPath.section];
+    return header;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForFooterAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *identifier = [SRCollectionReusableFooter reusableIdentifier];
+    SRCollectionReusableFooter *footer = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter
+                                                                            withReuseIdentifier:identifier
+                                                                                   forIndexPath:indexPath];
+    
+    return footer;
 }
 
 @end
