@@ -24,6 +24,8 @@
 
 @property (readwrite, strong, nonatomic) SRDirectory *rootDirectory;
 
+@property (strong, nonatomic) NSTimer *monitorTimer;
+
 @end
 
 @implementation SRProviderLocal
@@ -281,7 +283,7 @@ static dispatch_source_t _source;
     
     // This block will be called when teh file changes
     dispatch_source_set_event_handler(_source, ^(){
-        [self filesDidChange];
+        [self didMonitorChanges];
     });
     
     // When we stop monitoring the file this will be called and it will close the file descriptor
@@ -307,6 +309,27 @@ static dispatch_source_t _source;
 - (void)filesDidChange {
     [self stopMonitoring];
     [[SRNotificationCenter defaultCenter] postNotificationName:SRNotificationProviderLocalFilesDidChange object:self];
+}
+
+#pragma mark - Monitor safety
+
+- (void)didMonitorChanges {
+    [self performSelectorOnMainThread:@selector(setNotifyTimer) withObject:nil waitUntilDone:YES];
+}
+
+- (void)setNotifyTimer {
+    [self.monitorTimer invalidate];
+    self.monitorTimer = nil;
+    self.monitorTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                         target:self
+                                                       selector:@selector(monitorTimeDidEnd)
+                                                       userInfo:nil
+                                                        repeats:NO];
+}
+
+- (void)monitorTimeDidEnd {
+    self.monitorTimer = nil;
+    [self filesDidChange];
 }
 
 @end
