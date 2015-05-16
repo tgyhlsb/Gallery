@@ -43,8 +43,8 @@
     
     [[SRProviderLocal defaultProvider] initialize];
     
-    [self checkForFileUpdates];
-    [self registerToProviderLocalNotifications];
+//    [self checkForFileUpdates];
+//    [self registerToProviderLocalNotifications];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

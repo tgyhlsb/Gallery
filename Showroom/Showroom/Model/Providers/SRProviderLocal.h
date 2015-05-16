@@ -23,6 +23,8 @@
 - (void)initialize;
 - (void)reloadFiles;
 
-- (NSString *)applicationDocumentsDirectory;
++ (NSString *)applicationDocumentsDirectory;
++ (NSDictionary *)getAttributesForFileAtPath:(NSString *)path;
++ (NSArray *)getFileNamesAtPath:(NSString *)path;
 
 @end

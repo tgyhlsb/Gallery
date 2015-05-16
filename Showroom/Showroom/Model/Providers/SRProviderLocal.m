@@ -20,11 +20,15 @@
 #import "SRImage+Helper.h"
 #import "SRDirectory+Helper.h"
 
+// Operations
+#import "SROperationProviderLocalReload.h"
+
 @interface SRProviderLocal()
 
 @property (readwrite, strong, nonatomic) SRDirectory *rootDirectory;
 
 @property (strong, nonatomic) NSTimer *monitorTimer;
+@property (strong, nonatomic) NSOperationQueue *privateQueue;
 
 @end
 
@@ -44,16 +48,45 @@ static SRProviderLocal *defaultProvider;
 #pragma mark - Configuration
 
 - (void)initialize {
-    self.rootDirectory = [self getRootDirectory];
+    [self fetchRootDirectory];
+    [self readRootDirectorySubtree];
 }
 
 - (void)reloadFiles {
-    NSString *publicDocumentsDir = [self applicationDocumentsDirectory];
-    [SRLogger addInformation:@"Reading %@", publicDocumentsDir];
-    self.rootDirectory = [self directoryFromPath:publicDocumentsDir recursively:YES depth:0];
-    [self cleanCoreData];
-    [self setLastModificationDate:self.rootDirectory.modificationDate];
-    [self save];
+//    NSString *publicDocumentsDir = [SRProviderLocal applicationDocumentsDirectory];
+//    [SRLogger addInformation:@"Reading %@", publicDocumentsDir];
+//    self.rootDirectory = [self directoryFromPath:publicDocumentsDir recursively:YES depth:0];
+//    [self cleanCoreData];
+//    [self setLastModificationDate:self.rootDirectory.modificationDate];
+//    [self save];
+}
+
+- (void)fetchRootDirectory {
+    
+    NSString *absolutePath = [SRProviderLocal applicationDocumentsDirectory];
+    NSString *relativePath = [SRProviderLocal relativePath:absolutePath];
+    NSDictionary *attributes = [SRProviderLocal getAttributesForFileAtPath:absolutePath];
+    NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
+    
+    _rootDirectory = [SRDirectory directoryWithPath:relativePath
+                                         attributes:attributes
+                                              depth:0
+                                           provider:SRProviderTypeLocal
+                             inManagedObjectContext:context];
+}
+
+- (void)readRootDirectorySubtree {
+    NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
+    SROperationProviderLocalReload *readOperation = [[SROperationProviderLocalReload alloc] initWithParentManagedObjectContext:context];
+//    __weak SROperationProviderLocalReload *weakReadOperation = readOperation;
+    
+    readOperation.recursively = YES;
+    readOperation.directory = self.rootDirectory;
+    [readOperation setCompletionBlock:^{
+        
+    }];
+    
+    [self.privateQueue addOperation:readOperation];
 }
 
 #pragma mark - User defaults
@@ -74,134 +107,13 @@ static SRProviderLocal *defaultProvider;
     return ![self.rootDirectory.modificationDate isEqualToDate:[self lastModificationDate]];
 }
 
-#pragma mark - Factory
-
-- (SRDirectory *)getRootDirectory {
-    NSString *publicDocumentsDir = [self applicationDocumentsDirectory];
-    [SRLogger addInformation:@"Reading %@", publicDocumentsDir];
-    SRDirectory *rootDirectory = [self directoryFromPath:publicDocumentsDir recursively:NO depth:0];
-    [self cleanCoreData];
-    return rootDirectory;
-}
-
-- (SRDirectory *)fetchRootDirectoryFromCoreData {
-    NSFetchRequest *request = [self requestForRootDirectoryForProvider:SRProviderTypeLocal];
-    NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
-    
-    NSError *error = nil;
-    NSArray *matches = [context executeFetchRequest:request error:&error];
-    SRDirectory *rootDirectory = nil;
-    
-    if (error) {
-        [SRLogger addError:@"Failed fetching local root directory. Error: '%@'", error];
-    } else if (matches.count > 1) {
-        [SRLogger addError:@"More than one local root directory fetched"];
-        rootDirectory = [matches lastObject];
-    } else {
-        rootDirectory = [matches firstObject];
+- (NSOperationQueue *)privateQueue {
+    if (!_privateQueue) {
+        _privateQueue = [[NSOperationQueue alloc] init];
     }
-    
-    return rootDirectory;
+    return _privateQueue;
 }
 
-- (SRDirectory *)directoryFromPath:(NSString *)path recursively:(BOOL)recursively depth:(NSInteger)depth {
-    
-    NSDictionary *attributes = [self getAttributesForFileAtPath:path];
-    NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
-    NSString *relativePath = [self relativePath:path];
-    
-    SRDirectory *rootDirectory = [SRDirectory directoryWithPath:relativePath
-                                                     attributes:attributes
-                                                          depth:depth
-                                                       provider:SRProviderTypeLocal
-                                         inManagedObjectContext:context];
-    
-    if (recursively) {
-        [self readFilesForDirectory:rootDirectory recursively:(BOOL)recursively depth:depth+1];
-    }
-    
-    return rootDirectory;
-}
-
-- (SRImage *)imageFromPath:(NSString *)path depth:(NSInteger)depth {
-    
-    NSDictionary *attributes = [self getAttributesForFileAtPath:path];
-    NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
-    NSString *relativePath = [self relativePath:path];
-    
-    return [SRImage imageWithPath:relativePath
-                       attributes:attributes
-                            depth:depth
-                         provider:SRProviderTypeLocal
-           inManagedObjectContext:context];
-}
-
-- (void)readFilesForDirectory:(SRDirectory *)rootDirectory recursively:(BOOL)recursively depth:(NSInteger)depth {
-    
-    NSString *absolutePath = [self absolutePath:rootDirectory.path];
-    NSArray *files = [self getFileNamesAtPath:absolutePath];
-    NSString *fullPath = nil;
-    for (NSString *file in files) {
-        fullPath = [absolutePath stringByAppendingPathComponent:file];
-        if ([SRImage fileAtPathIsImage:fullPath]) {
-            
-            SRImage *image = [self imageFromPath:fullPath depth:depth];
-            if (![image.parent isEqual:rootDirectory]) {
-                [image setParent:rootDirectory];
-            }
-            
-        } else if ([SRDirectory fileAtPathIsDirectory:fullPath]) {
-            
-            SRDirectory *directory = [self directoryFromPath:fullPath recursively:recursively depth:depth];
-            if (![directory.parent isEqual:rootDirectory]) {
-                [directory setParent:rootDirectory];
-            }
-            
-        } else {
-            [SRLogger addError:@"Failed to read : %@", file];
-        }
-    }
-}
-
-- (NSArray *)getFileNamesAtPath:(NSString *)path {
-    NSError *error;
-    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
-    if (error) {
-        [SRLogger addError:@"Error reading contents of documents directory: %@", error];
-    }
-    return files;
-}
-
-- (NSDictionary *)getAttributesForFileAtPath:(NSString *)path {
-    NSError *error;
-    NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:&error];
-    if (error) {
-        [SRLogger addError:@"Error reading attributes of documents directory: %@", error];
-    }
-    return attributes;
-}
-
-- (void)cleanCoreData {
-    
-    NSFetchRequest *request = [self requestForFilesForProvider:SRProviderTypeLocal];
-    NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
-    
-    NSError *error = nil;
-    NSArray *matches = [context executeFetchRequest:request error:&error];
-    
-    if (error) {
-        [SRLogger addError:@"Failed fetching local root directory. Error: '%@'", error];
-    } else {
-        NSFileManager *fileManager = [NSFileManager defaultManager];
-        for (SRFile *file in matches) {
-            NSString *absolutePath = [self absolutePath:file.path];
-            if (![fileManager fileExistsAtPath:absolutePath]) {
-                [SRLogger addInformation:@"Deleted file %@", file.path];
-                [context deleteObject:file];
-            }
-        }
-    }
-}
 
 #pragma mark - Helpers
 
@@ -210,20 +122,38 @@ static SRProviderLocal *defaultProvider;
     [[SRModel defaultModel] saveContext];
 }
 
-- (NSString *)applicationDocumentsDirectory {
++ (NSString *)applicationDocumentsDirectory {
     // The directory the application uses to store the Core Data store file. This code uses a directory named "com.helesbeux.Showroom" in the application's documents directory.
     return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
 }
 
-- (NSString *)relativePath:(NSString *)path {
++ (NSString *)relativePath:(NSString *)path {
     NSInteger start = [[self applicationDocumentsDirectory] length];
     NSString *relativePath = [path substringFromIndex:start];
     return relativePath.length ? relativePath : @"/";
 }
 
-- (NSString *)absolutePath:(NSString *)path {
++ (NSString *)absolutePath:(NSString *)path {
     NSString *absolutePath = [[self applicationDocumentsDirectory] stringByAppendingString:path];
     return absolutePath;
+}
+
++ (NSArray *)getFileNamesAtPath:(NSString *)path {
+    NSError *error;
+    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
+    if (error) {
+        [SRLogger addError:@"Error reading contents of documents directory: %@", error];
+    }
+    return files;
+}
+
++ (NSDictionary *)getAttributesForFileAtPath:(NSString *)path {
+    NSError *error;
+    NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:&error];
+    if (error) {
+        [SRLogger addError:@"Error reading attributes of documents directory: %@", error];
+    }
+    return attributes;
 }
 
 #pragma mark - Monitoring
@@ -237,7 +167,7 @@ static dispatch_source_t _source;
 - (void)startMonitoring {
     
     // Get the path to the home directory
-    NSString * homeDirectory = [self applicationDocumentsDirectory];
+    NSString * homeDirectory = [SRProviderLocal applicationDocumentsDirectory];
     
     // Create a new file descriptor - we need to convert the NSString to a char * i.e. C style string
     int filedes = open([homeDirectory cStringUsingEncoding:NSASCIIStringEncoding], O_EVTONLY);

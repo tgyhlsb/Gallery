@@ -17,6 +17,9 @@
 // Controllers
 #import "SRImageViewController.h"
 
+// Temp
+#import "SRProviderLocal.h"
+
 @interface SRFilesTableViewController()
 
 @property (strong, nonatomic) SRDirectory *directory;

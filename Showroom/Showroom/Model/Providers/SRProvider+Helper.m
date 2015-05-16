@@ -15,19 +15,17 @@
 #pragma mark - Path mecanism
 
 + (NSString *)absolutePath:(NSString *)path forProviderType:(NSString *)providerType {
-    SRProvider *provider = nil;
     if ([providerType isEqualToString:SRProviderTypeLocal]) {
-        provider = [SRProviderLocal defaultProvider];
+        return [SRProviderLocal absolutePath:path];
     }
-    return [provider absolutePath:path];
+    return nil;
 }
 
 + (NSString *)relativePath:(NSString *)path forProviderType:(NSString *)providerType {
-    SRProvider *provider = nil;
     if ([providerType isEqualToString:SRProviderTypeLocal]) {
-        provider = [SRProviderLocal defaultProvider];
+        return [SRProviderLocal relativePath:path];
     }
-    return [provider relativePath:path];
+    return nil;
 }
 
 @end

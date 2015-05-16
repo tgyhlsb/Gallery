@@ -49,6 +49,7 @@
 		5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */; };
 		5AECDBA11B06C90600DB572E /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDBA01B06C90600DB572E /* localization.sh */; };
 		5AECDBA41B07665800DB572E /* SRProvider+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBA31B07665800DB572E /* SRProvider+Helper.m */; };
+		5AECDBA71B0780C400DB572E /* SROperationProviderLocalReload.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBA61B0780C400DB572E /* SROperationProviderLocalReload.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,8 @@
 		5AECDBA01B06C90600DB572E /* localization.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = localization.sh; sourceTree = "<group>"; };
 		5AECDBA21B07665800DB572E /* SRProvider+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRProvider+Helper.h"; sourceTree = "<group>"; };
 		5AECDBA31B07665800DB572E /* SRProvider+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRProvider+Helper.m"; sourceTree = "<group>"; };
+		5AECDBA51B0780C400DB572E /* SROperationProviderLocalReload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationProviderLocalReload.h; sourceTree = "<group>"; };
+		5AECDBA61B0780C400DB572E /* SROperationProviderLocalReload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SROperationProviderLocalReload.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +290,8 @@
 				5AECDBA31B07665800DB572E /* SRProvider+Helper.m */,
 				5A4D93261B067B080008EF93 /* SRProviderLocal.h */,
 				5A4D93271B067B080008EF93 /* SRProviderLocal.m */,
+				5AECDBA51B0780C400DB572E /* SROperationProviderLocalReload.h */,
+				5AECDBA61B0780C400DB572E /* SROperationProviderLocalReload.m */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -588,6 +593,7 @@
 				5A4D93441B067B3C0008EF93 /* SRModel.m in Sources */,
 				5A4D93471B067B910008EF93 /* SRNotificationCenter.m in Sources */,
 				5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */,
+				5AECDBA71B0780C400DB572E /* SROperationProviderLocalReload.m in Sources */,
 				5A4D93C31B06A13D0008EF93 /* SRCollectionReusableFooter.m in Sources */,
 				5A4D93C21B06A13D0008EF93 /* SRCollectionReusableView.m in Sources */,
 				5A4D934D1B06801B0008EF93 /* SRImage+Helper.m in Sources */,
