@@ -61,7 +61,7 @@
 }
 
 - (void)updateImageView {
-    self.imageView.image = [UIImage imageNamed:self.image.path];
+    self.imageView.image = [UIImage imageNamed:[self.image absolutePath]];
 }
 
 @end

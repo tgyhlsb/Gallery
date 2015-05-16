@@ -7,6 +7,7 @@
 //
 
 #import "SRImage.h"
+#import "SRFile+Helper.h"
 
 @interface SRImage (Helper)
 

@@ -48,6 +48,7 @@
 		5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDB981B06C3F700DB572E /* SRHomeViewController.m */; };
 		5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */; };
 		5AECDBA11B06C90600DB572E /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDBA01B06C90600DB572E /* localization.sh */; };
+		5AECDBA41B07665800DB572E /* SRProvider+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBA31B07665800DB572E /* SRProvider+Helper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,8 @@
 		5AECDB981B06C3F700DB572E /* SRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRHomeViewController.m; path = SRHomeViewController/SRHomeViewController.m; sourceTree = "<group>"; };
 		5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRHomeViewController.xib; path = SRHomeViewController/SRHomeViewController.xib; sourceTree = "<group>"; };
 		5AECDBA01B06C90600DB572E /* localization.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = localization.sh; sourceTree = "<group>"; };
+		5AECDBA21B07665800DB572E /* SRProvider+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRProvider+Helper.h"; sourceTree = "<group>"; };
+		5AECDBA31B07665800DB572E /* SRProvider+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRProvider+Helper.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +283,8 @@
 			children = (
 				5A4D93231B067AF80008EF93 /* SRProvider.h */,
 				5A4D93241B067AF80008EF93 /* SRProvider.m */,
+				5AECDBA21B07665800DB572E /* SRProvider+Helper.h */,
+				5AECDBA31B07665800DB572E /* SRProvider+Helper.m */,
 				5A4D93261B067B080008EF93 /* SRProviderLocal.h */,
 				5A4D93271B067B080008EF93 /* SRProviderLocal.m */,
 			);
@@ -561,6 +566,7 @@
 				5A4D93401B067B3C0008EF93 /* SRDirectory+Serializer.m in Sources */,
 				5A4D93911B069ABF0008EF93 /* UICoreDataCollectionViewController.m in Sources */,
 				5A4D93C51B06A13D0008EF93 /* SRCollectionReusableHeader.m in Sources */,
+				5AECDBA41B07665800DB572E /* SRProvider+Helper.m in Sources */,
 				5A4D934A1B067ED00008EF93 /* SRLogger.m in Sources */,
 				5A4D93781B0690A60008EF93 /* SRFilesTableViewController.m in Sources */,
 				5AECDB961B06C1F900DB572E /* SRFile.m in Sources */,

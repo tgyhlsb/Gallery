@@ -15,8 +15,6 @@
 
 @property (readonly, strong, nonatomic) SRDirectory *rootDirectory;
 
-+ (SRProviderLocal *)defaultProvider;
-
 - (BOOL)needsUpdate;
 
 - (void)startMonitoring;
@@ -25,8 +23,6 @@
 - (void)initialize;
 - (void)reloadFiles;
 
-//- (NSString *)applicationDocumentsDirectory;
-//- (NSString *)relativePath:(NSString *)path;
-//- (NSString *)absolutePath:(NSString *)path;
+- (NSString *)applicationDocumentsDirectory;
 
 @end

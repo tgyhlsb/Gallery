@@ -8,6 +8,9 @@
 
 #import "SRFile+Helper.h"
 
+// Providers
+#import "SRProvider+Helper.h"
+
 @implementation SRFile (Helper)
 
 - (BOOL)isImage {
@@ -16,6 +19,14 @@
 
 - (BOOL)isDirectory {
     return NO;
+}
+
+- (NSString *)absolutePath {
+    return [SRProvider absolutePath:self.path forProviderType:self.provider];
+}
+
+- (NSString *)relativePath {
+    return self.path;
 }
 
 @end

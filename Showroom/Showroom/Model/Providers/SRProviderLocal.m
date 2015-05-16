@@ -34,7 +34,7 @@
 
 static SRProviderLocal *defaultProvider;
 
-+ (SRProviderLocal *)defaultProvider {
++ (instancetype)defaultProvider {
     if (!defaultProvider) {
         defaultProvider = [[SRProviderLocal alloc] init];
     }

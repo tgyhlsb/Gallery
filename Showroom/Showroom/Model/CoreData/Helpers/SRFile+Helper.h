@@ -13,4 +13,7 @@
 - (BOOL)isImage;
 - (BOOL)isDirectory;
 
+- (NSString *)absolutePath;
+- (NSString *)relativePath;
+
 @end

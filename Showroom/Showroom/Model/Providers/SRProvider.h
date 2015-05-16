@@ -15,7 +15,12 @@ static NSString *SRProviderTypeLocal = @"SRProviderTypeLocal";
 
 @interface SRProvider : NSObject
 
++ (instancetype)defaultProvider;
+
 - (NSFetchRequest *)requestForRootDirectoryForProvider:(NSString *)provider;
 - (NSFetchRequest *)requestForFilesForProvider:(NSString *)provider;
+
+- (NSString *)relativePath:(NSString *)path;
+- (NSString *)absolutePath:(NSString *)path;
 
 @end
