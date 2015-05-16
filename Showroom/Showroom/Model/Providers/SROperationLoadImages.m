@@ -85,9 +85,18 @@
         [SRLogger addInformation:@"%d missing images", matches.count];
         for (SRImage *image in matches) {
             [self loadImage:image];
+            [self saveContext:self.privateManagedObjectContext];
         }
     } else {
         [SRLogger addError:@"Error when fetching image. Error: %@", error];
+    }
+}
+
+- (void)saveContext:(NSManagedObjectContext *)context {
+    NSError *error = nil;
+    [context save:&error];
+    if (error) {
+        [SRLogger addError:@"%@", error];
     }
 }
 
