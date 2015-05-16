@@ -49,6 +49,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    self.commentLabel.hidden = ![[SRProviderLocal defaultProvider] didUpdateAfterLaunch];
 }
 
 #pragma mark - Getters & Setters
@@ -69,6 +70,10 @@
     
     NSString *imageTitle = NSLocalizedString(@"LOCALIZE_HOME_BUTTON_IMAGE_COLLECTION", nil);
     [self.imageCollectionInterfaceButton setTitle:imageTitle forState:UIControlStateNormal];
+    [self.fileListInterfaceButton setTitle:fileTitle forState:UIControlStateNormal];
+    
+    NSString *syncTitle = NSLocalizedString(@"LOCALIZE_HOME_BUTTON_SYNCHRONIZE", nil);
+    [self.forceReloadButton setTitle:syncTitle forState:UIControlStateNormal];
     
     NSString *commentText = NSLocalizedString(@"LOCALIZE_HOME_INFO_FILE_UPDATE", nil);
     [self.commentLabel setText:commentText];
@@ -97,6 +102,7 @@
 
 - (IBAction)forceReloadButtonHandler:(UIButton *)sender {
     [[SRProviderLocal defaultProvider] reloadFiles];
+    self.commentLabel.hidden = NO;
 }
 
 @end

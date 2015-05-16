@@ -102,6 +102,11 @@
     [self updateFetchedResultController];
 }
 
+- (void)setSelectedImage:(SRImage *)selectedImage {
+    _selectedImage = selectedImage;
+    self.title = selectedImage.name;
+}
+
 #pragma mark - Fetch request
 
 - (void)updateFetchedResultController {
@@ -145,7 +150,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    self.title = image.name;
+    self.selectedImage = image;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

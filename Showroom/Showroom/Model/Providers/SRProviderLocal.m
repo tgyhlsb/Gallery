@@ -28,6 +28,7 @@
 @interface SRProviderLocal()
 
 @property (readwrite, strong, nonatomic) SRDirectory *rootDirectory;
+@property (readwrite, nonatomic) BOOL didUpdateAfterLaunch;
 
 @property (strong, nonatomic) NSTimer *monitorTimer;
 @property (strong, nonatomic) NSOperationQueue *privateQueue;
@@ -53,7 +54,11 @@ static SRProviderLocal *defaultProvider;
     [self fetchRootDirectory];
     if ([self needsUpdate]) {
         [self readRootDirectorySubtree];
+        self.didUpdateAfterLaunch = YES;
+    } else {
+        self.didUpdateAfterLaunch = NO;
     }
+
 }
 
 - (void)reloadFiles {
