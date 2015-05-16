@@ -26,17 +26,31 @@
 
 #pragma mark - Thumbnails
 
-- (UIImage *)thumbnailImage {
-    return [UIImage imageWithData:self.thumbnail];
+- (UIImage *)thumbnail {
+    return [UIImage imageWithData:self.thumbnailData];
 }
 
-- (void)setThumbnailImage:(UIImage *)thumbnailImage {
+- (void)setThumbnail:(UIImage *)thumbnail {
     if ([@[@"jpg", @"jpeg"] containsObject:self.extension.lowercaseString]) {
-        self.thumbnail = UIImageJPEGRepresentation(thumbnailImage, 0.5);
+        self.thumbnailData = UIImageJPEGRepresentation(thumbnail, 0.5);
     } else if ([@[@"png"] containsObject:self.extension.lowercaseString]) {
-        self.thumbnail = UIImagePNGRepresentation(thumbnailImage);
+        self.thumbnailData = UIImagePNGRepresentation(thumbnail);
     } else {
-        [SRLogger addError:@"Unable to save image as thumbnail %@", thumbnailImage];
+        [SRLogger addError:@"Unable to save image as thumbnail %@", thumbnail];
+    }
+}
+
+- (UIImage *)image {
+    return [UIImage imageWithData:self.imageData];
+}
+
+- (void)setImage:(UIImage *)image {
+    if ([@[@"jpg", @"jpeg"] containsObject:self.extension.lowercaseString]) {
+        self.imageData = UIImageJPEGRepresentation(image, 0.5);
+    } else if ([@[@"png"] containsObject:self.extension.lowercaseString]) {
+        self.imageData = UIImagePNGRepresentation(image);
+    } else {
+        [SRLogger addError:@"Unable to save image %@", image];
     }
 }
 

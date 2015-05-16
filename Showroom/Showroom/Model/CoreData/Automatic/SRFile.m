@@ -13,13 +13,13 @@
 @implementation SRFile
 
 @dynamic creationDate;
+@dynamic depth;
 @dynamic extension;
 @dynamic modificationDate;
 @dynamic name;
 @dynamic path;
 @dynamic provider;
 @dynamic size;
-@dynamic depth;
 @dynamic parent;
 
 @end

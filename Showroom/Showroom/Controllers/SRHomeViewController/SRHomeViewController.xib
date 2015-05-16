@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="commentLabel" destination="iPt-ji-aiU" id="ixz-El-xYS"/>
                 <outlet property="fileListInterfaceButton" destination="hQD-wv-uVm" id="ZuS-ok-qvC"/>
+                <outlet property="forceReloadButton" destination="1t4-yi-Unq" id="6Ov-sG-8VB"/>
                 <outlet property="imageCollectionInterfaceButton" destination="QUo-2e-Iab" id="GNq-1Z-0Ic"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -42,6 +43,15 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1t4-yi-Unq">
+                    <rect key="frame" x="277" y="521" width="46" height="30"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="forceReloadButtonHandler:" destination="-1" eventType="touchUpInside" id="TdN-8u-ey6"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -49,7 +59,9 @@
                 <constraint firstAttribute="centerX" secondItem="hQD-wv-uVm" secondAttribute="centerX" id="CZU-ap-hga"/>
                 <constraint firstAttribute="centerY" secondItem="hQD-wv-uVm" secondAttribute="centerY" id="ELX-tD-rwJ"/>
                 <constraint firstItem="QUo-2e-Iab" firstAttribute="top" secondItem="hQD-wv-uVm" secondAttribute="bottom" constant="20" id="Rl2-tB-55F"/>
+                <constraint firstItem="iPt-ji-aiU" firstAttribute="top" secondItem="1t4-yi-Unq" secondAttribute="bottom" constant="8" id="Xeb-Z4-fbu"/>
                 <constraint firstAttribute="bottom" secondItem="iPt-ji-aiU" secondAttribute="bottom" constant="20" id="d9x-rQ-M6j"/>
+                <constraint firstAttribute="centerX" secondItem="1t4-yi-Unq" secondAttribute="centerX" id="q9r-gq-ehv"/>
                 <constraint firstAttribute="centerX" secondItem="QUo-2e-Iab" secondAttribute="centerX" id="xoc-gd-C9R"/>
             </constraints>
         </view>

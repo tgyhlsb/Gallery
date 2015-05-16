@@ -14,6 +14,7 @@
 @interface SRProviderLocal : SRProvider
 
 @property (readonly, strong, nonatomic) SRDirectory *rootDirectory;
+@property (readonly, nonatomic) BOOL didUpdateAfterLaunch;
 @property (readwrite, nonatomic) BOOL autoUpdate;
 
 - (BOOL)needsUpdate;

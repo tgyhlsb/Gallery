@@ -16,12 +16,13 @@
     </entity>
     <entity name="SRImage" representedClassName="SRImage" parentEntity="SRFile" syncable="YES">
         <attribute name="height" optional="YES" attributeType="Float" syncable="YES"/>
-        <attribute name="thumbnail" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="thumbnailData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="width" optional="YES" attributeType="Float" syncable="YES"/>
     </entity>
     <elements>
         <element name="SRDirectory" positionX="0" positionY="45" width="128" height="60"/>
         <element name="SRFile" positionX="-36" positionY="9" width="128" height="180"/>
-        <element name="SRImage" positionX="27" positionY="72" width="128" height="90"/>
+        <element name="SRImage" positionX="27" positionY="72" width="128" height="105"/>
     </elements>
 </model>
