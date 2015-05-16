@@ -8,14 +8,11 @@
 
 #import "SRAppDelegate.h"
 
-// Models
+// Model
 #import "SRModel.h"
 
-// Managers
-#import "SRProviderLocal.h"
-
 // Controllers
-#import "SRImageNavigationController.h"
+#import "SRHomeViewController.h"
 
 @interface SRAppDelegate ()
 
@@ -25,15 +22,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    [[SRProviderLocal defaultProvider] initialize];
-    SRDirectory *rootDirectory = [[SRProviderLocal defaultProvider] getRootDirectory];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [SRImageNavigationController newWithDirectory:rootDirectory];
+    self.window.rootViewController = [SRHomeViewController new];
     [self.window makeKeyAndVisible];
     
-    [[SRProviderLocal defaultProvider] reloadFiles];
     return YES;
 }
 

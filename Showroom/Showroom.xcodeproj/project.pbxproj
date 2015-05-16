@@ -45,6 +45,8 @@
 		5A4D93D71B06AB7F0008EF93 /* SRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93D51B06AB7F0008EF93 /* SRImageViewController.m */; };
 		5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */; };
 		5AECDB961B06C1F900DB572E /* SRFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDB951B06C1F900DB572E /* SRFile.m */; };
+		5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDB981B06C3F700DB572E /* SRHomeViewController.m */; };
+		5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +133,9 @@
 		5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRImageViewController.xib; path = SRImageViewController/SRImageViewController.xib; sourceTree = "<group>"; };
 		5AECDB941B06C1F900DB572E /* SRFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRFile.h; sourceTree = "<group>"; };
 		5AECDB951B06C1F900DB572E /* SRFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRFile.m; sourceTree = "<group>"; };
+		5AECDB971B06C3F700DB572E /* SRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRHomeViewController.h; path = SRHomeViewController/SRHomeViewController.h; sourceTree = "<group>"; };
+		5AECDB981B06C3F700DB572E /* SRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRHomeViewController.m; path = SRHomeViewController/SRHomeViewController.m; sourceTree = "<group>"; };
+		5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRHomeViewController.xib; path = SRHomeViewController/SRHomeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +226,7 @@
 				5A4D93731B068FC30008EF93 /* UICoreDataTableViewController.m */,
 				5A4D938F1B069ABF0008EF93 /* UICoreDataCollectionViewController.h */,
 				5A4D93901B069ABF0008EF93 /* UICoreDataCollectionViewController.m */,
+				5AECDB9C1B06C3FA00DB572E /* SRHomeViewController */,
 				5A4D93D91B06AB840008EF93 /* SRImageViewController */,
 				5A4D93D31B06AA900008EF93 /* SRImageNavigationController */,
 				5A4D93951B069C3B0008EF93 /* SRImagesCollectionViewController */,
@@ -427,6 +433,16 @@
 			name = SRImageViewController;
 			sourceTree = "<group>";
 		};
+		5AECDB9C1B06C3FA00DB572E /* SRHomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5AECDB971B06C3F700DB572E /* SRHomeViewController.h */,
+				5AECDB981B06C3F700DB572E /* SRHomeViewController.m */,
+				5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */,
+			);
+			name = SRHomeViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -516,6 +532,7 @@
 				5A4D93C41B06A13D0008EF93 /* SRCollectionReusableFooter.xib in Resources */,
 				5A4D93001B0676730008EF93 /* Localizable.strings in Resources */,
 				5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */,
+				5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */,
 				5A4D92DB1B0673EC0008EF93 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -560,6 +577,7 @@
 				5A4D93421B067B3C0008EF93 /* SRImage+Serializer.m in Sources */,
 				5A4D93441B067B3C0008EF93 /* SRModel.m in Sources */,
 				5A4D93471B067B910008EF93 /* SRNotificationCenter.m in Sources */,
+				5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */,
 				5A4D93C31B06A13D0008EF93 /* SRCollectionReusableFooter.m in Sources */,
 				5A4D93C21B06A13D0008EF93 /* SRCollectionReusableView.m in Sources */,
 				5A4D934D1B06801B0008EF93 /* SRImage+Helper.m in Sources */,
