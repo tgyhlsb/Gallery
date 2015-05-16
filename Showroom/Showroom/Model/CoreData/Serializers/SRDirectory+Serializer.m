@@ -35,13 +35,12 @@
     } else {
         if ([matches count]) {
             directory = [matches firstObject];
+            [directory updateWithAttributes:attributes];
         } else {
             directory = [NSEntityDescription insertNewObjectForEntityForName:[self className] inManagedObjectContext:context];
+            directory.provider = provider;
+            [directory initializeWithPath:path attributes:attributes depth:depth];
         }
-        
-        //TODO attributes
-        directory.provider = provider;
-        [directory updateWithPath:path attributes:attributes depth:depth];
     }
     
     return directory;

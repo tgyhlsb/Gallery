@@ -10,9 +10,10 @@
 
 // Models
 #import "SRModel.h"
+#import "SRProviderLocal.h"
 
 // Managers
-#import "SRProviderLocal.h"
+#import "SRNotificationCenter.h"
 
 // Controllers
 #import "SRImageNavigationController.h"
@@ -22,6 +23,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *fileListInterfaceButton;
 @property (weak, nonatomic) IBOutlet UIButton *imageCollectionInterfaceButton;
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 
 @property (strong, nonatomic) UIBarButtonItem *homeBarButton;
 
@@ -40,11 +42,13 @@
     [self initializeView];
     
     [[SRProviderLocal defaultProvider] initialize];
-    [[SRProviderLocal defaultProvider] reloadFiles];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    [self checkForFileUpdates];
+    [self registerToProviderLocalNotifications];
 }
 
 #pragma mark - Getters & Setters
@@ -65,19 +69,23 @@
     
     NSString *imageTitle = NSLocalizedString(@"LOCALIZE_HOME_BUTTON_IMAGE_COLLECTION", nil);
     [self.imageCollectionInterfaceButton setTitle:imageTitle forState:UIControlStateNormal];
+    
+    NSString *commentText = NSLocalizedString(@"LOCALIZE_HOME_INFO_FILE_UPDATE", nil);
+    [self.commentLabel setText:commentText];
+    self.commentLabel.hidden = YES;
 }
 
 #pragma mark - Handlers 
 
 - (IBAction)fileListInterfaceButtonHandler:(UIButton *)sender {
-    SRDirectory *directory = [[SRProviderLocal defaultProvider] getRootDirectory];
+    SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
     SRFilesNavigationController *destination = [SRFilesNavigationController newWithDirectory:directory];
     destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
     [self presentViewController:destination animated:YES completion:nil];
 }
 
 - (IBAction)imageCollectionInterfaceButtonHandler:(UIButton *)sender {
-    SRDirectory *directory = [[SRProviderLocal defaultProvider] getRootDirectory];
+    SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
     SRImageNavigationController *destination = [SRImageNavigationController newWithDirectory:directory];
     destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
     [self presentViewController:destination animated:YES completion:nil];
@@ -85,6 +93,31 @@
 
 - (void)homeBarButtonHandler {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)notificationProviderLocalFilesDidChangeHandler {
+    [[SRProviderLocal defaultProvider] reloadFiles];
+    [[SRProviderLocal defaultProvider] startMonitoring];
+}
+
+#pragma mark - Providers
+
+- (void)checkForFileUpdates {
+    SRProviderLocal *provider = [SRProviderLocal defaultProvider];
+    if ([provider needsUpdate]) {
+        [provider reloadFiles];
+        self.commentLabel.hidden = NO;
+    }
+    [provider startMonitoring];
+}
+
+#pragma mark - Broadcasting
+
+- (void)registerToProviderLocalNotifications {
+    [[SRNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notificationProviderLocalFilesDidChangeHandler)
+                                                 name:SRNotificationProviderLocalFilesDidChange
+                                               object:nil];
 }
 
 @end

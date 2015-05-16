@@ -12,6 +12,7 @@
 
 + (NSString *)className;
 
-- (void)updateWithPath:(NSString *)path attributes:(NSDictionary *)attributes depth:(NSInteger)depth;
+- (void)initializeWithPath:(NSString *)path attributes:(NSDictionary *)attributes depth:(NSInteger)depth;
+- (void)updateWithAttributes:(NSDictionary *)attributes;
 
 @end

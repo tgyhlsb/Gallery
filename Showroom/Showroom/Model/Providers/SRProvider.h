@@ -8,8 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+// Frameworks
+#import <CoreData/CoreData.h>
+
 static NSString *SRProviderTypeLocal = @"SRProviderTypeLocal";
 
 @interface SRProvider : NSObject
+
+- (NSFetchRequest *)requestForRootDirectoryForProvider:(NSString *)provider;
 
 @end

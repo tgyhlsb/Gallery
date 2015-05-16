@@ -8,6 +8,17 @@
 
 #import "SRProvider.h"
 
+// Models
+#import "SRDirectory+Serializer.h"
+#import "SRFile+Serializer.h"
+
 @implementation SRProvider
+
+- (NSFetchRequest *)requestForRootDirectoryForProvider:(NSString *)provider {
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRDirectory className]];
+    request.predicate = [NSPredicate predicateWithFormat:@"depth = 0 && provider = %@", provider];
+    return request;
+}
 
 @end

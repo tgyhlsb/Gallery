@@ -17,8 +17,12 @@
 
 + (SRProviderLocal *)defaultProvider;
 
+- (BOOL)needsUpdate;
+
+- (void)startMonitoring;
+- (void)stopMonitoring;
+
 - (void)initialize;
 - (void)reloadFiles;
-- (SRDirectory *)getRootDirectory;
 
 @end

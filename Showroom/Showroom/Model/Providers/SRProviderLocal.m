@@ -46,7 +46,29 @@ static SRProviderLocal *defaultProvider;
 }
 
 - (void)reloadFiles {
+    
     [self readFilesForDirectory:self.rootDirectory recursively:YES depth:1];
+    [self setLastModificationDate:self.rootDirectory.modificationDate];
+    [[SRModel defaultModel] saveContext];
+}
+
+#pragma mark - User defaults
+
+#define KEY_LAST_MODIFICATION_DATE @"SRProviderLocalLastModificationDate"
+
+- (NSDate *)lastModificationDate {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:KEY_LAST_MODIFICATION_DATE];
+}
+
+- (void)setLastModificationDate:(NSDate *)date {
+    [[NSUserDefaults standardUserDefaults] setValue:date forKey:KEY_LAST_MODIFICATION_DATE];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark - Getters & Setters
+
+- (BOOL)needsUpdate {
+    return ![self.rootDirectory.modificationDate isEqualToDate:[self lastModificationDate]];
 }
 
 #pragma mark - Factory
@@ -55,6 +77,26 @@ static SRProviderLocal *defaultProvider;
     NSString *publicDocumentsDir = [self applicationDocumentsDirectory];
     [SRLogger addInformation:@"Reading %@", publicDocumentsDir];
     SRDirectory *rootDirectory = [self directoryFromPath:publicDocumentsDir recursively:NO depth:0];
+    return rootDirectory;
+}
+
+- (SRDirectory *)fetchRootDirectoryFromCoreData {
+    NSFetchRequest *request = [self requestForRootDirectoryForProvider:SRProviderTypeLocal];
+    NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
+    
+    NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    SRDirectory *rootDirectory = nil;
+    
+    if (error) {
+        [SRLogger addError:@"Failed fetching local root directory. Error: '%@'", error];
+    } else if (matches.count > 1) {
+        [SRLogger addError:@"More than one local root directory fetched"];
+        rootDirectory = [matches lastObject];
+    } else {
+        rootDirectory = [matches firstObject];
+    }
+    
     return rootDirectory;
 }
 
@@ -89,11 +131,12 @@ static SRProviderLocal *defaultProvider;
 
 - (void)readFilesForDirectory:(SRDirectory *)rootDirectory recursively:(BOOL)recursively depth:(NSInteger)depth {
     
-    NSArray *files = [self getFileNamesAtPath:rootDirectory.path];
+    NSString *path = [rootDirectory.path hasSuffix:@"/"] ? rootDirectory.path : [rootDirectory.path stringByAppendingString:@"/"];
+    NSArray *files = [self getFileNamesAtPath:path];
     NSString *fullPath = nil;
     
     for (NSString *file in files) {
-        fullPath = [rootDirectory.path stringByAppendingPathComponent:file];
+        fullPath = [path stringByAppendingPathComponent:file];
         if ([SRImage fileAtPathIsImage:fullPath]) {
             
             SRImage *image = [self imageFromPath:fullPath depth:depth];
@@ -215,6 +258,7 @@ static dispatch_source_t _source;
 
 - (void)filesDidChange {
     [self stopMonitoring];
+    [[SRNotificationCenter defaultCenter] postNotificationName:SRNotificationProviderLocalFilesDidChange object:self];
 }
 
 @end

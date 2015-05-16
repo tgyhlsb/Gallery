@@ -35,13 +35,12 @@
     } else {
         if ([matches count]) {
             image = [matches firstObject];
+            [image updateWithAttributes:attributes];
         } else {
             image = [NSEntityDescription insertNewObjectForEntityForName:[self className] inManagedObjectContext:context];
+            image.provider = provider;
+            [image initializeWithPath:path attributes:attributes depth:depth];
         }
-        
-        //TODO attributes
-        image.provider = provider;
-        [image updateWithPath:path attributes:attributes depth:depth];
     }
     
     return image;
