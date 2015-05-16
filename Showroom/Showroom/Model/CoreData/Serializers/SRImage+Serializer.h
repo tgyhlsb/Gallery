@@ -7,6 +7,7 @@
 //
 
 #import "SRImage.h"
+#import "SRFile+Serializer.h"
 
 @interface SRImage (Serializer)
 

@@ -1,5 +1,5 @@
 //
-//  SROperationProviderLocalReload.h
+//  SROperationProviderLocalSynchronization.h
 //  Showroom
 //
 //  Created by Tanguy Hélesbeux on 16/05/2015.
@@ -11,7 +11,7 @@
 
 @class SRDirectory;
 
-@interface SROperationProviderLocalReload : NSOperation
+@interface SROperationProviderLocalSynchronization : NSOperation
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *parentManagedObjectContext;
 

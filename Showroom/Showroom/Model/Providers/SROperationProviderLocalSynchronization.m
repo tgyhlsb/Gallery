@@ -1,12 +1,12 @@
 //
-//  SROperationProviderLocalReload.m
+//  SROperationProviderLocalSynchronization.m
 //  Showroom
 //
 //  Created by Tanguy Hélesbeux on 16/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "SROperationProviderLocalReload.h"
+#import "SROperationProviderLocalSynchronization.h"
 
 // Provider
 #import "SRProviderLocal.h"
@@ -22,14 +22,14 @@
 #import "SRDirectory+Serializer.h"
 #import "SRDirectory+Helper.h"
 
-@interface SROperationProviderLocalReload()
+@interface SROperationProviderLocalSynchronization()
 
 @property (readwrite, strong, nonatomic) NSManagedObjectContext *privateManagedObjectContext;
 @property (readwrite, strong, nonatomic) NSManagedObjectContext *parentManagedObjectContext;
 
 @end
 
-@implementation SROperationProviderLocalReload
+@implementation SROperationProviderLocalSynchronization
 
 #pragma mark - Constructor
 

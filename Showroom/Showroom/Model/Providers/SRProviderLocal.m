@@ -21,7 +21,7 @@
 #import "SRDirectory+Helper.h"
 
 // Operations
-#import "SROperationProviderLocalReload.h"
+#import "SROperationProviderLocalSynchronization.h"
 
 @interface SRProviderLocal()
 
@@ -72,15 +72,15 @@ static SRProviderLocal *defaultProvider;
 
 - (void)readRootDirectorySubtree {
     NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
-    SROperationProviderLocalReload *readOperation = [[SROperationProviderLocalReload alloc] initWithParentManagedObjectContext:context];
+    SROperationProviderLocalSynchronization *syncOperation = [[SROperationProviderLocalSynchronization alloc] initWithParentManagedObjectContext:context];
     
-    readOperation.recursively = YES;
-    readOperation.directory = self.rootDirectory;
-    [readOperation setCompletionBlock:^{
+    syncOperation.recursively = YES;
+    syncOperation.directory = self.rootDirectory;
+    [syncOperation setCompletionBlock:^{
         [self setLastModificationDate:self.rootDirectory.modificationDate];
     }];
     
-    [self.privateQueue addOperation:readOperation];
+    [self.privateQueue addOperation:syncOperation];
 }
 
 #pragma mark - User defaults
