@@ -22,6 +22,7 @@
 
 // Operations
 #import "SROperationProviderLocalSynchronization.h"
+#import "SROperationCreateThumbnails.h"
 
 @interface SRProviderLocal()
 
@@ -49,7 +50,9 @@ static SRProviderLocal *defaultProvider;
 
 - (void)initialize {
     [self fetchRootDirectory];
-    [self readRootDirectorySubtree];
+    if ([self needsUpdate]) {
+        [self readRootDirectorySubtree];
+    }
 }
 
 - (void)reloadFiles {
@@ -77,7 +80,22 @@ static SRProviderLocal *defaultProvider;
     syncOperation.recursively = YES;
     syncOperation.directory = self.rootDirectory;
     [syncOperation setCompletionBlock:^{
+        [SRLogger addInformation:@"Local provider did synchronize"];
         [self setLastModificationDate:self.rootDirectory.modificationDate];
+        [self createMissingThumbnails];
+    }];
+    
+    [self.privateQueue addOperation:syncOperation];
+}
+
+- (void)createMissingThumbnails {
+    NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
+    SROperationCreateThumbnails *syncOperation = [[SROperationCreateThumbnails alloc] initWithParentManagedObjectContext:context];
+    
+    syncOperation.recursively = YES;
+    syncOperation.directory = self.rootDirectory;
+    [syncOperation setCompletionBlock:^{
+        [SRLogger addInformation:@"Local provider did create missing thumbnails"];
     }];
     
     [self.privateQueue addOperation:syncOperation];

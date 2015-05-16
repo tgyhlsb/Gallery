@@ -19,6 +19,8 @@
 - (void)awakeFromNib {
     self.backgroundColor = [UIColor whiteColor];
     self.opaque = YES;
+    self.titleLabel.text = nil;
+    [self.layer shouldRasterize];
 }
 
 @end

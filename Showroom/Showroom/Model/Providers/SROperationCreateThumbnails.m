@@ -8,9 +8,18 @@
 
 #import "SROperationCreateThumbnails.h"
 
+// Frameworks
+#import <UIKit/UIKit.h>
+
 // Models
 #import "SRImage+Serializer.h"
 #import "SRImage+Helper.h"
+
+// Managers
+#import "SRLogger.h"
+
+// Providers
+#import "SRProviderLocal.h"
 
 @interface SROperationCreateThumbnails()
 
@@ -26,7 +35,7 @@
 - (id)initWithParentManagedObjectContext:(NSManagedObjectContext *)parentManagedObjectContext {
     self= [super init];
     if (self) {
-        self.queuePriority = NSOperationQueuePriorityHigh;
+        self.queuePriority = NSOperationQueuePriorityNormal;
         self.qualityOfService = NSQualityOfServiceBackground;
         
         _parentManagedObjectContext = parentManagedObjectContext;
@@ -67,16 +76,55 @@
 #pragma mark - Processing
 
 - (void)createThumbnails {
+    NSFetchRequest *request = [self requestForImagesWithoutThumbnail];
     
+    NSError *error = nil;
+    NSArray *matches = [self.privateManagedObjectContext executeFetchRequest:request error:&error];
+    
+    if (!error) {
+        [SRLogger addInformation:@"%d missing thumbnails", matches.count];
+        for (SRImage *image in matches) {
+            [self createThumbnailForImage:image];
+        }
+    } else {
+        [SRLogger addError:@"Error when fetching image with no thumbnail. Error: %@", error];
+    }
+}
+
+- (void)createThumbnailForImage:(SRImage *)image {
+    NSString *absolutePath = [SRProviderLocal absolutePath:image.path];
+    UIImage *thumbnail = [UIImage imageWithContentsOfFile:absolutePath];
+    image.height = @(thumbnail.size.height);
+    image.width = @(thumbnail.size.width);
+    thumbnail = [self resizeImage:thumbnail withMaxSize:CGSizeMake(200, 200)];
+    [image setThumbnailImage:thumbnail];
 }
 
 #pragma mark - Helpers
 
-- (NSFetchRequest *)requestForFilesForProvider:(NSString *)provider {
+- (NSFetchRequest *)requestForImagesWithoutThumbnail {
     
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRFile className]];
-    request.predicate = [NSPredicate predicateWithFormat:@"provider = %@", provider];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRImage className]];
+    request.predicate = [NSPredicate predicateWithFormat:@"thumbnail = nil"];
     return request;
+}
+
+- (UIImage *)resizeImage:(UIImage *)image withMaxSize:(CGSize)size {
+    //    Calcul thumbnail size
+    CGFloat ratio = MIN(size.width/image.size.width, size.height/image.size.height);
+    CGSize targetSize = CGSizeMake(image.size.width*ratio, image.size.height*ratio);
+    
+    //    Create thumbnail
+    //UIGraphicsBeginImageContext(targetSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(targetSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, targetSize.width, targetSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    
+    return newImage;
 }
 
 @end

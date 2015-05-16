@@ -10,5 +10,6 @@
 @interface SRImageCollectionViewCell : SRCollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end

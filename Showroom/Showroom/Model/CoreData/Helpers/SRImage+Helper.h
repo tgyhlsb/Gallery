@@ -7,10 +7,14 @@
 //
 
 #import "SRImage.h"
+#import <UIKit/UIKit.h>
 #import "SRFile+Helper.h"
 
 @interface SRImage (Helper)
 
 + (BOOL)fileAtPathIsImage:(NSString *)path;
+
+- (UIImage *)thumbnailImage;
+- (void)setThumbnailImage:(UIImage *)imathumbnailImage;
 
 @end

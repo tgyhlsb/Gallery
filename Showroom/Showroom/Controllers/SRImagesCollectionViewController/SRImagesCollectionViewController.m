@@ -16,6 +16,9 @@
 // Controllers
 #import "SRImageViewController.h"
 
+// Helpers
+#import "SRImage+Helper.h"
+
 #define MARGIN 10
 
 @interface SRImagesCollectionViewController ()
@@ -96,7 +99,9 @@
     SRImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.titleLabel.text = image.name;
+//    cell.titleLabel.text = image.name;
+    cell.imageView.image = [image thumbnailImage];
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     return cell;
 }

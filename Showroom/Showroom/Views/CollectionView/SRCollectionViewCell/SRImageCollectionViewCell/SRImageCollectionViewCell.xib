@@ -13,6 +13,9 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Do9-DN-b7M">
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="stc-Mp-xvK">
                         <rect key="frame" x="44" y="54" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -27,6 +30,7 @@
                 <constraint firstAttribute="centerX" secondItem="stc-Mp-xvK" secondAttribute="centerX" id="Hhk-pq-Yet"/>
             </constraints>
             <connections>
+                <outlet property="imageView" destination="Do9-DN-b7M" id="R50-8I-vdK"/>
                 <outlet property="titleLabel" destination="stc-Mp-xvK" id="NhM-Qr-UC8"/>
             </connections>
             <point key="canvasLocation" x="100" y="454"/>
