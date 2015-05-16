@@ -25,6 +25,7 @@
 // Set to YES to get some debugging output in the console.
 @property BOOL debug;
 
+// Get the title for the given section
 - (NSString *)titleForSection:(NSInteger)section;
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForHeaderAtIndexPath:(NSIndexPath *)indexPath;
