@@ -51,6 +51,7 @@
 		5AECDBA41B07665800DB572E /* SRProvider+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBA31B07665800DB572E /* SRProvider+Helper.m */; };
 		5AECDBA71B0780C400DB572E /* SROperationProviderLocalSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBA61B0780C400DB572E /* SROperationProviderLocalSynchronization.m */; };
 		5AECDBAA1B07947600DB572E /* SROperationCreateThumbnails.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBA91B07947600DB572E /* SROperationCreateThumbnails.m */; };
+		5AECDBAE1B07A7B600DB572E /* SRDiaporamaCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBAC1B07A7B600DB572E /* SRDiaporamaCollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,8 @@
 		5AECDBA61B0780C400DB572E /* SROperationProviderLocalSynchronization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SROperationProviderLocalSynchronization.m; sourceTree = "<group>"; };
 		5AECDBA81B07947600DB572E /* SROperationCreateThumbnails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationCreateThumbnails.h; sourceTree = "<group>"; };
 		5AECDBA91B07947600DB572E /* SROperationCreateThumbnails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SROperationCreateThumbnails.m; sourceTree = "<group>"; };
+		5AECDBAB1B07A7B600DB572E /* SRDiaporamaCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRDiaporamaCollectionViewController.h; path = SRDiaporamaCollectionViewController/SRDiaporamaCollectionViewController.h; sourceTree = "<group>"; };
+		5AECDBAC1B07A7B600DB572E /* SRDiaporamaCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRDiaporamaCollectionViewController.m; path = SRDiaporamaCollectionViewController/SRDiaporamaCollectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +241,7 @@
 				5A4D93731B068FC30008EF93 /* UICoreDataTableViewController.m */,
 				5A4D938F1B069ABF0008EF93 /* UICoreDataCollectionViewController.h */,
 				5A4D93901B069ABF0008EF93 /* UICoreDataCollectionViewController.m */,
+				5AECDBB01B07A7BA00DB572E /* SRDiaporamaCollectionViewController */,
 				5AECDB9C1B06C3FA00DB572E /* SRHomeViewController */,
 				5A4D93D91B06AB840008EF93 /* SRImageViewController */,
 				5A4D93D31B06AA900008EF93 /* SRImageNavigationController */,
@@ -461,6 +465,15 @@
 			name = SRHomeViewController;
 			sourceTree = "<group>";
 		};
+		5AECDBB01B07A7BA00DB572E /* SRDiaporamaCollectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5AECDBAB1B07A7B600DB572E /* SRDiaporamaCollectionViewController.h */,
+				5AECDBAC1B07A7B600DB572E /* SRDiaporamaCollectionViewController.m */,
+			);
+			name = SRDiaporamaCollectionViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -582,6 +595,7 @@
 				5AECDB961B06C1F900DB572E /* SRFile.m in Sources */,
 				5A4D93501B06803E0008EF93 /* SRDirectory+Helper.m in Sources */,
 				5A4D93281B067B080008EF93 /* SRProviderLocal.m in Sources */,
+				5AECDBAE1B07A7B600DB572E /* SRDiaporamaCollectionViewController.m in Sources */,
 				5A4D938A1B0695240008EF93 /* SRDirectory.m in Sources */,
 				5A4D93741B068FC30008EF93 /* UICoreDataTableViewController.m in Sources */,
 				5A4D938D1B0696790008EF93 /* SRFilesNavigationController.m in Sources */,

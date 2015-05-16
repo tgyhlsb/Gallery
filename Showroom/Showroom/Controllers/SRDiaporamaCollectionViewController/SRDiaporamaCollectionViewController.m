@@ -1,12 +1,12 @@
 //
-//  SRImagesCollectionViewController.m
+//  SRDiaporamaCollectionViewController.m
 //  Showroom
 //
-//  Created by Tanguy Hélesbeux on 15/05/2015.
+//  Created by Tanguy Hélesbeux on 16/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "SRImagesCollectionViewController.h"
+#import "SRDiaporamaCollectionViewController.h"
 
 // Views
 #import "SRCollectionReusableFooter.h"
@@ -15,31 +15,32 @@
 
 // Controllers
 #import "SRImageViewController.h"
-#import "SRDiaporamaCollectionViewController.h"
 
 // Helpers
 #import "SRImage+Helper.h"
 
-#define MARGIN 10
+#define MARGIN 0
 
-@interface SRImagesCollectionViewController ()
+@interface SRDiaporamaCollectionViewController ()
 
 @property (strong, nonatomic) SRDirectory *directory;
+@property (strong, nonatomic) SRImage *selectedImage;
 
 @end
 
-@implementation SRImagesCollectionViewController
+@implementation SRDiaporamaCollectionViewController
 
 #pragma mark - Constructor
 
-+ (instancetype)newWithDirectory:(SRDirectory *)directory {
-    return [[SRImagesCollectionViewController alloc] initWithDirectory:directory];
++ (instancetype)newWithDirectory:(SRDirectory *)directory selectedImage:(SRImage *)selectedImage {
+    return [[SRDiaporamaCollectionViewController alloc] initWithDirectory:directory selectedImage:selectedImage];
 }
 
-- (id)initWithDirectory:(SRDirectory *)directory {
+- (id)initWithDirectory:(SRDirectory *)directory selectedImage:(SRImage *)selectedImage {
     self = [super initWithCollectionViewLayout:[self createCollectionViewLayout]];
     if (self) {
         self.directory = directory;
+        self.selectedImage = selectedImage;
     }
     return self;
 }
@@ -51,9 +52,18 @@
     
     [self initializaView];
     
+    [self updateCollectionViewLayoutWithSize:self.collectionView.frame.size];
+    
     [SRCollectionReusableHeader registerToCollectionView:self.collectionView];
     [SRCollectionReusableFooter registerToCollectionView:self.collectionView];
     [SRImageCollectionViewCell registerToCollectionView:self.collectionView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NSIndexPath *indexPath = [self.fetchedResultsController indexPathForObject:self.selectedImage];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -63,7 +73,7 @@
 
 - (void)updateCollectionViewLayoutWithSize:(CGSize)size {
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-    layout.itemSize = [self sizeForItemWithViewSize:size];
+    layout.itemSize = size;
     [layout invalidateLayout];
 }
 
@@ -72,25 +82,17 @@
 - (UICollectionViewFlowLayout *)createCollectionViewLayout {
     UICollectionViewFlowLayout *collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
     collectionViewLayout.sectionInset = UIEdgeInsetsMake(MARGIN, MARGIN, MARGIN, MARGIN);
-    collectionViewLayout.itemSize = [self sizeForItemWithViewSize:[[UIScreen mainScreen] bounds].size];
     collectionViewLayout.minimumInteritemSpacing = MARGIN;
     collectionViewLayout.minimumLineSpacing = MARGIN;
-    collectionViewLayout.headerReferenceSize = CGSizeMake(50, 50);
-    collectionViewLayout.footerReferenceSize = CGSizeMake(50, 50);
-    collectionViewLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    collectionViewLayout.headerReferenceSize = CGSizeMake(0, 0);
+    collectionViewLayout.footerReferenceSize = CGSizeMake(0, 0);
+    collectionViewLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     return collectionViewLayout;
-}
-
-- (CGSize)sizeForItemWithViewSize:(CGSize)size {
-    CGFloat numberOfItem = (size.width < size.height) ? 4 : 6;
-    CGFloat numberOfSpacing = numberOfItem + 1;
-    CGFloat totalItemsWidth = size.width - numberOfSpacing*MARGIN;
-    CGFloat itemWidth = totalItemsWidth/numberOfItem;
-    return CGSizeMake(itemWidth, itemWidth);
 }
 
 - (void)initializaView {
     self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.pagingEnabled = YES;
 }
 
 #pragma mark - Getters & Setters
@@ -113,6 +115,7 @@
     SRImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    //    cell.titleLabel.text = image.name;
     cell.imageView.image = [image thumbnailImage];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
@@ -140,13 +143,12 @@
 
 #pragma mark - UICollectionViewDelegate
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
     SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    SRDiaporamaCollectionViewController *destination = [SRDiaporamaCollectionViewController newWithDirectory:self.directory selectedImage:image];
-    [self.navigationController pushViewController:destination animated:YES];
-    
-    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    self.title = image.name;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 }
 
 @end
