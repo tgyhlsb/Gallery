@@ -77,7 +77,7 @@ static SRModel *defaultModel;
     
     return [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                managedObjectContext:self.managedObjectContext
-                                                 sectionNameKeyPath:@"parent.name"
+                                                 sectionNameKeyPath:@"parent.path"
                                                           cacheName:nil];
 }
 
