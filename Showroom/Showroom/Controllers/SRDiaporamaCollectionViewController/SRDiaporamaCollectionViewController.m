@@ -116,6 +116,7 @@
     
     SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.imageView.image = [image image];
+    
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     return cell;

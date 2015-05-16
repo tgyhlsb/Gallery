@@ -52,6 +52,7 @@
 		5AECDBB31B07AF4700DB572E /* SRDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBB21B07AF4700DB572E /* SRDirectory.m */; };
 		5AECDBB61B07AF4800DB572E /* SRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBB51B07AF4800DB572E /* SRImage.m */; };
 		5AECDBB91B07AF4800DB572E /* SRFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBB81B07AF4800DB572E /* SRFile.m */; };
+		5AECDBBC1B07B79600DB572E /* SROperationLoadImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBBB1B07B79600DB572E /* SROperationLoadImages.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,8 @@
 		5AECDBB51B07AF4800DB572E /* SRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRImage.m; sourceTree = "<group>"; };
 		5AECDBB71B07AF4800DB572E /* SRFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRFile.h; sourceTree = "<group>"; };
 		5AECDBB81B07AF4800DB572E /* SRFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRFile.m; sourceTree = "<group>"; };
+		5AECDBBA1B07B79600DB572E /* SROperationLoadImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationLoadImages.h; sourceTree = "<group>"; };
+		5AECDBBB1B07B79600DB572E /* SROperationLoadImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SROperationLoadImages.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +304,8 @@
 				5AECDBA61B0780C400DB572E /* SROperationProviderLocalSynchronization.m */,
 				5AECDBA81B07947600DB572E /* SROperationCreateThumbnails.h */,
 				5AECDBA91B07947600DB572E /* SROperationCreateThumbnails.m */,
+				5AECDBBA1B07B79600DB572E /* SROperationLoadImages.h */,
+				5AECDBBB1B07B79600DB572E /* SROperationLoadImages.m */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -614,6 +619,7 @@
 				5A4D93471B067B910008EF93 /* SRNotificationCenter.m in Sources */,
 				5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */,
 				5AECDBA71B0780C400DB572E /* SROperationProviderLocalSynchronization.m in Sources */,
+				5AECDBBC1B07B79600DB572E /* SROperationLoadImages.m in Sources */,
 				5A4D93C31B06A13D0008EF93 /* SRCollectionReusableFooter.m in Sources */,
 				5A4D93C21B06A13D0008EF93 /* SRCollectionReusableView.m in Sources */,
 				5A4D934D1B06801B0008EF93 /* SRImage+Helper.m in Sources */,
