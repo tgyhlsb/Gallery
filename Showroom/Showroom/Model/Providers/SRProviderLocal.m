@@ -46,7 +46,7 @@ static SRProviderLocal *defaultProvider;
 }
 
 - (void)reloadFiles {
-    [self readFilesForDirectory:self.rootDirectory recursively:YES];
+    [self readFilesForDirectory:self.rootDirectory recursively:YES depth:1];
 }
 
 #pragma mark - Factory
@@ -54,29 +54,40 @@ static SRProviderLocal *defaultProvider;
 - (SRDirectory *)getRootDirectory {
     NSString *publicDocumentsDir = [self applicationDocumentsDirectory];
     [SRLogger addInformation:@"Reading %@", publicDocumentsDir];
-    SRDirectory *rootDirectory = [self directoryFromPath:publicDocumentsDir recursively:NO];
+    SRDirectory *rootDirectory = [self directoryFromPath:publicDocumentsDir recursively:NO depth:0];
     return rootDirectory;
 }
 
-- (SRDirectory *)directoryFromPath:(NSString *)path recursively:(BOOL)recursively {
+- (SRDirectory *)directoryFromPath:(NSString *)path recursively:(BOOL)recursively depth:(NSInteger)depth {
     
     NSDictionary *attributes = [self getAttributesForFileAtPath:path];
     NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
-    SRDirectory *rootDirectory = [SRDirectory directoryWithPath:path attributes:attributes provider:SRProviderTypeLocal inManagedObjectContext:context];
+    
+    SRDirectory *rootDirectory = [SRDirectory directoryWithPath:path
+                                                     attributes:attributes
+                                                          depth:depth
+                                                       provider:SRProviderTypeLocal
+                                         inManagedObjectContext:context];
+    
     if (recursively) {
-        [self readFilesForDirectory:rootDirectory recursively:(BOOL)recursively];
+        [self readFilesForDirectory:rootDirectory recursively:(BOOL)recursively depth:depth+1];
     }
     
     return rootDirectory;
 }
 
-- (SRImage *)imageFromPath:(NSString *)path {
+- (SRImage *)imageFromPath:(NSString *)path depth:(NSInteger)depth {
+    
     NSDictionary *attributes = [self getAttributesForFileAtPath:path];
     NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
-    return [SRImage imageWithPath:path attributes:attributes provider:SRProviderTypeLocal inManagedObjectContext:context];
+    
+    return [SRImage imageWithPath:path attributes:attributes
+                            depth:depth
+                         provider:SRProviderTypeLocal
+           inManagedObjectContext:context];
 }
 
-- (void)readFilesForDirectory:(SRDirectory *)rootDirectory recursively:(BOOL)recursively {
+- (void)readFilesForDirectory:(SRDirectory *)rootDirectory recursively:(BOOL)recursively depth:(NSInteger)depth {
     
     NSArray *files = [self getFileNamesAtPath:rootDirectory.path];
     NSString *fullPath = nil;
@@ -85,12 +96,12 @@ static SRProviderLocal *defaultProvider;
         fullPath = [rootDirectory.path stringByAppendingPathComponent:file];
         if ([SRImage fileAtPathIsImage:fullPath]) {
             
-            SRImage *image = [self imageFromPath:fullPath];
+            SRImage *image = [self imageFromPath:fullPath depth:depth];
             [image setParent:rootDirectory];
             
         } else if ([SRDirectory fileAtPathIsDirectory:fullPath]) {
             
-            SRDirectory *directory = [self directoryFromPath:fullPath recursively:recursively];
+            SRDirectory *directory = [self directoryFromPath:fullPath recursively:recursively depth:depth];
             [directory setParent:rootDirectory];
             
         } else {

@@ -18,7 +18,7 @@
 #define ATTRIBUTE_KEY_MODIFICATIONDATE @"NSFileModificationDate"
 #define ATTRIBUTE_KEY_SIZE @"NSFileSize"
 
-- (void)updateWithPath:(NSString *)path attributes:(NSDictionary *)attributes {
+- (void)updateWithPath:(NSString *)path attributes:(NSDictionary *)attributes depth:(NSInteger)depth {
     
     self.creationDate = [attributes objectForKey:ATTRIBUTE_KEY_CREATIONDATE];
     self.modificationDate = [attributes objectForKey:ATTRIBUTE_KEY_MODIFICATIONDATE];
@@ -27,6 +27,7 @@
     self.path = path;
     self.name = [[path lastPathComponent] stringByDeletingPathExtension];
     self.extension = [path pathExtension];
+    self.depth = @(depth);
 }
 
 @end

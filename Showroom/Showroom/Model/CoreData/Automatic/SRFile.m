@@ -2,7 +2,7 @@
 //  SRFile.m
 //  Showroom
 //
-//  Created by Tanguy Hélesbeux on 15/05/2015.
+//  Created by Tanguy Hélesbeux on 16/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
@@ -12,13 +12,14 @@
 
 @implementation SRFile
 
+@dynamic creationDate;
 @dynamic extension;
+@dynamic modificationDate;
 @dynamic name;
 @dynamic path;
 @dynamic provider;
-@dynamic creationDate;
-@dynamic modificationDate;
 @dynamic size;
+@dynamic depth;
 @dynamic parent;
 
 @end

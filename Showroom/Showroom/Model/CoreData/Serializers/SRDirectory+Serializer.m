@@ -19,6 +19,7 @@
 
 + (SRDirectory *)directoryWithPath:(NSString *)path
                         attributes:(NSDictionary *)attributes
+                             depth:(NSInteger)depth
                           provider:(NSString *)provider
             inManagedObjectContext:(NSManagedObjectContext *)context {
     
@@ -40,7 +41,7 @@
         
         //TODO attributes
         directory.provider = provider;
-        [directory updateWithPath:path attributes:attributes];
+        [directory updateWithPath:path attributes:attributes depth:depth];
     }
     
     return directory;

@@ -5,6 +5,7 @@
     </entity>
     <entity name="SRFile" representedClassName="SRFile" isAbstract="YES" syncable="YES">
         <attribute name="creationDate" attributeType="Date" syncable="YES"/>
+        <attribute name="depth" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="extension" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modificationDate" attributeType="Date" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -20,7 +21,7 @@
     </entity>
     <elements>
         <element name="SRDirectory" positionX="0" positionY="45" width="128" height="60"/>
-        <element name="SRFile" positionX="-36" positionY="9" width="128" height="165"/>
+        <element name="SRFile" positionX="-36" positionY="9" width="128" height="180"/>
         <element name="SRImage" positionX="27" positionY="72" width="128" height="90"/>
     </elements>
 </model>

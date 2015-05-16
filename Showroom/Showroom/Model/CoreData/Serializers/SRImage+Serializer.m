@@ -19,6 +19,7 @@
 
 + (SRImage *)imageWithPath:(NSString *)path
                 attributes:(NSDictionary *)attributes
+                     depth:(NSInteger)depth
                   provider:(NSString *)provider
     inManagedObjectContext:(NSManagedObjectContext *)context {
     
@@ -40,7 +41,7 @@
         
         //TODO attributes
         image.provider = provider;
-        [image updateWithPath:path attributes:attributes];
+        [image updateWithPath:path attributes:attributes depth:depth];
     }
     
     return image;

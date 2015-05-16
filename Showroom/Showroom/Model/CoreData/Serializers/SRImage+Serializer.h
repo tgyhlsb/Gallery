@@ -12,6 +12,7 @@
 
 + (SRImage *)imageWithPath:(NSString *)path
                 attributes:(NSDictionary *)attributes
+                     depth:(NSInteger)depth
                   provider:(NSString *)provider
     inManagedObjectContext:(NSManagedObjectContext *)context;
 
