@@ -113,7 +113,7 @@
     SRImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.imageView.image = [image thumbnailImage];
+    cell.imageView.image = [image thumbnail];
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     return cell;

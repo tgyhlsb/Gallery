@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *fileListInterfaceButton;
 @property (weak, nonatomic) IBOutlet UIButton *imageCollectionInterfaceButton;
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
+@property (weak, nonatomic) IBOutlet UIButton *forceReloadButton;
 
 @property (strong, nonatomic) UIBarButtonItem *homeBarButton;
 
@@ -92,6 +93,10 @@
 
 - (void)homeBarButtonHandler {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)forceReloadButtonHandler:(UIButton *)sender {
+    [[SRProviderLocal defaultProvider] reloadFiles];
 }
 
 @end

@@ -93,11 +93,12 @@
 
 - (void)createThumbnailForImage:(SRImage *)image {
     NSString *absolutePath = [SRProviderLocal absolutePath:image.path];
-    UIImage *thumbnail = [UIImage imageWithContentsOfFile:absolutePath];
-    image.height = @(thumbnail.size.height);
-    image.width = @(thumbnail.size.width);
-    thumbnail = [self resizeImage:thumbnail withMaxSize:CGSizeMake(150, 150)];
-    [image setThumbnailImage:thumbnail];
+    UIImage *original = [UIImage imageWithContentsOfFile:absolutePath];
+    UIImage *thumbnail = [self resizeImage:original withMaxSize:CGSizeMake(150, 150)];
+    image.height = @(original.size.height);
+    image.width = @(original.size.width);
+    [image setImage:original];
+    [image setThumbnail:thumbnail];
 }
 
 #pragma mark - Helpers
@@ -105,7 +106,7 @@
 - (NSFetchRequest *)requestForImagesWithoutThumbnail {
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRImage className]];
-    request.predicate = [NSPredicate predicateWithFormat:@"thumbnail = nil"];
+    request.predicate = [NSPredicate predicateWithFormat:@"thumbnailData = nil || imageData = nil"];
     return request;
 }
 

@@ -14,7 +14,9 @@
 
 + (BOOL)fileAtPathIsImage:(NSString *)path;
 
-- (UIImage *)thumbnailImage;
-- (void)setThumbnailImage:(UIImage *)imathumbnailImage;
+- (UIImage *)thumbnail;
+- (void)setThumbnail:(UIImage *)thumbnail;
+- (UIImage *)image;
+- (void)setImage:(UIImage *)image;
 
 @end
