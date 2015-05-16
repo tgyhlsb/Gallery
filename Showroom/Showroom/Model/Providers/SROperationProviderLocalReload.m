@@ -78,6 +78,7 @@
     NSString *absolutePath = [SRProviderLocal absolutePath:self.directory.path];
     NSInteger depth = [self.directory.depth integerValue];
     [self directoryFromPath:absolutePath recursively:self.recursively depth:depth];
+    [self cleanCoreData];
     if (self.completionBlock) {
         self.completionBlock();
     }

@@ -41,10 +41,9 @@
     
     [self initializeView];
     
-    [[SRProviderLocal defaultProvider] initialize];
-    
-//    [self checkForFileUpdates];
-//    [self registerToProviderLocalNotifications];
+    SRProviderLocal *localProvider = [SRProviderLocal defaultProvider];
+    [localProvider initialize];
+    localProvider.autoUpdate = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -93,31 +92,6 @@
 
 - (void)homeBarButtonHandler {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)notificationProviderLocalFilesDidChangeHandler {
-    [[SRProviderLocal defaultProvider] reloadFiles];
-    [[SRProviderLocal defaultProvider] startMonitoring];
-}
-
-#pragma mark - Providers
-
-- (void)checkForFileUpdates {
-    SRProviderLocal *provider = [SRProviderLocal defaultProvider];
-    if ([provider needsUpdate]) {
-        [provider reloadFiles];
-        self.commentLabel.hidden = NO;
-    }
-    [provider startMonitoring];
-}
-
-#pragma mark - Broadcasting
-
-- (void)registerToProviderLocalNotifications {
-    [[SRNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(notificationProviderLocalFilesDidChangeHandler)
-                                                 name:SRNotificationProviderLocalFilesDidChange
-                                               object:nil];
 }
 
 @end

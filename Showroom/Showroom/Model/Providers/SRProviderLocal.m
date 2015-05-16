@@ -53,12 +53,7 @@ static SRProviderLocal *defaultProvider;
 }
 
 - (void)reloadFiles {
-//    NSString *publicDocumentsDir = [SRProviderLocal applicationDocumentsDirectory];
-//    [SRLogger addInformation:@"Reading %@", publicDocumentsDir];
-//    self.rootDirectory = [self directoryFromPath:publicDocumentsDir recursively:YES depth:0];
-//    [self cleanCoreData];
-//    [self setLastModificationDate:self.rootDirectory.modificationDate];
-//    [self save];
+    [self readRootDirectorySubtree];
 }
 
 - (void)fetchRootDirectory {
@@ -78,12 +73,11 @@ static SRProviderLocal *defaultProvider;
 - (void)readRootDirectorySubtree {
     NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
     SROperationProviderLocalReload *readOperation = [[SROperationProviderLocalReload alloc] initWithParentManagedObjectContext:context];
-//    __weak SROperationProviderLocalReload *weakReadOperation = readOperation;
     
     readOperation.recursively = YES;
     readOperation.directory = self.rootDirectory;
     [readOperation setCompletionBlock:^{
-        
+        [self setLastModificationDate:self.rootDirectory.modificationDate];
     }];
     
     [self.privateQueue addOperation:readOperation];
@@ -105,6 +99,13 @@ static SRProviderLocal *defaultProvider;
 
 - (BOOL)needsUpdate {
     return ![self.rootDirectory.modificationDate isEqualToDate:[self lastModificationDate]];
+}
+
+- (void)setAutoUpdate:(BOOL)autoUpdate {
+    if (autoUpdate != _autoUpdate) {
+        _autoUpdate = autoUpdate;
+        autoUpdate ? [self startMonitoring] : [self stopMonitoring];
+    }
 }
 
 - (NSOperationQueue *)privateQueue {
@@ -236,8 +237,11 @@ static dispatch_source_t _source;
 }
 
 - (void)filesDidChange {
-    [self stopMonitoring];
     [[SRNotificationCenter defaultCenter] postNotificationName:SRNotificationProviderLocalFilesDidChange object:self];
+    
+    if (self.autoUpdate) {
+        [self reloadFiles];
+    }
 }
 
 #pragma mark - Monitor safety
