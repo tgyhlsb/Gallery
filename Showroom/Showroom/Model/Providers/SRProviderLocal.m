@@ -141,7 +141,6 @@ static SRProviderLocal *defaultProvider;
     NSString *absolutePath = [self absolutePath:rootDirectory.path];
     NSArray *files = [self getFileNamesAtPath:absolutePath];
     NSString *fullPath = nil;
-    NSLog(@"%@", files);
     for (NSString *file in files) {
         fullPath = [absolutePath stringByAppendingPathComponent:file];
         if ([SRImage fileAtPathIsImage:fullPath]) {
@@ -197,7 +196,7 @@ static SRProviderLocal *defaultProvider;
         for (SRFile *file in matches) {
             NSString *absolutePath = [self absolutePath:file.path];
             if (![fileManager fileExistsAtPath:absolutePath]) {
-                [SRLogger addInformation:@"Deleted file %@", file];
+                [SRLogger addInformation:@"Deleted file %@", file.path];
                 [context deleteObject:file];
             }
         }
