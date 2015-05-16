@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *fileListInterfaceButton;
 @property (weak, nonatomic) IBOutlet UIButton *imageCollectionInterfaceButton;
 
+@property (strong, nonatomic) UIBarButtonItem *homeBarButton;
+
 @end
 
 @implementation SRHomeViewController
@@ -36,13 +38,23 @@
     [super viewDidLoad];
     
     [self initializeView];
+    
+    [[SRProviderLocal defaultProvider] initialize];
+    [[SRProviderLocal defaultProvider] reloadFiles];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [[SRProviderLocal defaultProvider] initialize];
-    [[SRProviderLocal defaultProvider] reloadFiles];
+}
+
+#pragma mark - Getters & Setters
+
+- (UIBarButtonItem *)homeBarButton {
+    if (!_homeBarButton) {
+        NSString *title = NSLocalizedString(@"LOCALIZE_HOME_BUTTON", nil);
+        _homeBarButton = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:@selector(homeBarButtonHandler)];
+    }
+    return _homeBarButton;
 }
 
 #pragma mark - View methods
@@ -60,14 +72,19 @@
 - (IBAction)fileListInterfaceButtonHandler:(UIButton *)sender {
     SRDirectory *directory = [[SRProviderLocal defaultProvider] getRootDirectory];
     SRFilesNavigationController *destination = [SRFilesNavigationController newWithDirectory:directory];
+    destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
     [self presentViewController:destination animated:YES completion:nil];
 }
 
 - (IBAction)imageCollectionInterfaceButtonHandler:(UIButton *)sender {
     SRDirectory *directory = [[SRProviderLocal defaultProvider] getRootDirectory];
     SRImageNavigationController *destination = [SRImageNavigationController newWithDirectory:directory];
+    destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
     [self presentViewController:destination animated:YES completion:nil];
 }
 
+- (void)homeBarButtonHandler {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end
