@@ -47,6 +47,7 @@
 		5AECDB961B06C1F900DB572E /* SRFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDB951B06C1F900DB572E /* SRFile.m */; };
 		5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDB981B06C3F700DB572E /* SRHomeViewController.m */; };
 		5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */; };
+		5AECDBA11B06C90600DB572E /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDBA01B06C90600DB572E /* localization.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		5AECDB971B06C3F700DB572E /* SRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRHomeViewController.h; path = SRHomeViewController/SRHomeViewController.h; sourceTree = "<group>"; };
 		5AECDB981B06C3F700DB572E /* SRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRHomeViewController.m; path = SRHomeViewController/SRHomeViewController.m; sourceTree = "<group>"; };
 		5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRHomeViewController.xib; path = SRHomeViewController/SRHomeViewController.xib; sourceTree = "<group>"; };
+		5AECDBA01B06C90600DB572E /* localization.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = localization.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 		5A4D92CA1B0673EC0008EF93 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5AECDBA01B06C90600DB572E /* localization.sh */,
 				5A4D92CB1B0673EC0008EF93 /* Info.plist */,
 				5A4D92FE1B0676720008EF93 /* Localizable.strings */,
 				5A4D92CC1B0673EC0008EF93 /* main.m */,
@@ -533,6 +536,7 @@
 				5A4D93001B0676730008EF93 /* Localizable.strings in Resources */,
 				5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */,
 				5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */,
+				5AECDBA11B06C90600DB572E /* localization.sh in Resources */,
 				5A4D92DB1B0673EC0008EF93 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

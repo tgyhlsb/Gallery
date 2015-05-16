@@ -60,10 +60,10 @@
 #pragma mark - View methods
 
 - (void)initializeView {
-    NSString *fileTitle = NSLocalizedString(@"LOCALIZE_FILE_INTERFACE_BUTTON", nil);
+    NSString *fileTitle = NSLocalizedString(@"LOCALIZE_HOME_BUTTON_FILE_LIST", nil);
     [self.fileListInterfaceButton setTitle:fileTitle forState:UIControlStateNormal];
     
-    NSString *imageTitle = NSLocalizedString(@"LOCALIZE_IMAGE_INTERFACE_BUTTON", nil);
+    NSString *imageTitle = NSLocalizedString(@"LOCALIZE_HOME_BUTTON_IMAGE_COLLECTION", nil);
     [self.imageCollectionInterfaceButton setTitle:imageTitle forState:UIControlStateNormal];
 }
 

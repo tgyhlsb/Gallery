@@ -1,7 +1,11 @@
-/* 
-  Localizable.strings
-  Showroom
+/* No comment provided by engineer. */
+"LOCALIZE_HOME_BUTTON" = "Accueil";
 
-  Created by Tanguy Hélesbeux on 15/05/2015.
-  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
-*/
+/* No comment provided by engineer. */
+"LOCALIZE_HOME_BUTTON_FILE_LIST" = "Liste de fichier";
+
+/* No comment provided by engineer. */
+"LOCALIZE_HOME_BUTTON_IMAGE_COLLECTION" = "Gallerie d'image";
+
+
+
