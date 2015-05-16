@@ -36,16 +36,7 @@
 }
 
 - (id)initWithDirectory:(SRDirectory *)directory {
-
-    UICollectionViewFlowLayout *collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
-    collectionViewLayout.sectionInset = UIEdgeInsetsMake(MARGIN, MARGIN, MARGIN, MARGIN);
-    collectionViewLayout.itemSize = [self sizeForItem];
-    collectionViewLayout.minimumInteritemSpacing = MARGIN;
-    collectionViewLayout.minimumLineSpacing = MARGIN;
-    collectionViewLayout.headerReferenceSize = CGSizeMake(50, 50);
-    collectionViewLayout.footerReferenceSize = CGSizeMake(50, 50);
-    
-    self = [super initWithCollectionViewLayout:collectionViewLayout];
+    self = [super initWithCollectionViewLayout:[self createCollectionViewLayout]];
     if (self) {
         self.directory = directory;
     }
@@ -64,13 +55,34 @@
     [SRImageCollectionViewCell registerToCollectionView:self.collectionView];
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [self updateCollectionViewLayoutWithSize:size];
+}
+
+- (void)updateCollectionViewLayoutWithSize:(CGSize)size {
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    layout.itemSize = [self sizeForItemWithViewSize:size];
+    [layout invalidateLayout];
+}
+
 #pragma mark - Initialization
 
-- (CGSize)sizeForItem {
-    CGFloat numberOfItem = UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation) ? 4 : 6;
+- (UICollectionViewFlowLayout *)createCollectionViewLayout {
+    UICollectionViewFlowLayout *collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
+    collectionViewLayout.sectionInset = UIEdgeInsetsMake(MARGIN, MARGIN, MARGIN, MARGIN);
+    collectionViewLayout.itemSize = [self sizeForItemWithViewSize:[[UIScreen mainScreen] bounds].size];
+    collectionViewLayout.minimumInteritemSpacing = MARGIN;
+    collectionViewLayout.minimumLineSpacing = MARGIN;
+    collectionViewLayout.headerReferenceSize = CGSizeMake(50, 50);
+    collectionViewLayout.footerReferenceSize = CGSizeMake(50, 50);
+    return collectionViewLayout;
+}
+
+- (CGSize)sizeForItemWithViewSize:(CGSize)size {
+    CGFloat numberOfItem = (size.width < size.height) ? 4 : 6;
     CGFloat numberOfSpacing = numberOfItem + 1;
-    CGFloat collectionViewWidth = [[UIScreen mainScreen] bounds].size.width;
-    CGFloat totalItemsWidth = collectionViewWidth - numberOfSpacing*MARGIN;
+    CGFloat totalItemsWidth = size.width - numberOfSpacing*MARGIN;
     CGFloat itemWidth = totalItemsWidth/numberOfItem;
     return CGSizeMake(itemWidth, itemWidth);
 }
