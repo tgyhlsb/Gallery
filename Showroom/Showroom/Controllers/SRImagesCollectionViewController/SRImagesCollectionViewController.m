@@ -97,7 +97,6 @@
     
     SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.titleLabel.text = image.name;
-    cell.backgroundColor = [UIColor redColor];
     
     return cell;
 }
@@ -108,7 +107,7 @@
                                                                             withReuseIdentifier:identifier
                                                                                    forIndexPath:indexPath];
     
-    header.titleLabel.text = [[[self.fetchedResultsController sections] objectAtIndex:indexPath.section] name];
+    header.titleLabel.text = [self titleForSection:indexPath.section];
     return header;
 }
 

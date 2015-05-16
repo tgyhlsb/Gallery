@@ -17,6 +17,10 @@
 
 @implementation UICoreDataCollectionViewController
 
+- (NSString *)titleForSection:(NSInteger)section {
+    return [[[self.fetchedResultsController sections] objectAtIndex:section] name];
+}
+
 #pragma mark - Fetching
 
 - (void)performFetch
