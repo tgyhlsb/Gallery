@@ -40,13 +40,13 @@ static SRModel *defaultModel;
 }
 
 - (NSSortDescriptor *)directorySortDescriptor {
-    return[NSSortDescriptor sortDescriptorWithKey:@"name"
+    return[NSSortDescriptor sortDescriptorWithKey:@"path"
                                         ascending:YES
                                          selector:@selector(compare:)];
 }
 
 - (NSSortDescriptor *)parentSortDescriptor {
-    return[NSSortDescriptor sortDescriptorWithKey:@"parent.name"
+    return[NSSortDescriptor sortDescriptorWithKey:@"parent.path"
                                         ascending:YES
                                          selector:@selector(compare:)];
 }
