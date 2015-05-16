@@ -14,6 +14,9 @@
 // Manager
 #import "SRLogger.h"
 
+// Controllers
+#import "SRImageViewController.h"
+
 @interface SRFilesTableViewController()
 
 @property (strong, nonatomic) SRDirectory *directory;
@@ -93,6 +96,9 @@
     if ([self.delegate respondsToSelector:@selector(filesTableViewController:didSelectImage:)]) {
         [self.delegate filesTableViewController:self didSelectImage:image];
     }
+    
+    SRImageViewController *destination = [SRImageViewController newWithImage:image];
+    [self.navigationController pushViewController:destination animated:YES];
 }
 
 - (void)didSelectDirectory:(SRDirectory *)directory {

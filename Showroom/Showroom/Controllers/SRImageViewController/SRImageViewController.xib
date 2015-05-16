@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRImageViewController">
             <connections>
+                <outlet property="activityIndicator" destination="8vc-YL-gk6" id="0Fj-dZ-0Wp"/>
                 <outlet property="imageView" destination="KRk-Fc-tz0" id="3e8-lU-hl8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -19,13 +20,19 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KRk-Fc-tz0">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8vc-YL-gk6">
+                    <rect key="frame" x="282" y="281" width="37" height="37"/>
+                    <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="centerY" secondItem="8vc-YL-gk6" secondAttribute="centerY" id="HyN-Zo-YeR"/>
                 <constraint firstAttribute="trailing" secondItem="KRk-Fc-tz0" secondAttribute="trailing" id="P1A-ce-3if"/>
                 <constraint firstItem="KRk-Fc-tz0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UQO-8m-u26"/>
                 <constraint firstAttribute="bottom" secondItem="KRk-Fc-tz0" secondAttribute="bottom" id="dUQ-Zo-CJB"/>
                 <constraint firstItem="KRk-Fc-tz0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="egO-nm-ArD"/>
+                <constraint firstAttribute="centerX" secondItem="8vc-YL-gk6" secondAttribute="centerX" id="x7O-Ja-6oG"/>
             </constraints>
         </view>
     </objects>

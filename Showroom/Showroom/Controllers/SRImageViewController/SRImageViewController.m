@@ -14,6 +14,9 @@
 @interface SRImageViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
+@property (nonatomic) BOOL isVisible;
 
 @end
 
@@ -37,6 +40,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initializeView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    self.isVisible = YES;
+    [super viewDidAppear:animated];
+    [self loadImage];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    self.isVisible = NO;
+    [super viewDidDisappear:animated];
 }
 
 #pragma mark - Getters & Setters
@@ -44,24 +59,33 @@
 - (void)setImage:(SRImage *)image {
     if (![image isEqual:_image]) {
         _image = image;
-        [self updateImageView];
+        [self updateView];
+        [self loadImage];
     }
 }
 
 - (void)setImageView:(UIImageView *)imageView {
     _imageView = imageView;
-    [self initializeImageView];
 }
 
 #pragma mark - View methods
 
-- (void)initializeImageView {
+- (void)initializeView {
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self updateImageView];
+    
+    self.activityIndicator.hidesWhenStopped = YES;
+    [self.activityIndicator startAnimating];
 }
 
-- (void)updateImageView {
-    self.imageView.image = [UIImage imageNamed:[self.image absolutePath]];
+- (void)updateView {
+    self.title = self.image.name;
+}
+
+- (void)loadImage {
+    if (self.isVisible) {
+        self.imageView.image = [UIImage imageNamed:[self.image absolutePath]];
+        [self.activityIndicator stopAnimating];
+    }
 }
 
 @end
