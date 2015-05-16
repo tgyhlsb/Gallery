@@ -21,4 +21,11 @@
     return request;
 }
 
+- (NSFetchRequest *)requestForFilesForProvider:(NSString *)provider {
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRFile className]];
+    request.predicate = [NSPredicate predicateWithFormat:@"provider = %@", provider];
+    return request;
+}
+
 @end

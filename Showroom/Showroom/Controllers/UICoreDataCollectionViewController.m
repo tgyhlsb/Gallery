@@ -136,6 +136,11 @@
                                                KEY_OLD_INDEXPATH: indexPath,
                                                KEY_CHANGE_TYPE: @(type)
                                                }];
+    } else if (type == NSFetchedResultsChangeDelete) {
+        [self.itemModifications addObject:@{
+                                            KEY_OLD_INDEXPATH: indexPath,
+                                            KEY_CHANGE_TYPE: @(type)
+                                            }];
     } else {
         [self.itemModifications addObject:@{
                                                KEY_NEW_INDEXPATH: newIndexPath,
@@ -146,6 +151,12 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
+    NSLog(@"fuck");
+    [self performChanges];
+}
+
+- (void)performChanges {
+    
     [self.collectionView performBatchUpdates:^{
         for (NSDictionary *change in self.sectionModifications) {
             [self performSectionChange:change];
@@ -173,7 +184,7 @@
             break;
             
         case NSFetchedResultsChangeDelete:
-            [self.collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]];
+            [self.collectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
             break;
             
         case NSFetchedResultsChangeUpdate:

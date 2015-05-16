@@ -42,13 +42,13 @@
     [self initializeView];
     
     [[SRProviderLocal defaultProvider] initialize];
+    
+    [self checkForFileUpdates];
+    [self registerToProviderLocalNotifications];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
-    [self checkForFileUpdates];
-    [self registerToProviderLocalNotifications];
 }
 
 #pragma mark - Getters & Setters

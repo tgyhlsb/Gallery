@@ -25,6 +25,7 @@
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[self className]];
     request.predicate = [NSPredicate predicateWithFormat:@"path = %@", path];
+    [request setReturnsObjectsAsFaults:NO];
     SRDirectory *directory = nil;
     
     NSError *error = nil;
@@ -36,8 +37,10 @@
         if ([matches count]) {
             directory = [matches firstObject];
             [directory updateWithAttributes:attributes];
+            NSLog(@"Fetched directory");
         } else {
             directory = [NSEntityDescription insertNewObjectForEntityForName:[self className] inManagedObjectContext:context];
+            NSLog(@"Created directory");
             directory.provider = provider;
             [directory initializeWithPath:path attributes:attributes depth:depth];
         }

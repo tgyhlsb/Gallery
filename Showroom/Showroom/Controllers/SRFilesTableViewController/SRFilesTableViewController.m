@@ -46,6 +46,7 @@
 
 - (void)setDirectory:(SRDirectory *)directory {
     _directory = directory;
+    self.title = directory.name;
     [self updateFetchedResultController];
 }
 

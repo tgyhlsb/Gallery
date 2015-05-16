@@ -36,9 +36,11 @@
         if ([matches count]) {
             image = [matches firstObject];
             [image updateWithAttributes:attributes];
+            NSLog(@"Fetched image");
         } else {
             image = [NSEntityDescription insertNewObjectForEntityForName:[self className] inManagedObjectContext:context];
             image.provider = provider;
+            NSLog(@"Create image");
             [image initializeWithPath:path attributes:attributes depth:depth];
         }
     }
