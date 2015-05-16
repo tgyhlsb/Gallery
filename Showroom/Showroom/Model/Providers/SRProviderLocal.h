@@ -25,4 +25,8 @@
 - (void)initialize;
 - (void)reloadFiles;
 
+//- (NSString *)applicationDocumentsDirectory;
+//- (NSString *)relativePath:(NSString *)path;
+//- (NSString *)absolutePath:(NSString *)path;
+
 @end

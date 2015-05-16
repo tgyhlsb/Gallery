@@ -46,10 +46,12 @@ static SRProviderLocal *defaultProvider;
 }
 
 - (void)reloadFiles {
-    
-    [self readFilesForDirectory:self.rootDirectory recursively:YES depth:1];
+    NSString *publicDocumentsDir = [self applicationDocumentsDirectory];
+    [SRLogger addInformation:@"Reading %@", publicDocumentsDir];
+    self.rootDirectory = [self directoryFromPath:publicDocumentsDir recursively:YES depth:0];
+    [self cleanCoreData];
     [self setLastModificationDate:self.rootDirectory.modificationDate];
-    [[SRModel defaultModel] saveContext];
+    [self save];
 }
 
 #pragma mark - User defaults
@@ -62,7 +64,6 @@ static SRProviderLocal *defaultProvider;
 
 - (void)setLastModificationDate:(NSDate *)date {
     [[NSUserDefaults standardUserDefaults] setValue:date forKey:KEY_LAST_MODIFICATION_DATE];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - Getters & Setters
@@ -77,6 +78,7 @@ static SRProviderLocal *defaultProvider;
     NSString *publicDocumentsDir = [self applicationDocumentsDirectory];
     [SRLogger addInformation:@"Reading %@", publicDocumentsDir];
     SRDirectory *rootDirectory = [self directoryFromPath:publicDocumentsDir recursively:NO depth:0];
+    [self cleanCoreData];
     return rootDirectory;
 }
 
@@ -104,8 +106,9 @@ static SRProviderLocal *defaultProvider;
     
     NSDictionary *attributes = [self getAttributesForFileAtPath:path];
     NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
+    NSString *relativePath = [self relativePath:path];
     
-    SRDirectory *rootDirectory = [SRDirectory directoryWithPath:path
+    SRDirectory *rootDirectory = [SRDirectory directoryWithPath:relativePath
                                                      attributes:attributes
                                                           depth:depth
                                                        provider:SRProviderTypeLocal
@@ -122,8 +125,10 @@ static SRProviderLocal *defaultProvider;
     
     NSDictionary *attributes = [self getAttributesForFileAtPath:path];
     NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
+    NSString *relativePath = [self relativePath:path];
     
-    return [SRImage imageWithPath:path attributes:attributes
+    return [SRImage imageWithPath:relativePath
+                       attributes:attributes
                             depth:depth
                          provider:SRProviderTypeLocal
            inManagedObjectContext:context];
@@ -131,21 +136,25 @@ static SRProviderLocal *defaultProvider;
 
 - (void)readFilesForDirectory:(SRDirectory *)rootDirectory recursively:(BOOL)recursively depth:(NSInteger)depth {
     
-    NSString *path = [rootDirectory.path hasSuffix:@"/"] ? rootDirectory.path : [rootDirectory.path stringByAppendingString:@"/"];
-    NSArray *files = [self getFileNamesAtPath:path];
+    NSString *absolutePath = [self absolutePath:rootDirectory.path];
+    NSArray *files = [self getFileNamesAtPath:absolutePath];
     NSString *fullPath = nil;
-    
+    NSLog(@"%@", files);
     for (NSString *file in files) {
-        fullPath = [path stringByAppendingPathComponent:file];
+        fullPath = [absolutePath stringByAppendingPathComponent:file];
         if ([SRImage fileAtPathIsImage:fullPath]) {
             
             SRImage *image = [self imageFromPath:fullPath depth:depth];
-            [image setParent:rootDirectory];
+            if (![image.parent isEqual:rootDirectory]) {
+                [image setParent:rootDirectory];
+            }
             
         } else if ([SRDirectory fileAtPathIsDirectory:fullPath]) {
             
             SRDirectory *directory = [self directoryFromPath:fullPath recursively:recursively depth:depth];
-            [directory setParent:rootDirectory];
+            if (![directory.parent isEqual:rootDirectory]) {
+                [directory setParent:rootDirectory];
+            }
             
         } else {
             [SRLogger addError:@"Failed to read : %@", file];
@@ -171,6 +180,51 @@ static SRProviderLocal *defaultProvider;
     return attributes;
 }
 
+- (void)cleanCoreData {
+    
+    NSFetchRequest *request = [self requestForFilesForProvider:SRProviderTypeLocal];
+    NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
+    
+    NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    
+    if (error) {
+        [SRLogger addError:@"Failed fetching local root directory. Error: '%@'", error];
+    } else {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        for (SRFile *file in matches) {
+            NSString *absolutePath = [self absolutePath:file.path];
+            if (![fileManager fileExistsAtPath:absolutePath]) {
+                [SRLogger addInformation:@"Deleted file %@", file];
+                [context deleteObject:file];
+            }
+        }
+    }
+}
+
+#pragma mark - Helpers
+
+- (void)save {
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[SRModel defaultModel] saveContext];
+}
+
+- (NSString *)applicationDocumentsDirectory {
+    // The directory the application uses to store the Core Data store file. This code uses a directory named "com.helesbeux.Showroom" in the application's documents directory.
+    return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+}
+
+- (NSString *)relativePath:(NSString *)path {
+    NSInteger start = [[self applicationDocumentsDirectory] length];
+    NSString *relativePath = [path substringFromIndex:start];
+    return relativePath.length ? relativePath : @"/";
+}
+
+- (NSString *)absolutePath:(NSString *)path {
+    NSString *absolutePath = [[self applicationDocumentsDirectory] stringByAppendingString:path];
+    return absolutePath;
+}
+
 #pragma mark - Monitoring
 
 // Dispatch queue
@@ -178,12 +232,6 @@ static dispatch_queue_t _dispatchQueue;
 
 // A source of potential notifications
 static dispatch_source_t _source;
-
-
-- (NSString *)applicationDocumentsDirectory {
-    // The directory the application uses to store the Core Data store file. This code uses a directory named "com.helesbeux.Showroom" in the application's documents directory.
-    return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-}
 
 - (void)startMonitoring {
     
