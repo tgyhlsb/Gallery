@@ -1,12 +1,12 @@
 //
-//  SROperationLoadImages.m
+//  SROperationProviderLocalLoadImages.m
 //  Showroom
 //
 //  Created by Tanguy Hélesbeux on 16/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "SROperationLoadImages.h"
+#import "SROperationProviderLocalLoadImages.h"
 
 // Frameworks
 #import <UIKit/UIKit.h>
@@ -21,14 +21,14 @@
 // Providers
 #import "SRProviderLocal.h"
 
-@interface SROperationLoadImages()
+@interface SROperationProviderLocalLoadImages()
 
 @property (readwrite, strong, nonatomic) NSManagedObjectContext *privateManagedObjectContext;
 @property (readwrite, strong, nonatomic) NSManagedObjectContext *parentManagedObjectContext;
 
 @end
 
-@implementation SROperationLoadImages
+@implementation SROperationProviderLocalLoadImages
 
 #pragma mark - Constructor
 

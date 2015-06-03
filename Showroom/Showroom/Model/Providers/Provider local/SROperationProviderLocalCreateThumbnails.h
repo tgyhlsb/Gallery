@@ -1,5 +1,5 @@
 //
-//  SROperationCreateThumbnails.h
+//  SROperationProviderLocalCreateThumbnails.h
 //  Showroom
 //
 //  Created by Tanguy Hélesbeux on 16/05/2015.
@@ -11,7 +11,7 @@
 
 @class SRDirectory;
 
-@interface SROperationCreateThumbnails : NSOperation
+@interface SROperationProviderLocalCreateThumbnails : NSOperation
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *parentManagedObjectContext;
 
