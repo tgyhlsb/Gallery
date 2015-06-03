@@ -10,12 +10,18 @@
 
 @interface SRDiaporamaCollectionViewCell() <UIScrollViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) UIImageView *imageView;
 
 @end
 
 @implementation SRDiaporamaCollectionViewCell
+
+#pragma mark - Override
+
++ (void)registerToCollectionView:(UICollectionView *)collectionView {
+    [collectionView registerClass:[self class] forCellWithReuseIdentifier:[self reusableIdentifier]];
+}
 
 #pragma mark - Initialization
 
@@ -28,13 +34,21 @@
 #pragma mark - Getters & Setters
 
 - (UIImageView *)imageView {
-    if (!_imageView && _scrollView) {
+    if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [_scrollView addSubview:_imageView];
-        _scrollView.delegate = self;
+        [self.scrollView addSubview:_imageView];
     }
     return _imageView;
+}
+
+- (UIScrollView *)scrollView {
+    if (!_scrollView) {
+        _scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+        _scrollView.delegate = self;
+        [self addSubview:_scrollView];
+    }
+    return _scrollView;
 }
 
 @synthesize image = _image;
@@ -65,6 +79,11 @@
             frame = CGRectMake(0, 0, image.size.width, self.scrollView.frame.size.height/ratio);
         } else {
             frame = CGRectMake(0, 0, self.scrollView.frame.size.width/ratio, image.size.height);
+        }
+        
+        
+        if (frame.size.width < self.scrollView.frame.size.width || frame.size.height < self.scrollView.frame.size.height) {
+            frame = self.scrollView.bounds;
         }
         
         self.imageView.frame = frame;

@@ -60,10 +60,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self updateCollectionViewLayoutWithSize:self.view.bounds.size];
+    
     NSIndexPath *indexPath = [self.fetchedResultsController indexPathForObject:self.selectedImage];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-    
-    [self updateCollectionViewLayoutWithSize:self.view.bounds.size];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
