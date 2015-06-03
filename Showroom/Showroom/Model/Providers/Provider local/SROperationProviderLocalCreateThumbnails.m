@@ -1,12 +1,12 @@
 //
-//  SROperationCreateThumbnails.m
+//  SROperationProviderLocalCreateThumbnails.m
 //  Showroom
 //
 //  Created by Tanguy Hélesbeux on 16/05/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "SROperationCreateThumbnails.h"
+#import "SROperationProviderLocalCreateThumbnails.h"
 
 // Frameworks
 #import <UIKit/UIKit.h>
@@ -21,14 +21,14 @@
 // Providers
 #import "SRProviderLocal.h"
 
-@interface SROperationCreateThumbnails()
+@interface SROperationProviderLocalCreateThumbnails()
 
 @property (readwrite, strong, nonatomic) NSManagedObjectContext *privateManagedObjectContext;
 @property (readwrite, strong, nonatomic) NSManagedObjectContext *parentManagedObjectContext;
 
 @end
 
-@implementation SROperationCreateThumbnails
+@implementation SROperationProviderLocalCreateThumbnails
 
 #pragma mark - Constructor
 

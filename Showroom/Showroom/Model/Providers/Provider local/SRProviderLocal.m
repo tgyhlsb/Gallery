@@ -22,8 +22,8 @@
 
 // Operations
 #import "SROperationProviderLocalSynchronization.h"
-#import "SROperationCreateThumbnails.h"
-#import "SROperationLoadImages.h"
+#import "SROperationProviderLocalCreateThumbnails.h"
+#import "SROperationProviderLocalLoadImages.h"
 
 @interface SRProviderLocal()
 
@@ -97,7 +97,7 @@ static SRProviderLocal *defaultProvider;
 
 - (void)createMissingThumbnails {
     NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
-    SROperationCreateThumbnails *syncOperation = [[SROperationCreateThumbnails alloc] initWithParentManagedObjectContext:context];
+    SROperationProviderLocalCreateThumbnails *syncOperation = [[SROperationProviderLocalCreateThumbnails alloc] initWithParentManagedObjectContext:context];
     
     syncOperation.recursively = YES;
     syncOperation.directory = self.rootDirectory;
@@ -112,7 +112,7 @@ static SRProviderLocal *defaultProvider;
 
 - (void)loadImages {
     NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
-    SROperationLoadImages *syncOperation = [[SROperationLoadImages alloc] initWithParentManagedObjectContext:context];
+    SROperationProviderLocalLoadImages *syncOperation = [[SROperationProviderLocalLoadImages alloc] initWithParentManagedObjectContext:context];
     
     syncOperation.recursively = YES;
     syncOperation.directory = self.rootDirectory;
