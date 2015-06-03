@@ -33,4 +33,11 @@
     return self;
 }
 
+#pragma mark - View life cycle 
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.navigationBar.translucent = NO;
+}
+
 @end

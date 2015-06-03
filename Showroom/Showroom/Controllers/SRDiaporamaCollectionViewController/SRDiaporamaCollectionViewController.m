@@ -52,8 +52,6 @@
     
     [self initializaView];
     
-    [self updateCollectionViewLayoutWithSize:self.collectionView.frame.size];
-    
     [SRCollectionReusableHeader registerToCollectionView:self.collectionView];
     [SRCollectionReusableFooter registerToCollectionView:self.collectionView];
     [SRDiaporamaCollectionViewCell registerToCollectionView:self.collectionView];
@@ -64,6 +62,8 @@
     
     NSIndexPath *indexPath = [self.fetchedResultsController indexPathForObject:self.selectedImage];
     [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    
+    [self updateCollectionViewLayoutWithSize:self.view.bounds.size];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
