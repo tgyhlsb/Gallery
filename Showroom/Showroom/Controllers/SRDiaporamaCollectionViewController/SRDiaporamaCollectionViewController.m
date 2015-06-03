@@ -152,6 +152,10 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    SRDiaporamaCollectionViewCell *cell = [[self.collectionView visibleCells] firstObject];
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    self.selectedImage = image;
 }
 
 @end
