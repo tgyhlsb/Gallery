@@ -37,7 +37,7 @@
 #pragma mark - Getters & Setters
 
 - (UIImage *)imageForThumbnail {
-    return [UIImage imageWithContentsOfFile:self.path];
+    return [UIImage imageNamed:self.path];
 }
 
 - (BOOL)isImage {

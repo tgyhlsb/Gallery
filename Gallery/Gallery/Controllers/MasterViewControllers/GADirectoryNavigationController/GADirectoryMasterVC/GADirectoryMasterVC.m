@@ -8,9 +8,6 @@
 
 #import "GADirectoryMasterVC.h"
 
-// Models
-#import "GAFile.h"
-
 // Managers
 #import "GACacheManager.h"
 
@@ -56,7 +53,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -73,6 +69,8 @@
     NSString *identifier = [GAImageFileTableViewCell reusableIdentifier];
     GAImageFileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
+    cell.thumbnailPreferredSize = CGSizeMake(44.0, 44.0);
+    cell.thumbnailScale = 10.0;
     cell.imageFile = [self.directory.tree objectAtIndex:indexPath.row];
     
     return cell;
@@ -87,33 +85,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     GAFile *file = [self.directory.tree objectAtIndex:indexPath.row];
     
-    if ([file isDirectory]) {
-        [self openDirectory:(GADirectory *)file];
-    } else if ([file isImage]) {
-        [self openImagefile:(GAImageFile *)file];
-    } else {
-        
+    if ([self.delegate respondsToSelector:@selector(directoryViewController:didSelectFile:)]) {
+        [self.delegate directoryViewController:self didSelectFile:file];
     }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (void)openDirectory:(GADirectory *)directory {
-    GADirectoryMasterVC *destination = [GADirectoryMasterVC newWithDirectory:directory];
-    destination.title = [directory nameWithExtension:YES];
-    [self.navigationController pushViewController:destination animated:YES];
-}
-
-- (void)openImagefile:(GAImageFile *)imageFile {
-    [self notifySelectedImageFile:imageFile];
-}
-
-#pragma mark - Broadcast
-
-- (void)notifySelectedImageFile:(GAImageFile *)imageFile {
-    [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedImageFile
-                                                        object:self
-                                                      userInfo:@{@"imageFile": imageFile}];
 }
 
 @end

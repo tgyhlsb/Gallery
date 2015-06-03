@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+// Models
+#import "GADirectory.h"
+
 @interface GADirectorySplitController : UISplitViewController
+
++ (instancetype)newWithRootDirectory:(GADirectory *)directory;
 
 @end

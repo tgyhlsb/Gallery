@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 
 // Models
-#import "GAImageFile.h"
 #import "GADirectory.h"
+#import "GAImageFile.h"
 
 @interface GADiaporamaVC : UIViewController <UISplitViewControllerDelegate>
 
-+ (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile;
+@property (strong, nonatomic) GADirectory *directory;
+@property (nonatomic) BOOL showSplitButton;
 
-- (void)setRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile;
++ (instancetype)newWithFiles:(NSArray *)files andSelectedImageFile:(GAImageFile *)imageFile;
 
 @end

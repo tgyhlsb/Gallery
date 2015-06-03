@@ -11,7 +11,10 @@
 // Controllers
 #import "GASettingsSplitController.h"
 
-@interface GADirectoryNavigationController ()
+// Managers
+#import "GALogger.h"
+
+@interface GADirectoryNavigationController () <GADirectoryViewControllerDelegate>
 
 @property (strong, nonatomic) UIBarButtonItem *settingsButton;
 
@@ -21,15 +24,16 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory {
-    return [[GADirectoryNavigationController alloc] initWithRootDirectory:rootDirectory];
++ (instancetype)newWithRootDirectory:(GADirectory *)directory {
+    return [[GADirectoryNavigationController alloc] initWithRootDirectory:directory];
 }
 
-- (id)initWithRootDirectory:(GADirectory *)rootDirectory {
-    GADirectoryMasterVC *rootVC = [GADirectoryMasterVC newWithDirectory:rootDirectory];
+- (id)initWithRootDirectory:(GADirectory *)directory {
+    GADirectoryMasterVC *rootVC = [GADirectoryMasterVC newWithDirectory:directory];
     self = [super initWithRootViewController:rootVC];
     if (self) {
         self.navigationBar.translucent = NO;
+        rootVC.delegate = self;
         [self initializeToolbar];
     }
     return self;
@@ -38,6 +42,7 @@
 #pragma mark - Configuration
 
 - (void)initializeToolbar {
+    self.toolbar.translucent = NO;
     self.toolbarHidden = NO;
     self.toolbarItems = @[self.settingsButton];
     
@@ -62,14 +67,6 @@
     return _settingsButton;
 }
 
-#pragma mark - Broadcast
-
-- (void)notifySelectedDirectory:(GADirectory *)directory {
-    [[NSNotificationCenter defaultCenter] postNotificationName:GADirectoryInspectorNotificationSelectedDirectory
-                                                        object:self
-                                                      userInfo:@{@"directory": directory}];
-}
-
 #pragma mark - Handlers
 
 - (void)settingsButtonHandler {
@@ -82,19 +79,56 @@
 
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
     GADirectoryMasterVC *previousVC = [self.viewControllers objectAtIndex:self.viewControllers.count-2];
-    [self notifySelectedDirectory:previousVC.directory];
+    previousVC.delegate = self;
+    [self notifyDidSelectDirectory:previousVC.directory];
     return [super popViewControllerAnimated:animated];
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    
-    if ([viewController isKindOfClass:[GADirectoryMasterVC class]]) {
-        [self notifySelectedDirectory:((GADirectoryMasterVC *)viewController).directory];
-        [viewController setToolbarItems:self.toolbarItems];
-    } else {
-        
-    }
+    [viewController setToolbarItems:self.toolbarItems];
     [super pushViewController:viewController animated:animated];
+}
+
+#pragma mark - GADirectoryViewControllerDelegate
+
+- (void)directoryViewController:(GADirectoryMasterVC *)controller didSelectFile:(GAFile *)file {
+    if (file.isImage) {
+        [self openImagefile:(GAImageFile *)file];
+    } else if (file.isDirectory) {
+        [self openDirectory:(GADirectory *)file];
+    } else {
+        [GALogger addError:@"User selected invalid file '%@'", file];
+    }
+}
+
+- (void)openDirectory:(GADirectory *)directory {
+    [self pushControllerForDirectory:directory];
+    [self notifyDidSelectDirectory:directory];
+}
+
+- (void)pushControllerForDirectory:(GADirectory *)directory {
+    GADirectoryMasterVC *destination = [GADirectoryMasterVC newWithDirectory:directory];
+    destination.title = [directory nameWithExtension:YES];
+    destination.delegate = self;
+    [self pushViewController:destination animated:YES];
+}
+
+- (void)openImagefile:(GAImageFile *)imageFile {
+    [self notifyDidSelectImageFile:imageFile];
+}
+
+#pragma mark - Broadcast
+
+- (void)notifyDidSelectDirectory:(GADirectory *)directory {
+    [[NSNotificationCenter defaultCenter] postNotificationName:GANotificationFileNavigationDidSelectDirectory
+                                                        object:self
+                                                      userInfo:@{@"directory": directory}];
+}
+
+- (void)notifyDidSelectImageFile:(GAImageFile *)imageFile {
+    [[NSNotificationCenter defaultCenter] postNotificationName:GANotificationFileNavigarionDidSelectImageFile
+                                                        object:self
+                                                      userInfo:@{@"imageFile": imageFile}];
 }
 
 @end

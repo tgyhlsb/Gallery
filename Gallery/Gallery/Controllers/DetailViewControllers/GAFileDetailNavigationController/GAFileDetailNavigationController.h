@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+// Models
+#import "GADirectory.h"
 
 // Controllers
 #import "GADiaporamaVC.h"
 #import "GADirectoryNavigationController.h"
 
 @interface GAFileDetailNavigationController : UINavigationController
+
++ (instancetype)newWithDirectory:(GADirectory *)directory;
 
 - (GADiaporamaVC *)rootViewController;
 

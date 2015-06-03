@@ -33,6 +33,22 @@
     [self updateView];
 }
 
+- (void)setThumbnailView:(GAThumbnailView *)thumbnailView {
+    thumbnailView.preferredSize = self.thumbnailPreferredSize;
+    thumbnailView.scale = self.thumbnailScale;
+    _thumbnailView = thumbnailView;
+}
+
+- (void)setThumbnailPreferredSize:(CGSize)thumbnailPreferredSize {
+    _thumbnailPreferredSize = thumbnailPreferredSize;
+    self.thumbnailView.preferredSize = thumbnailPreferredSize;
+}
+
+- (void)setThumbnailScale:(CGFloat)thumbnailScale {
+    _thumbnailScale = thumbnailScale;
+    self.thumbnailView.scale = thumbnailScale;
+}
+
 #pragma mark - View processing
 
 - (void)configureView {

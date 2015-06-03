@@ -19,9 +19,7 @@ static GACacheManager *sharedManager;
 
 @interface GACacheManager()
 
-@property (nonatomic) BOOL shouldCacheThumbnails;
-@property (strong, nonatomic) NSMutableDictionary *thumbnails;
-@property (strong, nonatomic) NSMutableArray *thumbnailPathStack;
+@property (strong, nonatomic) NSCache *cachedThumbnails;
 
 @end
 
@@ -36,12 +34,16 @@ static GACacheManager *sharedManager;
     return sharedManager;
 }
 
-+ (UIImage *)thumbnailForFile:(GAFile *)file {
-    return [[GACacheManager sharedManager] thumbnailForFile:file];
++ (UIImage *)thumbnailForFile:(GAFile *)file andSize:(CGSize)size {
+    return [[GACacheManager sharedManager] thumbnailForFile:file andSize:size];
 }
 
-+ (void)thumbnailForFile:(GAFile *)file inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
-    [[GACacheManager sharedManager] thumbnailForFile:file inBackgroundWithBlock:block];
++ (void)thumbnailForFile:(GAFile *)file andSize:(CGSize)size inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
+    [[GACacheManager sharedManager] thumbnailForFile:file andSize:size inBackgroundWithBlock:block];
+}
+
++ (void)thumbnailsForFiles:(NSArray *)files andSize:(CGSize)size inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
+    [[GACacheManager sharedManager] thumbnailsForFiles:files andSize:size inBackgroundWithBlock:block];
 }
 
 + (void)clearThumbnails {
@@ -50,31 +52,31 @@ static GACacheManager *sharedManager;
 
 #pragma mark - Getters & Setters
 
-- (NSMutableDictionary *)thumbnails {
-    if (!_thumbnails) _thumbnails = [[NSMutableDictionary alloc] init];
-    return _thumbnails;
-}
-
-- (NSMutableArray *)thumbnailPathStack {
-    if (!_thumbnailPathStack) _thumbnailPathStack = [[NSMutableArray alloc] init];
-    return _thumbnailPathStack;
+- (NSCache *)cachedThumbnails {
+    if (!_cachedThumbnails) {
+        _cachedThumbnails = [[NSCache alloc] init];
+//        _cachedThumbnails.countLimit = [GASettingsManager thumbnailCacheLimit];
+    }
+    return _cachedThumbnails;
 }
 
 #pragma mark - Thumbnails
 
 - (void)clearThumbnails {
-    self.thumbnails = nil;
-    [GALogger addInformation:@"Logs cleared"];
+    [self.cachedThumbnails removeAllObjects];
+    [GALogger addInformation:@"Cache cleared"];
 }
 
-- (UIImage *)thumbnailForFile:(GAFile *)file {
-    UIImage *thumbnail = [self.thumbnails objectForKey:file.path];
+- (UIImage *)thumbnailForFile:(GAFile *)file andSize:(CGSize)size {
+    NSString *key = [self keyForPath:file.path andSize:size];
+    UIImage *thumbnail = [self.cachedThumbnails objectForKey:key];
     if (thumbnail) return thumbnail;
     
-    thumbnail = [self createThumbnailFromImage:[file imageForThumbnail] withSize:CGSizeMake(44.0, 44.0)];
+    thumbnail = [self createThumbnailFromImage:[file imageForThumbnail] withSize:size];
+    [GALogger addInformation:@"New thumbnail\n'%@'", key];
     
-    if (thumbnail && self.shouldCacheThumbnails) {
-        [self cacheThumbnail:thumbnail forPath:file.path];
+    if (thumbnail && [GASettingsManager shouldCacheThumbnails]) {
+        [self.cachedThumbnails setObject:thumbnail forKey:key];
     }
     
     return thumbnail;
@@ -103,13 +105,27 @@ static GACacheManager *sharedManager;
  */
 
 // Reference http://stackoverflow.com/questions/16283652/understanding-dispatch-async
-- (void)thumbnailForFile:(GAFile *)file inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
+- (void)thumbnailForFile:(GAFile *)file andSize:(CGSize)size inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImage *thumbnail = [self thumbnailForFile:file];
+        UIImage *thumbnail = [self thumbnailForFile:file andSize:size];
         
         dispatch_sync(dispatch_get_main_queue(), ^{
             if (block) {
                 block(thumbnail);
+            }
+        });
+    });
+}
+
+- (void)thumbnailsForFiles:(NSArray *)files andSize:(CGSize)size inBackgroundWithBlock:(GAThumbnailLoadingBlock)block {
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for (GAFile *file in files) {
+            [self thumbnailForFile:file andSize:size];
+        }
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            if (block) {
+                block(nil);
             }
         });
     });
@@ -126,27 +142,12 @@ static GACacheManager *sharedManager;
     UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
+    
     return destImage;
 }
 
-- (void)cacheThumbnail:(UIImage *)thumbnail forPath:(NSString *)path {
-    if (thumbnail) {
-        if ([self.thumbnailPathStack count] >= [GASettingsManager thumbnailCacheLimit]) {
-            [self popThumbnail];
-        }
-        [self pushThumbnail:thumbnail forPath:path];
-    }
-}
-
-- (void)pushThumbnail:(UIImage *)thumbnail forPath:(NSString *)path {
-    [self.thumbnails setObject:thumbnail forKey:path];
-    [self.thumbnailPathStack addObject:path];
-}
-
-- (void)popThumbnail {
-    NSString *removedThumbnailPath = [self.thumbnailPathStack firstObject];
-    [self.thumbnails removeObjectForKey:removedThumbnailPath];
-    [self.thumbnailPathStack removeObjectAtIndex:0];
+- (NSString *)keyForPath:(NSString *)path andSize:(CGSize)size {
+    return path;
 }
 
 @end

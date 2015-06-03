@@ -10,34 +10,21 @@
 
 // Models
 #import "GADirectory.h"
-#import "GAImageFile.h"
 
 @protocol GADiaporamaPagedControllerDelegate;
 @protocol GAFileInspectorBarButtonsDataSource;
-
-typedef NS_ENUM(NSInteger,GADiaporamaFileType){
-    GADiaporamaFileTypeAll,
-    GADiaporamaFileTypeImages,
-    GADiaporamaFileTypeDirectories
-};
 
 @interface GADiaporamaPagedController : UIViewController
 
 @property (weak, nonatomic) id<GADiaporamaPagedControllerDelegate> delegate;
 @property (weak, nonatomic) id<GAFileInspectorBarButtonsDataSource> barItemDataSource;
 
-@property (nonatomic) GADiaporamaFileType diaporamaFileType;
+@property (strong, nonatomic) NSArray *files;
+@property (strong, nonatomic) GAImageFile *selectedImageFile;
 
-- (UIBarButtonItem *)diaporamaFileTypeBarButton;
++ (instancetype)newWithFiles:(NSArray *)files andSelectedImageFile:(GAImageFile *)imageFile;
 
 - (void)setParentViewController:(UIViewController *)parent withView:(UIView *)view;
-
-- (void)reloadCenterViewController;
-- (void)showFile:(GAFile *)file;
-- (void)showImage:(GAImageFile *)imageFile;
-- (void)showDirectory:(GADirectory *)directory;
-- (void)showNext;
-- (void)showPrevious;
 
 - (NSArray *)topLeftBarItemsForDisplayedFile;
 - (NSArray *)topRightBarItemsForDisplayedFile;

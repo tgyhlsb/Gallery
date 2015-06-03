@@ -36,14 +36,15 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)newWithRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile {
-    return [[GADiaporamaVC alloc] initWithRootDirectory:rootDirectory withImageFile:imageFile];
++ (instancetype)newWithFiles:(NSArray *)files andSelectedImageFile:(GAImageFile *)imageFile {
+    return [[GADiaporamaVC alloc] initWithFiles:files andSelectedImageFile:imageFile];
 }
 
-- (id)initWithRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile {
+- (id)initWithFiles:(NSArray *)files andSelectedImageFile:(GAImageFile *)imageFile {
     self = [super init];
     if (self) {
-        [self setRootDirectory:rootDirectory withImageFile:imageFile];
+        self.diaporamaController.files = files;
+        self.diaporamaController.selectedImageFile = imageFile;
     }
     return self;
 }
@@ -52,11 +53,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
-    // Force show/hide button to appear
-    self.topLeftBarItems = @[self.hideMasterViewButton];
-    
-    [self registerToDirectoryInspectorsNotifications];
+    if (self.showSplitButton) {
+        // Force show/hide button to appear
+        self.topLeftBarItems = @[self.hideMasterViewButton];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,18 +76,6 @@
 #pragma mark - Configuration
 
 #pragma mark - Broadcasting
-
-- (void)registerToDirectoryInspectorsNotifications {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(directoryInspectorDidSelectDirectory:)
-                                                 name:GADirectoryInspectorNotificationSelectedDirectory
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(directoryInspectorDidSelectImageFile:)
-                                                 name:GADirectoryInspectorNotificationSelectedImageFile
-                                               object:nil];
-}
 
 #pragma mark - Getters & Setters
 
@@ -115,24 +108,6 @@
                                                                 action:@selector(hideMasterViewButtonHandler)];
     }
     return _hideMasterViewButton;
-}
-
-- (void)setRootDirectory:(GADirectory *)rootDirectory withImageFile:(GAImageFile *)imageFile {
-    
-    if (imageFile) { // show specific file
-        [self.diaporamaController showImage:imageFile];
-    } else { // show directory
-        switch ([GASettingsManager directoryNavigationMode]) {
-            case GASettingDirectoryNavigationModeIgnore:
-                break;
-            case GASettingDirectoryNavigationModeShowDirectory:
-                [self.diaporamaController showDirectory:rootDirectory];
-                break;
-            case GASettingDirectoryNavigationModeShowFirstImage:
-                [self.diaporamaController showImage:rootDirectory.firstImage];
-                break;
-        }
-    }
 }
 
 #pragma mark Bar items
@@ -173,16 +148,6 @@
         self.navigationController.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
     } completion:^(BOOL finished) {
     }];
-}
-
-- (void)directoryInspectorDidSelectDirectory:(NSNotification *)notification {
-    GADirectory *directory = [notification.userInfo objectForKey:@"directory"];
-    [self setRootDirectory:directory withImageFile:nil];
-}
-
-- (void)directoryInspectorDidSelectImageFile:(NSNotification *)notification {
-    GAImageFile *imageFile = [notification.userInfo objectForKey:@"imageFile"];
-    [self setRootDirectory:imageFile.parent withImageFile:imageFile];
 }
 
 #pragma mark - UISplitViewControllerDelegate

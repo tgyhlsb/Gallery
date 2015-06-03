@@ -10,6 +10,7 @@
 
 // Managers
 #import "GALogger.h"
+#import "GACacheManager.h"
 
 // Models
 #import "GAImageFile.h"
@@ -17,12 +18,10 @@
 @interface GADirectory()
 
 @property (strong, nonatomic, readwrite) NSArray *tree;
-@property (weak, nonatomic, readwrite) GAFile *firstChild;
-@property (weak, nonatomic, readwrite) GAFile *lastChild;
-@property (weak, nonatomic, readwrite) GAImageFile *firstImage;
-@property (weak, nonatomic, readwrite) GAImageFile *lastImage;
-@property (weak, nonatomic, readwrite) GADirectory *firstDirectory;
-@property (weak, nonatomic, readwrite) GADirectory *lastDirectory;
+@property (strong, nonatomic, readwrite) NSArray *images;
+@property (strong, nonatomic, readwrite) NSArray *directories;
+@property (strong, nonatomic, readwrite) NSArray *recursiveImages;
+@property (strong, nonatomic, readwrite) NSArray *recursiveDirectories;
 
 @end
 
@@ -64,6 +63,8 @@
     return isDirectory;
 }
 
+#pragma mark - Factory
+
 - (NSArray *)readTreeFromPath:(NSString *)path {
     
     NSError *error;
@@ -73,48 +74,56 @@
     }
     
     NSMutableArray *tree = [[NSMutableArray alloc] init];
+    NSMutableArray *images = [[NSMutableArray alloc] init];
+    NSMutableArray *directories = [[NSMutableArray alloc] init];
+    NSMutableArray *recursiveImages = [[NSMutableArray alloc] init];
+    NSMutableArray *recursiveDirectories = [[NSMutableArray alloc] init];
+    
     NSString *fullPath = nil;
     
     GAFile *previous = nil;
-    GAImageFile *previousImage = nil;
-    GADirectory *previousDirectory = nil;
     
     for (NSString *file in files) {
-        fullPath = [self.path stringByAppendingPathComponent:file];
+        fullPath = [path stringByAppendingPathComponent:file];
         if ([GAImageFile isImageFile:fullPath]) {
             
             GAImageFile *imageFile = [GAImageFile imageFileFromPath:fullPath parent:self];
             [imageFile setPrevious:previous];
             [previous setNext:imageFile];
-            if (!self.firstChild) self.firstChild = imageFile;
-            if (!self.firstImage) self.firstImage = imageFile;
             [tree addObject:imageFile];
-            previous = imageFile;
-            previousImage = imageFile;
+            [images addObject:imageFile];
             
         } else if ([GADirectory isDirectory:fullPath]) {
             
             GADirectory *directory = [GADirectory directoryFromPath:fullPath parent:self];
             [directory setPrevious:previous];
             [previous setNext:directory];
-            if (!self.firstChild) self.firstChild = directory;
-            if (!self.firstDirectory) self.firstDirectory = directory;
             [tree addObject:directory];
-            previous = directory;
-            previousDirectory = directory;
+            [directories addObject:directory];
+            [recursiveDirectories addObject:directory];
+            [recursiveDirectories addObjectsFromArray:directory.recursiveDirectories];
+            [recursiveImages addObjectsFromArray:directory.images];
+            [recursiveImages addObjectsFromArray:directory.recursiveImages];
             
         } else {
             [GALogger addError:@"Failed to read : %@", file];
         }
     }
-    self.lastChild = previous;
-    self.lastImage = previousImage;
-    self.lastDirectory = previousDirectory;
     
-    [self.firstChild setPrevious:self.lastChild];
-    [self.lastChild setNext:self.firstChild];
+    self.images = images;
+    self.directories = directories;
+    self.recursiveImages = recursiveImages;
+    self.recursiveDirectories = recursiveDirectories;
     
     return tree;
 }
+
+- (void)preloadImageThumbnail:(GAImageFile *)imageFile {
+    [GACacheManager thumbnailForFile:imageFile andSize:CGSizeMake(200, 200) inBackgroundWithBlock:^(UIImage *thumbnail) {
+        
+    }];
+}
+
+
 
 @end
