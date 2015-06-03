@@ -11,7 +11,7 @@
 // Views
 #import "SRCollectionReusableFooter.h"
 #import "SRCollectionReusableHeader.h"
-#import "SRImageCollectionViewCell.h"
+#import "SRDiaporamaCollectionViewCell.h"
 
 // Controllers
 #import "SRImageViewController.h"
@@ -56,7 +56,7 @@
     
     [SRCollectionReusableHeader registerToCollectionView:self.collectionView];
     [SRCollectionReusableFooter registerToCollectionView:self.collectionView];
-    [SRImageCollectionViewCell registerToCollectionView:self.collectionView];
+    [SRDiaporamaCollectionViewCell registerToCollectionView:self.collectionView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -116,13 +116,11 @@
 #pragma mark - UICollectionViewDataSource
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *identifier = [SRImageCollectionViewCell reusableIdentifier];
-    SRImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    NSString *identifier = [SRDiaporamaCollectionViewCell reusableIdentifier];
+    SRDiaporamaCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.imageView.image = [image image];
-    
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    cell.image = [image image];
     
     return cell;
 }
