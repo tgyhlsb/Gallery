@@ -65,7 +65,10 @@
     self.pageViewController.delegate = self;
     self.pageViewController.dataSource = self;
     
+    [self addChildViewController:self.pageViewController];
+    self.pageViewController.view.frame = self.view.bounds;
     [self.view addSubview:self.pageViewController.view];
+    [self.pageViewController didMoveToParentViewController:self];
 }
 
 - (void)updateFetchedResultController {

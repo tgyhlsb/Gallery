@@ -13,8 +13,8 @@
 
 @interface SRImageViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic) BOOL isVisible;
 
@@ -31,7 +31,7 @@
 - (id)initWithImage:(SRImage *)image {
     self = [super init];
     if (self) {
-        self.image = image;
+        _image = image;
     }
     return self;
 }
@@ -40,52 +40,91 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initializeView];
+}
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    [self scroolViewNeedsLayout];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    self.isVisible = YES;
     [super viewDidAppear:animated];
-    [self loadImage];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    self.isVisible = NO;
     [super viewDidDisappear:animated];
 }
 
 #pragma mark - Getters & Setters
 
-- (void)setImage:(SRImage *)image {
-    if (![image isEqual:_image]) {
-        _image = image;
-        [self updateView];
-        [self loadImage];
+- (UIImageView *)imageView {
+    if (!_imageView) {
+        _imageView = [[UIImageView alloc] init];
+        _imageView.contentMode = UIViewContentModeScaleAspectFit;
+        _imageView.image = [self.image image];
+        [self.scrollView addSubview:_imageView];
+    }
+    return _imageView;
+}
+
+#pragma mark - Scale
+
+- (void)scroolViewNeedsLayout {
+    [self updateFramesWithImage:[self.image image]];
+}
+
+- (void)updateFramesWithImage:(UIImage *)image {
+    if (image) {
+        [self.scrollView setZoomScale:1 animated:NO];
+        self.imageView.frame = CGRectZero;
+        self.scrollView.contentSize = CGSizeZero;
+        
+        CGRect containerFrame = self.parentViewController.view.bounds;
+        
+        CGFloat widthRatio = containerFrame.size.width/image.size.width;
+        CGFloat heightRatio = containerFrame.size.height/image.size.height;
+        CGFloat ratio = MIN(widthRatio, heightRatio);
+        
+        CGRect frame = CGRectZero;
+        if (widthRatio < heightRatio) {
+            frame = CGRectMake(0, 0, image.size.width, containerFrame.size.height/ratio);
+        } else {
+            frame = CGRectMake(0, 0, containerFrame.size.width/ratio, image.size.height);
+        }
+        
+        
+        if (frame.size.width < containerFrame.size.width || frame.size.height < containerFrame.size.height) {
+            frame = containerFrame;
+        }
+        
+        self.imageView.frame = frame;
+        self.scrollView.contentSize = self.imageView.image.size;
+        [self saveScaleToFit:ratio];
     }
 }
 
-- (void)setImageView:(UIImageView *)imageView {
-    _imageView = imageView;
+- (void)saveScaleToFit:(CGFloat)scale {
+    [self.scrollView setMinimumZoomScale:scale];
+    [self.scrollView setZoomScale:scale animated:NO];
 }
 
-#pragma mark - View methods
+- (void)setScaleToFit {
+    [self.scrollView setZoomScale:self.scrollView.minimumZoomScale animated:YES];
+}
 
-- (void)initializeView {
-    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
+#pragma mark - UIScrollViewDelegate
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.imageView;
+}
+
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
     
-    self.activityIndicator.hidesWhenStopped = YES;
-    [self.activityIndicator startAnimating];
 }
 
-- (void)updateView {
-    self.title = self.image.name;
-}
-
-- (void)loadImage {
-    if (self.isVisible) {
-        self.imageView.image = [UIImage imageNamed:[self.image absolutePath]];
-        [self.activityIndicator stopAnimating];
-    }
-}
 
 @end
