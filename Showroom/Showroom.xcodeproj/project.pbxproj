@@ -46,11 +46,12 @@
 		5A4D93D71B06AB7F0008EF93 /* SRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93D51B06AB7F0008EF93 /* SRImageViewController.m */; };
 		5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */; };
 		5A8761A01B1F93C20030221A /* SRDiaporamaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A87619E1B1F93C20030221A /* SRDiaporamaCollectionViewCell.m */; };
+		5A8761A61B20EDBD0030221A /* SRDiaporamaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8761A41B20EDBD0030221A /* SRDiaporamaViewController.m */; };
+		5A8761A71B20EDBD0030221A /* SRDiaporamaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8761A51B20EDBD0030221A /* SRDiaporamaViewController.xib */; };
 		5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDB981B06C3F700DB572E /* SRHomeViewController.m */; };
 		5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */; };
 		5AECDBA11B06C90600DB572E /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDBA01B06C90600DB572E /* localization.sh */; };
 		5AECDBA41B07665800DB572E /* SRProvider+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBA31B07665800DB572E /* SRProvider+Helper.m */; };
-		5AECDBAE1B07A7B600DB572E /* SRDiaporamaCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBAC1B07A7B600DB572E /* SRDiaporamaCollectionViewController.m */; };
 		5AECDBB31B07AF4700DB572E /* SRDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBB21B07AF4700DB572E /* SRDirectory.m */; };
 		5AECDBB61B07AF4800DB572E /* SRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBB51B07AF4800DB572E /* SRImage.m */; };
 		5AECDBB91B07AF4800DB572E /* SRFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBB81B07AF4800DB572E /* SRFile.m */; };
@@ -142,14 +143,15 @@
 		5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRImageViewController.xib; path = SRImageViewController/SRImageViewController.xib; sourceTree = "<group>"; };
 		5A87619D1B1F93C20030221A /* SRDiaporamaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRDiaporamaCollectionViewCell.h; path = SRDiaporamaCollectionViewCell/SRDiaporamaCollectionViewCell.h; sourceTree = "<group>"; };
 		5A87619E1B1F93C20030221A /* SRDiaporamaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRDiaporamaCollectionViewCell.m; path = SRDiaporamaCollectionViewCell/SRDiaporamaCollectionViewCell.m; sourceTree = "<group>"; };
+		5A8761A31B20EDBD0030221A /* SRDiaporamaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRDiaporamaViewController.h; path = SRDiaporamaViewController/SRDiaporamaViewController.h; sourceTree = "<group>"; };
+		5A8761A41B20EDBD0030221A /* SRDiaporamaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRDiaporamaViewController.m; path = SRDiaporamaViewController/SRDiaporamaViewController.m; sourceTree = "<group>"; };
+		5A8761A51B20EDBD0030221A /* SRDiaporamaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRDiaporamaViewController.xib; path = SRDiaporamaViewController/SRDiaporamaViewController.xib; sourceTree = "<group>"; };
 		5AECDB971B06C3F700DB572E /* SRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRHomeViewController.h; path = SRHomeViewController/SRHomeViewController.h; sourceTree = "<group>"; };
 		5AECDB981B06C3F700DB572E /* SRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRHomeViewController.m; path = SRHomeViewController/SRHomeViewController.m; sourceTree = "<group>"; };
 		5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRHomeViewController.xib; path = SRHomeViewController/SRHomeViewController.xib; sourceTree = "<group>"; };
 		5AECDBA01B06C90600DB572E /* localization.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = localization.sh; sourceTree = "<group>"; };
 		5AECDBA21B07665800DB572E /* SRProvider+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRProvider+Helper.h"; sourceTree = "<group>"; };
 		5AECDBA31B07665800DB572E /* SRProvider+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRProvider+Helper.m"; sourceTree = "<group>"; };
-		5AECDBAB1B07A7B600DB572E /* SRDiaporamaCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRDiaporamaCollectionViewController.h; path = SRDiaporamaCollectionViewController/SRDiaporamaCollectionViewController.h; sourceTree = "<group>"; };
-		5AECDBAC1B07A7B600DB572E /* SRDiaporamaCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRDiaporamaCollectionViewController.m; path = SRDiaporamaCollectionViewController/SRDiaporamaCollectionViewController.m; sourceTree = "<group>"; };
 		5AECDBB11B07AF4700DB572E /* SRDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDirectory.h; sourceTree = "<group>"; };
 		5AECDBB21B07AF4700DB572E /* SRDirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDirectory.m; sourceTree = "<group>"; };
 		5AECDBB41B07AF4800DB572E /* SRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRImage.h; sourceTree = "<group>"; };
@@ -262,7 +264,7 @@
 				5A4D93731B068FC30008EF93 /* UICoreDataTableViewController.m */,
 				5A4D938F1B069ABF0008EF93 /* UICoreDataCollectionViewController.h */,
 				5A4D93901B069ABF0008EF93 /* UICoreDataCollectionViewController.m */,
-				5AECDBB01B07A7BA00DB572E /* SRDiaporamaCollectionViewController */,
+				5AECDBB01B07A7BA00DB572E /* SRDiaporamaViewController */,
 				5AECDB9C1B06C3FA00DB572E /* SRHomeViewController */,
 				5A4D93D91B06AB840008EF93 /* SRImageViewController */,
 				5A4D93D31B06AA900008EF93 /* SRImageNavigationController */,
@@ -491,13 +493,14 @@
 			name = SRHomeViewController;
 			sourceTree = "<group>";
 		};
-		5AECDBB01B07A7BA00DB572E /* SRDiaporamaCollectionViewController */ = {
+		5AECDBB01B07A7BA00DB572E /* SRDiaporamaViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5AECDBAB1B07A7B600DB572E /* SRDiaporamaCollectionViewController.h */,
-				5AECDBAC1B07A7B600DB572E /* SRDiaporamaCollectionViewController.m */,
+				5A8761A31B20EDBD0030221A /* SRDiaporamaViewController.h */,
+				5A8761A41B20EDBD0030221A /* SRDiaporamaViewController.m */,
+				5A8761A51B20EDBD0030221A /* SRDiaporamaViewController.xib */,
 			);
-			name = SRDiaporamaCollectionViewController;
+			name = SRDiaporamaViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -583,6 +586,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8761A71B20EDBD0030221A /* SRDiaporamaViewController.xib in Resources */,
 				5A4D93CF1B06A2060008EF93 /* SRImageCollectionViewCell.xib in Resources */,
 				5A4D92DE1B0673EC0008EF93 /* LaunchScreen.xib in Resources */,
 				5A4D93C61B06A13D0008EF93 /* SRCollectionReusableHeader.xib in Resources */,
@@ -609,6 +613,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8761A61B20EDBD0030221A /* SRDiaporamaViewController.m in Sources */,
 				5A4D93CE1B06A2060008EF93 /* SRImageCollectionViewCell.m in Sources */,
 				5A4D92D01B0673EC0008EF93 /* SRAppDelegate.m in Sources */,
 				5A4D93941B069C370008EF93 /* SRImagesCollectionViewController.m in Sources */,
@@ -622,7 +627,6 @@
 				5AECDBB91B07AF4800DB572E /* SRFile.m in Sources */,
 				5A4D93781B0690A60008EF93 /* SRFilesTableViewController.m in Sources */,
 				5A4D93501B06803E0008EF93 /* SRDirectory+Helper.m in Sources */,
-				5AECDBAE1B07A7B600DB572E /* SRDiaporamaCollectionViewController.m in Sources */,
 				5A4D93741B068FC30008EF93 /* UICoreDataTableViewController.m in Sources */,
 				5A4D938D1B0696790008EF93 /* SRFilesNavigationController.m in Sources */,
 				5A8761A01B1F93C20030221A /* SRDiaporamaCollectionViewCell.m in Sources */,
