@@ -10,11 +10,13 @@
 
 // Model
 #import "SRImage+Helper.h"
+#import "SRFile+Helper.h"
 
 @interface SRImageViewController ()
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIButton *titleButton;
 
 @property (nonatomic) BOOL isVisible;
 
@@ -40,6 +42,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self configureView];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -49,6 +53,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [self hideTitleButtonAfter:5];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -57,6 +62,36 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+}
+
+#pragma mark - Appearance
+
+- (void)configureView {
+    [self.titleButton setTitle:[self.image nameWithExtension:YES] forState:UIControlStateNormal];
+    [self.titleButton sizeToFit];
+    
+    self.titleButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    [self.titleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.titleButton.contentEdgeInsets = UIEdgeInsetsMake(10, 20, 10, 20);
+    self.titleButton.layer.cornerRadius = self.titleButton.frame.size.height/2;
+}
+
+- (void)hideTitleButtonAfter:(NSTimeInterval)delay {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self hideTitleButtonAnimated:YES];
+    });
+}
+
+- (void)hideTitleButtonAnimated:(BOOL)animated {
+    if (animated) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.titleButton.alpha = 0;
+        } completion:^(BOOL finished) {
+            
+        }];
+    } else {
+        self.titleButton.alpha = 0;
+    }
 }
 
 #pragma mark - Getters & Setters

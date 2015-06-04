@@ -16,4 +16,6 @@
 - (NSString *)absolutePath;
 - (NSString *)relativePath;
 
+- (NSString *)nameWithExtension:(BOOL)extension;
+
 @end
