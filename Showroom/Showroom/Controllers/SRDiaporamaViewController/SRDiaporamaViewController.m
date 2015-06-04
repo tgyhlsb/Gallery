@@ -8,30 +8,111 @@
 
 #import "SRDiaporamaViewController.h"
 
-@interface SRDiaporamaViewController ()
+// Controllers
+#import "SRImageViewController.h"
+
+// Model
+#import "SRModel.h"
+
+@interface SRDiaporamaViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+
+@property (strong, nonatomic) UIPageViewController *pageViewController;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultController;
 
 @end
 
 @implementation SRDiaporamaViewController
 
+#pragma mark - Constructor
+
++ (instancetype)newWithDirectory:(SRDirectory *)directory selectedImage:(SRImage *)selectedImage {
+    return [[SRDiaporamaViewController alloc] initWithDirectory:directory selectedImage:selectedImage];
+}
+
+- (id)initWithDirectory:(SRDirectory *)directory selectedImage:(SRImage *)selectedImage {
+    self = [super init];
+    if (self) {
+        self.directory = directory;
+        self.selectedImage = selectedImage;
+    }
+    return self;
+}
+
+#pragma mark - View life cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self initializePageViewController];
+    [self setPageViewControllerForImage:self.selectedImage];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Getters & Setters
+
+- (void)setDirectory:(SRDirectory *)directory {
+    if (![directory isEqual:_directory]) {
+        _directory = directory;
+        [self updateFetchedResultController];
+    }
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Page view controller
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)initializePageViewController {
+    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+                                                              navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+                                                                            options:nil];
+    self.pageViewController.delegate = self;
+    self.pageViewController.dataSource = self;
+    
+    [self.view addSubview:self.pageViewController.view];
 }
-*/
+
+- (void)updateFetchedResultController {
+    self.fetchedResultController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectoryRecursively:self.directory];
+    NSError *error = nil;
+    [self.fetchedResultController performFetch:&error];
+}
+
+- (void)setPageViewControllerForImage:(SRImage *)image {
+    SRImageViewController *centerViewController = [SRImageViewController newWithImage:image];
+    [self.pageViewController setViewControllers:@[centerViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (NSIndexPath *)indexPathForViewController:(UIViewController *)viewController {
+    SRImage *image = ((SRImageViewController *)viewController).image;
+    return [self.fetchedResultController indexPathForObject:image];
+}
+
+#pragma mark UIPageViewControllerDataSource
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+      viewControllerBeforeViewController:(UIViewController *)viewController {
+    
+    NSIndexPath *centerIndexPath = [self indexPathForViewController:viewController];
+    
+    if (centerIndexPath.row <= 0) return nil;
+    
+    NSIndexPath *beforeIndexPath = [NSIndexPath indexPathForRow:centerIndexPath.row-1 inSection:centerIndexPath.section];
+    SRImage *image = [self.fetchedResultController objectAtIndexPath:beforeIndexPath];
+    SRImageViewController *beforeViewController = [SRImageViewController newWithImage:image];
+    return beforeViewController;
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+       viewControllerAfterViewController:(UIViewController *)viewController {
+    
+    NSIndexPath *centerIndexPath = [self indexPathForViewController:viewController];
+    
+    NSIndexPath *afterIndexPath = [NSIndexPath indexPathForRow:centerIndexPath.row+1 inSection:centerIndexPath.section];
+    
+    if (centerIndexPath.row + 1 >= [self.fetchedResultController.fetchedObjects count]) return nil;
+    
+    SRImage *image = [self.fetchedResultController objectAtIndexPath:afterIndexPath];
+    SRImageViewController *afterViewController = [SRImageViewController newWithImage:image];
+    return afterViewController;
+}
 
 @end

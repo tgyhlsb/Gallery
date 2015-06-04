@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+// Model
+#import "SRDirectory.h"
+#import "SRImage.h"
+
 @interface SRDiaporamaViewController : UIViewController
+
+@property (strong, nonatomic) SRDirectory *directory;
+@property (strong, nonatomic) SRImage *selectedImage;
+
++ (instancetype)newWithDirectory:(SRDirectory *)directory selectedImage:(SRImage *)selectedImage;
+
 
 @end
