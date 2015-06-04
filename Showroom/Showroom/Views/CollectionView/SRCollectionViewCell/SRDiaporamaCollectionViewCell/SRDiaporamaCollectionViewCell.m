@@ -29,6 +29,11 @@
     self.backgroundColor = [UIColor whiteColor];
     self.opaque = YES;
     [self.layer shouldRasterize];
+    
+    self.titleLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    self.titleLabel.textColor = [UIColor whiteColor];
+    [self.titleLabel.layer shouldRasterize];
+    self.titleLabel.layer.cornerRadius = 5;
 }
 
 #pragma mark - Getters & Setters

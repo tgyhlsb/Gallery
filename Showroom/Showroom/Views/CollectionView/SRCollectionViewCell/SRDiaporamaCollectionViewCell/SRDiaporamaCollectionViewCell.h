@@ -11,6 +11,7 @@
 @interface SRDiaporamaCollectionViewCell : SRCollectionViewCell
 
 @property (strong, nonatomic) UIImage *image;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 - (void)updateFramesWithImage:(UIImage *)image;
 - (void)setScaleToFit;

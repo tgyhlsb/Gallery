@@ -46,7 +46,6 @@
 		5A4D93D71B06AB7F0008EF93 /* SRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93D51B06AB7F0008EF93 /* SRImageViewController.m */; };
 		5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */; };
 		5A8761A01B1F93C20030221A /* SRDiaporamaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A87619E1B1F93C20030221A /* SRDiaporamaCollectionViewCell.m */; };
-		5A8761A11B1F93C20030221A /* SRDiaporamaCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A87619F1B1F93C20030221A /* SRDiaporamaCollectionViewCell.xib */; };
 		5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDB981B06C3F700DB572E /* SRHomeViewController.m */; };
 		5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */; };
 		5AECDBA11B06C90600DB572E /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDBA01B06C90600DB572E /* localization.sh */; };
@@ -143,7 +142,6 @@
 		5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRImageViewController.xib; path = SRImageViewController/SRImageViewController.xib; sourceTree = "<group>"; };
 		5A87619D1B1F93C20030221A /* SRDiaporamaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRDiaporamaCollectionViewCell.h; path = SRDiaporamaCollectionViewCell/SRDiaporamaCollectionViewCell.h; sourceTree = "<group>"; };
 		5A87619E1B1F93C20030221A /* SRDiaporamaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRDiaporamaCollectionViewCell.m; path = SRDiaporamaCollectionViewCell/SRDiaporamaCollectionViewCell.m; sourceTree = "<group>"; };
-		5A87619F1B1F93C20030221A /* SRDiaporamaCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRDiaporamaCollectionViewCell.xib; path = SRDiaporamaCollectionViewCell/SRDiaporamaCollectionViewCell.xib; sourceTree = "<group>"; };
 		5AECDB971B06C3F700DB572E /* SRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRHomeViewController.h; path = SRHomeViewController/SRHomeViewController.h; sourceTree = "<group>"; };
 		5AECDB981B06C3F700DB572E /* SRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRHomeViewController.m; path = SRHomeViewController/SRHomeViewController.m; sourceTree = "<group>"; };
 		5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRHomeViewController.xib; path = SRHomeViewController/SRHomeViewController.xib; sourceTree = "<group>"; };
@@ -479,7 +477,6 @@
 			children = (
 				5A87619D1B1F93C20030221A /* SRDiaporamaCollectionViewCell.h */,
 				5A87619E1B1F93C20030221A /* SRDiaporamaCollectionViewCell.m */,
-				5A87619F1B1F93C20030221A /* SRDiaporamaCollectionViewCell.xib */,
 			);
 			name = SRDiaporamaCollectionViewCell;
 			sourceTree = "<group>";
@@ -588,7 +585,6 @@
 			files = (
 				5A4D93CF1B06A2060008EF93 /* SRImageCollectionViewCell.xib in Resources */,
 				5A4D92DE1B0673EC0008EF93 /* LaunchScreen.xib in Resources */,
-				5A8761A11B1F93C20030221A /* SRDiaporamaCollectionViewCell.xib in Resources */,
 				5A4D93C61B06A13D0008EF93 /* SRCollectionReusableHeader.xib in Resources */,
 				5A4D93C41B06A13D0008EF93 /* SRCollectionReusableFooter.xib in Resources */,
 				5A4D93001B0676730008EF93 /* Localizable.strings in Resources */,

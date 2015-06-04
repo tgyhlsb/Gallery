@@ -68,6 +68,10 @@
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    for (SRDiaporamaCollectionViewCell *cell in self.collectionView.visibleCells) {
+        [cell updateFramesWithImage:cell.image];
+    }
     [self updateCollectionViewLayoutWithSize:size];
 }
 
@@ -121,6 +125,7 @@
     
     SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.image = [image image];
+    cell.titleLabel.text = [image name];
     
     return cell;
 }
@@ -147,15 +152,15 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    self.selectedImage = image;
+//    SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//    self.selectedImage = image;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    SRDiaporamaCollectionViewCell *cell = [[self.collectionView visibleCells] firstObject];
-    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
-    SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    self.selectedImage = image;
+//    SRDiaporamaCollectionViewCell *cell = [[self.collectionView visibleCells] firstObject];
+//    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+//    SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//    self.selectedImage = image;
 }
 
 @end
