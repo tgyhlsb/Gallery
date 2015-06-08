@@ -94,8 +94,8 @@
 #pragma mark - Gesture recognizers
 
 - (void)initializeGestures {
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureHandler)];
-    [self.scrollView addGestureRecognizer:recognizer];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureHandler)];
+    [self.scrollView addGestureRecognizer:tapRecognizer];
 }
 
 #pragma mark - Title animation
