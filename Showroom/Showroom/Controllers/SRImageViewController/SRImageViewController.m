@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *titleButton;
 
+@property (strong, nonatomic) NSTimer *hideTitleTimer;
+
 @property (nonatomic) BOOL isVisible;
 
 @end
@@ -44,6 +46,7 @@
     [super viewDidLoad];
     
     [self configureView];
+    [self initializeGestures];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -76,10 +79,31 @@
     self.titleButton.layer.cornerRadius = self.titleButton.frame.size.height/2;
 }
 
+#pragma mark - Getters & Setters
+
+- (UIImageView *)imageView {
+    if (!_imageView) {
+        _imageView = [[UIImageView alloc] init];
+        _imageView.contentMode = UIViewContentModeScaleAspectFit;
+        _imageView.image = [self.image image];
+        [self.scrollView addSubview:_imageView];
+    }
+    return _imageView;
+}
+
+#pragma mark - Gesture recognizers
+
+- (void)initializeGestures {
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureHandler)];
+    [self.scrollView addGestureRecognizer:recognizer];
+}
+
+#pragma mark - Title animation
+
+
 - (void)hideTitleButtonAfter:(NSTimeInterval)delay {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self hideTitleButtonAnimated:YES];
-    });
+    [self.hideTitleTimer invalidate];
+    self.hideTitleTimer = [NSTimer scheduledTimerWithTimeInterval:delay target:self selector:@selector(hideTitleTimerHandler) userInfo:nil repeats:NO];
 }
 
 - (void)hideTitleButtonAnimated:(BOOL)animated {
@@ -94,16 +118,32 @@
     }
 }
 
-#pragma mark - Getters & Setters
-
-- (UIImageView *)imageView {
-    if (!_imageView) {
-        _imageView = [[UIImageView alloc] init];
-        _imageView.contentMode = UIViewContentModeScaleAspectFit;
-        _imageView.image = [self.image image];
-        [self.scrollView addSubview:_imageView];
+- (void)showTitleButtonAnimated:(BOOL)animated {
+    if (animated) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.titleButton.alpha = 1;
+        } completion:^(BOOL finished) {
+            
+        }];
+    } else {
+        self.titleButton.alpha = 1;
     }
-    return _imageView;
+}
+
+- (void)hideTitleTimerHandler {
+    [self hideTitleButtonAnimated:YES];
+    self.hideTitleTimer = nil;
+}
+
+#pragma mark - Handlers
+
+- (void)tapGestureHandler {
+    if (self.hideTitleTimer) {
+        [self.hideTitleTimer fire];
+    } else {
+        [self showTitleButtonAnimated:YES];
+        [self hideTitleButtonAfter:5];
+    }
 }
 
 #pragma mark - Scale
