@@ -14,6 +14,9 @@
 // Model
 #import "SRModel.h"
 
+// Views
+#import "SRSelectionPickerBarButton.h"
+
 @interface SRDiaporamaViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
@@ -45,6 +48,9 @@
     
     [self initializePageViewController];
     [self setPageViewControllerForImage:self.selectedImage];
+    
+    SRSelectionPickerBarButton *selectionPickerButton = [[SRSelectionPickerBarButton alloc] initWithTarget:self action:@selector(selectionPickerHandler)];
+    self.toolbarItems = @[selectionPickerButton];
 }
 
 #pragma mark - Getters & Setters
@@ -54,6 +60,12 @@
         _directory = directory;
         [self updateFetchedResultController];
     }
+}
+
+#pragma mark - Handlers
+
+- (void)selectionPickerHandler {
+    
 }
 
 #pragma mark - Page view controller

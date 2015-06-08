@@ -48,6 +48,7 @@
 		5A8761A01B1F93C20030221A /* SRDiaporamaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A87619E1B1F93C20030221A /* SRDiaporamaCollectionViewCell.m */; };
 		5A8761A61B20EDBD0030221A /* SRDiaporamaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8761A41B20EDBD0030221A /* SRDiaporamaViewController.m */; };
 		5A8761A71B20EDBD0030221A /* SRDiaporamaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8761A51B20EDBD0030221A /* SRDiaporamaViewController.xib */; };
+		5AB7B65E1B264093002402E2 /* SRSelectionPickerBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B65D1B264093002402E2 /* SRSelectionPickerBarButton.m */; };
 		5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDB981B06C3F700DB572E /* SRHomeViewController.m */; };
 		5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */; };
 		5AECDBA11B06C90600DB572E /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDBA01B06C90600DB572E /* localization.sh */; };
@@ -146,6 +147,8 @@
 		5A8761A31B20EDBD0030221A /* SRDiaporamaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRDiaporamaViewController.h; path = SRDiaporamaViewController/SRDiaporamaViewController.h; sourceTree = "<group>"; };
 		5A8761A41B20EDBD0030221A /* SRDiaporamaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRDiaporamaViewController.m; path = SRDiaporamaViewController/SRDiaporamaViewController.m; sourceTree = "<group>"; };
 		5A8761A51B20EDBD0030221A /* SRDiaporamaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRDiaporamaViewController.xib; path = SRDiaporamaViewController/SRDiaporamaViewController.xib; sourceTree = "<group>"; };
+		5AB7B65C1B264093002402E2 /* SRSelectionPickerBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSelectionPickerBarButton.h; sourceTree = "<group>"; };
+		5AB7B65D1B264093002402E2 /* SRSelectionPickerBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSelectionPickerBarButton.m; sourceTree = "<group>"; };
 		5AECDB971B06C3F700DB572E /* SRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRHomeViewController.h; path = SRHomeViewController/SRHomeViewController.h; sourceTree = "<group>"; };
 		5AECDB981B06C3F700DB572E /* SRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRHomeViewController.m; path = SRHomeViewController/SRHomeViewController.m; sourceTree = "<group>"; };
 		5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRHomeViewController.xib; path = SRHomeViewController/SRHomeViewController.xib; sourceTree = "<group>"; };
@@ -298,6 +301,7 @@
 		5A4D92F91B0675B40008EF93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5AB7B65A1B264093002402E2 /* BarButtons */,
 				5A4D93B01B06A13D0008EF93 /* CollectionView */,
 			);
 			path = Views;
@@ -483,6 +487,23 @@
 			name = SRDiaporamaCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		5AB7B65A1B264093002402E2 /* BarButtons */ = {
+			isa = PBXGroup;
+			children = (
+				5AB7B65B1B264093002402E2 /* SRSelectionPickerBarButton */,
+			);
+			path = BarButtons;
+			sourceTree = "<group>";
+		};
+		5AB7B65B1B264093002402E2 /* SRSelectionPickerBarButton */ = {
+			isa = PBXGroup;
+			children = (
+				5AB7B65C1B264093002402E2 /* SRSelectionPickerBarButton.h */,
+				5AB7B65D1B264093002402E2 /* SRSelectionPickerBarButton.m */,
+			);
+			path = SRSelectionPickerBarButton;
+			sourceTree = "<group>";
+		};
 		5AECDB9C1B06C3FA00DB572E /* SRHomeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,6 +652,7 @@
 				5A4D938D1B0696790008EF93 /* SRFilesNavigationController.m in Sources */,
 				5A8761A01B1F93C20030221A /* SRDiaporamaCollectionViewCell.m in Sources */,
 				5A4D93431B067B3C0008EF93 /* Showroom.xcdatamodeld in Sources */,
+				5AB7B65E1B264093002402E2 /* SRSelectionPickerBarButton.m in Sources */,
 				5A4D93C71B06A13D0008EF93 /* SRCollectionViewCell.m in Sources */,
 				5A4D93D21B06AA8C0008EF93 /* SRImageNavigationController.m in Sources */,
 				5A4D92CD1B0673EC0008EF93 /* main.m in Sources */,
