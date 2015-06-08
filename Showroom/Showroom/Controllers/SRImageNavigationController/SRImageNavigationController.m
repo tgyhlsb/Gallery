@@ -28,7 +28,7 @@
     SRImagesCollectionViewController *rootController = [SRImagesCollectionViewController newWithDirectory:directory];
     self = [super initWithRootViewController:rootController];
     if (self) {
-        
+        self.toolbarHidden = NO;
     }
     return self;
 }
@@ -37,7 +37,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.navigationBar.translucent = NO;
+    self.toolbar.translucent = NO;
 }
 
 @end
