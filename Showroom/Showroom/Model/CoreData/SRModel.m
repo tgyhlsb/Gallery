@@ -203,16 +203,21 @@ static SRModel *defaultModel;
 - (void)saveContext {
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
-        NSError *error = nil;
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            if (error.code == 0) { // Replace 0 by invalid model error code
-                [self resetStore];
-                [self saveContext];
-            } else {
-                abort();
+        if ([managedObjectContext hasChanges]) {
+            
+            NSError *error = nil;
+            [managedObjectContext save:&error];
+            
+            if (error) {
+                // Replace this implementation with code to handle the error appropriately.
+                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                if (error.code == 134100) { // Replace 0 by invalid model error code
+                    [self resetStore];
+                    [self saveContext];
+                } else {
+                    abort();
+                }
             }
         }
     }
