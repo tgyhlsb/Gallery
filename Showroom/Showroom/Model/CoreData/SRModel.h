@@ -13,6 +13,7 @@
 #import "SRFile+Helper.h"
 #import "SRDirectory+Helper.h"
 #import "SRImage+Helper.h"
+#import "SRSelection+Helper.h"
 
 @interface SRModel : NSObject
 
@@ -24,9 +25,20 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
-#define Request factory
+#pragma mark - Request factory
 - (NSFetchedResultsController *)fetchedResultControllerForFilesInDirectory:(SRDirectory *)directory;
 - (NSFetchedResultsController *)fetchedResultControllerForImagesInDirectoryRecursively:(SRDirectory *)directory;
 - (NSFetchedResultsController *)fetchedResultControllerForDirectoriesInDirectoryRecursively:(SRDirectory *)directory;
+- (NSFetchedResultsController *)fetchedResultControllerForSelections;
+- (NSFetchedResultsController *)fetchedResultControllerForSelectionsActive:(BOOL)active;
+
+#pragma mark - Selections
+
+@property (readwrite, strong, nonatomic) SRSelection *activeSelection;
+
+- (void)fetchActiveSelection;
+
+- (SRSelection *)createSelectionWithTitle:(NSString *)title;
+
 
 @end

@@ -29,4 +29,12 @@
     return self.path;
 }
 
+- (NSString *)nameWithExtension:(BOOL)extension {
+    if (extension) {
+        return [NSString stringWithFormat:@"%@.%@", self.name, self.extension];
+    } else {
+        return self.name;
+    }
+}
+
 @end

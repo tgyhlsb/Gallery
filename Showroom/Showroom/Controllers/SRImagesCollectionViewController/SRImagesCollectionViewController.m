@@ -15,7 +15,7 @@
 
 // Controllers
 #import "SRImageViewController.h"
-#import "SRDiaporamaCollectionViewController.h"
+#import "SRDiaporamaViewController.h"
 
 // Helpers
 #import "SRImage+Helper.h"
@@ -142,7 +142,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    SRDiaporamaCollectionViewController *destination = [SRDiaporamaCollectionViewController newWithDirectory:self.directory selectedImage:image];
+    SRDiaporamaViewController *destination = [SRDiaporamaViewController newWithDirectory:self.directory selectedImage:image];
     [self.navigationController pushViewController:destination animated:YES];
     
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];

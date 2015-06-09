@@ -41,15 +41,25 @@
     [super viewDidLoad];
     
     [self initializeView];
-    
-    SRProviderLocal *localProvider = [SRProviderLocal defaultProvider];
-    [localProvider initialize];
-    localProvider.autoUpdate = YES;
+    [self initializeProviders];
+    [self initializeManagers];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     self.commentLabel.hidden = ![[SRProviderLocal defaultProvider] didUpdateAfterLaunch];
+}
+
+#pragma mark - Initilization
+
+- (void)initializeManagers {
+    [[SRModel defaultModel] fetchActiveSelection];
+}
+
+- (void)initializeProviders {
+    SRProviderLocal *localProvider = [SRProviderLocal defaultProvider];
+    [localProvider initialize];
+    localProvider.autoUpdate = YES;
 }
 
 #pragma mark - Getters & Setters
