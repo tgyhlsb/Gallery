@@ -51,13 +51,13 @@
 		5AB7B65E1B264093002402E2 /* SRSelectionPickerBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B65D1B264093002402E2 /* SRSelectionPickerBarButton.m */; };
 		5AB7B66B1B27613D002402E2 /* SRSelectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B66A1B27613D002402E2 /* SRSelectionsTableViewController.m */; };
 		5AB7B66F1B276562002402E2 /* SRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B66E1B276562002402E2 /* SRImage.m */; };
-		5AB7B6721B276563002402E2 /* SRSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B6711B276563002402E2 /* SRSelection.m */; };
 		5AB7B6761B276867002402E2 /* SRSelectionPopoverNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B6741B276867002402E2 /* SRSelectionPopoverNavigationController.m */; };
 		5AB7B6771B276867002402E2 /* SRSelectionPopoverNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB7B6751B276867002402E2 /* SRSelectionPopoverNavigationController.xib */; };
 		5AB7B67B1B276973002402E2 /* SRAddSelectionBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B67A1B276973002402E2 /* SRAddSelectionBarButton.m */; };
 		5AB7B6801B276E31002402E2 /* SRCreateSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B67E1B276E31002402E2 /* SRCreateSelectionViewController.m */; };
 		5AB7B6811B276E31002402E2 /* SRCreateSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB7B67F1B276E31002402E2 /* SRCreateSelectionViewController.xib */; };
 		5AB7B6851B276FF8002402E2 /* SRSelection+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B6841B276FF8002402E2 /* SRSelection+Serializer.m */; };
+		5AB7B6881B27853E002402E2 /* SRSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B6871B27853E002402E2 /* SRSelection.m */; };
 		5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDB981B06C3F700DB572E /* SRHomeViewController.m */; };
 		5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */; };
 		5AECDBA11B06C90600DB572E /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDBA01B06C90600DB572E /* localization.sh */; };
@@ -161,8 +161,6 @@
 		5AB7B66A1B27613D002402E2 /* SRSelectionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRSelectionsTableViewController.m; path = SRSelectionsTableViewController/SRSelectionsTableViewController.m; sourceTree = "<group>"; };
 		5AB7B66D1B276562002402E2 /* SRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRImage.h; sourceTree = "<group>"; };
 		5AB7B66E1B276562002402E2 /* SRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRImage.m; sourceTree = "<group>"; };
-		5AB7B6701B276563002402E2 /* SRSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSelection.h; sourceTree = "<group>"; };
-		5AB7B6711B276563002402E2 /* SRSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSelection.m; sourceTree = "<group>"; };
 		5AB7B6731B276867002402E2 /* SRSelectionPopoverNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRSelectionPopoverNavigationController.h; path = SRSelectionPopoverNavigationController/SRSelectionPopoverNavigationController.h; sourceTree = "<group>"; };
 		5AB7B6741B276867002402E2 /* SRSelectionPopoverNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRSelectionPopoverNavigationController.m; path = SRSelectionPopoverNavigationController/SRSelectionPopoverNavigationController.m; sourceTree = "<group>"; };
 		5AB7B6751B276867002402E2 /* SRSelectionPopoverNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRSelectionPopoverNavigationController.xib; path = SRSelectionPopoverNavigationController/SRSelectionPopoverNavigationController.xib; sourceTree = "<group>"; };
@@ -173,6 +171,8 @@
 		5AB7B67F1B276E31002402E2 /* SRCreateSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRCreateSelectionViewController.xib; path = SRCreateSelectionViewController/SRCreateSelectionViewController.xib; sourceTree = "<group>"; };
 		5AB7B6831B276FF8002402E2 /* SRSelection+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRSelection+Serializer.h"; sourceTree = "<group>"; };
 		5AB7B6841B276FF8002402E2 /* SRSelection+Serializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRSelection+Serializer.m"; sourceTree = "<group>"; };
+		5AB7B6861B27853E002402E2 /* SRSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSelection.h; sourceTree = "<group>"; };
+		5AB7B6871B27853E002402E2 /* SRSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSelection.m; sourceTree = "<group>"; };
 		5AECDB971B06C3F700DB572E /* SRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRHomeViewController.h; path = SRHomeViewController/SRHomeViewController.h; sourceTree = "<group>"; };
 		5AECDB981B06C3F700DB572E /* SRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRHomeViewController.m; path = SRHomeViewController/SRHomeViewController.m; sourceTree = "<group>"; };
 		5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRHomeViewController.xib; path = SRHomeViewController/SRHomeViewController.xib; sourceTree = "<group>"; };
@@ -368,8 +368,8 @@
 		5A4D932A1B067B3C0008EF93 /* Automatic */ = {
 			isa = PBXGroup;
 			children = (
-				5AB7B6701B276563002402E2 /* SRSelection.h */,
-				5AB7B6711B276563002402E2 /* SRSelection.m */,
+				5AB7B6861B27853E002402E2 /* SRSelection.h */,
+				5AB7B6871B27853E002402E2 /* SRSelection.m */,
 				5AB7B66D1B276562002402E2 /* SRImage.h */,
 				5AB7B66E1B276562002402E2 /* SRImage.m */,
 				5AECDBB71B07AF4800DB572E /* SRFile.h */,
@@ -728,7 +728,6 @@
 				5A4D93C71B06A13D0008EF93 /* SRCollectionViewCell.m in Sources */,
 				5A4D93D21B06AA8C0008EF93 /* SRImageNavigationController.m in Sources */,
 				5A4D92CD1B0673EC0008EF93 /* main.m in Sources */,
-				5AB7B6721B276563002402E2 /* SRSelection.m in Sources */,
 				5AB7B67B1B276973002402E2 /* SRAddSelectionBarButton.m in Sources */,
 				5AB7B6801B276E31002402E2 /* SRCreateSelectionViewController.m in Sources */,
 				5A4D93D71B06AB7F0008EF93 /* SRImageViewController.m in Sources */,
@@ -739,6 +738,7 @@
 				5A4D93531B0680F00008EF93 /* SRFile+Helper.m in Sources */,
 				5A4D93421B067B3C0008EF93 /* SRImage+Serializer.m in Sources */,
 				5AECDBB31B07AF4700DB572E /* SRDirectory.m in Sources */,
+				5AB7B6881B27853E002402E2 /* SRSelection.m in Sources */,
 				5A0E58E21B1F8FA800846031 /* SROperationProviderLocalLoadImages.m in Sources */,
 				5A4D93441B067B3C0008EF93 /* SRModel.m in Sources */,
 				5A4D93471B067B910008EF93 /* SRNotificationCenter.m in Sources */,

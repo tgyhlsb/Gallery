@@ -24,6 +24,7 @@
     <entity name="SRSelection" representedClassName="SRSelection" syncable="YES">
         <attribute name="creationDate" attributeType="Date" syncable="YES"/>
         <attribute name="modificationDate" attributeType="Date" syncable="YES"/>
+        <attribute name="selected" attributeType="Boolean" indexed="YES" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <relationship name="images" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SRImage" inverseName="selections" inverseEntity="SRImage" syncable="YES"/>
     </entity>
@@ -31,6 +32,6 @@
         <element name="SRDirectory" positionX="0" positionY="45" width="128" height="60"/>
         <element name="SRFile" positionX="313" positionY="-90" width="128" height="178"/>
         <element name="SRImage" positionX="259" positionY="156" width="128" height="118"/>
-        <element name="SRSelection" positionX="9" positionY="216" width="128" height="103"/>
+        <element name="SRSelection" positionX="9" positionY="216" width="128" height="118"/>
     </elements>
 </model>
