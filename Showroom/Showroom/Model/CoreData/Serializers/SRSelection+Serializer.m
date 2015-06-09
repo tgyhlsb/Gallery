@@ -34,6 +34,7 @@
             selection = [NSEntityDescription insertNewObjectForEntityForName:[self className] inManagedObjectContext:context];
             selection.title = title;
             selection.creationDate = [NSDate date];
+            selection.selected = @NO;
             NSLog(@"Created selection");
         }
         selection.modificationDate = [NSDate date];
