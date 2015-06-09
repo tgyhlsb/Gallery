@@ -30,10 +30,13 @@
 - (NSFetchedResultsController *)fetchedResultControllerForImagesInDirectoryRecursively:(SRDirectory *)directory;
 - (NSFetchedResultsController *)fetchedResultControllerForDirectoriesInDirectoryRecursively:(SRDirectory *)directory;
 - (NSFetchedResultsController *)fetchedResultControllerForSelections;
+- (NSFetchedResultsController *)fetchedResultControllerForSelectionsActive:(BOOL)active;
 
 #pragma mark - Selections
 
 @property (readwrite, strong, nonatomic) SRSelection *activeSelection;
+
+- (void)fetchActiveSelection;
 
 - (SRSelection *)createSelectionWithTitle:(NSString *)title;
 

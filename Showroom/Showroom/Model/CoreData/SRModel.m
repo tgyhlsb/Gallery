@@ -13,6 +13,10 @@
 #import "SRDirectory.h"
 #import "SRSelection+Serializer.h"
 
+// Managers
+#import "SRLogger.h"
+#import "SRNotificationCenter.h"
+
 @implementation SRModel
 
 #pragma mark - Singleton
@@ -115,6 +119,20 @@ static SRModel *defaultModel;
                                                           cacheName:nil];
 }
 
+- (NSFetchedResultsController *)fetchedResultControllerForSelectionsActive:(BOOL)active {
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRSelection className]];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"active = %@", @(active)];
+    
+    request.sortDescriptors = @[[self selectionSortDescriptor]];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:self.managedObjectContext
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
+}
+
 #pragma mark - Selections
 
 - (void)setActiveSelection:(SRSelection *)activeSelection {
@@ -122,7 +140,31 @@ static SRModel *defaultModel;
         [_activeSelection setIsActive:NO];
         _activeSelection = activeSelection;
         [_activeSelection setIsActive:YES];
+        [self notifyActiveSelectionDidChange];
     }
+}
+
+- (void)fetchActiveSelection {
+    NSFetchedResultsController *fetchedResultController = [self fetchedResultControllerForSelectionsActive:YES];
+    NSError *error = nil;
+    [fetchedResultController performFetch:&error];
+    if (error) {
+        [SRLogger addError:@"Failed to fetch active selection: %@", error];
+    } else {
+        if (fetchedResultController.fetchedObjects.count == 0) {
+            self.activeSelection = nil;
+        } else if (fetchedResultController.fetchedObjects.count == 1) {
+            self.activeSelection = [fetchedResultController.fetchedObjects firstObject];
+        } else {
+            [SRLogger addError:@"More than one active selection fetched: %@", fetchedResultController.fetchedObjects];
+            self.activeSelection = nil;
+        }
+        [self notifyActiveSelectionDidChange];
+    }
+}
+
+- (void)notifyActiveSelectionDidChange {
+    [[SRNotificationCenter defaultCenter] postNotificationName:SRNotificationActiveSelectionChanged object:self];
 }
 
 - (SRSelection *)createSelectionWithTitle:(NSString *)title {
