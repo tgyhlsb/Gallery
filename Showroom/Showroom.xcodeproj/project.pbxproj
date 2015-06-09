@@ -49,6 +49,7 @@
 		5A8761A61B20EDBD0030221A /* SRDiaporamaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8761A41B20EDBD0030221A /* SRDiaporamaViewController.m */; };
 		5A8761A71B20EDBD0030221A /* SRDiaporamaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8761A51B20EDBD0030221A /* SRDiaporamaViewController.xib */; };
 		5AB7B65E1B264093002402E2 /* SRSelectionPickerBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B65D1B264093002402E2 /* SRSelectionPickerBarButton.m */; };
+		5AB7B66B1B27613D002402E2 /* SRSelectionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B66A1B27613D002402E2 /* SRSelectionsTableViewController.m */; };
 		5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDB981B06C3F700DB572E /* SRHomeViewController.m */; };
 		5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */; };
 		5AECDBA11B06C90600DB572E /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDBA01B06C90600DB572E /* localization.sh */; };
@@ -149,6 +150,8 @@
 		5A8761A51B20EDBD0030221A /* SRDiaporamaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRDiaporamaViewController.xib; path = SRDiaporamaViewController/SRDiaporamaViewController.xib; sourceTree = "<group>"; };
 		5AB7B65C1B264093002402E2 /* SRSelectionPickerBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSelectionPickerBarButton.h; sourceTree = "<group>"; };
 		5AB7B65D1B264093002402E2 /* SRSelectionPickerBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSelectionPickerBarButton.m; sourceTree = "<group>"; };
+		5AB7B6691B27613D002402E2 /* SRSelectionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRSelectionsTableViewController.h; path = SRSelectionsTableViewController/SRSelectionsTableViewController.h; sourceTree = "<group>"; };
+		5AB7B66A1B27613D002402E2 /* SRSelectionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRSelectionsTableViewController.m; path = SRSelectionsTableViewController/SRSelectionsTableViewController.m; sourceTree = "<group>"; };
 		5AECDB971B06C3F700DB572E /* SRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRHomeViewController.h; path = SRHomeViewController/SRHomeViewController.h; sourceTree = "<group>"; };
 		5AECDB981B06C3F700DB572E /* SRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRHomeViewController.m; path = SRHomeViewController/SRHomeViewController.m; sourceTree = "<group>"; };
 		5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRHomeViewController.xib; path = SRHomeViewController/SRHomeViewController.xib; sourceTree = "<group>"; };
@@ -267,6 +270,7 @@
 				5A4D93731B068FC30008EF93 /* UICoreDataTableViewController.m */,
 				5A4D938F1B069ABF0008EF93 /* UICoreDataCollectionViewController.h */,
 				5A4D93901B069ABF0008EF93 /* UICoreDataCollectionViewController.m */,
+				5AB7B66C1B276142002402E2 /* SRSelectionsTableViewController */,
 				5AECDBB01B07A7BA00DB572E /* SRDiaporamaViewController */,
 				5AECDB9C1B06C3FA00DB572E /* SRHomeViewController */,
 				5A4D93D91B06AB840008EF93 /* SRImageViewController */,
@@ -504,6 +508,15 @@
 			path = SRSelectionPickerBarButton;
 			sourceTree = "<group>";
 		};
+		5AB7B66C1B276142002402E2 /* SRSelectionsTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5AB7B6691B27613D002402E2 /* SRSelectionsTableViewController.h */,
+				5AB7B66A1B27613D002402E2 /* SRSelectionsTableViewController.m */,
+			);
+			name = SRSelectionsTableViewController;
+			sourceTree = "<group>";
+		};
 		5AECDB9C1B06C3FA00DB572E /* SRHomeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -649,6 +662,7 @@
 				5A4D93781B0690A60008EF93 /* SRFilesTableViewController.m in Sources */,
 				5A4D93501B06803E0008EF93 /* SRDirectory+Helper.m in Sources */,
 				5A4D93741B068FC30008EF93 /* UICoreDataTableViewController.m in Sources */,
+				5AB7B66B1B27613D002402E2 /* SRSelectionsTableViewController.m in Sources */,
 				5A4D938D1B0696790008EF93 /* SRFilesNavigationController.m in Sources */,
 				5A8761A01B1F93C20030221A /* SRDiaporamaCollectionViewCell.m in Sources */,
 				5A4D93431B067B3C0008EF93 /* Showroom.xcdatamodeld in Sources */,
