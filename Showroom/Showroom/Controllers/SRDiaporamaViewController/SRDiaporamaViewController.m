@@ -10,7 +10,7 @@
 
 // Controllers
 #import "SRImageViewController.h"
-#import "SRSelectionsTableViewController.h"
+#import "SRSelectionPopoverNavigationController.h"
 
 // Model
 #import "SRModel.h"
@@ -67,7 +67,7 @@
 #pragma mark - Handlers
 
 - (void)selectionPickerHandler {
-    SRSelectionsTableViewController *contentViewController = [SRSelectionsTableViewController new];
+    SRSelectionPopoverNavigationController *contentViewController = [SRSelectionPopoverNavigationController new];
     UIPopoverController *popOverController = [[UIPopoverController alloc] initWithContentViewController:contentViewController];
     [popOverController presentPopoverFromBarButtonItem:self.selectionPickerButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
