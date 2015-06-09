@@ -11,7 +11,8 @@
 @implementation SRSelectionPickerBarButton
 
 - (id)initWithTarget:(id)target action:(SEL)selector {
-    return [self initWithTitle:@"Selection" style:UIBarButtonItemStylePlain target:target action:selector];
+    NSString *title = NSLocalizedString(@"LOCALIZE_SELECTION_BAR_BUTTON", nil);
+    return [self initWithTitle:title style:UIBarButtonItemStylePlain target:target action:selector];
 }
 
 @end
