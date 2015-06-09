@@ -33,7 +33,7 @@
 
 #pragma mark - Selections
 
-@property (readwrite, strong, nonatomic) SRSelection *selectedSelection;
+@property (readwrite, strong, nonatomic) SRSelection *activeSelection;
 
 - (SRSelection *)createSelectionWithTitle:(NSString *)title;
 

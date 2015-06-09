@@ -22,9 +22,9 @@
         <relationship name="selections" toMany="YES" deletionRule="Nullify" destinationEntity="SRSelection" inverseName="images" inverseEntity="SRSelection" syncable="YES"/>
     </entity>
     <entity name="SRSelection" representedClassName="SRSelection" syncable="YES">
+        <attribute name="active" attributeType="Boolean" indexed="YES" syncable="YES"/>
         <attribute name="creationDate" attributeType="Date" syncable="YES"/>
         <attribute name="modificationDate" attributeType="Date" syncable="YES"/>
-        <attribute name="selected" attributeType="Boolean" indexed="YES" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <relationship name="images" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SRImage" inverseName="selections" inverseEntity="SRImage" syncable="YES"/>
     </entity>

@@ -65,7 +65,7 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:subtitleFormat, selection.images.count];
     }
     
-    cell.accessoryType = selection.isSelected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    cell.accessoryType = selection.isActive ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     
     return cell;
 }

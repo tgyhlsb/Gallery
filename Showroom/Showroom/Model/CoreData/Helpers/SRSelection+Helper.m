@@ -10,12 +10,12 @@
 
 @implementation SRSelection (Helper)
 
-- (BOOL)isSelected {
-    return [self.selected boolValue];
+- (BOOL)isActive {
+    return [self.active boolValue];
 }
 
-- (void)setIsSelected:(BOOL)selected {
-    self.selected = @(selected);
+- (void)setIsActive:(BOOL)active {
+    self.active = @(active);
 }
 
 @end

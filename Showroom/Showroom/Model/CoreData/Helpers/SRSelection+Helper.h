@@ -10,7 +10,7 @@
 
 @interface SRSelection (Helper)
 
-- (BOOL)isSelected;
-- (void)setIsSelected:(BOOL)selected;
+- (BOOL)isActive;
+- (void)setIsActive:(BOOL)active;
 
 @end

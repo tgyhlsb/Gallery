@@ -15,7 +15,7 @@
 @dynamic title;
 @dynamic creationDate;
 @dynamic modificationDate;
-@dynamic selected;
+@dynamic active;
 @dynamic images;
 
 @end

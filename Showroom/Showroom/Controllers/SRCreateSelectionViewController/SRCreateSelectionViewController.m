@@ -42,7 +42,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (!textField.text.length) return NO;
     
-    SRSelection *selection = [[SRModel defaultModel] createSelectionWithTitle:textField.text];
+    [[SRModel defaultModel] createSelectionWithTitle:textField.text];
     [self.navigationController popViewControllerAnimated:YES];
     
     return YES;

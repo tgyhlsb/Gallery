@@ -16,7 +16,7 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSDate * creationDate;
 @property (nonatomic, retain) NSDate * modificationDate;
-@property (nonatomic, retain) NSNumber * selected;
+@property (nonatomic, retain) NSNumber * active;
 @property (nonatomic, retain) NSOrderedSet *images;
 @end
 

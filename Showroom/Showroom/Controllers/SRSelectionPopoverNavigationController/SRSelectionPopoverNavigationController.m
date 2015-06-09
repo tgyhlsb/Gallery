@@ -55,7 +55,7 @@
 #pragma mark - SRSelectionsTableViewControllerDelegate
 
 - (void)selectionsTableViewController:(SRSelectionsTableViewController *)controller didSelectSelection:(SRSelection *)selection {
-    [[SRModel defaultModel] setSelectedSelection:selection];
+    [[SRModel defaultModel] setActiveSelection:selection];
     
     if (self.closeBlock) {
         self.closeBlock();

@@ -117,11 +117,11 @@ static SRModel *defaultModel;
 
 #pragma mark - Selections
 
-- (void)setSelectedSelection:(SRSelection *)selectedSelection {
-    if (![_selectedSelection isEqual:selectedSelection]) {
-        [_selectedSelection setIsSelected:NO];
-        _selectedSelection = selectedSelection;
-        [_selectedSelection setIsSelected:YES];
+- (void)setActiveSelection:(SRSelection *)activeSelection {
+    if (![_activeSelection isEqual:activeSelection]) {
+        [_activeSelection setIsActive:NO];
+        _activeSelection = activeSelection;
+        [_activeSelection setIsActive:YES];
     }
 }
 
