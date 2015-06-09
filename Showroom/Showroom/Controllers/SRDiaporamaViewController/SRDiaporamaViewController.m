@@ -68,8 +68,13 @@
 
 - (void)selectionPickerHandler {
     SRSelectionPopoverNavigationController *contentViewController = [SRSelectionPopoverNavigationController new];
-    UIPopoverController *popOverController = [[UIPopoverController alloc] initWithContentViewController:contentViewController];
-    [popOverController presentPopoverFromBarButtonItem:self.selectionPickerButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:contentViewController];
+    
+    [contentViewController setCloseBlock:^{
+        [popoverController dismissPopoverAnimated:YES];
+    }];
+    
+    [popoverController presentPopoverFromBarButtonItem:self.selectionPickerButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark - Page view controller

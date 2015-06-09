@@ -117,6 +117,14 @@ static SRModel *defaultModel;
 
 #pragma mark - Selections
 
+- (void)setSelectedSelection:(SRSelection *)selectedSelection {
+    if (![_selectedSelection isEqual:selectedSelection]) {
+        [_selectedSelection setIsSelected:NO];
+        _selectedSelection = selectedSelection;
+        [_selectedSelection setIsSelected:YES];
+    }
+}
+
 - (SRSelection *)createSelectionWithTitle:(NSString *)title {
     SRSelection *selection = [SRSelection selectionWithTitle:title inManagedObjectContext:self.managedObjectContext];
     [self saveContext];

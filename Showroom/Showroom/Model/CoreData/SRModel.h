@@ -13,7 +13,7 @@
 #import "SRFile+Helper.h"
 #import "SRDirectory+Helper.h"
 #import "SRImage+Helper.h"
-#import "SRSelection.h"
+#import "SRSelection+Helper.h"
 
 @interface SRModel : NSObject
 
@@ -32,6 +32,9 @@
 - (NSFetchedResultsController *)fetchedResultControllerForSelections;
 
 #pragma mark - Selections
+
+@property (readwrite, strong, nonatomic) SRSelection *selectedSelection;
+
 - (SRSelection *)createSelectionWithTitle:(NSString *)title;
 
 

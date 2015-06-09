@@ -15,7 +15,10 @@
 // Views
 #import "SRAddSelectionBarButton.h"
 
-@interface SRSelectionPopoverNavigationController ()
+// Model
+#import "SRModel.h"
+
+@interface SRSelectionPopoverNavigationController () <SRSelectionsTableViewControllerDelegate>
 
 @end
 
@@ -29,6 +32,7 @@
     SRSelectionPopoverNavigationController *navigationController = [[SRSelectionPopoverNavigationController alloc] initWithRootViewController:rootViewController];
     
     rootViewController.title = NSLocalizedString(@"LOCALIZE_SELECTION_LIST_TITLE", nil);
+    rootViewController.delegate = navigationController;
     rootViewController.navigationItem.rightBarButtonItem = [[SRAddSelectionBarButton alloc] initWithTarget:navigationController
                                                                                                     action:@selector(addSelectionButtonHandler)];
     
@@ -46,6 +50,17 @@
 - (void)addSelectionButtonHandler {
     SRCreateSelectionViewController *destination = [SRCreateSelectionViewController new];
     [self pushViewController:destination animated:YES];
+}
+
+#pragma mark - SRSelectionsTableViewControllerDelegate
+
+- (void)selectionsTableViewController:(SRSelectionsTableViewController *)controller didSelectSelection:(SRSelection *)selection {
+    [[SRModel defaultModel] setSelectedSelection:selection];
+    
+    if (self.closeBlock) {
+        self.closeBlock();
+        self.closeBlock = nil;
+    }
 }
 
 @end

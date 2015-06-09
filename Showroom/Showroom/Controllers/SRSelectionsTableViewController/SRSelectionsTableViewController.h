@@ -8,6 +8,19 @@
 
 #import "UICoreDataTableViewController.h"
 
+// Model
+#import "SRSelection.h"
+
+@protocol SRSelectionsTableViewControllerDelegate;
+
 @interface SRSelectionsTableViewController : UICoreDataTableViewController
+
+@property (weak, nonatomic) id<SRSelectionsTableViewControllerDelegate> delegate;
+
+@end
+
+@protocol SRSelectionsTableViewControllerDelegate <NSObject>
+
+- (void)selectionsTableViewController:(SRSelectionsTableViewController *)controller didSelectSelection:(SRSelection *)selection;
 
 @end

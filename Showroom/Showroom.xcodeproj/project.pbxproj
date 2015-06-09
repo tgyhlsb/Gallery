@@ -58,6 +58,7 @@
 		5AB7B6811B276E31002402E2 /* SRCreateSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB7B67F1B276E31002402E2 /* SRCreateSelectionViewController.xib */; };
 		5AB7B6851B276FF8002402E2 /* SRSelection+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B6841B276FF8002402E2 /* SRSelection+Serializer.m */; };
 		5AB7B6881B27853E002402E2 /* SRSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B6871B27853E002402E2 /* SRSelection.m */; };
+		5AB7B68B1B2787EE002402E2 /* SRSelection+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B68A1B2787EE002402E2 /* SRSelection+Helper.m */; };
 		5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDB981B06C3F700DB572E /* SRHomeViewController.m */; };
 		5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */; };
 		5AECDBA11B06C90600DB572E /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDBA01B06C90600DB572E /* localization.sh */; };
@@ -173,6 +174,8 @@
 		5AB7B6841B276FF8002402E2 /* SRSelection+Serializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRSelection+Serializer.m"; sourceTree = "<group>"; };
 		5AB7B6861B27853E002402E2 /* SRSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSelection.h; sourceTree = "<group>"; };
 		5AB7B6871B27853E002402E2 /* SRSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSelection.m; sourceTree = "<group>"; };
+		5AB7B6891B2787EE002402E2 /* SRSelection+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRSelection+Helper.h"; sourceTree = "<group>"; };
+		5AB7B68A1B2787EE002402E2 /* SRSelection+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRSelection+Helper.m"; sourceTree = "<group>"; };
 		5AECDB971B06C3F700DB572E /* SRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRHomeViewController.h; path = SRHomeViewController/SRHomeViewController.h; sourceTree = "<group>"; };
 		5AECDB981B06C3F700DB572E /* SRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRHomeViewController.m; path = SRHomeViewController/SRHomeViewController.m; sourceTree = "<group>"; };
 		5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRHomeViewController.xib; path = SRHomeViewController/SRHomeViewController.xib; sourceTree = "<group>"; };
@@ -389,6 +392,8 @@
 				5A4D934F1B06803E0008EF93 /* SRDirectory+Helper.m */,
 				5A4D93511B0680F00008EF93 /* SRFile+Helper.h */,
 				5A4D93521B0680F00008EF93 /* SRFile+Helper.m */,
+				5AB7B6891B2787EE002402E2 /* SRSelection+Helper.h */,
+				5AB7B68A1B2787EE002402E2 /* SRSelection+Helper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -717,6 +722,7 @@
 				5A0E58E31B1F8FA800846031 /* SROperationProviderLocalSynchronization.m in Sources */,
 				5AECDBB91B07AF4800DB572E /* SRFile.m in Sources */,
 				5AB7B66F1B276562002402E2 /* SRImage.m in Sources */,
+				5AB7B68B1B2787EE002402E2 /* SRSelection+Helper.m in Sources */,
 				5A4D93781B0690A60008EF93 /* SRFilesTableViewController.m in Sources */,
 				5A4D93501B06803E0008EF93 /* SRDirectory+Helper.m in Sources */,
 				5A4D93741B068FC30008EF93 /* UICoreDataTableViewController.m in Sources */,

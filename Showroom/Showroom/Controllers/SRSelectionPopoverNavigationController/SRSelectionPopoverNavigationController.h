@@ -10,4 +10,8 @@
 
 @interface SRSelectionPopoverNavigationController : UINavigationController
 
+@property (copy) void (^closeBlock)(void);
+
+- (void)setCloseBlock:(void (^)(void))closeBlock;
+
 @end

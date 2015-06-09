@@ -65,7 +65,20 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:subtitleFormat, selection.images.count];
     }
     
+    cell.accessoryType = selection.isSelected ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.delegate respondsToSelector:@selector(selectionsTableViewController:didSelectSelection:)]) {
+        SRSelection *selection = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self.delegate selectionsTableViewController:self didSelectSelection:selection];
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
