@@ -10,6 +10,7 @@
 
 // Controllers
 #import "SRSelectionsTableViewController.h"
+#import "SRCreateSelectionViewController.h"
 
 // Views
 #import "SRAddSelectionBarButton.h"
@@ -43,7 +44,8 @@
 #pragma mark - Handlers
 
 - (void)addSelectionButtonHandler {
-    
+    SRCreateSelectionViewController *destination = [SRCreateSelectionViewController new];
+    [self pushViewController:destination animated:YES];
 }
 
 @end

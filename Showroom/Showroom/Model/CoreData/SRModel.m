@@ -11,6 +11,7 @@
 // Models
 #import "SRFile+Serializer.h"
 #import "SRDirectory.h"
+#import "SRSelection+Serializer.h"
 
 @implementation SRModel
 
@@ -47,6 +48,12 @@ static SRModel *defaultModel;
 
 - (NSSortDescriptor *)parentSortDescriptor {
     return[NSSortDescriptor sortDescriptorWithKey:@"parent.path"
+                                        ascending:YES
+                                         selector:@selector(compare:)];
+}
+
+- (NSSortDescriptor *)selectionSortDescriptor {
+    return[NSSortDescriptor sortDescriptorWithKey:@"modificationDate"
                                         ascending:YES
                                          selector:@selector(compare:)];
 }
@@ -95,6 +102,27 @@ static SRModel *defaultModel;
                                                           cacheName:nil];
 }
 
+
+- (NSFetchedResultsController *)fetchedResultControllerForSelections {
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRSelection className]];
+    
+    request.sortDescriptors = @[[self selectionSortDescriptor]];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:self.managedObjectContext
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
+}
+
+#pragma mark - Selections
+
+- (SRSelection *)createSelectionWithTitle:(NSString *)title {
+    SRSelection *selection = [SRSelection selectionWithTitle:title inManagedObjectContext:self.managedObjectContext];
+    [self saveContext];
+    return selection;
+}
+
 #pragma mark - Core Data stack
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -139,7 +167,6 @@ static SRModel *defaultModel;
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         [self resetStore];
-        _persistentStoreCoordinator = [self persistentStoreCoordinator];
     }
     
     return _persistentStoreCoordinator;
@@ -168,6 +195,7 @@ static SRModel *defaultModel;
 - (void)resetStore {
     NSURL *storeURL = [self storeURL];
     [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+    _persistentStoreCoordinator = [self persistentStoreCoordinator];
 }
 
 #pragma mark - Core Data Saving support
@@ -180,8 +208,12 @@ static SRModel *defaultModel;
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            [self resetStore];
-            [self saveContext];
+            if (error.code == 0) { // Replace 0 by invalid model error code
+                [self resetStore];
+                [self saveContext];
+            } else {
+                abort();
+            }
         }
     }
 }

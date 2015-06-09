@@ -55,6 +55,9 @@
 		5AB7B6761B276867002402E2 /* SRSelectionPopoverNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B6741B276867002402E2 /* SRSelectionPopoverNavigationController.m */; };
 		5AB7B6771B276867002402E2 /* SRSelectionPopoverNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB7B6751B276867002402E2 /* SRSelectionPopoverNavigationController.xib */; };
 		5AB7B67B1B276973002402E2 /* SRAddSelectionBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B67A1B276973002402E2 /* SRAddSelectionBarButton.m */; };
+		5AB7B6801B276E31002402E2 /* SRCreateSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B67E1B276E31002402E2 /* SRCreateSelectionViewController.m */; };
+		5AB7B6811B276E31002402E2 /* SRCreateSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB7B67F1B276E31002402E2 /* SRCreateSelectionViewController.xib */; };
+		5AB7B6851B276FF8002402E2 /* SRSelection+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B6841B276FF8002402E2 /* SRSelection+Serializer.m */; };
 		5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDB981B06C3F700DB572E /* SRHomeViewController.m */; };
 		5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */; };
 		5AECDBA11B06C90600DB572E /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDBA01B06C90600DB572E /* localization.sh */; };
@@ -165,6 +168,11 @@
 		5AB7B6751B276867002402E2 /* SRSelectionPopoverNavigationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRSelectionPopoverNavigationController.xib; path = SRSelectionPopoverNavigationController/SRSelectionPopoverNavigationController.xib; sourceTree = "<group>"; };
 		5AB7B6791B276973002402E2 /* SRAddSelectionBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRAddSelectionBarButton.h; path = SRAddSelectionBarButton/SRAddSelectionBarButton.h; sourceTree = "<group>"; };
 		5AB7B67A1B276973002402E2 /* SRAddSelectionBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRAddSelectionBarButton.m; path = SRAddSelectionBarButton/SRAddSelectionBarButton.m; sourceTree = "<group>"; };
+		5AB7B67D1B276E31002402E2 /* SRCreateSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRCreateSelectionViewController.h; path = SRCreateSelectionViewController/SRCreateSelectionViewController.h; sourceTree = "<group>"; };
+		5AB7B67E1B276E31002402E2 /* SRCreateSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRCreateSelectionViewController.m; path = SRCreateSelectionViewController/SRCreateSelectionViewController.m; sourceTree = "<group>"; };
+		5AB7B67F1B276E31002402E2 /* SRCreateSelectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRCreateSelectionViewController.xib; path = SRCreateSelectionViewController/SRCreateSelectionViewController.xib; sourceTree = "<group>"; };
+		5AB7B6831B276FF8002402E2 /* SRSelection+Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRSelection+Serializer.h"; sourceTree = "<group>"; };
+		5AB7B6841B276FF8002402E2 /* SRSelection+Serializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRSelection+Serializer.m"; sourceTree = "<group>"; };
 		5AECDB971B06C3F700DB572E /* SRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRHomeViewController.h; path = SRHomeViewController/SRHomeViewController.h; sourceTree = "<group>"; };
 		5AECDB981B06C3F700DB572E /* SRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRHomeViewController.m; path = SRHomeViewController/SRHomeViewController.m; sourceTree = "<group>"; };
 		5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRHomeViewController.xib; path = SRHomeViewController/SRHomeViewController.xib; sourceTree = "<group>"; };
@@ -281,6 +289,7 @@
 				5A4D93731B068FC30008EF93 /* UICoreDataTableViewController.m */,
 				5A4D938F1B069ABF0008EF93 /* UICoreDataCollectionViewController.h */,
 				5A4D93901B069ABF0008EF93 /* UICoreDataCollectionViewController.m */,
+				5AB7B6821B276E36002402E2 /* SRCreateSelectionViewController */,
 				5AB7B6781B27686B002402E2 /* SRSelectionPopoverNavigationController */,
 				5AB7B66C1B276142002402E2 /* SRSelectionsTableViewController */,
 				5AECDBB01B07A7BA00DB572E /* SRDiaporamaViewController */,
@@ -393,6 +402,8 @@
 				5A4D93381B067B3C0008EF93 /* SRImage+Serializer.m */,
 				5A4D935D1B068A0B0008EF93 /* SRFile+Serializer.h */,
 				5A4D935E1B068A0B0008EF93 /* SRFile+Serializer.m */,
+				5AB7B6831B276FF8002402E2 /* SRSelection+Serializer.h */,
+				5AB7B6841B276FF8002402E2 /* SRSelection+Serializer.m */,
 			);
 			path = Serializers;
 			sourceTree = "<group>";
@@ -551,6 +562,16 @@
 			name = SRAddSelectionBarButton;
 			sourceTree = "<group>";
 		};
+		5AB7B6821B276E36002402E2 /* SRCreateSelectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5AB7B67D1B276E31002402E2 /* SRCreateSelectionViewController.h */,
+				5AB7B67E1B276E31002402E2 /* SRCreateSelectionViewController.m */,
+				5AB7B67F1B276E31002402E2 /* SRCreateSelectionViewController.xib */,
+			);
+			name = SRCreateSelectionViewController;
+			sourceTree = "<group>";
+		};
 		5AECDB9C1B06C3FA00DB572E /* SRHomeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,6 +681,7 @@
 				5A4D92DE1B0673EC0008EF93 /* LaunchScreen.xib in Resources */,
 				5A4D93C61B06A13D0008EF93 /* SRCollectionReusableHeader.xib in Resources */,
 				5A4D93C41B06A13D0008EF93 /* SRCollectionReusableFooter.xib in Resources */,
+				5AB7B6811B276E31002402E2 /* SRCreateSelectionViewController.xib in Resources */,
 				5A4D93001B0676730008EF93 /* Localizable.strings in Resources */,
 				5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */,
 				5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */,
@@ -708,6 +730,7 @@
 				5A4D92CD1B0673EC0008EF93 /* main.m in Sources */,
 				5AB7B6721B276563002402E2 /* SRSelection.m in Sources */,
 				5AB7B67B1B276973002402E2 /* SRAddSelectionBarButton.m in Sources */,
+				5AB7B6801B276E31002402E2 /* SRCreateSelectionViewController.m in Sources */,
 				5A4D93D71B06AB7F0008EF93 /* SRImageViewController.m in Sources */,
 				5A0E58E11B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m in Sources */,
 				5A4D935F1B068A0B0008EF93 /* SRFile+Serializer.m in Sources */,
@@ -719,6 +742,7 @@
 				5A0E58E21B1F8FA800846031 /* SROperationProviderLocalLoadImages.m in Sources */,
 				5A4D93441B067B3C0008EF93 /* SRModel.m in Sources */,
 				5A4D93471B067B910008EF93 /* SRNotificationCenter.m in Sources */,
+				5AB7B6851B276FF8002402E2 /* SRSelection+Serializer.m in Sources */,
 				5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */,
 				5A4D93C31B06A13D0008EF93 /* SRCollectionReusableFooter.m in Sources */,
 				5A4D93C21B06A13D0008EF93 /* SRCollectionReusableView.m in Sources */,
