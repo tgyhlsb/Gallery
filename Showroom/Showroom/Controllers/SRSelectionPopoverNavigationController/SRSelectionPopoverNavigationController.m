@@ -27,6 +27,7 @@
     
     SRSelectionPopoverNavigationController *navigationController = [[SRSelectionPopoverNavigationController alloc] initWithRootViewController:rootViewController];
     
+    rootViewController.title = NSLocalizedString(@"LOCALIZE_SELECTION_LIST_TITLE", nil);
     rootViewController.navigationItem.rightBarButtonItem = [[SRAddSelectionBarButton alloc] initWithTarget:navigationController
                                                                                                     action:@selector(addSelectionButtonHandler)];
     
