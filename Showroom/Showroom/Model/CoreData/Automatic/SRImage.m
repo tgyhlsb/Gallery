@@ -7,7 +7,6 @@
 //
 
 #import "SRImage.h"
-#import "NSManagedObject.h"
 
 
 @implementation SRImage
