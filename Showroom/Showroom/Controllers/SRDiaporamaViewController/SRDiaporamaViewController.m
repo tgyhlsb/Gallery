@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultController;
+@property (strong, nonatomic) SRSelectionPickerBarButton *selectionPickerButton;
 
 @end
 
@@ -49,8 +50,8 @@
     [self initializePageViewController];
     [self setPageViewControllerForImage:self.selectedImage];
     
-    SRSelectionPickerBarButton *selectionPickerButton = [[SRSelectionPickerBarButton alloc] initWithTarget:self action:@selector(selectionPickerHandler)];
-    self.toolbarItems = @[selectionPickerButton];
+    self.selectionPickerButton = [[SRSelectionPickerBarButton alloc] initWithTarget:self action:@selector(selectionPickerHandler)];
+    self.toolbarItems = @[self.selectionPickerButton];
 }
 
 #pragma mark - Getters & Setters
