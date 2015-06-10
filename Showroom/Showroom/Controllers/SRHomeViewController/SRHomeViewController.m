@@ -29,7 +29,6 @@
 @property (strong, nonatomic) UIBarButtonItem *homeBarButton;
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *iPadProviderButton;
 @property (weak, nonatomic) IBOutlet UIButton *dropboxProviderButton;
 
@@ -55,6 +54,7 @@
     [self initializeProviders];
     [self initializeManagers];
     
+    [self setUpFetchedResultController];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -177,6 +177,39 @@
 
 - (IBAction)dropboxProviderButtonHandler:(UIButton *)sender {
     self.showTableView = !self.showTableView;
+}
+
+#pragma mark - UICoreDataTableViewController
+
+- (void)setUpFetchedResultController {
+    SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
+    self.fetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForDirectoriesInDirectoryRecursively:directory];
+}
+
+#pragma mark UITableViewDataSource
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *identifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    
+    SRDirectory *directory = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = directory.name;
+    
+    return cell;
+}
+
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    SRDirectory *directory = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    SRImageNavigationController *destination = [SRImageNavigationController newWithDirectory:directory];
+    destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
+    [self presentViewController:destination animated:YES completion:nil];
 }
 
 @end

@@ -24,7 +24,8 @@
 }
 
 - (id)init {
-    self = [super initWithStyle:UITableViewStylePlain];
+//    self = [super initWithStyle:UITableViewStylePlain];
+    self = [super init];
     if (self) {
     }
     return self;

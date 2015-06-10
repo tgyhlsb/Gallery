@@ -35,7 +35,8 @@
 }
 
 - (id)initWithDirectory:(SRDirectory *)directory {
-    self = [super initWithStyle:UITableViewStylePlain];
+    //    self = [super initWithStyle:UITableViewStylePlain];
+    self = [super init];
     if (self) {
         self.directory = directory;
     }
