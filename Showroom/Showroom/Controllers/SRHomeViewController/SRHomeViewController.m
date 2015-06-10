@@ -55,6 +55,8 @@
     [self initializeManagers];
     
     [self setUpFetchedResultController];
+    
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -80,6 +82,10 @@
 }
 
 #pragma mark - Initilization
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)initializeManagers {
     [[SRModel defaultModel] fetchActiveSelection];
