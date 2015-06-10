@@ -12,6 +12,7 @@
 		5A07EDB61B28C4CC00BA875E /* SRDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDB51B28C4CC00BA875E /* SRDirectory.m */; };
 		5A07EDB91B28C4CC00BA875E /* SRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDB81B28C4CC00BA875E /* SRImage.m */; };
 		5A07EDBC1B28C4CC00BA875E /* SRSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDBB1B28C4CC00BA875E /* SRSelection.m */; };
+		5A07EDC11B28CD8900BA875E /* MyShowroom.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EDC01B28CD8900BA875E /* MyShowroom.png */; };
 		5A0E58E11B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DA1B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m */; };
 		5A0E58E21B1F8FA800846031 /* SROperationProviderLocalLoadImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DC1B1F8FA800846031 /* SROperationProviderLocalLoadImages.m */; };
 		5A0E58E31B1F8FA800846031 /* SROperationProviderLocalSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DE1B1F8FA800846031 /* SROperationProviderLocalSynchronization.m */; };
@@ -89,6 +90,7 @@
 		5A07EDB81B28C4CC00BA875E /* SRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRImage.m; sourceTree = "<group>"; };
 		5A07EDBA1B28C4CC00BA875E /* SRSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSelection.h; sourceTree = "<group>"; };
 		5A07EDBB1B28C4CC00BA875E /* SRSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSelection.m; sourceTree = "<group>"; };
+		5A07EDC01B28CD8900BA875E /* MyShowroom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyShowroom.png; sourceTree = "<group>"; };
 		5A0E58D91B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationProviderLocalCreateThumbnails.h; sourceTree = "<group>"; };
 		5A0E58DA1B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SROperationProviderLocalCreateThumbnails.m; sourceTree = "<group>"; };
 		5A0E58DB1B1F8FA800846031 /* SROperationProviderLocalLoadImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationProviderLocalLoadImages.h; sourceTree = "<group>"; };
@@ -219,6 +221,14 @@
 			name = SRAddAndRemoveSelectionBarButton;
 			sourceTree = "<group>";
 		};
+		5A07EDBD1B28CB3200BA875E /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5A07EDC01B28CD8900BA875E /* MyShowroom.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		5A0E58D81B1F8FA800846031 /* Provider local */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +272,7 @@
 				5A4D92F51B0675B40008EF93 /* Model */,
 				5A4D92F31B0675B40008EF93 /* Controllers */,
 				5A4D92F91B0675B40008EF93 /* Views */,
+				5A07EDBD1B28CB3200BA875E /* Images */,
 				5A4D92DA1B0673EC0008EF93 /* Images.xcassets */,
 				5A4D92DC1B0673EC0008EF93 /* LaunchScreen.xib */,
 				5A4D92CA1B0673EC0008EF93 /* Supporting Files */,
@@ -700,6 +711,7 @@
 				5A4D93C61B06A13D0008EF93 /* SRCollectionReusableHeader.xib in Resources */,
 				5A4D93C41B06A13D0008EF93 /* SRCollectionReusableFooter.xib in Resources */,
 				5AB7B6811B276E31002402E2 /* SRCreateSelectionViewController.xib in Resources */,
+				5A07EDC11B28CD8900BA875E /* MyShowroom.png in Resources */,
 				5A4D93001B0676730008EF93 /* Localizable.strings in Resources */,
 				5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */,
 				5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */,

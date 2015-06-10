@@ -43,6 +43,7 @@
     [self initializeView];
     [self initializeProviders];
     [self initializeManagers];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -62,6 +63,28 @@
     localProvider.autoUpdate = YES;
 }
 
+- (void)initializeView {
+    self.view.backgroundColor = [UIColor colorWithRed:0.14f green:0.45f blue:0.65f alpha:1.00f];
+    
+    NSString *fileTitle = NSLocalizedString(@"LOCALIZE_HOME_BUTTON_FILE_LIST", nil);
+    [self.fileListInterfaceButton setTitle:fileTitle forState:UIControlStateNormal];
+    [self.fileListInterfaceButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.fileListInterfaceButton.hidden = YES;
+    
+    NSString *imageTitle = NSLocalizedString(@"LOCALIZE_HOME_BUTTON_IMAGE_COLLECTION", nil);
+    [self.imageCollectionInterfaceButton setTitle:imageTitle forState:UIControlStateNormal];
+    [self.imageCollectionInterfaceButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    NSString *syncTitle = NSLocalizedString(@"LOCALIZE_HOME_BUTTON_SYNCHRONIZE", nil);
+    [self.forceReloadButton setTitle:syncTitle forState:UIControlStateNormal];
+    [self.forceReloadButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    NSString *commentText = NSLocalizedString(@"LOCALIZE_HOME_INFO_FILE_UPDATE", nil);
+    [self.commentLabel setText:commentText];
+    self.commentLabel.hidden = YES;
+    self.commentLabel.textColor = [UIColor grayColor];
+}
+
 #pragma mark - Getters & Setters
 
 - (UIBarButtonItem *)homeBarButton {
@@ -70,24 +93,6 @@
         _homeBarButton = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:@selector(homeBarButtonHandler)];
     }
     return _homeBarButton;
-}
-
-#pragma mark - View methods
-
-- (void)initializeView {
-    NSString *fileTitle = NSLocalizedString(@"LOCALIZE_HOME_BUTTON_FILE_LIST", nil);
-    [self.fileListInterfaceButton setTitle:fileTitle forState:UIControlStateNormal];
-    
-    NSString *imageTitle = NSLocalizedString(@"LOCALIZE_HOME_BUTTON_IMAGE_COLLECTION", nil);
-    [self.imageCollectionInterfaceButton setTitle:imageTitle forState:UIControlStateNormal];
-    [self.fileListInterfaceButton setTitle:fileTitle forState:UIControlStateNormal];
-    
-    NSString *syncTitle = NSLocalizedString(@"LOCALIZE_HOME_BUTTON_SYNCHRONIZE", nil);
-    [self.forceReloadButton setTitle:syncTitle forState:UIControlStateNormal];
-    
-    NSString *commentText = NSLocalizedString(@"LOCALIZE_HOME_INFO_FILE_UPDATE", nil);
-    [self.commentLabel setText:commentText];
-    self.commentLabel.hidden = YES;
 }
 
 #pragma mark - Handlers 
