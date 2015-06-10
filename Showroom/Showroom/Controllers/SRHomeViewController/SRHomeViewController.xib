@@ -8,10 +8,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRHomeViewController">
             <connections>
-                <outlet property="commentLabel" destination="iPt-ji-aiU" id="ixz-El-xYS"/>
-                <outlet property="fileListInterfaceButton" destination="hQD-wv-uVm" id="ZuS-ok-qvC"/>
-                <outlet property="forceReloadButton" destination="1t4-yi-Unq" id="6Ov-sG-8VB"/>
-                <outlet property="imageCollectionInterfaceButton" destination="QUo-2e-Iab" id="GNq-1Z-0Ic"/>
+                <outlet property="dropboxProviderButton" destination="gTv-zq-WEz" id="pVc-iq-9Sw"/>
+                <outlet property="iPadProviderButton" destination="Cn3-7D-uxa" id="cwT-Nj-1gq"/>
+                <outlet property="mainView" destination="rDo-EL-jBK" id="bYH-0v-mBM"/>
+                <outlet property="tableView" destination="Gue-y0-AU2" id="GAI-l6-8V3"/>
+                <outlet property="tableViewLeftConstraint" destination="Rdx-Ro-8b3" id="mfo-nO-tgV"/>
+                <outlet property="tableViewWidthConstraint" destination="4Of-3R-qyq" id="fCh-cT-c8O"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,62 +22,77 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQD-wv-uVm">
-                    <rect key="frame" x="277" y="285" width="46" height="30"/>
-                    <state key="normal" title="Button">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="fileListInterfaceButtonHandler:" destination="-1" eventType="touchUpInside" id="Dhd-C2-gAo"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QUo-2e-Iab">
-                    <rect key="frame" x="277" y="471.5" width="46" height="30"/>
-                    <state key="normal" title="Button">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="imageCollectionInterfaceButtonHandler:" destination="-1" eventType="touchUpInside" id="sXR-8T-ShO"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPt-ji-aiU">
-                    <rect key="frame" x="279" y="559.5" width="42" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1t4-yi-Unq">
-                    <rect key="frame" x="277" y="521.5" width="46" height="30"/>
-                    <state key="normal" title="Button">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="forceReloadButtonHandler:" destination="-1" eventType="touchUpInside" id="TdN-8u-ey6"/>
-                    </connections>
-                </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyShowroom.png" translatesAutoresizingMaskIntoConstraints="NO" id="3da-nL-ZoY">
-                    <rect key="frame" x="200" y="200" width="200" height="200"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gue-y0-AU2">
+                    <rect key="frame" x="20" y="0.0" width="150" height="600"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="3da-nL-ZoY" secondAttribute="height" multiplier="1:1" id="ETd-sa-oH4"/>
+                        <constraint firstAttribute="width" constant="150" id="4Of-3R-qyq"/>
                     </constraints>
-                </imageView>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDo-EL-jBK">
+                    <rect key="frame" x="170" y="0.0" width="430" height="600"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyShowroom.png" translatesAutoresizingMaskIntoConstraints="NO" id="Whn-3a-QNf">
+                            <rect key="frame" x="100" y="185" width="230" height="230"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Whn-3a-QNf" secondAttribute="height" multiplier="1:1" id="2Ay-8u-Uqr"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="sPP-kG-ea1"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cn3-7D-uxa">
+                            <rect key="frame" x="140" y="495" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="0Hk-Xn-qNj"/>
+                                <constraint firstAttribute="width" constant="50" id="U5M-vR-4Pf"/>
+                            </constraints>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="iPadProviderButtonHandler:" destination="-1" eventType="touchUpInside" id="xWs-cr-9Ue"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTv-zq-WEz">
+                            <rect key="frame" x="240" y="495" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="88n-rd-fqD"/>
+                                <constraint firstAttribute="height" constant="50" id="hzo-S5-GFJ"/>
+                            </constraints>
+                            <state key="normal" title="Button">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="dropboxProviderButtonHandler:" destination="-1" eventType="touchUpInside" id="VNa-VX-W0n"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.4196078479" green="0.80000001190000003" blue="0.83529412749999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="Whn-3a-QNf" secondAttribute="centerX" id="0pR-Cm-xWS"/>
+                        <constraint firstItem="Cn3-7D-uxa" firstAttribute="top" secondItem="Whn-3a-QNf" secondAttribute="bottom" constant="80" id="2Wd-P4-wfa"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Whn-3a-QNf" secondAttribute="trailing" constant="100" id="Di9-rZ-m0d"/>
+                        <constraint firstItem="Whn-3a-QNf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rDo-EL-jBK" secondAttribute="top" constant="150" id="F89-GM-7ww"/>
+                        <constraint firstItem="Cn3-7D-uxa" firstAttribute="centerY" secondItem="gTv-zq-WEz" secondAttribute="centerY" id="MM1-bh-7UW"/>
+                        <constraint firstAttribute="centerX" secondItem="Cn3-7D-uxa" secondAttribute="centerX" constant="50" id="T2q-Bo-Eky"/>
+                        <constraint firstAttribute="centerY" secondItem="Whn-3a-QNf" secondAttribute="centerY" id="Zgb-6Y-g1O"/>
+                        <constraint firstAttribute="centerX" secondItem="gTv-zq-WEz" secondAttribute="centerX" constant="-50" id="aNV-dn-BG6"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="iPt-ji-aiU" secondAttribute="centerX" id="1Sl-24-YDk"/>
-                <constraint firstItem="1t4-yi-Unq" firstAttribute="top" secondItem="QUo-2e-Iab" secondAttribute="bottom" constant="20" id="1Vh-ub-Wag"/>
-                <constraint firstItem="3da-nL-ZoY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="200" id="5iu-D6-6DE"/>
-                <constraint firstAttribute="centerX" secondItem="hQD-wv-uVm" secondAttribute="centerX" id="CZU-ap-hga"/>
-                <constraint firstAttribute="centerY" secondItem="hQD-wv-uVm" secondAttribute="centerY" id="ELX-tD-rwJ"/>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3da-nL-ZoY" secondAttribute="trailing" constant="200" id="Q8k-cB-S9F"/>
-                <constraint firstItem="iPt-ji-aiU" firstAttribute="top" secondItem="1t4-yi-Unq" secondAttribute="bottom" constant="8" id="Xeb-Z4-fbu"/>
-                <constraint firstAttribute="centerY" secondItem="3da-nL-ZoY" secondAttribute="centerY" id="clF-sf-Vc3"/>
-                <constraint firstAttribute="bottom" secondItem="iPt-ji-aiU" secondAttribute="bottom" constant="20" id="d9x-rQ-M6j"/>
-                <constraint firstAttribute="centerX" secondItem="1t4-yi-Unq" secondAttribute="centerX" id="q9r-gq-ehv"/>
-                <constraint firstAttribute="centerX" secondItem="3da-nL-ZoY" secondAttribute="centerX" id="wwN-DQ-CuW"/>
-                <constraint firstAttribute="centerX" secondItem="QUo-2e-Iab" secondAttribute="centerX" id="xoc-gd-C9R"/>
+                <constraint firstItem="rDo-EL-jBK" firstAttribute="leading" secondItem="Gue-y0-AU2" secondAttribute="trailing" id="NKk-AF-pwj"/>
+                <constraint firstItem="Gue-y0-AU2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QKB-6a-SL9"/>
+                <constraint firstAttribute="bottom" secondItem="Gue-y0-AU2" secondAttribute="bottom" id="R2x-hH-HMJ"/>
+                <constraint firstItem="Gue-y0-AU2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Rdx-Ro-8b3"/>
+                <constraint firstAttribute="bottom" secondItem="rDo-EL-jBK" secondAttribute="bottom" id="tPe-UR-efB"/>
+                <constraint firstAttribute="trailing" secondItem="rDo-EL-jBK" secondAttribute="trailing" id="vnW-df-TGg"/>
+                <constraint firstItem="rDo-EL-jBK" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zdl-TR-w1g"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="169" y="322"/>
         </view>
     </objects>
     <resources>

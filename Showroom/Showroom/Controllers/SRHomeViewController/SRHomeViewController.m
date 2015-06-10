@@ -28,6 +28,17 @@
 
 @property (strong, nonatomic) UIBarButtonItem *homeBarButton;
 
+@property (weak, nonatomic) IBOutlet UIView *mainView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *iPadProviderButton;
+@property (weak, nonatomic) IBOutlet UIButton *dropboxProviderButton;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewLeftConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewWidthConstraint;
+
+@property (nonatomic) BOOL showTableView;
+
+
 @end
 
 @implementation SRHomeViewController
@@ -51,6 +62,19 @@
     self.commentLabel.hidden = ![[SRProviderLocal defaultProvider] didUpdateAfterLaunch];
 }
 
+- (void)viewWillLayoutSubviews {
+    
+    self.tableViewWidthConstraint.constant = 300;
+    
+    if (self.showTableView) {
+        self.tableViewLeftConstraint.constant = 20;
+    } else {
+        self.tableViewLeftConstraint.constant = - 300;
+    }
+    
+    [super viewWillLayoutSubviews];
+}
+
 #pragma mark - Initilization
 
 - (void)initializeManagers {
@@ -65,6 +89,8 @@
 
 - (void)initializeView {
     self.view.backgroundColor = [UIColor colorWithRed:0.14f green:0.45f blue:0.65f alpha:1.00f];
+    self.mainView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
     
     NSString *fileTitle = NSLocalizedString(@"LOCALIZE_HOME_BUTTON_FILE_LIST", nil);
     [self.fileListInterfaceButton setTitle:fileTitle forState:UIControlStateNormal];
@@ -83,6 +109,24 @@
     [self.commentLabel setText:commentText];
     self.commentLabel.hidden = YES;
     self.commentLabel.textColor = [UIColor grayColor];
+    
+    
+//    *********************
+//    
+//    Provider Buttons
+//
+//    *********************
+    
+    UIColor *providerButtonColor = [UIColor whiteColor];
+    
+    
+    UIImage *iPadProviderImage = [UIImage imageNamed:@"provider-ipad.png"];
+    [self.iPadProviderButton setImage:iPadProviderImage forState:UIControlStateNormal];
+    [self.iPadProviderButton setTintColor:providerButtonColor];
+    
+    UIImage *dropboxProviderImage = [UIImage imageNamed:@"provider-dropbox.png"];
+    [self.dropboxProviderButton setImage:dropboxProviderImage forState:UIControlStateNormal];
+    [self.dropboxProviderButton setTintColor:providerButtonColor];
 }
 
 #pragma mark - Getters & Setters
@@ -93,6 +137,13 @@
         _homeBarButton = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:@selector(homeBarButtonHandler)];
     }
     return _homeBarButton;
+}
+
+- (void)setShowTableView:(BOOL)showTableView {
+    if (_showTableView != showTableView) {
+        _showTableView = showTableView;
+        [self.view setNeedsLayout];
+    }
 }
 
 #pragma mark - Handlers 
@@ -118,6 +169,14 @@
 - (IBAction)forceReloadButtonHandler:(UIButton *)sender {
     [[SRProviderLocal defaultProvider] reloadFiles];
     self.commentLabel.hidden = NO;
+}
+
+- (IBAction)iPadProviderButtonHandler:(UIButton *)sender {
+    self.showTableView = !self.showTableView;
+}
+
+- (IBAction)dropboxProviderButtonHandler:(UIButton *)sender {
+    self.showTableView = !self.showTableView;
 }
 
 @end
