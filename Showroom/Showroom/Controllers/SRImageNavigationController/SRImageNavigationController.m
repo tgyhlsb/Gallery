@@ -28,7 +28,7 @@
     SRImagesCollectionViewController *rootController = [SRImagesCollectionViewController newWithDirectory:directory];
     self = [super initWithRootViewController:rootController];
     if (self) {
-        self.toolbarHidden = NO;
+        self.toolbarHidden = YES;
     }
     return self;
 }

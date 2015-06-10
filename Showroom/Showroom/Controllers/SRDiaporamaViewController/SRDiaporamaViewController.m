@@ -52,7 +52,7 @@
     [self setPageViewControllerForImage:self.selectedImage];
     
     self.selectionPickerButton = [[SRSelectionPickerBarButton alloc] initWithTarget:self action:@selector(selectionPickerHandler)];
-    self.toolbarItems = @[self.selectionPickerButton];
+    self.navigationItem.rightBarButtonItems = @[self.selectionPickerButton];
 }
 
 #pragma mark - Getters & Setters
