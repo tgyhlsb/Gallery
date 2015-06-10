@@ -47,6 +47,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1t4-yi-Unq">
                     <rect key="frame" x="277" y="521.5" width="46" height="30"/>
                     <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -60,13 +61,14 @@
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="iPt-ji-aiU" secondAttribute="centerX" id="1Sl-24-YDk"/>
                 <constraint firstItem="1t4-yi-Unq" firstAttribute="top" secondItem="QUo-2e-Iab" secondAttribute="bottom" constant="20" id="1Vh-ub-Wag"/>
-                <constraint firstItem="3da-nL-ZoY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="200" id="5iu-D6-6DE"/>
+                <constraint firstItem="3da-nL-ZoY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="200" id="5iu-D6-6DE"/>
                 <constraint firstAttribute="centerX" secondItem="hQD-wv-uVm" secondAttribute="centerX" id="CZU-ap-hga"/>
                 <constraint firstAttribute="centerY" secondItem="hQD-wv-uVm" secondAttribute="centerY" id="ELX-tD-rwJ"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3da-nL-ZoY" secondAttribute="trailing" constant="200" id="Q8k-cB-S9F"/>
                 <constraint firstItem="iPt-ji-aiU" firstAttribute="top" secondItem="1t4-yi-Unq" secondAttribute="bottom" constant="8" id="Xeb-Z4-fbu"/>
                 <constraint firstAttribute="centerY" secondItem="3da-nL-ZoY" secondAttribute="centerY" id="clF-sf-Vc3"/>
                 <constraint firstAttribute="bottom" secondItem="iPt-ji-aiU" secondAttribute="bottom" constant="20" id="d9x-rQ-M6j"/>
