@@ -2,7 +2,7 @@
 //  SRImage.h
 //  Showroom
 //
-//  Created by Tanguy Hélesbeux on 09/06/2015.
+//  Created by Tanguy Hélesbeux on 10/06/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "SRFile.h"
 
-@class NSManagedObject;
+@class SRSelection;
 
 @interface SRImage : SRFile
 
@@ -23,8 +23,8 @@
 
 @interface SRImage (CoreDataGeneratedAccessors)
 
-- (void)addSelectionsObject:(NSManagedObject *)value;
-- (void)removeSelectionsObject:(NSManagedObject *)value;
+- (void)addSelectionsObject:(SRSelection *)value;
+- (void)removeSelectionsObject:(SRSelection *)value;
 - (void)addSelections:(NSSet *)values;
 - (void)removeSelections:(NSSet *)values;
 

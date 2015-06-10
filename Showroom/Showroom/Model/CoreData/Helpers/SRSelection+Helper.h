@@ -13,4 +13,6 @@
 - (BOOL)isActive;
 - (void)setIsActive:(BOOL)active;
 
+- (BOOL)imageIsSelected:(SRImage *)image;
+
 @end

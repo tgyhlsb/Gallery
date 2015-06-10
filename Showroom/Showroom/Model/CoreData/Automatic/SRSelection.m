@@ -2,7 +2,7 @@
 //  SRSelection.m
 //  Showroom
 //
-//  Created by Tanguy Hélesbeux on 09/06/2015.
+//  Created by Tanguy Hélesbeux on 10/06/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
@@ -12,10 +12,10 @@
 
 @implementation SRSelection
 
-@dynamic title;
+@dynamic active;
 @dynamic creationDate;
 @dynamic modificationDate;
-@dynamic active;
+@dynamic title;
 @dynamic images;
 
 @end

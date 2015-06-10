@@ -8,43 +8,30 @@
 
 #import "SRSelectionPickerBarButton.h"
 
-// Model
-#import "SRModel.h"
-
-// Managers
-#import "SRNotificationCenter.h"
-
 @implementation SRSelectionPickerBarButton
 
-- (id)initWithTarget:(id)target action:(SEL)selector {
-    NSString *title = [self titleForActiveSelection];
+- (id)initWithTarget:(id)target action:(SEL)selector selection:(SRSelection *)selection {
+    NSString *title = [self titleForSelection:selection];
     self = [self initWithTitle:title style:UIBarButtonItemStylePlain target:target action:selector];
     if (self) {
-        [self registerToModelNotifications];
+        _selection = selection;
     }
     return self;
 }
 
-- (NSString *)titleForActiveSelection {
-    SRModel *model = [SRModel defaultModel];
-    if (model.activeSelection) {
-        return model.activeSelection.title;
+- (NSString *)titleForSelection:(SRSelection *)selection {
+    if (selection) {
+        return selection.title;
     } else {
         return NSLocalizedString(@"LOCALIZE_SELECTION_BAR_BUTTON", nil);
     }
 }
 
-#pragma mark - Notifications
+#pragma mark - Getters & Setters
 
-- (void)registerToModelNotifications {
-    [[SRNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(activeSelectionDidChangerNotificationHandler)
-                                                 name:SRNotificationActiveSelectionChanged
-                                               object:nil];
-}
-
-- (void)activeSelectionDidChangerNotificationHandler {
-    self.title = [self titleForActiveSelection];
+- (void)setSelection:(SRSelection *)selection {
+    _selection = selection;
+    self.title = [self titleForSelection:selection];
 }
 
 @end

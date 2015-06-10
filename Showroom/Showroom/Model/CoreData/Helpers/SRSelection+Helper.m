@@ -18,4 +18,8 @@
     self.active = @(active);
 }
 
+- (BOOL)imageIsSelected:(SRImage *)image {
+    return [self.images containsObject:image];
+}
+
 @end

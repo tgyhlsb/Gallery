@@ -26,7 +26,7 @@
         <attribute name="creationDate" attributeType="Date" syncable="YES"/>
         <attribute name="modificationDate" attributeType="Date" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
-        <relationship name="images" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SRImage" inverseName="selections" inverseEntity="SRImage" syncable="YES"/>
+        <relationship name="images" toMany="YES" deletionRule="Nullify" destinationEntity="SRImage" inverseName="selections" inverseEntity="SRImage" syncable="YES"/>
     </entity>
     <elements>
         <element name="SRDirectory" positionX="0" positionY="45" width="128" height="60"/>

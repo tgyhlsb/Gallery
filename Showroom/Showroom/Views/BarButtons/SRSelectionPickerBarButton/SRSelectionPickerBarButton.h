@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SRSelection.h"
+
 @interface SRSelectionPickerBarButton : UIBarButtonItem
 
-- (id)initWithTarget:(id)target action:(SEL)selector;
+@property (readwrite, strong, nonatomic) SRSelection *selection;
+
+- (id)initWithTarget:(id)target action:(SEL)selector selection:(SRSelection *)selection;
 
 @end

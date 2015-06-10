@@ -17,12 +17,17 @@
 
 // Views
 #import "SRSelectionPickerBarButton.h"
+#import "SRAddAndRemoveSelectionBarButton.h"
+
+// Managers
+#import "SRNotificationCenter.h"
 
 @interface SRDiaporamaViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultController;
 @property (strong, nonatomic) SRSelectionPickerBarButton *selectionPickerButton;
+@property (strong, nonatomic) SRAddAndRemoveSelectionBarButton *selectionButton;
 
 @end
 
@@ -51,8 +56,31 @@
     [self initializePageViewController];
     [self setPageViewControllerForImage:self.selectedImage];
     
-    self.selectionPickerButton = [[SRSelectionPickerBarButton alloc] initWithTarget:self action:@selector(selectionPickerHandler)];
-    self.navigationItem.rightBarButtonItems = @[self.selectionPickerButton];
+    [self initializeBarButtons];
+    
+    [self registerToModelNotifications];
+}
+
+#pragma mark - Initialization
+
+- (void)initializeBarButtons {
+    SRSelection *selection = [SRModel defaultModel].activeSelection;
+    BOOL activeImageIsSelected = [selection imageIsSelected:self.selectedImage];
+    self.selectionPickerButton = [[SRSelectionPickerBarButton alloc] initWithTarget:self action:@selector(selectionPickerButtonHandler) selection:selection];
+    self.selectionButton = [[SRAddAndRemoveSelectionBarButton alloc] initWithTarget:self action:@selector(selectionButtonHandler) selected:activeImageIsSelected];
+    self.navigationItem.rightBarButtonItems = @[self.selectionPickerButton, self.selectionButton];
+}
+
+#pragma mark - View updates
+
+- (void)updateSelectionButton {
+    
+    SRSelection *selection = [SRModel defaultModel].activeSelection;
+    if ([selection imageIsSelected:self.selectedImage]) {
+        self.selectionButton.selected = YES;
+    } else {
+        self.selectionButton.selected = NO;
+    }
 }
 
 #pragma mark - Getters & Setters
@@ -66,7 +94,7 @@
 
 #pragma mark - Handlers
 
-- (void)selectionPickerHandler {
+- (void)selectionPickerButtonHandler {
     SRSelectionPopoverNavigationController *contentViewController = [SRSelectionPopoverNavigationController new];
     UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:contentViewController];
     
@@ -75,6 +103,31 @@
     }];
     
     [popoverController presentPopoverFromBarButtonItem:self.selectionPickerButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+}
+
+- (void)selectionButtonHandler {
+    
+    SRSelection *selection = [SRModel defaultModel].activeSelection;
+    if ([selection imageIsSelected:self.selectedImage]) {
+        [selection removeImagesObject:self.selectedImage];
+    } else {
+        [selection addImagesObject:self.selectedImage];
+    }
+    [self updateSelectionButton];
+}
+
+#pragma mark - Notifications
+
+- (void)registerToModelNotifications {
+    [[SRNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(activeSelectionDidChangerNotificationHandler)
+                                                 name:SRNotificationActiveSelectionChanged
+                                               object:nil];
+}
+
+- (void)activeSelectionDidChangerNotificationHandler {
+    self.selectionPickerButton.selection = [SRModel defaultModel].activeSelection;
+    [self updateSelectionButton];
 }
 
 #pragma mark - Page view controller
