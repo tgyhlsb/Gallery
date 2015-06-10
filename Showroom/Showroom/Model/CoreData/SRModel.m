@@ -164,7 +164,7 @@ static SRModel *defaultModel;
 }
 
 - (void)notifyActiveSelectionDidChange {
-    [[SRNotificationCenter defaultCenter] postNotificationName:SRNotificationActiveSelectionChanged object:self];
+    [[SRNotificationCenter defaultCenter] postNotificationName:SRNotificationActiveSelectionChanged object:nil];
 }
 
 - (SRSelection *)createSelectionWithTitle:(NSString *)title {
