@@ -63,6 +63,11 @@
 }
 
 - (void)viewWillLayoutSubviews {
+    [self updateLayout];
+    [super viewWillLayoutSubviews];
+}
+
+- (void)updateLayout {
     
     self.tableViewWidthConstraint.constant = 300;
     
@@ -72,7 +77,6 @@
         self.tableViewLeftConstraint.constant = - 300;
     }
     
-    [super viewWillLayoutSubviews];
 }
 
 #pragma mark - Initilization
@@ -142,7 +146,11 @@
 - (void)setShowTableView:(BOOL)showTableView {
     if (_showTableView != showTableView) {
         _showTableView = showTableView;
-        [self.view setNeedsLayout];
+        
+        [self updateLayout];
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.view layoutIfNeeded];
+        }];
     }
 }
 
