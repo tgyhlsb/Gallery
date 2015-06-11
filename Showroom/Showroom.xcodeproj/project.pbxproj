@@ -15,6 +15,9 @@
 		5A07EDC11B28CD8900BA875E /* MyShowroom.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EDC01B28CD8900BA875E /* MyShowroom.png */; };
 		5A07EDC41B28D32300BA875E /* provider-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EDC31B28D32300BA875E /* provider-ipad.png */; };
 		5A07EDC61B28D41000BA875E /* provider-dropbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EDC51B28D41000BA875E /* provider-dropbox.png */; };
+		5A07EDCB1B2A29D800BA875E /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EDCA1B2A29D800BA875E /* banner.png */; };
+		5A07EDCE1B2A2A7400BA875E /* SRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDCD1B2A2A7400BA875E /* SRViewController.m */; };
+		5A07EDD01B2A2D1500BA875E /* SRImagesCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EDCF1B2A2D1500BA875E /* SRImagesCollectionViewController.xib */; };
 		5A0E58E11B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DA1B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m */; };
 		5A0E58E21B1F8FA800846031 /* SROperationProviderLocalLoadImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DC1B1F8FA800846031 /* SROperationProviderLocalLoadImages.m */; };
 		5A0E58E31B1F8FA800846031 /* SROperationProviderLocalSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DE1B1F8FA800846031 /* SROperationProviderLocalSynchronization.m */; };
@@ -95,6 +98,10 @@
 		5A07EDC01B28CD8900BA875E /* MyShowroom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyShowroom.png; sourceTree = "<group>"; };
 		5A07EDC31B28D32300BA875E /* provider-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "provider-ipad.png"; sourceTree = "<group>"; };
 		5A07EDC51B28D41000BA875E /* provider-dropbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "provider-dropbox.png"; sourceTree = "<group>"; };
+		5A07EDCA1B2A29D800BA875E /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
+		5A07EDCC1B2A2A7400BA875E /* SRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRViewController.h; sourceTree = "<group>"; };
+		5A07EDCD1B2A2A7400BA875E /* SRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRViewController.m; sourceTree = "<group>"; };
+		5A07EDCF1B2A2D1500BA875E /* SRImagesCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRImagesCollectionViewController.xib; path = SRImagesCollectionViewController/SRImagesCollectionViewController.xib; sourceTree = "<group>"; };
 		5A0E58D91B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationProviderLocalCreateThumbnails.h; sourceTree = "<group>"; };
 		5A0E58DA1B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SROperationProviderLocalCreateThumbnails.m; sourceTree = "<group>"; };
 		5A0E58DB1B1F8FA800846031 /* SROperationProviderLocalLoadImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationProviderLocalLoadImages.h; sourceTree = "<group>"; };
@@ -228,6 +235,7 @@
 			children = (
 				5A07EDC21B28D32300BA875E /* Provider icons */,
 				5A07EDC01B28CD8900BA875E /* MyShowroom.png */,
+				5A07EDCA1B2A29D800BA875E /* banner.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -323,6 +331,8 @@
 		5A4D92F31B0675B40008EF93 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5A07EDCC1B2A2A7400BA875E /* SRViewController.h */,
+				5A07EDCD1B2A2A7400BA875E /* SRViewController.m */,
 				5A4D93721B068FC30008EF93 /* UICoreDataTableViewController.h */,
 				5A4D93731B068FC30008EF93 /* UICoreDataTableViewController.m */,
 				5A4D938F1B069ABF0008EF93 /* UICoreDataCollectionViewController.h */,
@@ -471,6 +481,7 @@
 			children = (
 				5A4D93921B069C370008EF93 /* SRImagesCollectionViewController.h */,
 				5A4D93931B069C370008EF93 /* SRImagesCollectionViewController.m */,
+				5A07EDCF1B2A2D1500BA875E /* SRImagesCollectionViewController.xib */,
 			);
 			name = SRImagesCollectionViewController;
 			sourceTree = "<group>";
@@ -719,8 +730,10 @@
 				5A8761A71B20EDBD0030221A /* SRDiaporamaViewController.xib in Resources */,
 				5AB7B6771B276867002402E2 /* SRSelectionPopoverNavigationController.xib in Resources */,
 				5A07EDC61B28D41000BA875E /* provider-dropbox.png in Resources */,
+				5A07EDCB1B2A29D800BA875E /* banner.png in Resources */,
 				5A07EDC41B28D32300BA875E /* provider-ipad.png in Resources */,
 				5A4D93CF1B06A2060008EF93 /* SRImageCollectionViewCell.xib in Resources */,
+				5A07EDD01B2A2D1500BA875E /* SRImagesCollectionViewController.xib in Resources */,
 				5A4D92DE1B0673EC0008EF93 /* LaunchScreen.xib in Resources */,
 				5A4D93C61B06A13D0008EF93 /* SRCollectionReusableHeader.xib in Resources */,
 				5A4D93C41B06A13D0008EF93 /* SRCollectionReusableFooter.xib in Resources */,
@@ -785,6 +798,7 @@
 				5A07EDB91B28C4CC00BA875E /* SRImage.m in Sources */,
 				5A4D93531B0680F00008EF93 /* SRFile+Helper.m in Sources */,
 				5A4D93421B067B3C0008EF93 /* SRImage+Serializer.m in Sources */,
+				5A07EDCE1B2A2A7400BA875E /* SRViewController.m in Sources */,
 				5A0E58E21B1F8FA800846031 /* SROperationProviderLocalLoadImages.m in Sources */,
 				5A4D93441B067B3C0008EF93 /* SRModel.m in Sources */,
 				5A4D93471B067B910008EF93 /* SRNotificationCenter.m in Sources */,

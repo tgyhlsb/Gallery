@@ -16,10 +16,10 @@
 //  create a NEW NSFetchedResultsController and set this class's fetchedResultsController @property again.
 //
 
-#import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "SRViewController.h"
 
-@interface UICoreDataTableViewController : UIViewController <NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface UICoreDataTableViewController : SRViewController <NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

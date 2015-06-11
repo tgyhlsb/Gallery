@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SRViewController.h"
 
 // Model
 #import "SRDirectory.h"
 #import "SRImage.h"
 
-@interface SRDiaporamaViewController : UIViewController
+@interface SRDiaporamaViewController : SRViewController
 
 @property (strong, nonatomic) SRDirectory *directory;
 @property (strong, nonatomic) SRImage *selectedImage;

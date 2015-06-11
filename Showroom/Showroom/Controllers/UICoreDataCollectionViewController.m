@@ -17,6 +17,13 @@
 
 @implementation UICoreDataCollectionViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+}
+
 - (NSString *)titleForSection:(NSInteger)section {
     return [[[self.fetchedResultsController sections] objectAtIndex:section] name];
 }
@@ -95,6 +102,10 @@
 
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForFooterAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
 }
 
