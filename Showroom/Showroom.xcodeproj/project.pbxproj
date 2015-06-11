@@ -18,6 +18,7 @@
 		5A07EDCB1B2A29D800BA875E /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EDCA1B2A29D800BA875E /* banner.png */; };
 		5A07EDCE1B2A2A7400BA875E /* SRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDCD1B2A2A7400BA875E /* SRViewController.m */; };
 		5A07EDD01B2A2D1500BA875E /* SRImagesCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EDCF1B2A2D1500BA875E /* SRImagesCollectionViewController.xib */; };
+		5A07EDD21B2A2FFD00BA875E /* banner-small-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EDD11B2A2FFD00BA875E /* banner-small-icon.png */; };
 		5A0E58E11B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DA1B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m */; };
 		5A0E58E21B1F8FA800846031 /* SROperationProviderLocalLoadImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DC1B1F8FA800846031 /* SROperationProviderLocalLoadImages.m */; };
 		5A0E58E31B1F8FA800846031 /* SROperationProviderLocalSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DE1B1F8FA800846031 /* SROperationProviderLocalSynchronization.m */; };
@@ -102,6 +103,7 @@
 		5A07EDCC1B2A2A7400BA875E /* SRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRViewController.h; sourceTree = "<group>"; };
 		5A07EDCD1B2A2A7400BA875E /* SRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRViewController.m; sourceTree = "<group>"; };
 		5A07EDCF1B2A2D1500BA875E /* SRImagesCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRImagesCollectionViewController.xib; path = SRImagesCollectionViewController/SRImagesCollectionViewController.xib; sourceTree = "<group>"; };
+		5A07EDD11B2A2FFD00BA875E /* banner-small-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-small-icon.png"; sourceTree = "<group>"; };
 		5A0E58D91B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationProviderLocalCreateThumbnails.h; sourceTree = "<group>"; };
 		5A0E58DA1B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SROperationProviderLocalCreateThumbnails.m; sourceTree = "<group>"; };
 		5A0E58DB1B1F8FA800846031 /* SROperationProviderLocalLoadImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationProviderLocalLoadImages.h; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				5A07EDC21B28D32300BA875E /* Provider icons */,
 				5A07EDC01B28CD8900BA875E /* MyShowroom.png */,
 				5A07EDCA1B2A29D800BA875E /* banner.png */,
+				5A07EDD11B2A2FFD00BA875E /* banner-small-icon.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -741,6 +744,7 @@
 				5A07EDC11B28CD8900BA875E /* MyShowroom.png in Resources */,
 				5A4D93001B0676730008EF93 /* Localizable.strings in Resources */,
 				5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */,
+				5A07EDD21B2A2FFD00BA875E /* banner-small-icon.png in Resources */,
 				5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */,
 				5AECDBA11B06C90600DB572E /* localization.sh in Resources */,
 				5A4D92DB1B0673EC0008EF93 /* Images.xcassets in Resources */,

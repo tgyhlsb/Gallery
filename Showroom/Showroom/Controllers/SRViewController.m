@@ -12,9 +12,10 @@
 
 - (void)setTitleWithAppIcon {
     
-    UIImage *image = [UIImage imageNamed:@"banner.png"];
+    UIImage *image = [UIImage imageNamed:@"banner-small-icon.png"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    imageView.frame = CGRectMake(0, 0, 320, 44);
+    imageView.frame = CGRectMake(0, 0, 300, 44);
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.navigationItem.titleView = imageView;
 }
 
