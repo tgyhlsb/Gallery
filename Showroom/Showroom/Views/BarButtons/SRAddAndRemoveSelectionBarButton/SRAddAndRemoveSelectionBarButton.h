@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SRBarButtonItem.h"
 
-@interface SRAddAndRemoveSelectionBarButton : UIBarButtonItem
+@interface SRAddAndRemoveSelectionBarButton : SRBarButtonItem
 
 @property (readwrite, nonatomic) BOOL selected;
 

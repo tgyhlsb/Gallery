@@ -46,6 +46,7 @@
     self.toolbar.translucent = NO;
     
     self.navigationBar.barTintColor = [UIColor colorWithRed:0.14f green:0.45f blue:0.65f alpha:1.00f];
+    self.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 @end

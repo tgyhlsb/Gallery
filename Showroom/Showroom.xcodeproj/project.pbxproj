@@ -19,6 +19,7 @@
 		5A07EDCE1B2A2A7400BA875E /* SRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDCD1B2A2A7400BA875E /* SRViewController.m */; };
 		5A07EDD01B2A2D1500BA875E /* SRImagesCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EDCF1B2A2D1500BA875E /* SRImagesCollectionViewController.xib */; };
 		5A07EDD21B2A2FFD00BA875E /* banner-small-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EDD11B2A2FFD00BA875E /* banner-small-icon.png */; };
+		5A07EDD51B2A314C00BA875E /* SRBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDD41B2A314C00BA875E /* SRBarButtonItem.m */; };
 		5A0E58E11B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DA1B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m */; };
 		5A0E58E21B1F8FA800846031 /* SROperationProviderLocalLoadImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DC1B1F8FA800846031 /* SROperationProviderLocalLoadImages.m */; };
 		5A0E58E31B1F8FA800846031 /* SROperationProviderLocalSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DE1B1F8FA800846031 /* SROperationProviderLocalSynchronization.m */; };
@@ -104,6 +105,8 @@
 		5A07EDCD1B2A2A7400BA875E /* SRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRViewController.m; sourceTree = "<group>"; };
 		5A07EDCF1B2A2D1500BA875E /* SRImagesCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRImagesCollectionViewController.xib; path = SRImagesCollectionViewController/SRImagesCollectionViewController.xib; sourceTree = "<group>"; };
 		5A07EDD11B2A2FFD00BA875E /* banner-small-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banner-small-icon.png"; sourceTree = "<group>"; };
+		5A07EDD31B2A314C00BA875E /* SRBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRBarButtonItem.h; sourceTree = "<group>"; };
+		5A07EDD41B2A314C00BA875E /* SRBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRBarButtonItem.m; sourceTree = "<group>"; };
 		5A0E58D91B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationProviderLocalCreateThumbnails.h; sourceTree = "<group>"; };
 		5A0E58DA1B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SROperationProviderLocalCreateThumbnails.m; sourceTree = "<group>"; };
 		5A0E58DB1B1F8FA800846031 /* SROperationProviderLocalLoadImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationProviderLocalLoadImages.h; sourceTree = "<group>"; };
@@ -573,6 +576,8 @@
 		5AB7B65A1B264093002402E2 /* BarButtons */ = {
 			isa = PBXGroup;
 			children = (
+				5A07EDD31B2A314C00BA875E /* SRBarButtonItem.h */,
+				5A07EDD41B2A314C00BA875E /* SRBarButtonItem.m */,
 				5AB7B65B1B264093002402E2 /* SRSelectionPickerBarButton */,
 				5AB7B67C1B27697A002402E2 /* SRAddSelectionBarButton */,
 				5A07EDB01B28B07F00BA875E /* SRAddAndRemoveSelectionBarButton */,
@@ -766,6 +771,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A8761A61B20EDBD0030221A /* SRDiaporamaViewController.m in Sources */,
+				5A07EDD51B2A314C00BA875E /* SRBarButtonItem.m in Sources */,
 				5A4D93CE1B06A2060008EF93 /* SRImageCollectionViewCell.m in Sources */,
 				5A07EDB61B28C4CC00BA875E /* SRDirectory.m in Sources */,
 				5A4D92D01B0673EC0008EF93 /* SRAppDelegate.m in Sources */,
