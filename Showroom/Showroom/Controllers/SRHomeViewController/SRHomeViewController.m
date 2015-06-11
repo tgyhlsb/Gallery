@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *forceReloadButton;
 
-@property (strong, nonatomic) UIBarButtonItem *homeBarButton;
+// XIB
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (weak, nonatomic) IBOutlet UIButton *iPadProviderButton;
@@ -34,7 +34,16 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewLeftConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mainViewBottomConstraint;
 
+// Other
+
+@property (strong, nonatomic) UIBarButtonItem *homeBarButton;
+
+@property (nonatomic) BOOL interfaceIsHidden;
 @property (nonatomic) BOOL showTableView;
 
 
@@ -56,7 +65,7 @@
     
     [self setUpFetchedResultController];
     
-    [self setNeedsStatusBarAppearanceUpdate];
+    [self updateLayout];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -64,8 +73,15 @@
     self.commentLabel.hidden = ![[SRProviderLocal defaultProvider] didUpdateAfterLaunch];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self setInterfaceHidden:NO duration:0.35 completion:^(SRHomeViewController *weakSelf, BOOL finished) {
+        
+    }];
+}
+
 - (void)viewWillLayoutSubviews {
-    [self updateLayout];
     [super viewWillLayoutSubviews];
 }
 
@@ -77,6 +93,23 @@
         self.tableViewLeftConstraint.constant = 20;
     } else {
         self.tableViewLeftConstraint.constant = - 300;
+    }
+    
+    if (self.interfaceIsHidden) {
+        CGFloat viewHeight = self.view.bounds.size.height;
+        
+        self.tableViewTopConstraint.constant = - viewHeight;
+        self.tableViewBottomConstraint.constant = viewHeight;
+        
+        self.mainViewTopConstraint.constant = - viewHeight;
+        self.mainViewBottomConstraint.constant = viewHeight;
+    } else {
+        
+        self.tableViewTopConstraint.constant = 0;
+        self.tableViewBottomConstraint.constant = 0;
+        
+        self.mainViewTopConstraint.constant = 0;
+        self.mainViewBottomConstraint.constant = 0;
     }
     
 }
@@ -139,6 +172,32 @@
     [self.dropboxProviderButton setTintColor:providerButtonColor];
 }
 
+#pragma mark - Animations
+
+- (void)animateLayoutWitDuration:(NSTimeInterval)duration completion:(void (^)(SRHomeViewController *weakSelf, BOOL finished))completion  {
+    
+    [self updateLayout];
+    
+    __weak SRHomeViewController *weakSelf = self;
+    [UIView animateWithDuration:duration animations:^{
+        
+        CGFloat alpha = self.interfaceIsHidden ? 0 : 1;
+        self.tableView.alpha = alpha;
+        self.mainView.alpha = alpha;
+        [self.view layoutIfNeeded];
+        
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion(weakSelf, finished);
+        }
+    }];
+}
+
+- (void)setInterfaceHidden:(BOOL)hidden duration:(NSTimeInterval)duration completion:(void (^)(SRHomeViewController *weakSelf, BOOL finished))completion {
+    self.interfaceIsHidden = hidden;
+    [self animateLayoutWitDuration:duration completion:completion];
+}
+
 #pragma mark - Getters & Setters
 
 - (UIBarButtonItem *)homeBarButton {
@@ -152,11 +211,7 @@
 - (void)setShowTableView:(BOOL)showTableView {
     if (_showTableView != showTableView) {
         _showTableView = showTableView;
-        
-        [self updateLayout];
-        [UIView animateWithDuration:0.5 animations:^{
-            [self.view layoutIfNeeded];
-        }];
+        [self animateLayoutWitDuration:0.5 completion:nil];
     }
 }
 
@@ -223,7 +278,12 @@
     SRDirectory *directory = [self.fetchedResultsController objectAtIndexPath:indexPath];
     SRImageNavigationController *destination = [SRImageNavigationController newWithDirectory:directory];
     destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
+    
+    [self setInterfaceHidden:YES duration:0.35 completion:^(SRHomeViewController *weakSelf, BOOL finished) {
+    }];
+    
     [self presentViewController:destination animated:YES completion:nil];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

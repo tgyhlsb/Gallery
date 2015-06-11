@@ -11,8 +11,12 @@
                 <outlet property="dropboxProviderButton" destination="gTv-zq-WEz" id="pVc-iq-9Sw"/>
                 <outlet property="iPadProviderButton" destination="Cn3-7D-uxa" id="cwT-Nj-1gq"/>
                 <outlet property="mainView" destination="rDo-EL-jBK" id="bYH-0v-mBM"/>
+                <outlet property="mainViewBottomConstraint" destination="tPe-UR-efB" id="nLm-J2-MoD"/>
+                <outlet property="mainViewTopConstraint" destination="zdl-TR-w1g" id="9je-Im-raX"/>
                 <outlet property="tableView" destination="Gue-y0-AU2" id="GAI-l6-8V3"/>
+                <outlet property="tableViewBottomConstraint" destination="R2x-hH-HMJ" id="1f6-Ic-Y8X"/>
                 <outlet property="tableViewLeftConstraint" destination="Rdx-Ro-8b3" id="mfo-nO-tgV"/>
+                <outlet property="tableViewTopConstraint" destination="QKB-6a-SL9" id="zHa-xY-jek"/>
                 <outlet property="tableViewWidthConstraint" destination="4Of-3R-qyq" id="fCh-cT-c8O"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
