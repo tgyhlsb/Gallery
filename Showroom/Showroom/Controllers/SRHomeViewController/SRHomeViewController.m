@@ -19,6 +19,9 @@
 #import "SRImageNavigationController.h"
 #import "SRFilesNavigationController.h"
 
+// Views
+#import "SRBarButtonItem.h"
+
 @interface SRHomeViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *fileListInterfaceButton;
@@ -41,7 +44,7 @@
 
 // Other
 
-@property (strong, nonatomic) UIBarButtonItem *homeBarButton;
+@property (strong, nonatomic) SRBarButtonItem *homeBarButton;
 
 @property (nonatomic) BOOL interfaceIsHidden;
 @property (nonatomic) BOOL showTableView;
@@ -64,6 +67,8 @@
     [self initializeManagers];
     
     [self setUpFetchedResultController];
+    
+    self.tableView.hidden = YES; // prevents first animation on launch
     
     [self updateLayout];
 }
@@ -111,7 +116,6 @@
         self.mainViewTopConstraint.constant = 0;
         self.mainViewBottomConstraint.constant = 0;
     }
-    
 }
 
 #pragma mark - Initilization
@@ -190,6 +194,8 @@
         if (completion) {
             completion(weakSelf, finished);
         }
+        
+        self.tableView.hidden = NO; // previously set to YES to prevent first animation
     }];
 }
 
@@ -200,10 +206,10 @@
 
 #pragma mark - Getters & Setters
 
-- (UIBarButtonItem *)homeBarButton {
+- (SRBarButtonItem *)homeBarButton {
     if (!_homeBarButton) {
         NSString *title = NSLocalizedString(@"LOCALIZE_HOME_BUTTON", nil);
-        _homeBarButton = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:@selector(homeBarButtonHandler)];
+        _homeBarButton = [[SRBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:@selector(homeBarButtonHandler)];
     }
     return _homeBarButton;
 }
