@@ -37,14 +37,14 @@
                     <rect key="frame" x="170" y="0.0" width="430" height="600"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyShowroom.png" translatesAutoresizingMaskIntoConstraints="NO" id="Whn-3a-QNf">
-                            <rect key="frame" x="100" y="185" width="230" height="230"/>
+                            <rect key="frame" x="115" y="150" width="200" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Whn-3a-QNf" secondAttribute="height" multiplier="1:1" id="2Ay-8u-Uqr"/>
-                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="sPP-kG-ea1"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="500" id="sPP-kG-ea1"/>
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cn3-7D-uxa">
-                            <rect key="frame" x="140" y="495" width="50" height="50"/>
+                            <rect key="frame" x="140" y="430" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="0Hk-Xn-qNj"/>
                                 <constraint firstAttribute="width" constant="50" id="U5M-vR-4Pf"/>
@@ -58,7 +58,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTv-zq-WEz">
-                            <rect key="frame" x="240" y="495" width="50" height="50"/>
+                            <rect key="frame" x="240" y="430" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="88n-rd-fqD"/>
                                 <constraint firstAttribute="height" constant="50" id="hzo-S5-GFJ"/>
@@ -80,7 +80,7 @@
                         <constraint firstItem="Whn-3a-QNf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rDo-EL-jBK" secondAttribute="top" constant="150" id="F89-GM-7ww"/>
                         <constraint firstItem="Cn3-7D-uxa" firstAttribute="centerY" secondItem="gTv-zq-WEz" secondAttribute="centerY" id="MM1-bh-7UW"/>
                         <constraint firstAttribute="centerX" secondItem="Cn3-7D-uxa" secondAttribute="centerX" constant="50" id="T2q-Bo-Eky"/>
-                        <constraint firstAttribute="centerY" secondItem="Whn-3a-QNf" secondAttribute="centerY" id="Zgb-6Y-g1O"/>
+                        <constraint firstAttribute="centerY" secondItem="Whn-3a-QNf" secondAttribute="centerY" constant="50" id="Zgb-6Y-g1O"/>
                         <constraint firstAttribute="centerX" secondItem="gTv-zq-WEz" secondAttribute="centerX" constant="-50" id="aNV-dn-BG6"/>
                     </constraints>
                 </view>
