@@ -22,6 +22,7 @@
 // Views
 #import "SRBarButtonItem.h"
 #import "SRDirectoryThumbnailTableViewCell.h"
+#import "SRHomeBarButton.h"
 
 @interface SRHomeViewController ()
 
@@ -208,8 +209,7 @@
 
 - (SRBarButtonItem *)homeBarButton {
     if (!_homeBarButton) {
-        NSString *title = NSLocalizedString(@"LOCALIZE_HOME_BUTTON", nil);
-        _homeBarButton = [[SRBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:@selector(homeBarButtonHandler)];
+        _homeBarButton = [[SRHomeBarButton alloc] initWithTarget:self action:@selector(homeBarButtonHandler)];
     }
     return _homeBarButton;
 }
@@ -277,7 +277,7 @@
     }
     
     SRDirectory *firstDirectory = [[directory.children allObjects] firstObject];
-    return [self firstImageForDirectory:firstDirectory];
+    return firstDirectory ? [self firstImageForDirectory:firstDirectory] : nil;
 }
 
 #pragma mark UITableViewDataSource
