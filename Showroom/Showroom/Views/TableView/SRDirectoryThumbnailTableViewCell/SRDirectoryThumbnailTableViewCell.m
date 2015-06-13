@@ -17,6 +17,7 @@
     self.contentView.backgroundColor = [UIColor clearColor];
     
     self.thumbnailView.clipsToBounds = YES;
+    self.thumbnailView.backgroundColor = [UIColor colorWithRed:0.47f green:0.67f blue:0.79f alpha:1.00f];
     
     [self.layer shouldRasterize];
 }

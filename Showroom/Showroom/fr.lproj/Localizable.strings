@@ -27,3 +27,6 @@
 
 /* No comment provided by engineer. */
 "LOCALIZE_SELECTION_IMAGE_COUNT_FORMAT_PLURAL" = "%d images";
+
+/* No comment provided by engineer. */
+"LOCALIZE_LOCAL_PROVIDER_TITLE" = "Toutes les images";

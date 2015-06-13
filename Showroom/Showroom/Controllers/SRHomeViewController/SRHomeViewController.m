@@ -287,12 +287,30 @@
     SRDirectoryThumbnailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     SRDirectory *directory = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    SRImage *image = [self firstImageForDirectory:directory];
+    SRProviderLocal *provider = [SRProviderLocal defaultProvider];
     
-    cell.titleLabel.text = directory.name;
-    cell.thumbnailView.image = [image image];
+    if ([directory isEqual:provider.rootDirectory]) {
+        [self setCell:cell forProvider:provider];
+    } else {
+        [self setCell:cell forDirectory:directory];
+    }
     
     return cell;
+}
+
+- (void)setCell:(SRDirectoryThumbnailTableViewCell *)cell forDirectory:(SRDirectory *)directory {
+    SRImage *image = [self firstImageForDirectory:directory];
+    cell.titleLabel.text = directory.name;
+    cell.thumbnailView.image = [image image];
+    cell.thumbnailView.contentMode = UIViewContentModeScaleAspectFill;
+}
+
+- (void)setCell:(SRDirectoryThumbnailTableViewCell *)cell forProvider:(SRProvider *)provider {
+    NSString *title = NSLocalizedString(@"LOCALIZE_LOCAL_PROVIDER_TITLE", nil);
+    UIImage *image = [UIImage imageNamed:@"provider-ipad-directory.png"];
+    cell.titleLabel.text = title;
+    cell.thumbnailView.image = image;
+    cell.thumbnailView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 #pragma mark UITableViewDelegate
