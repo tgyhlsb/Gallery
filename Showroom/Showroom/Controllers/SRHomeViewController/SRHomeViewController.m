@@ -261,6 +261,25 @@
     self.fetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForDirectoriesInDirectoryRecursively:directory];
 }
 
+- (SRImage *)firstImageForDirectory:(SRDirectory *)directory {
+    static NSMutableDictionary *cachedThumbnails;
+    if (!cachedThumbnails) cachedThumbnails = [[NSMutableDictionary alloc] init];
+    
+    SRImage *firstImage = [cachedThumbnails objectForKey:directory.path];
+    
+    if (firstImage) return firstImage;
+    
+    for (SRFile *child in directory.children) {
+        if (child.isImage) {
+            [cachedThumbnails setObject:child forKey:directory.path];
+            return (SRImage *)child;
+        }
+    }
+    
+    SRDirectory *firstDirectory = [[directory.children allObjects] firstObject];
+    return [self firstImageForDirectory:firstDirectory];
+}
+
 #pragma mark UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -272,7 +291,9 @@
     }
     
     SRDirectory *directory = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    SRImage *image = [self firstImageForDirectory:directory];
     cell.textLabel.text = directory.name;
+    cell.imageView.image = image.image;
     
     return cell;
 }
