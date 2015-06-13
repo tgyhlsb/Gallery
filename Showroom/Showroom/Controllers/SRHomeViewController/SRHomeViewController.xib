@@ -36,7 +36,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDo-EL-jBK">
                     <rect key="frame" x="170" y="0.0" width="430" height="600"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MyShowroom.png" translatesAutoresizingMaskIntoConstraints="NO" id="Whn-3a-QNf">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home.png" translatesAutoresizingMaskIntoConstraints="NO" id="Whn-3a-QNf">
                             <rect key="frame" x="115" y="150" width="200" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Whn-3a-QNf" secondAttribute="height" multiplier="1:1" id="2Ay-8u-Uqr"/>
@@ -100,6 +100,6 @@
         </view>
     </objects>
     <resources>
-        <image name="MyShowroom.png" width="990" height="990"/>
+        <image name="home.png" width="990" height="990"/>
     </resources>
 </document>
