@@ -21,6 +21,7 @@
 
 // Views
 #import "SRBarButtonItem.h"
+#import "SRDirectoryThumbnailTableViewCell.h"
 
 @interface SRHomeViewController ()
 
@@ -71,6 +72,8 @@
     self.tableView.hidden = YES; // prevents first animation on launch
     
     [self updateLayout];
+    
+    [SRDirectoryThumbnailTableViewCell registerToTableView:self.tableView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -80,10 +83,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    [self setInterfaceHidden:NO duration:0.35 completion:^(SRHomeViewController *weakSelf, BOOL finished) {
-        
-    }];
+    [self setInterfaceHidden:NO duration:0.35 completion:nil];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -283,17 +283,14 @@
 #pragma mark UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *identifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
+    NSString *identifier = [SRDirectoryThumbnailTableViewCell defaultIdentifier];
+    SRDirectoryThumbnailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
     SRDirectory *directory = [self.fetchedResultsController objectAtIndexPath:indexPath];
     SRImage *image = [self firstImageForDirectory:directory];
-    cell.textLabel.text = directory.name;
-    cell.imageView.image = image.image;
+    
+    cell.titleLabel.text = directory.name;
+    cell.thumbnailView.image = [image image];
     
     return cell;
 }
@@ -311,6 +308,10 @@
     
     [self presentViewController:destination animated:YES completion:nil];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 220;
 }
 
 @end
