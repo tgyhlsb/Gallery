@@ -251,7 +251,12 @@
 }
 
 - (IBAction)dropboxProviderButtonHandler:(UIButton *)sender {
-    self.showTableView = !self.showTableView;
+    self.showTableView = NO;
+    
+    NSString *title = NSLocalizedString(@"LOCALIZE_DROPBOX_NOT_AVAILABLE_TITLE", nil);
+    NSString *message = NSLocalizedString(@"LOCALIZE_DROPBOX_NOT_AVAILABLE_MESSAGE", nil);
+    NSString *cancel = NSLocalizedString(@"LOCALIZE_OK", nil);
+    [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:cancel otherButtonTitles:nil] show];
 }
 
 #pragma mark - UICoreDataTableViewController

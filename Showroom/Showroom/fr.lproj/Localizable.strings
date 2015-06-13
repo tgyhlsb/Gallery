@@ -30,3 +30,12 @@
 
 /* No comment provided by engineer. */
 "LOCALIZE_LOCAL_PROVIDER_TITLE" = "Toutes les images";
+
+/* No comment provided by engineer. */
+"LOCALIZE_DROPBOX_NOT_AVAILABLE_TITLE" = "Synchronisation avec Dropbox";
+
+/* No comment provided by engineer. */
+"LOCALIZE_DROPBOX_NOT_AVAILABLE_MESSAGE" = "La lecture des fichiers grâce à votre compte Dropbox sera prochainement disponible";
+
+/* No comment provided by engineer. */
+"LOCALIZE_OK" = "D'accord";
