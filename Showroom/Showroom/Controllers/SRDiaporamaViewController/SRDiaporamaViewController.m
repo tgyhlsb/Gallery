@@ -59,6 +59,8 @@
     [self initializeBarButtons];
     
     [self registerToModelNotifications];
+    
+    [self setTitleWithAppIcon];
 }
 
 #pragma mark - Initialization

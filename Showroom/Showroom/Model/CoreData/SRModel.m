@@ -169,6 +169,7 @@ static SRModel *defaultModel;
 
 - (SRSelection *)createSelectionWithTitle:(NSString *)title {
     SRSelection *selection = [SRSelection selectionWithTitle:title inManagedObjectContext:self.managedObjectContext];
+    self.activeSelection = selection;
     [self saveContext];
     return selection;
 }

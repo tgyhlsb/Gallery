@@ -37,9 +37,9 @@
 }
 
 - (id)initWithDirectory:(SRDirectory *)directory {
-    self = [super initWithCollectionViewLayout:[self createCollectionViewLayout]];
+    self = [super init];
     if (self) {
-        self.directory = directory;
+        _directory = directory;
     }
     return self;
 }
@@ -54,6 +54,10 @@
     [SRCollectionReusableHeader registerToCollectionView:self.collectionView];
     [SRCollectionReusableFooter registerToCollectionView:self.collectionView];
     [SRImageCollectionViewCell registerToCollectionView:self.collectionView];
+    
+    [self setTitleWithAppIcon];
+    
+    [self updateFetchedResultController];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -91,6 +95,8 @@
 
 - (void)initializaView {
     self.collectionView.backgroundColor = [UIColor whiteColor];
+    
+    self.collectionView.collectionViewLayout = [self createCollectionViewLayout];
 }
 
 #pragma mark - Getters & Setters
@@ -114,7 +120,7 @@
     
     SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.imageView.image = [image thumbnail];
-    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     return cell;
 }

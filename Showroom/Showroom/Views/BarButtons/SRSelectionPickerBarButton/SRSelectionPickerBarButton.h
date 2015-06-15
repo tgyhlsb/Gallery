@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SRBarButtonItem.h"
 
 #import "SRSelection.h"
 
-@interface SRSelectionPickerBarButton : UIBarButtonItem
+@interface SRSelectionPickerBarButton : SRBarButtonItem
 
 @property (readwrite, strong, nonatomic) SRSelection *selection;
 
