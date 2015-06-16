@@ -17,4 +17,6 @@
 
 + (instancetype)newWithImage:(SRImage *)image;
 
+- (void)hideTitleButtonAfter:(NSTimeInterval)delay;
+
 @end

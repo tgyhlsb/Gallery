@@ -6,10 +6,12 @@
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SRViewController.h"
 #import <CoreData/CoreData.h>
 
-@interface UICoreDataCollectionViewController : UICollectionViewController <NSFetchedResultsControllerDelegate>
+@interface UICoreDataCollectionViewController : SRViewController <NSFetchedResultsControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 // The controller (this class fetches nothing if this is not set).
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;

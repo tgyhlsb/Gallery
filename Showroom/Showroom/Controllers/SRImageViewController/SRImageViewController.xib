@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRImageViewController">
             <connections>
-                <outlet property="activityIndicator" destination="8vc-YL-gk6" id="0Fj-dZ-0Wp"/>
-                <outlet property="imageView" destination="KRk-Fc-tz0" id="3e8-lU-hl8"/>
+                <outlet property="scrollView" destination="Tgx-aG-vQW" id="uwE-qg-ejY"/>
+                <outlet property="titleButton" destination="76x-Xq-v2o" id="i9r-HS-MtZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,22 +17,28 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KRk-Fc-tz0">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgx-aG-vQW">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                </imageView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8vc-YL-gk6">
-                    <rect key="frame" x="282" y="281" width="37" height="37"/>
-                    <color key="color" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                </activityIndicatorView>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="bRR-B1-rB0"/>
+                    </connections>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76x-Xq-v2o">
+                    <rect key="frame" x="270" y="514" width="60" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="8vc-YL-gk6" secondAttribute="centerY" id="HyN-Zo-YeR"/>
-                <constraint firstAttribute="trailing" secondItem="KRk-Fc-tz0" secondAttribute="trailing" id="P1A-ce-3if"/>
-                <constraint firstItem="KRk-Fc-tz0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UQO-8m-u26"/>
-                <constraint firstAttribute="bottom" secondItem="KRk-Fc-tz0" secondAttribute="bottom" id="dUQ-Zo-CJB"/>
-                <constraint firstItem="KRk-Fc-tz0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="egO-nm-ArD"/>
-                <constraint firstAttribute="centerX" secondItem="8vc-YL-gk6" secondAttribute="centerX" id="x7O-Ja-6oG"/>
+                <constraint firstAttribute="trailing" secondItem="Tgx-aG-vQW" secondAttribute="trailing" id="1Py-h1-efW"/>
+                <constraint firstItem="Tgx-aG-vQW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Sa8-35-V0n"/>
+                <constraint firstItem="Tgx-aG-vQW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nnw-b5-jUD"/>
+                <constraint firstAttribute="bottom" secondItem="Tgx-aG-vQW" secondAttribute="bottom" id="sbZ-uG-i4c"/>
+                <constraint firstAttribute="bottom" secondItem="76x-Xq-v2o" secondAttribute="bottom" constant="50" id="spn-1O-A2v"/>
+                <constraint firstAttribute="centerX" secondItem="76x-Xq-v2o" secondAttribute="centerX" id="xAg-wp-HSN"/>
             </constraints>
         </view>
     </objects>

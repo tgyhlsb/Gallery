@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "UICoreDataTableViewController.h"
 
-@interface SRHomeViewController : UIViewController
+@interface SRHomeViewController : UICoreDataTableViewController
 
 @end

@@ -9,6 +9,13 @@
 
 @implementation UICoreDataTableViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+}
+
 #pragma mark - Fetching
 
 - (void)performFetch
@@ -79,6 +86,10 @@
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
     return [self.fetchedResultsController sectionIndexTitles];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate

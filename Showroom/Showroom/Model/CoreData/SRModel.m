@@ -11,6 +11,11 @@
 // Models
 #import "SRFile+Serializer.h"
 #import "SRDirectory.h"
+#import "SRSelection+Serializer.h"
+
+// Managers
+#import "SRLogger.h"
+#import "SRNotificationCenter.h"
 
 @implementation SRModel
 
@@ -47,6 +52,12 @@ static SRModel *defaultModel;
 
 - (NSSortDescriptor *)parentSortDescriptor {
     return[NSSortDescriptor sortDescriptorWithKey:@"parent.path"
+                                        ascending:YES
+                                         selector:@selector(compare:)];
+}
+
+- (NSSortDescriptor *)selectionSortDescriptor {
+    return[NSSortDescriptor sortDescriptorWithKey:@"modificationDate"
                                         ascending:YES
                                          selector:@selector(compare:)];
 }
@@ -95,6 +106,74 @@ static SRModel *defaultModel;
                                                           cacheName:nil];
 }
 
+
+- (NSFetchedResultsController *)fetchedResultControllerForSelections {
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRSelection className]];
+    
+    request.sortDescriptors = @[[self selectionSortDescriptor]];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:self.managedObjectContext
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
+}
+
+- (NSFetchedResultsController *)fetchedResultControllerForSelectionsActive:(BOOL)active {
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRSelection className]];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"active = %@", @(active)];
+    
+    request.sortDescriptors = @[[self selectionSortDescriptor]];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:self.managedObjectContext
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
+}
+
+#pragma mark - Selections
+
+- (void)setActiveSelection:(SRSelection *)activeSelection {
+    if (![_activeSelection isEqual:activeSelection]) {
+        [_activeSelection setIsActive:NO];
+        _activeSelection = activeSelection;
+        [_activeSelection setIsActive:YES];
+        [self notifyActiveSelectionDidChange];
+    }
+}
+
+- (void)fetchActiveSelection {
+    NSFetchedResultsController *fetchedResultController = [self fetchedResultControllerForSelectionsActive:YES];
+    NSError *error = nil;
+    [fetchedResultController performFetch:&error];
+    if (error) {
+        [SRLogger addError:@"Failed to fetch active selection: %@", error];
+    } else {
+        if (fetchedResultController.fetchedObjects.count == 0) {
+            self.activeSelection = nil;
+        } else if (fetchedResultController.fetchedObjects.count == 1) {
+            self.activeSelection = [fetchedResultController.fetchedObjects firstObject];
+        } else {
+            [SRLogger addError:@"More than one active selection fetched: %@", fetchedResultController.fetchedObjects];
+            self.activeSelection = nil;
+        }
+        [self notifyActiveSelectionDidChange];
+    }
+}
+
+- (void)notifyActiveSelectionDidChange {
+    [[SRNotificationCenter defaultCenter] postNotificationName:SRNotificationActiveSelectionChanged object:nil];
+}
+
+- (SRSelection *)createSelectionWithTitle:(NSString *)title {
+    SRSelection *selection = [SRSelection selectionWithTitle:title inManagedObjectContext:self.managedObjectContext];
+    self.activeSelection = selection;
+    [self saveContext];
+    return selection;
+}
+
 #pragma mark - Core Data stack
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -125,7 +204,7 @@ static SRModel *defaultModel;
     // Create the coordinator and store
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Showroom.sqlite"];
+    NSURL *storeURL = [self storeURL];
     NSError *error = nil;
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
@@ -138,8 +217,7 @@ static SRModel *defaultModel;
         // Replace this with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
-        _persistentStoreCoordinator = [self persistentStoreCoordinator];
+        [self resetStore];
     }
     
     return _persistentStoreCoordinator;
@@ -161,17 +239,37 @@ static SRModel *defaultModel;
     return _managedObjectContext;
 }
 
+- (NSURL *)storeURL {
+    return [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Showroom.sqlite"];
+}
+
+- (void)resetStore {
+    NSURL *storeURL = [self storeURL];
+    [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+    _persistentStoreCoordinator = [self persistentStoreCoordinator];
+}
+
 #pragma mark - Core Data Saving support
 
 - (void)saveContext {
     NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
     if (managedObjectContext != nil) {
-        NSError *error = nil;
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
+        if ([managedObjectContext hasChanges]) {
+            
+            NSError *error = nil;
+            [managedObjectContext save:&error];
+            
+            if (error) {
+                // Replace this implementation with code to handle the error appropriately.
+                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                if (error.code == 134100) { // Replace 0 by invalid model error code
+                    [self resetStore];
+                    [self saveContext];
+                } else {
+                    abort();
+                }
+            }
         }
     }
 }

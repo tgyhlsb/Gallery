@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14C1510" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14C1510" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="SRDirectory" representedClassName="SRDirectory" parentEntity="SRFile" syncable="YES">
         <relationship name="children" toMany="YES" deletionRule="Nullify" destinationEntity="SRFile" inverseName="parent" inverseEntity="SRFile" syncable="YES"/>
     </entity>
@@ -19,10 +19,19 @@
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="thumbnailData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="width" optional="YES" attributeType="Float" syncable="YES"/>
+        <relationship name="selections" toMany="YES" deletionRule="Nullify" destinationEntity="SRSelection" inverseName="images" inverseEntity="SRSelection" syncable="YES"/>
+    </entity>
+    <entity name="SRSelection" representedClassName="SRSelection" syncable="YES">
+        <attribute name="active" attributeType="Boolean" indexed="YES" syncable="YES"/>
+        <attribute name="creationDate" attributeType="Date" syncable="YES"/>
+        <attribute name="modificationDate" attributeType="Date" syncable="YES"/>
+        <attribute name="title" attributeType="String" syncable="YES"/>
+        <relationship name="images" toMany="YES" deletionRule="Nullify" destinationEntity="SRImage" inverseName="selections" inverseEntity="SRImage" syncable="YES"/>
     </entity>
     <elements>
         <element name="SRDirectory" positionX="0" positionY="45" width="128" height="60"/>
-        <element name="SRFile" positionX="-36" positionY="9" width="128" height="180"/>
-        <element name="SRImage" positionX="27" positionY="72" width="128" height="105"/>
+        <element name="SRFile" positionX="313" positionY="-90" width="128" height="178"/>
+        <element name="SRImage" positionX="259" positionY="156" width="128" height="118"/>
+        <element name="SRSelection" positionX="9" positionY="216" width="128" height="118"/>
     </elements>
 </model>

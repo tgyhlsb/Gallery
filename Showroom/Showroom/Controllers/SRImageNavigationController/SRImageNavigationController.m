@@ -28,9 +28,25 @@
     SRImagesCollectionViewController *rootController = [SRImagesCollectionViewController newWithDirectory:directory];
     self = [super initWithRootViewController:rootController];
     if (self) {
-        
+        self.toolbarHidden = YES;
     }
     return self;
+}
+
+#pragma mark - View life cycle
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.navigationBar.translucent = NO;
+    self.toolbar.translucent = NO;
+    
+    self.navigationBar.barTintColor = [UIColor colorWithRed:0.14f green:0.45f blue:0.65f alpha:1.00f];
+    self.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 @end

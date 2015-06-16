@@ -72,6 +72,8 @@ static SRProviderLocal *defaultProvider;
     NSDictionary *attributes = [SRProviderLocal getAttributesForFileAtPath:absolutePath];
     NSManagedObjectContext *context = [SRModel defaultModel].managedObjectContext;
     
+    NSLog(@"Fetching root directory :\n%@", absolutePath);
+    
     _rootDirectory = [SRDirectory directoryWithPath:relativePath
                                          attributes:attributes
                                               depth:0

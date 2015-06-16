@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 static NSString *SRNotificationProviderLocalFilesDidChange = @"SRNotificationProviderLocalFilesDidChange";
+static NSString *SRNotificationActiveSelectionChanged = @"SRNotificationActiveSelectionChanged";
 
 @interface SRNotificationCenter : NSNotificationCenter
 
