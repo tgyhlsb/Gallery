@@ -16,16 +16,16 @@
 #import "SRModel.h"
 
 // Views
-#import "SRAddAndRemoveSelectionBarButton.h"
+#import "SRSelectionBarButtonItem.h"
 
 // Managers
 #import "SRNotificationCenter.h"
 
-@interface SRDiaporamaViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, SRAddAndRemoveSelectionBarButtonDelegate>
+@interface SRDiaporamaViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, SRSelectionBarButtonItemDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultController;
-@property (strong, nonatomic) SRAddAndRemoveSelectionBarButton *selectionButton;
+@property (strong, nonatomic) SRSelectionBarButtonItem *selectionButton;
 
 @end
 
@@ -66,7 +66,7 @@
 - (void)initializeBarButtons {
     SRSelection *selection = [SRModel defaultModel].activeSelection;
     BOOL activeImageIsSelected = [selection imageIsSelected:self.selectedImage];
-    self.selectionButton = [[SRAddAndRemoveSelectionBarButton alloc] initWithDelegate:self selection:selection selected:activeImageIsSelected];
+    self.selectionButton = [[SRSelectionBarButtonItem alloc] initWithDelegate:self selection:selection selected:activeImageIsSelected];
     self.navigationItem.rightBarButtonItems = @[self.selectionButton];
 }
 
@@ -98,7 +98,7 @@
 
 #pragma mark - Handlers
 
-- (void)addAndRemoveButtonHandler:(SRAddAndRemoveSelectionBarButton *)sender {
+- (void)addAndRemoveButtonHandler:(SRSelectionBarButtonItem *)sender {
     
     SRSelection *selection = [SRModel defaultModel].activeSelection;
     if ([selection imageIsSelected:self.selectedImage]) {
@@ -109,7 +109,7 @@
     [self updateSelectionButton];
 }
 
-- (void)selectionPickerButtonHandler:(SRAddAndRemoveSelectionBarButton *)sender {
+- (void)selectionPickerButtonHandler:(SRSelectionBarButtonItem *)sender {
     SRSelectionPopoverNavigationController *contentViewController = [SRSelectionPopoverNavigationController new];
     UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:contentViewController];
     

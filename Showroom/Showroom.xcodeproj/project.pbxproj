@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		5A04B23F1B30CBC500CF5A3B /* add_to_selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A04B23D1B30CBC500CF5A3B /* add_to_selection.png */; };
 		5A04B2401B30CBC500CF5A3B /* remove_from_selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A04B23E1B30CBC500CF5A3B /* remove_from_selection.png */; };
-		5A04B2421B30CF4E00CF5A3B /* SRAddAndRemoveSelectionBarButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A04B2411B30CF4E00CF5A3B /* SRAddAndRemoveSelectionBarButton.xib */; };
-		5A07EDAF1B28B07A00BA875E /* SRAddAndRemoveSelectionBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDAE1B28B07A00BA875E /* SRAddAndRemoveSelectionBarButton.m */; };
+		5A04B2471B30DC0500CF5A3B /* SRSelectionBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B2451B30DC0500CF5A3B /* SRSelectionBarButtonItem.m */; };
+		5A04B2481B30DC0500CF5A3B /* SRSelectionBarButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A04B2461B30DC0500CF5A3B /* SRSelectionBarButtonItem.xib */; };
 		5A07EDB31B28C4CB00BA875E /* SRFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDB21B28C4CB00BA875E /* SRFile.m */; };
 		5A07EDB61B28C4CC00BA875E /* SRDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDB51B28C4CC00BA875E /* SRDirectory.m */; };
 		5A07EDB91B28C4CC00BA875E /* SRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDB81B28C4CC00BA875E /* SRImage.m */; };
@@ -102,9 +102,9 @@
 /* Begin PBXFileReference section */
 		5A04B23D1B30CBC500CF5A3B /* add_to_selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_to_selection.png; sourceTree = "<group>"; };
 		5A04B23E1B30CBC500CF5A3B /* remove_from_selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_from_selection.png; sourceTree = "<group>"; };
-		5A04B2411B30CF4E00CF5A3B /* SRAddAndRemoveSelectionBarButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRAddAndRemoveSelectionBarButton.xib; path = SRAddSelectionBarButton/SRAddAndRemoveSelectionBarButton.xib; sourceTree = "<group>"; };
-		5A07EDAD1B28B07A00BA875E /* SRAddAndRemoveSelectionBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRAddAndRemoveSelectionBarButton.h; path = SRAddAndRemoveSelectionBarButton/SRAddAndRemoveSelectionBarButton.h; sourceTree = "<group>"; };
-		5A07EDAE1B28B07A00BA875E /* SRAddAndRemoveSelectionBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRAddAndRemoveSelectionBarButton.m; path = SRAddAndRemoveSelectionBarButton/SRAddAndRemoveSelectionBarButton.m; sourceTree = "<group>"; };
+		5A04B2441B30DC0500CF5A3B /* SRSelectionBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSelectionBarButtonItem.h; sourceTree = "<group>"; };
+		5A04B2451B30DC0500CF5A3B /* SRSelectionBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSelectionBarButtonItem.m; sourceTree = "<group>"; };
+		5A04B2461B30DC0500CF5A3B /* SRSelectionBarButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRSelectionBarButtonItem.xib; sourceTree = "<group>"; };
 		5A07EDB11B28C4CB00BA875E /* SRFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRFile.h; sourceTree = "<group>"; };
 		5A07EDB21B28C4CB00BA875E /* SRFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRFile.m; sourceTree = "<group>"; };
 		5A07EDB41B28C4CC00BA875E /* SRDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDirectory.h; sourceTree = "<group>"; };
@@ -255,14 +255,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5A07EDB01B28B07F00BA875E /* SRAddAndRemoveSelectionBarButton */ = {
+		5A04B2431B30DC0500CF5A3B /* SRSelectionBarButtonItem */ = {
 			isa = PBXGroup;
 			children = (
-				5A07EDAD1B28B07A00BA875E /* SRAddAndRemoveSelectionBarButton.h */,
-				5A07EDAE1B28B07A00BA875E /* SRAddAndRemoveSelectionBarButton.m */,
-				5A04B2411B30CF4E00CF5A3B /* SRAddAndRemoveSelectionBarButton.xib */,
+				5A04B2441B30DC0500CF5A3B /* SRSelectionBarButtonItem.h */,
+				5A04B2451B30DC0500CF5A3B /* SRSelectionBarButtonItem.m */,
+				5A04B2461B30DC0500CF5A3B /* SRSelectionBarButtonItem.xib */,
 			);
-			name = SRAddAndRemoveSelectionBarButton;
+			path = SRSelectionBarButtonItem;
 			sourceTree = "<group>";
 		};
 		5A07EDD61B2C8D5A00BA875E /* TableView */ = {
@@ -656,7 +656,7 @@
 				5A07EDE81B2C9AD900BA875E /* SRHomeBarButton */,
 				5AB7B65B1B264093002402E2 /* SRSelectionPickerBarButton */,
 				5AB7B67C1B27697A002402E2 /* SRAddSelectionBarButton */,
-				5A07EDB01B28B07F00BA875E /* SRAddAndRemoveSelectionBarButton */,
+				5A04B2431B30DC0500CF5A3B /* SRSelectionBarButtonItem */,
 			);
 			path = BarButtons;
 			sourceTree = "<group>";
@@ -823,8 +823,8 @@
 				5A07EE121B2CA72900BA875E /* banner.png in Resources */,
 				5A07EE0C1B2C9E5100BA875E /* provider-dropbox.png in Resources */,
 				5A4D92DE1B0673EC0008EF93 /* LaunchScreen.xib in Resources */,
-				5A04B2421B30CF4E00CF5A3B /* SRAddAndRemoveSelectionBarButton.xib in Resources */,
 				5A4D93C61B06A13D0008EF93 /* SRCollectionReusableHeader.xib in Resources */,
+				5A04B2481B30DC0500CF5A3B /* SRSelectionBarButtonItem.xib in Resources */,
 				5A4D93C41B06A13D0008EF93 /* SRCollectionReusableFooter.xib in Resources */,
 				5A07EE0A1B2C9E5100BA875E /* arrow-down@2x.png in Resources */,
 				5A07EE0B1B2C9E5100BA875E /* arrow-down@3x.png in Resources */,
@@ -886,7 +886,6 @@
 				5A4D93D21B06AA8C0008EF93 /* SRImageNavigationController.m in Sources */,
 				5A4D92CD1B0673EC0008EF93 /* main.m in Sources */,
 				5AB7B67B1B276973002402E2 /* SRAddSelectionBarButton.m in Sources */,
-				5A07EDAF1B28B07A00BA875E /* SRAddAndRemoveSelectionBarButton.m in Sources */,
 				5AB7B6801B276E31002402E2 /* SRCreateSelectionViewController.m in Sources */,
 				5A4D93D71B06AB7F0008EF93 /* SRImageViewController.m in Sources */,
 				5A0E58E11B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m in Sources */,
@@ -906,6 +905,7 @@
 				5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */,
 				5A4D93C31B06A13D0008EF93 /* SRCollectionReusableFooter.m in Sources */,
 				5A4D93C21B06A13D0008EF93 /* SRCollectionReusableView.m in Sources */,
+				5A04B2471B30DC0500CF5A3B /* SRSelectionBarButtonItem.m in Sources */,
 				5A4D934D1B06801B0008EF93 /* SRImage+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

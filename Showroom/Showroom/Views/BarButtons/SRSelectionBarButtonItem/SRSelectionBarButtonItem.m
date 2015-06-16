@@ -1,14 +1,14 @@
 //
-//  SRAddAndRemoveSelectionBarButton.m
+//  SRSelectionBarButtonItem.m
 //  Showroom
 //
 //  Created by Tanguy Hélesbeux on 10/06/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import "SRAddAndRemoveSelectionBarButton.h"
+#import "SRSelectionBarButtonItem.h"
 
-@interface SRAddAndRemoveSelectionBarButton()
+@interface SRSelectionBarButtonItem()
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIButton *actionButton;
@@ -16,11 +16,11 @@
 
 @end
 
-@implementation SRAddAndRemoveSelectionBarButton
+@implementation SRSelectionBarButtonItem
 
-- (id)initWithDelegate:(id<SRAddAndRemoveSelectionBarButtonDelegate>)delegate selection:(SRSelection *)selection selected:(BOOL)selected {
+- (id)initWithDelegate:(id<SRSelectionBarButtonItemDelegate>)delegate selection:(SRSelection *)selection selected:(BOOL)selected {
     
-    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"SRAddAndRemoveSelectionBarButton"
+    NSArray* nibViews = [[NSBundle mainBundle] loadNibNamed:@"SRSelectionBarButtonItem"
                                                       owner:self
                                                     options:nil];
     
