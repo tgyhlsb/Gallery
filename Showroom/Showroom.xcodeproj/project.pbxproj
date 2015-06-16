@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A04B23F1B30CBC500CF5A3B /* add_to_selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A04B23D1B30CBC500CF5A3B /* add_to_selection.png */; };
+		5A04B2401B30CBC500CF5A3B /* remove_from_selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A04B23E1B30CBC500CF5A3B /* remove_from_selection.png */; };
+		5A04B2421B30CF4E00CF5A3B /* SRAddAndRemoveSelectionBarButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A04B2411B30CF4E00CF5A3B /* SRAddAndRemoveSelectionBarButton.xib */; };
 		5A07EDAF1B28B07A00BA875E /* SRAddAndRemoveSelectionBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDAE1B28B07A00BA875E /* SRAddAndRemoveSelectionBarButton.m */; };
 		5A07EDB31B28C4CB00BA875E /* SRFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDB21B28C4CB00BA875E /* SRFile.m */; };
 		5A07EDB61B28C4CC00BA875E /* SRDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDB51B28C4CC00BA875E /* SRDirectory.m */; };
@@ -97,6 +100,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A04B23D1B30CBC500CF5A3B /* add_to_selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_to_selection.png; sourceTree = "<group>"; };
+		5A04B23E1B30CBC500CF5A3B /* remove_from_selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_from_selection.png; sourceTree = "<group>"; };
+		5A04B2411B30CF4E00CF5A3B /* SRAddAndRemoveSelectionBarButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRAddAndRemoveSelectionBarButton.xib; path = SRAddSelectionBarButton/SRAddAndRemoveSelectionBarButton.xib; sourceTree = "<group>"; };
 		5A07EDAD1B28B07A00BA875E /* SRAddAndRemoveSelectionBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRAddAndRemoveSelectionBarButton.h; path = SRAddAndRemoveSelectionBarButton/SRAddAndRemoveSelectionBarButton.h; sourceTree = "<group>"; };
 		5A07EDAE1B28B07A00BA875E /* SRAddAndRemoveSelectionBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRAddAndRemoveSelectionBarButton.m; path = SRAddAndRemoveSelectionBarButton/SRAddAndRemoveSelectionBarButton.m; sourceTree = "<group>"; };
 		5A07EDB11B28C4CB00BA875E /* SRFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRFile.h; sourceTree = "<group>"; };
@@ -254,6 +260,7 @@
 			children = (
 				5A07EDAD1B28B07A00BA875E /* SRAddAndRemoveSelectionBarButton.h */,
 				5A07EDAE1B28B07A00BA875E /* SRAddAndRemoveSelectionBarButton.m */,
+				5A04B2411B30CF4E00CF5A3B /* SRAddAndRemoveSelectionBarButton.xib */,
 			);
 			name = SRAddAndRemoveSelectionBarButton;
 			sourceTree = "<group>";
@@ -303,6 +310,8 @@
 		5A07EE021B2C9E5100BA875E /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				5A04B23D1B30CBC500CF5A3B /* add_to_selection.png */,
+				5A04B23E1B30CBC500CF5A3B /* remove_from_selection.png */,
 				5A07EE031B2C9E5100BA875E /* arrow-down.png */,
 				5A07EE041B2C9E5100BA875E /* arrow-down@2x.png */,
 				5A07EE051B2C9E5100BA875E /* arrow-down@3x.png */,
@@ -810,9 +819,11 @@
 				5A4D93CF1B06A2060008EF93 /* SRImageCollectionViewCell.xib in Resources */,
 				5A07EDD01B2A2D1500BA875E /* SRImagesCollectionViewController.xib in Resources */,
 				5A07EE0F1B2CA1BC00BA875E /* provider-ipad-directory.png in Resources */,
+				5A04B23F1B30CBC500CF5A3B /* add_to_selection.png in Resources */,
 				5A07EE121B2CA72900BA875E /* banner.png in Resources */,
 				5A07EE0C1B2C9E5100BA875E /* provider-dropbox.png in Resources */,
 				5A4D92DE1B0673EC0008EF93 /* LaunchScreen.xib in Resources */,
+				5A04B2421B30CF4E00CF5A3B /* SRAddAndRemoveSelectionBarButton.xib in Resources */,
 				5A4D93C61B06A13D0008EF93 /* SRCollectionReusableHeader.xib in Resources */,
 				5A4D93C41B06A13D0008EF93 /* SRCollectionReusableFooter.xib in Resources */,
 				5A07EE0A1B2C9E5100BA875E /* arrow-down@2x.png in Resources */,
@@ -822,6 +833,7 @@
 				5A07EE151B2CAAD300BA875E /* home.png in Resources */,
 				5A07EDE11B2C980800BA875E /* SRSelectionsTableViewController.xib in Resources */,
 				5A07EE0D1B2C9E5100BA875E /* provider-ipad.png in Resources */,
+				5A04B2401B30CBC500CF5A3B /* remove_from_selection.png in Resources */,
 				5A4D93001B0676730008EF93 /* Localizable.strings in Resources */,
 				5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */,
 				5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */,

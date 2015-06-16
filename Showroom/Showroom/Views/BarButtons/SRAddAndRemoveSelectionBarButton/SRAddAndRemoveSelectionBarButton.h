@@ -8,10 +8,24 @@
 
 #import "SRBarButtonItem.h"
 
+#import "SRSelection.h"
+
+@protocol SRAddAndRemoveSelectionBarButtonDelegate;
+
 @interface SRAddAndRemoveSelectionBarButton : SRBarButtonItem
 
-@property (readwrite, nonatomic) BOOL selected;
+@property (readwrite, nonatomic, weak) id<SRAddAndRemoveSelectionBarButtonDelegate> delegate;
 
-- (id)initWithTarget:(id)target action:(SEL)selector selected:(BOOL)selected;
+@property (readwrite, nonatomic) BOOL selected;
+@property (readwrite, nonatomic, strong) SRSelection *selection;
+
+- (id)initWithDelegate:(id<SRAddAndRemoveSelectionBarButtonDelegate>)delegate selection:(SRSelection *)selection selected:(BOOL)selected;
+
+@end
+
+@protocol SRAddAndRemoveSelectionBarButtonDelegate <NSObject>
+
+- (void)addAndRemoveButtonHandler:(SRAddAndRemoveSelectionBarButton *)sender;
+- (void)selectionPickerButtonHandler:(SRAddAndRemoveSelectionBarButton *)sender;
 
 @end

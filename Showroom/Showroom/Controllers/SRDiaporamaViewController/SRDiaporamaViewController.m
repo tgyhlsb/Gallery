@@ -16,17 +16,15 @@
 #import "SRModel.h"
 
 // Views
-#import "SRSelectionPickerBarButton.h"
 #import "SRAddAndRemoveSelectionBarButton.h"
 
 // Managers
 #import "SRNotificationCenter.h"
 
-@interface SRDiaporamaViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface SRDiaporamaViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, SRAddAndRemoveSelectionBarButtonDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultController;
-@property (strong, nonatomic) SRSelectionPickerBarButton *selectionPickerButton;
 @property (strong, nonatomic) SRAddAndRemoveSelectionBarButton *selectionButton;
 
 @end
@@ -68,9 +66,8 @@
 - (void)initializeBarButtons {
     SRSelection *selection = [SRModel defaultModel].activeSelection;
     BOOL activeImageIsSelected = [selection imageIsSelected:self.selectedImage];
-    self.selectionPickerButton = [[SRSelectionPickerBarButton alloc] initWithTarget:self action:@selector(selectionPickerButtonHandler) selection:selection];
-    self.selectionButton = [[SRAddAndRemoveSelectionBarButton alloc] initWithTarget:self action:@selector(selectionButtonHandler) selected:activeImageIsSelected];
-    self.navigationItem.rightBarButtonItems = @[self.selectionPickerButton, self.selectionButton];
+    self.selectionButton = [[SRAddAndRemoveSelectionBarButton alloc] initWithDelegate:self selection:selection selected:activeImageIsSelected];
+    self.navigationItem.rightBarButtonItems = @[self.selectionButton];
 }
 
 #pragma mark - View updates
@@ -83,6 +80,7 @@
     } else {
         self.selectionButton.selected = NO;
     }
+    self.selectionButton.selection = selection;
 }
 
 #pragma mark - Getters & Setters
@@ -94,20 +92,13 @@
     }
 }
 
-#pragma mark - Handlers
-
-- (void)selectionPickerButtonHandler {
-    SRSelectionPopoverNavigationController *contentViewController = [SRSelectionPopoverNavigationController new];
-    UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:contentViewController];
-    
-    [contentViewController setCloseBlock:^{
-        [popoverController dismissPopoverAnimated:YES];
-    }];
-    
-    [popoverController presentPopoverFromBarButtonItem:self.selectionPickerButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+- (void)setSelectedImage:(SRImage *)selectedImage {
+    _selectedImage = selectedImage;
 }
 
-- (void)selectionButtonHandler {
+#pragma mark - Handlers
+
+- (void)addAndRemoveButtonHandler:(SRAddAndRemoveSelectionBarButton *)sender {
     
     SRSelection *selection = [SRModel defaultModel].activeSelection;
     if ([selection imageIsSelected:self.selectedImage]) {
@@ -116,6 +107,17 @@
         [selection addImagesObject:self.selectedImage];
     }
     [self updateSelectionButton];
+}
+
+- (void)selectionPickerButtonHandler:(SRAddAndRemoveSelectionBarButton *)sender {
+    SRSelectionPopoverNavigationController *contentViewController = [SRSelectionPopoverNavigationController new];
+    UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:contentViewController];
+    
+    [contentViewController setCloseBlock:^{
+        [popoverController dismissPopoverAnimated:YES];
+    }];
+    
+    [popoverController presentPopoverFromBarButtonItem:self.selectionButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark - Notifications
@@ -128,7 +130,7 @@
 }
 
 - (void)activeSelectionDidChangerNotificationHandler {
-    self.selectionPickerButton.selection = [SRModel defaultModel].activeSelection;
+    self.selectionButton.selection = [SRModel defaultModel].activeSelection;
     [self updateSelectionButton];
 }
 
@@ -192,6 +194,15 @@
     SRImage *image = [self.fetchedResultController objectAtIndexPath:afterIndexPath];
     SRImageViewController *afterViewController = [SRImageViewController newWithImage:image];
     return afterViewController;
+}
+
+#pragma mark - UIPageViewControllerDelegate
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
+    
+    SRImageViewController *centerViewController = [pageViewController.viewControllers lastObject];
+    self.selectedImage = centerViewController.image;
+    [self updateSelectionButton];
 }
 
 @end
