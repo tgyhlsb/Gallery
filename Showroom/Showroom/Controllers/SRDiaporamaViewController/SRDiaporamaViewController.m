@@ -33,15 +33,15 @@
 
 #pragma mark - Constructor
 
-+ (instancetype)newWithDirectory:(SRDirectory *)directory selectedImage:(SRImage *)selectedImage {
-    return [[SRDiaporamaViewController alloc] initWithDirectory:directory selectedImage:selectedImage];
++ (instancetype)newWithDirectory:(SRDirectory *)directory activeImage:(SRImage *)activeImage {
+    return [[SRDiaporamaViewController alloc] initWithDirectory:directory activeImage:activeImage];
 }
 
-- (id)initWithDirectory:(SRDirectory *)directory selectedImage:(SRImage *)selectedImage {
+- (id)initWithDirectory:(SRDirectory *)directory activeImage:(SRImage *)activeImage {
     self = [super init];
     if (self) {
         self.directory = directory;
-        self.selectedImage = selectedImage;
+        self.activeImage = activeImage;
     }
     return self;
 }
@@ -52,7 +52,7 @@
     [super viewDidLoad];
     
     [self initializePageViewController];
-    [self setPageViewControllerForImage:self.selectedImage];
+    [self setPageViewControllerForImage:self.activeImage];
     
     [self initializeBarButtons];
     
@@ -65,7 +65,7 @@
 
 - (void)initializeBarButtons {
     SRSelection *selection = [SRModel defaultModel].activeSelection;
-    BOOL activeImageIsSelected = [selection imageIsSelected:self.selectedImage];
+    BOOL activeImageIsSelected = [selection imageIsSelected:self.activeImage];
     self.selectionButton = [[SRSelectionBarButtonItem alloc] initWithDelegate:self selection:selection selected:activeImageIsSelected];
     self.navigationItem.rightBarButtonItems = @[self.selectionButton];
 }
@@ -75,7 +75,7 @@
 - (void)updateSelectionButton {
     
     SRSelection *selection = [SRModel defaultModel].activeSelection;
-    if ([selection imageIsSelected:self.selectedImage]) {
+    if ([selection imageIsSelected:self.activeImage]) {
         self.selectionButton.selected = YES;
     } else {
         self.selectionButton.selected = NO;
@@ -92,8 +92,8 @@
     }
 }
 
-- (void)setSelectedImage:(SRImage *)selectedImage {
-    _selectedImage = selectedImage;
+- (void)setActiveImage:(SRImage *)selectedImage {
+    _activeImage = selectedImage;
 }
 
 #pragma mark - Handlers
@@ -101,10 +101,10 @@
 - (void)addAndRemoveButtonHandler:(SRSelectionBarButtonItem *)sender {
     
     SRSelection *selection = [SRModel defaultModel].activeSelection;
-    if ([selection imageIsSelected:self.selectedImage]) {
-        [selection deselectImage:self.selectedImage];
+    if ([selection imageIsSelected:self.activeImage]) {
+        [selection deselectImage:self.activeImage];
     } else {
-        [selection selectImage:self.selectedImage];
+        [selection selectImage:self.activeImage];
     }
     [self updateSelectionButton];
 }
@@ -201,7 +201,7 @@
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
     
     SRImageViewController *centerViewController = [pageViewController.viewControllers lastObject];
-    self.selectedImage = centerViewController.image;
+    self.activeImage = centerViewController.image;
     [self updateSelectionButton];
 }
 

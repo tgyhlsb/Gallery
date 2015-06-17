@@ -148,7 +148,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    SRDiaporamaViewController *destination = [SRDiaporamaViewController newWithDirectory:self.directory selectedImage:image];
+    SRDiaporamaViewController *destination = [SRDiaporamaViewController newWithDirectory:self.directory activeImage:image];
     [self.navigationController pushViewController:destination animated:YES];
     
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
