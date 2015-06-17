@@ -8,6 +8,8 @@
 
 #import "SRSelection+Helper.h"
 
+#import "SRLogger.h"
+
 @implementation SRSelection (Helper)
 
 - (BOOL)isActive {
@@ -20,6 +22,24 @@
 
 - (BOOL)imageIsSelected:(SRImage *)image {
     return [self.images containsObject:image];
+}
+
+- (void)selectImage:(SRImage *)image {
+    if ([self.images containsObject:image]) {
+        [SRLogger addError:@"Trying to select image already selected : %@", image];
+    } else {
+        [self addImagesObject:image];
+        self.modificationDate = [NSDate date];
+    }
+}
+
+- (void)deselectImage:(SRImage *)image {
+    if (![self.images containsObject:image]) {
+        [SRLogger addError:@"Trying to deselect invalid image : %@", image];
+    } else {
+        [self removeImagesObject:image];
+        self.modificationDate = [NSDate date];
+    }
 }
 
 @end

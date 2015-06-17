@@ -14,5 +14,7 @@
 - (void)setIsActive:(BOOL)active;
 
 - (BOOL)imageIsSelected:(SRImage *)image;
+- (void)selectImage:(SRImage *)image;
+- (void)deselectImage:(SRImage *)image;
 
 @end

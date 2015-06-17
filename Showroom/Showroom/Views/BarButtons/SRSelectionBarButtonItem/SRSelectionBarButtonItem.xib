@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
@@ -17,10 +18,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ih1-b5-l1B">
-                    <rect key="frame" x="0.0" y="5" width="41" height="31"/>
+                    <rect key="frame" x="0.0" y="4" width="44" height="33"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="31" id="48Y-M5-cMP"/>
-                        <constraint firstAttribute="width" constant="41" id="XCw-Fd-q7B"/>
+                        <constraint firstAttribute="height" constant="33" id="48Y-M5-cMP"/>
+                        <constraint firstAttribute="width" constant="44" id="XCw-Fd-q7B"/>
                     </constraints>
                     <state key="normal" title="Button" image="remove_from_selection.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -31,7 +32,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ycb-KZ-wPd">
-                    <rect key="frame" x="36" y="5" width="214" height="31"/>
+                    <rect key="frame" x="39" y="5" width="211" height="31"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                     <state key="normal" title="Button">
@@ -46,10 +47,10 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Ycb-KZ-wPd" secondAttribute="bottom" constant="8" id="4id-oI-NLa"/>
                 <constraint firstItem="Ycb-KZ-wPd" firstAttribute="leading" secondItem="ih1-b5-l1B" secondAttribute="trailing" constant="-5" id="BWt-JO-qrb"/>
-                <constraint firstItem="ih1-b5-l1B" firstAttribute="top" secondItem="ohP-Rj-TVO" secondAttribute="top" constant="5" id="EQd-JO-361"/>
+                <constraint firstItem="ih1-b5-l1B" firstAttribute="top" secondItem="ohP-Rj-TVO" secondAttribute="top" constant="4" id="EQd-JO-361"/>
                 <constraint firstAttribute="trailing" secondItem="Ycb-KZ-wPd" secondAttribute="trailing" id="Lnd-0Y-W5P"/>
                 <constraint firstItem="ih1-b5-l1B" firstAttribute="leading" secondItem="ohP-Rj-TVO" secondAttribute="leading" id="NjQ-vE-sbR"/>
-                <constraint firstAttribute="bottom" secondItem="ih1-b5-l1B" secondAttribute="bottom" constant="8" id="aKd-VO-DVr"/>
+                <constraint firstAttribute="bottom" secondItem="ih1-b5-l1B" secondAttribute="bottom" constant="7" id="aKd-VO-DVr"/>
                 <constraint firstItem="Ycb-KZ-wPd" firstAttribute="top" secondItem="ohP-Rj-TVO" secondAttribute="top" constant="5" id="iys-6g-TTh"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

@@ -102,9 +102,9 @@
     
     SRSelection *selection = [SRModel defaultModel].activeSelection;
     if ([selection imageIsSelected:self.selectedImage]) {
-        [selection removeImagesObject:self.selectedImage];
+        [selection deselectImage:self.selectedImage];
     } else {
-        [selection addImagesObject:self.selectedImage];
+        [selection selectImage:self.selectedImage];
     }
     [self updateSelectionButton];
 }
