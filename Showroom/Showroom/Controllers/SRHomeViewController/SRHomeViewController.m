@@ -34,8 +34,9 @@
 // XIB
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
-@property (weak, nonatomic) IBOutlet UIButton *iPadProviderButton;
-@property (weak, nonatomic) IBOutlet UIButton *dropboxProviderButton;
+@property (weak, nonatomic) IBOutlet UIButton *filesButton;
+@property (weak, nonatomic) IBOutlet UIButton *selectionsButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewLeftConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewWidthConstraint;
@@ -165,16 +166,20 @@
 //
 //    *********************
     
-    UIColor *providerButtonColor = [UIColor whiteColor];
+    UIColor *buttonColor = [UIColor whiteColor];
     
     
-    UIImage *iPadProviderImage = [UIImage imageNamed:@"provider-ipad.png"];
-    [self.iPadProviderButton setImage:iPadProviderImage forState:UIControlStateNormal];
-    [self.iPadProviderButton setTintColor:providerButtonColor];
+    UIImage *filesButtonImage = [UIImage imageNamed:@"grid.png"];
+    [self.filesButton setImage:filesButtonImage forState:UIControlStateNormal];
+    [self.filesButton setTintColor:buttonColor];
     
-    UIImage *dropboxProviderImage = [UIImage imageNamed:@"provider-dropbox.png"];
-    [self.dropboxProviderButton setImage:dropboxProviderImage forState:UIControlStateNormal];
-    [self.dropboxProviderButton setTintColor:providerButtonColor];
+    UIImage *selectionsButtonImage = [UIImage imageNamed:@"file_box.png"];
+    [self.selectionsButton setImage:selectionsButtonImage forState:UIControlStateNormal];
+    [self.selectionsButton setTintColor:buttonColor];
+    
+    UIImage *settingsButtonImage = [UIImage imageNamed:@"gears.png"];
+    [self.settingsButton setImage:settingsButtonImage forState:UIControlStateNormal];
+    [self.settingsButton setTintColor:buttonColor];
 }
 
 #pragma mark - Animations
@@ -223,19 +228,19 @@
 
 #pragma mark - Handlers 
 
-- (IBAction)fileListInterfaceButtonHandler:(UIButton *)sender {
-    SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
-    SRFilesNavigationController *destination = [SRFilesNavigationController newWithDirectory:directory];
-    destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
-    [self presentViewController:destination animated:YES completion:nil];
-}
-
-- (IBAction)imageCollectionInterfaceButtonHandler:(UIButton *)sender {
-    SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
-    SRImageNavigationController *destination = [SRImageNavigationController newWithDirectory:directory];
-    destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
-    [self presentViewController:destination animated:YES completion:nil];
-}
+//- (IBAction)fileListInterfaceButtonHandler:(UIButton *)sender {
+//    SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
+//    SRFilesNavigationController *destination = [SRFilesNavigationController newWithDirectory:directory];
+//    destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
+//    [self presentViewController:destination animated:YES completion:nil];
+//}
+//
+//- (IBAction)imageCollectionInterfaceButtonHandler:(UIButton *)sender {
+//    SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
+//    SRImageNavigationController *destination = [SRImageNavigationController newWithDirectory:directory];
+//    destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
+//    [self presentViewController:destination animated:YES completion:nil];
+//}
 
 - (void)homeBarButtonHandler {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -246,17 +251,14 @@
     self.commentLabel.hidden = NO;
 }
 
-- (IBAction)iPadProviderButtonHandler:(UIButton *)sender {
+- (IBAction)filesButtonHandler:(UIButton *)sender {
     self.showTableView = !self.showTableView;
 }
 
-- (IBAction)dropboxProviderButtonHandler:(UIButton *)sender {
-    self.showTableView = NO;
-    
-    NSString *title = NSLocalizedString(@"LOCALIZE_DROPBOX_NOT_AVAILABLE_TITLE", nil);
-    NSString *message = NSLocalizedString(@"LOCALIZE_DROPBOX_NOT_AVAILABLE_MESSAGE", nil);
-    NSString *cancel = NSLocalizedString(@"LOCALIZE_OK", nil);
-    [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:cancel otherButtonTitles:nil] show];
+- (IBAction)selectionsButtonHandler:(UIButton *)sender {
+}
+
+- (IBAction)settingsButtonHandler:(UIButton *)sender {
 }
 
 #pragma mark - UICoreDataTableViewController
