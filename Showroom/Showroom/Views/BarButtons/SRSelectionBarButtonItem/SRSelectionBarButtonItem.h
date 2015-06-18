@@ -17,6 +17,7 @@
 @property (readwrite, nonatomic, weak) id<SRSelectionBarButtonItemDelegate> delegate;
 
 @property (readwrite, nonatomic) BOOL selected;
+@property (readwrite, nonatomic) BOOL actionButtonHidden;
 @property (readwrite, nonatomic, strong) SRSelection *selection;
 
 - (id)initWithDelegate:(id<SRSelectionBarButtonItemDelegate>)delegate selection:(SRSelection *)selection selected:(BOOL)selected;

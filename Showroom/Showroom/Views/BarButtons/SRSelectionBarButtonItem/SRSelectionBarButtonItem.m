@@ -43,7 +43,7 @@
 
 - (void)updateView {
     
-    self.actionButton.hidden = (self.selection == nil);
+    self.actionButton.hidden = (self.selection == nil || self.actionButtonHidden);
     NSString *title = self.selection ? self.selection.title : NSLocalizedString(@"LOCALIZE_SELECTION_BUTTON_DEFAULT_NAME", nil);
     [self.selectionButton setTitle:title forState:UIControlStateNormal];
 }
@@ -52,6 +52,11 @@
 
 - (void)setSelection:(SRSelection *)selection {
     _selection = selection;
+    [self updateView];
+}
+
+- (void)setActionButtonHidden:(BOOL)actionButtonHidden {
+    _actionButtonHidden = actionButtonHidden;
     [self updateView];
 }
 
