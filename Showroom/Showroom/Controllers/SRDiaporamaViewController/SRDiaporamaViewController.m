@@ -21,9 +21,10 @@
 // Managers
 #import "SRNotificationCenter.h"
 
-@interface SRDiaporamaViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, SRSelectionBarButtonItemDelegate>
+@interface SRDiaporamaViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, SRSelectionBarButtonItemDelegate, SRImageViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
+@property (strong, nonatomic) SRImageViewController *centerViewController;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultController;
 @property (strong, nonatomic) SRSelectionBarButtonItem *selectionButton;
 
@@ -96,6 +97,12 @@
     _activeImage = selectedImage;
 }
 
+- (void)setCenterViewController:(SRImageViewController *)centerViewController {
+    _centerViewController = centerViewController;
+    _centerViewController.delegate = self;
+    self.activeImage = centerViewController.image;
+}
+
 #pragma mark - Handlers
 
 - (void)addAndRemoveButtonHandler:(SRSelectionBarButtonItem *)sender {
@@ -157,8 +164,9 @@
 
 - (void)setPageViewControllerForImage:(SRImage *)image {
     SRImageViewController *centerViewController = [SRImageViewController newWithImage:image];
+    __weak SRDiaporamaViewController *weakSelf = self;
     [self.pageViewController setViewControllers:@[centerViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL finished) {
-        
+        if (finished) weakSelf.centerViewController = centerViewController;
     }];
 }
 
@@ -200,9 +208,19 @@
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
     
-    SRImageViewController *centerViewController = [pageViewController.viewControllers lastObject];
-    self.activeImage = centerViewController.image;
+    self.centerViewController = [pageViewController.viewControllers lastObject];
     [self updateSelectionButton];
+}
+
+#pragma mark - SRImageViewControllerDelegate
+
+- (void)imageViewControllerDidSingleTap {
+    
+}
+
+- (void)imageViewControllerDidDoubleTap {
+    self.navigationController.navigationBarHidden = !self.navigationController.navigationBarHidden;
+    self.centerViewController.view.backgroundColor = self.navigationController.navigationBarHidden ? [UIColor blackColor] : [UIColor whiteColor];
 }
 
 @end

@@ -11,12 +11,22 @@
 // Model
 #import "SRImage.h"
 
+@protocol SRImageViewControllerDelegate;
+
 @interface SRImageViewController : UIViewController
 
+@property (weak, nonatomic) id<SRImageViewControllerDelegate> delegate;
 @property (strong, nonatomic) SRImage *image;
 
 + (instancetype)newWithImage:(SRImage *)image;
 
 - (void)hideTitleButtonAfter:(NSTimeInterval)delay;
+
+@end
+
+@protocol SRImageViewControllerDelegate <NSObject>
+
+- (void)imageViewControllerDidSingleTap;
+- (void)imageViewControllerDidDoubleTap;
 
 @end

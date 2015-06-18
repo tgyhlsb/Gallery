@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRSelectionBarButtonItem">
+            <connections>
+                <outlet property="actionButton" destination="ih1-b5-l1B" id="3zD-qj-Rr0"/>
+                <outlet property="contentView" destination="ohP-Rj-TVO" id="1tX-TF-3sS"/>
+                <outlet property="selectionButton" destination="Ycb-KZ-wPd" id="mgo-dQ-o8x"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ohP-Rj-TVO">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ih1-b5-l1B">
+                    <rect key="frame" x="0.0" y="5" width="41" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="48Y-M5-cMP"/>
+                        <constraint firstAttribute="width" constant="41" id="XCw-Fd-q7B"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="remove_from_selection.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="add_to_selection.png"/>
+                    <connections>
+                        <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="uAR-Ez-5bi"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ycb-KZ-wPd">
+                    <rect key="frame" x="36" y="5" width="214" height="31"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="selectionButtonHandler:" destination="-1" eventType="touchUpInside" id="pSk-me-tNN"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Ycb-KZ-wPd" secondAttribute="bottom" constant="8" id="4id-oI-NLa"/>
+                <constraint firstItem="Ycb-KZ-wPd" firstAttribute="leading" secondItem="ih1-b5-l1B" secondAttribute="trailing" constant="-5" id="BWt-JO-qrb"/>
+                <constraint firstItem="ih1-b5-l1B" firstAttribute="top" secondItem="ohP-Rj-TVO" secondAttribute="top" constant="5" id="EQd-JO-361"/>
+                <constraint firstAttribute="trailing" secondItem="Ycb-KZ-wPd" secondAttribute="trailing" id="Lnd-0Y-W5P"/>
+                <constraint firstItem="ih1-b5-l1B" firstAttribute="leading" secondItem="ohP-Rj-TVO" secondAttribute="leading" id="NjQ-vE-sbR"/>
+                <constraint firstAttribute="bottom" secondItem="ih1-b5-l1B" secondAttribute="bottom" constant="8" id="aKd-VO-DVr"/>
+                <constraint firstItem="Ycb-KZ-wPd" firstAttribute="top" secondItem="ohP-Rj-TVO" secondAttribute="top" constant="5" id="iys-6g-TTh"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="406" y="414"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="add_to_selection.png" width="134" height="100"/>
+        <image name="remove_from_selection.png" width="134" height="100"/>
+    </resources>
+</document>
