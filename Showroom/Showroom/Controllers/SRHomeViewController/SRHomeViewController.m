@@ -256,9 +256,11 @@
 }
 
 - (IBAction)selectionsButtonHandler:(UIButton *)sender {
+    
 }
 
 - (IBAction)settingsButtonHandler:(UIButton *)sender {
+    
 }
 
 #pragma mark - UICoreDataTableViewController
