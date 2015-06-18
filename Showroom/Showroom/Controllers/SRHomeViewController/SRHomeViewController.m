@@ -18,6 +18,7 @@
 // Controllers
 #import "SRImageNavigationController.h"
 #import "SRFilesNavigationController.h"
+#import "SRSettingsSplitViewController.h"
 
 // Views
 #import "SRBarButtonItem.h"
@@ -260,7 +261,8 @@
 }
 
 - (IBAction)settingsButtonHandler:(UIButton *)sender {
-    
+    SRSettingsSplitViewController *destination = [SRSettingsSplitViewController new];
+    [self presentViewController:destination animated:YES completion:nil];
 }
 
 #pragma mark - UICoreDataTableViewController
