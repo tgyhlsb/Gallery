@@ -20,12 +20,12 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)newWithDirectory:(SRDirectory *)directory {
-    return [[SRImageNavigationController alloc] initWithDirectory:directory];
++ (instancetype)newWithResultController:(NSFetchedResultsController *)fetchResultController {
+    return [[SRImageNavigationController alloc] initWithResultController:fetchResultController];
 }
 
-- (id)initWithDirectory:(SRDirectory *)directory {
-    SRImagesCollectionViewController *rootController = [SRImagesCollectionViewController newWithDirectory:directory];
+- (id)initWithResultController:(NSFetchedResultsController *)fetchResultController {
+    SRImagesCollectionViewController *rootController = [SRImagesCollectionViewController newWithResultController:fetchResultController];
     self = [super initWithRootViewController:rootController];
     if (self) {
         self.toolbarHidden = YES;

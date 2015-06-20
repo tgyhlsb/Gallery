@@ -78,11 +78,25 @@ static SRModel *defaultModel;
                                                           cacheName:nil];
 }
 
-- (NSFetchedResultsController *)fetchedResultControllerForImagesInDirectoryRecursively:(SRDirectory *)directory {
+- (NSFetchedResultsController *)fetchedResultControllerForImagesInDirectory:(SRDirectory *)directory recursively:(BOOL)recursively {
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRImage className]];
     
     request.predicate = [NSPredicate predicateWithFormat:@"path contains[cd] %@", directory.path];
+    
+    request.sortDescriptors = @[[self parentSortDescriptor], [self imageSortDescriptor]];
+    
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                               managedObjectContext:self.managedObjectContext
+                                                 sectionNameKeyPath:@"parent.path"
+                                                          cacheName:nil];
+}
+
+- (NSFetchedResultsController *)fetchedResultControllerForImagesInSelection:(SRSelection *)selection {
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRImage className]];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"ANY selections = %@", selection];
     
     request.sortDescriptors = @[[self parentSortDescriptor], [self imageSortDescriptor]];
     

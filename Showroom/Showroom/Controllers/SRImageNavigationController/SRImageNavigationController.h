@@ -8,11 +8,10 @@
 
 #import "SRNavigationController.h"
 
-// Model
-#import "SRModel.h"
+@class NSFetchedResultsController;
 
 @interface SRImageNavigationController : SRNavigationController
 
-+ (instancetype)newWithDirectory:(SRDirectory *)directory;
++ (instancetype)newWithResultController:(NSFetchedResultsController *)fetchResultController;
 
 @end

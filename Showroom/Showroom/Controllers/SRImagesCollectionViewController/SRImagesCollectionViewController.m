@@ -24,22 +24,20 @@
 
 @interface SRImagesCollectionViewController ()
 
-@property (strong, nonatomic) SRDirectory *directory;
-
 @end
 
 @implementation SRImagesCollectionViewController
 
 #pragma mark - Constructor
 
-+ (instancetype)newWithDirectory:(SRDirectory *)directory {
-    return [[SRImagesCollectionViewController alloc] initWithDirectory:directory];
++ (instancetype)newWithResultController:(NSFetchedResultsController *)fetchResultController {
+    return [[SRImagesCollectionViewController alloc] initWithResultController:fetchResultController];
 }
 
-- (id)initWithDirectory:(SRDirectory *)directory {
+- (id)initWithResultController:(NSFetchedResultsController *)fetchResultController {
     self = [super init];
     if (self) {
-        _directory = directory;
+        self.fetchedResultsController = fetchResultController;
     }
     return self;
 }
@@ -56,8 +54,6 @@
     [SRImageCollectionViewCell registerToCollectionView:self.collectionView];
     
     [self setTitleWithAppIcon];
-    
-    [self updateFetchedResultController];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
@@ -101,17 +97,6 @@
 
 #pragma mark - Getters & Setters
 
-- (void)setDirectory:(SRDirectory *)directory {
-    _directory = directory;
-    [self updateFetchedResultController];
-}
-
-#pragma mark - Fetch request
-
-- (void)updateFetchedResultController {
-    self.fetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectoryRecursively:self.directory];
-}
-
 #pragma mark - UICollectionViewDataSource
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -147,9 +132,9 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    SRDiaporamaViewController *destination = [SRDiaporamaViewController newWithDirectory:self.directory activeImage:image];
-    [self.navigationController pushViewController:destination animated:YES];
+//    SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
+//    SRDiaporamaViewController *destination = [SRDiaporamaViewController newWithDirectory:self.directory activeImage:image];
+//    [self.navigationController pushViewController:destination animated:YES];
     
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }

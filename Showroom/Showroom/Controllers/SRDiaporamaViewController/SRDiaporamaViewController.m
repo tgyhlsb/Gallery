@@ -62,6 +62,10 @@
     [self setTitleWithAppIcon];
 }
 
+- (void)dealloc {
+    [[SRNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Initialization
 
 - (void)initializeBarButtons {
@@ -157,7 +161,7 @@
 }
 
 - (void)updateFetchedResultController {
-    self.fetchedResultController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectoryRecursively:self.directory];
+    self.fetchedResultController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectory:self.directory recursively:YES];
     NSError *error = nil;
     [self.fetchedResultController performFetch:&error];
 }

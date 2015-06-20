@@ -27,7 +27,8 @@
 
 #pragma mark - Request factory
 - (NSFetchedResultsController *)fetchedResultControllerForFilesInDirectory:(SRDirectory *)directory;
-- (NSFetchedResultsController *)fetchedResultControllerForImagesInDirectoryRecursively:(SRDirectory *)directory;
+- (NSFetchedResultsController *)fetchedResultControllerForImagesInDirectory:(SRDirectory *)directory recursively:(BOOL)recursively;
+- (NSFetchedResultsController *)fetchedResultControllerForImagesInSelection:(SRSelection *)selection;
 - (NSFetchedResultsController *)fetchedResultControllerForDirectoriesInDirectoryRecursively:(SRDirectory *)directory;
 - (NSFetchedResultsController *)fetchedResultControllerForSelections;
 - (NSFetchedResultsController *)fetchedResultControllerForSelectionsActive:(BOOL)active;

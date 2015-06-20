@@ -377,9 +377,32 @@
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.fetchedResultsController isEqual:self.localFilesResultController]) {
+        [self tableView:tableView didSelectDirectoryAtIndexPath:indexPath];
+    } else if ([self.fetchedResultsController isEqual:self.selectionsResultController]) {
+        [self tableView:tableView didSelectSelectionAtIndexPath:indexPath];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectDirectoryAtIndexPath:(NSIndexPath *)indexPath {
     
     SRDirectory *directory = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    SRImageNavigationController *destination = [SRImageNavigationController newWithDirectory:directory];
+    NSFetchedResultsController *fetchedResultController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectory:directory recursively:YES];
+    SRImageNavigationController *destination = [SRImageNavigationController newWithResultController:fetchedResultController];
+    destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
+    
+    [self setInterfaceHidden:YES duration:0.35 completion:^(SRHomeViewController *weakSelf, BOOL finished) {
+    }];
+    
+    [self presentViewController:destination animated:YES completion:nil];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectSelectionAtIndexPath:(NSIndexPath *)indexPath {
+    
+    SRSelection *selection = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSFetchedResultsController *fetchedResultController = [[SRModel defaultModel] fetchedResultControllerForImagesInSelection:selection];
+    SRImageNavigationController *destination = [SRImageNavigationController newWithResultController:fetchedResultController];
     destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
     
     [self setInterfaceHidden:YES duration:0.35 completion:^(SRHomeViewController *weakSelf, BOOL finished) {
