@@ -73,8 +73,6 @@
     [self initializeProviders];
     [self initializeManagers];
     
-    [self setUpFetchedResultController];
-    
     self.tableView.hidden = YES; // prevents first animation on launch
     
     [self updateLayout];
@@ -243,8 +241,8 @@
 }
 
 - (NSFetchedResultsController *)selectionsResultController {
-    if (_selectionsResultController) {
-        
+    if (!_selectionsResultController) {
+        _selectionsResultController = [[SRModel defaultModel] fetchedResultControllerForSelections];
     }
     return _selectionsResultController;
 }
@@ -253,11 +251,6 @@
 
 - (void)homeBarButtonHandler {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)forceReloadButtonHandler:(UIButton *)sender {
-    [[SRProviderLocal defaultProvider] reloadFiles];
-    self.commentLabel.hidden = NO;
 }
 
 - (IBAction)filesButtonHandler:(UIButton *)sender {
@@ -307,9 +300,6 @@
 
 #pragma mark - UICoreDataTableViewController
 
-- (void)setUpFetchedResultController {
-}
-
 - (SRImage *)firstImageForDirectory:(SRDirectory *)directory {
     static NSMutableDictionary *cachedThumbnails;
     if (!cachedThumbnails) cachedThumbnails = [[NSMutableDictionary alloc] init];
@@ -332,6 +322,15 @@
 #pragma mark UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.fetchedResultsController isEqual:self.localFilesResultController]) {
+        return [self tableView:tableView cellForDirectoryAtIndexPath:indexPath];
+    } else if ([self.fetchedResultsController isEqual:self.selectionsResultController]) {
+        return [self tableView:tableView cellForSelectionAtIndexPath:indexPath];
+    }
+    return nil;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForDirectoryAtIndexPath:(NSIndexPath *)indexPath {
     NSString *identifier = [SRDirectoryThumbnailTableViewCell defaultIdentifier];
     SRDirectoryThumbnailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
@@ -343,7 +342,20 @@
     } else {
         [self setCell:cell forDirectory:directory];
     }
+    return cell;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForSelectionAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *identifier = [SRDirectoryThumbnailTableViewCell defaultIdentifier];
+    SRDirectoryThumbnailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
+    SRSelection *selection = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    SRImage *image = [[selection.images allObjects] firstObject];;
+    cell.titleLabel.text = selection.title;
+    cell.thumbnailView.image = [image image];
+    cell.thumbnailView.contentMode = UIViewContentModeScaleAspectFill;
     return cell;
 }
 
