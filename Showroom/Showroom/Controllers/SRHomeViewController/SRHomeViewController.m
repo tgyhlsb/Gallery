@@ -408,6 +408,7 @@
     [self setInterfaceHidden:YES duration:0.35 completion:^(SRHomeViewController *weakSelf, BOOL finished) {
     }];
     
+    [[SRModel defaultModel] setActiveSelection:selection];
     [self presentViewController:destination animated:YES completion:nil];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
