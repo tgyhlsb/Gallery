@@ -229,20 +229,6 @@
 
 #pragma mark - Handlers 
 
-//- (IBAction)fileListInterfaceButtonHandler:(UIButton *)sender {
-//    SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
-//    SRFilesNavigationController *destination = [SRFilesNavigationController newWithDirectory:directory];
-//    destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
-//    [self presentViewController:destination animated:YES completion:nil];
-//}
-//
-//- (IBAction)imageCollectionInterfaceButtonHandler:(UIButton *)sender {
-//    SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
-//    SRImageNavigationController *destination = [SRImageNavigationController newWithDirectory:directory];
-//    destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
-//    [self presentViewController:destination animated:YES completion:nil];
-//}
-
 - (void)homeBarButtonHandler {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -262,7 +248,6 @@
 
 - (IBAction)settingsButtonHandler:(UIButton *)sender {
     SRSettingsSplitViewController *destination = [SRSettingsSplitViewController new];
-    destination.closeButton = self.homeBarButton;
     [self presentViewController:destination animated:YES completion:nil];
 }
 

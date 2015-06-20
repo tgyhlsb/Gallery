@@ -71,6 +71,7 @@
 		5A4D93D21B06AA8C0008EF93 /* SRImageNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93D11B06AA8C0008EF93 /* SRImageNavigationController.m */; };
 		5A4D93D71B06AB7F0008EF93 /* SRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93D51B06AB7F0008EF93 /* SRImageViewController.m */; };
 		5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */; };
+		5A6CD2861B35C4760036B129 /* SRNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CD2851B35C4760036B129 /* SRNavigationController.m */; };
 		5A8761A01B1F93C20030221A /* SRDiaporamaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A87619E1B1F93C20030221A /* SRDiaporamaCollectionViewCell.m */; };
 		5A8761A61B20EDBD0030221A /* SRDiaporamaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8761A41B20EDBD0030221A /* SRDiaporamaViewController.m */; };
 		5A8761A71B20EDBD0030221A /* SRDiaporamaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8761A51B20EDBD0030221A /* SRDiaporamaViewController.xib */; };
@@ -216,6 +217,8 @@
 		5A4D93D41B06AB7F0008EF93 /* SRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRImageViewController.h; path = SRImageViewController/SRImageViewController.h; sourceTree = "<group>"; };
 		5A4D93D51B06AB7F0008EF93 /* SRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRImageViewController.m; path = SRImageViewController/SRImageViewController.m; sourceTree = "<group>"; };
 		5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRImageViewController.xib; path = SRImageViewController/SRImageViewController.xib; sourceTree = "<group>"; };
+		5A6CD2841B35C4760036B129 /* SRNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRNavigationController.h; sourceTree = "<group>"; };
+		5A6CD2851B35C4760036B129 /* SRNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRNavigationController.m; sourceTree = "<group>"; };
 		5A87619D1B1F93C20030221A /* SRDiaporamaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRDiaporamaCollectionViewCell.h; path = SRDiaporamaCollectionViewCell/SRDiaporamaCollectionViewCell.h; sourceTree = "<group>"; };
 		5A87619E1B1F93C20030221A /* SRDiaporamaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRDiaporamaCollectionViewCell.m; path = SRDiaporamaCollectionViewCell/SRDiaporamaCollectionViewCell.m; sourceTree = "<group>"; };
 		5A8761A31B20EDBD0030221A /* SRDiaporamaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRDiaporamaViewController.h; path = SRDiaporamaViewController/SRDiaporamaViewController.h; sourceTree = "<group>"; };
@@ -448,6 +451,8 @@
 			children = (
 				5A07EDCC1B2A2A7400BA875E /* SRViewController.h */,
 				5A07EDCD1B2A2A7400BA875E /* SRViewController.m */,
+				5A6CD2841B35C4760036B129 /* SRNavigationController.h */,
+				5A6CD2851B35C4760036B129 /* SRNavigationController.m */,
 				5AC68AE11B337BFF00A71FF3 /* UIViewController+Helper.h */,
 				5AC68AE21B337BFF00A71FF3 /* UIViewController+Helper.m */,
 				5A4D93721B068FC30008EF93 /* UICoreDataTableViewController.h */,
@@ -990,6 +995,7 @@
 				5A4D93421B067B3C0008EF93 /* SRImage+Serializer.m in Sources */,
 				5A07EDCE1B2A2A7400BA875E /* SRViewController.m in Sources */,
 				5A0E58E21B1F8FA800846031 /* SROperationProviderLocalLoadImages.m in Sources */,
+				5A6CD2861B35C4760036B129 /* SRNavigationController.m in Sources */,
 				5A4D93441B067B3C0008EF93 /* SRModel.m in Sources */,
 				5A4D93471B067B910008EF93 /* SRNotificationCenter.m in Sources */,
 				5AB7B6851B276FF8002402E2 /* SRSelection+Serializer.m in Sources */,
