@@ -1,0 +1,1 @@
+../../../MEDeclarativeTable/Pod/Classes/MEDeclarativeTable.h

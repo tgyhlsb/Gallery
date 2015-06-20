@@ -71,6 +71,7 @@
 		5A4D93D21B06AA8C0008EF93 /* SRImageNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93D11B06AA8C0008EF93 /* SRImageNavigationController.m */; };
 		5A4D93D71B06AB7F0008EF93 /* SRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93D51B06AB7F0008EF93 /* SRImageViewController.m */; };
 		5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */; };
+		5A6CD2861B35C4760036B129 /* SRNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CD2851B35C4760036B129 /* SRNavigationController.m */; };
 		5A8761A01B1F93C20030221A /* SRDiaporamaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A87619E1B1F93C20030221A /* SRDiaporamaCollectionViewCell.m */; };
 		5A8761A61B20EDBD0030221A /* SRDiaporamaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8761A41B20EDBD0030221A /* SRDiaporamaViewController.m */; };
 		5A8761A71B20EDBD0030221A /* SRDiaporamaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8761A51B20EDBD0030221A /* SRDiaporamaViewController.xib */; };
@@ -83,10 +84,18 @@
 		5AB7B6811B276E31002402E2 /* SRCreateSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB7B67F1B276E31002402E2 /* SRCreateSelectionViewController.xib */; };
 		5AB7B6851B276FF8002402E2 /* SRSelection+Serializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B6841B276FF8002402E2 /* SRSelection+Serializer.m */; };
 		5AB7B68B1B2787EE002402E2 /* SRSelection+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B68A1B2787EE002402E2 /* SRSelection+Helper.m */; };
+		5AC68ACF1B336D4100A71FF3 /* SRSettingsSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC68ACD1B336D4100A71FF3 /* SRSettingsSplitViewController.m */; };
+		5AC68AD01B336D4100A71FF3 /* SRSettingsSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC68ACE1B336D4100A71FF3 /* SRSettingsSplitViewController.xib */; };
+		5AC68AE31B337BFF00A71FF3 /* UIViewController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC68AE21B337BFF00A71FF3 /* UIViewController+Helper.m */; };
+		5AE34EE21B335FFE001D2011 /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE34EE11B335FFE001D2011 /* grid.png */; };
+		5AE34EE41B33608D001D2011 /* file_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE34EE31B33608D001D2011 /* file_box.png */; };
+		5AE34EE61B3368F5001D2011 /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE34EE51B3368F5001D2011 /* gears.png */; };
+		5AE34EEE1B336BCE001D2011 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 5AE34EED1B336BCE001D2011 /* Podfile */; };
 		5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDB981B06C3F700DB572E /* SRHomeViewController.m */; };
 		5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */; };
 		5AECDBA11B06C90600DB572E /* localization.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5AECDBA01B06C90600DB572E /* localization.sh */; };
 		5AECDBA41B07665800DB572E /* SRProvider+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AECDBA31B07665800DB572E /* SRProvider+Helper.m */; };
+		61FA0A394B27A394B68945AF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB138C19F4A7E443A3F711B7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +109,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		164B82FF61803F037869C64E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5A04B23D1B30CBC500CF5A3B /* add_to_selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_to_selection.png; sourceTree = "<group>"; };
 		5A04B23E1B30CBC500CF5A3B /* remove_from_selection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_from_selection.png; sourceTree = "<group>"; };
 		5A04B2441B30DC0500CF5A3B /* SRSelectionBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSelectionBarButtonItem.h; sourceTree = "<group>"; };
@@ -207,6 +217,8 @@
 		5A4D93D41B06AB7F0008EF93 /* SRImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRImageViewController.h; path = SRImageViewController/SRImageViewController.h; sourceTree = "<group>"; };
 		5A4D93D51B06AB7F0008EF93 /* SRImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRImageViewController.m; path = SRImageViewController/SRImageViewController.m; sourceTree = "<group>"; };
 		5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRImageViewController.xib; path = SRImageViewController/SRImageViewController.xib; sourceTree = "<group>"; };
+		5A6CD2841B35C4760036B129 /* SRNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRNavigationController.h; sourceTree = "<group>"; };
+		5A6CD2851B35C4760036B129 /* SRNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRNavigationController.m; sourceTree = "<group>"; };
 		5A87619D1B1F93C20030221A /* SRDiaporamaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRDiaporamaCollectionViewCell.h; path = SRDiaporamaCollectionViewCell/SRDiaporamaCollectionViewCell.h; sourceTree = "<group>"; };
 		5A87619E1B1F93C20030221A /* SRDiaporamaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRDiaporamaCollectionViewCell.m; path = SRDiaporamaCollectionViewCell/SRDiaporamaCollectionViewCell.m; sourceTree = "<group>"; };
 		5A8761A31B20EDBD0030221A /* SRDiaporamaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRDiaporamaViewController.h; path = SRDiaporamaViewController/SRDiaporamaViewController.h; sourceTree = "<group>"; };
@@ -228,12 +240,23 @@
 		5AB7B6841B276FF8002402E2 /* SRSelection+Serializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRSelection+Serializer.m"; sourceTree = "<group>"; };
 		5AB7B6891B2787EE002402E2 /* SRSelection+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRSelection+Helper.h"; sourceTree = "<group>"; };
 		5AB7B68A1B2787EE002402E2 /* SRSelection+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRSelection+Helper.m"; sourceTree = "<group>"; };
+		5AC68ACC1B336D4100A71FF3 /* SRSettingsSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRSettingsSplitViewController.h; path = SRSettingsSplitViewController/SRSettingsSplitViewController.h; sourceTree = "<group>"; };
+		5AC68ACD1B336D4100A71FF3 /* SRSettingsSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRSettingsSplitViewController.m; path = SRSettingsSplitViewController/SRSettingsSplitViewController.m; sourceTree = "<group>"; };
+		5AC68ACE1B336D4100A71FF3 /* SRSettingsSplitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRSettingsSplitViewController.xib; path = SRSettingsSplitViewController/SRSettingsSplitViewController.xib; sourceTree = "<group>"; };
+		5AC68AE11B337BFF00A71FF3 /* UIViewController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helper.h"; sourceTree = "<group>"; };
+		5AC68AE21B337BFF00A71FF3 /* UIViewController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helper.m"; sourceTree = "<group>"; };
+		5AE34EE11B335FFE001D2011 /* grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid.png; sourceTree = "<group>"; };
+		5AE34EE31B33608D001D2011 /* file_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file_box.png; sourceTree = "<group>"; };
+		5AE34EE51B3368F5001D2011 /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gears.png; sourceTree = "<group>"; };
+		5AE34EED1B336BCE001D2011 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		5AECDB971B06C3F700DB572E /* SRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRHomeViewController.h; path = SRHomeViewController/SRHomeViewController.h; sourceTree = "<group>"; };
 		5AECDB981B06C3F700DB572E /* SRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRHomeViewController.m; path = SRHomeViewController/SRHomeViewController.m; sourceTree = "<group>"; };
 		5AECDB991B06C3F700DB572E /* SRHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRHomeViewController.xib; path = SRHomeViewController/SRHomeViewController.xib; sourceTree = "<group>"; };
 		5AECDBA01B06C90600DB572E /* localization.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = localization.sh; sourceTree = "<group>"; };
 		5AECDBA21B07665800DB572E /* SRProvider+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SRProvider+Helper.h"; sourceTree = "<group>"; };
 		5AECDBA31B07665800DB572E /* SRProvider+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SRProvider+Helper.m"; sourceTree = "<group>"; };
+		6B206BE2FCC3398C8BBEF54F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		FB138C19F4A7E443A3F711B7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A4D92FC1B0676010008EF93 /* CoreData.framework in Frameworks */,
+				61FA0A394B27A394B68945AF /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +279,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07448F70917BB7C0491C11AD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				164B82FF61803F037869C64E /* Pods.debug.xcconfig */,
+				6B206BE2FCC3398C8BBEF54F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5A04B2431B30DC0500CF5A3B /* SRSelectionBarButtonItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +343,9 @@
 		5A07EE021B2C9E5100BA875E /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				5AE34EE51B3368F5001D2011 /* gears.png */,
+				5AE34EE31B33608D001D2011 /* file_box.png */,
+				5AE34EE11B335FFE001D2011 /* grid.png */,
 				5A04B23D1B30CBC500CF5A3B /* add_to_selection.png */,
 				5A04B23E1B30CBC500CF5A3B /* remove_from_selection.png */,
 				5A07EE031B2C9E5100BA875E /* arrow-down.png */,
@@ -351,6 +387,7 @@
 				5A4D93131B0678890008EF93 /* Frameworks */,
 				5A4D92E61B0673EC0008EF93 /* ShowroomTests */,
 				5A4D92C81B0673EC0008EF93 /* Products */,
+				07448F70917BB7C0491C11AD /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -387,6 +424,7 @@
 				5A4D92CB1B0673EC0008EF93 /* Info.plist */,
 				5A4D92FE1B0676720008EF93 /* Localizable.strings */,
 				5A4D92CC1B0673EC0008EF93 /* main.m */,
+				5AE34EED1B336BCE001D2011 /* Podfile */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -413,10 +451,15 @@
 			children = (
 				5A07EDCC1B2A2A7400BA875E /* SRViewController.h */,
 				5A07EDCD1B2A2A7400BA875E /* SRViewController.m */,
+				5A6CD2841B35C4760036B129 /* SRNavigationController.h */,
+				5A6CD2851B35C4760036B129 /* SRNavigationController.m */,
+				5AC68AE11B337BFF00A71FF3 /* UIViewController+Helper.h */,
+				5AC68AE21B337BFF00A71FF3 /* UIViewController+Helper.m */,
 				5A4D93721B068FC30008EF93 /* UICoreDataTableViewController.h */,
 				5A4D93731B068FC30008EF93 /* UICoreDataTableViewController.m */,
 				5A4D938F1B069ABF0008EF93 /* UICoreDataCollectionViewController.h */,
 				5A4D93901B069ABF0008EF93 /* UICoreDataCollectionViewController.m */,
+				5AC68AD11B336D4600A71FF3 /* SRSettingsSplitViewController */,
 				5AB7B6821B276E36002402E2 /* SRCreateSelectionViewController */,
 				5AB7B6781B27686B002402E2 /* SRSelectionPopoverNavigationController */,
 				5AB7B66C1B276142002402E2 /* SRSelectionsTableViewController */,
@@ -465,6 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				5A4D92FB1B0676010008EF93 /* CoreData.framework */,
+				FB138C19F4A7E443A3F711B7 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -709,6 +753,16 @@
 			name = SRCreateSelectionViewController;
 			sourceTree = "<group>";
 		};
+		5AC68AD11B336D4600A71FF3 /* SRSettingsSplitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5AC68ACC1B336D4100A71FF3 /* SRSettingsSplitViewController.h */,
+				5AC68ACD1B336D4100A71FF3 /* SRSettingsSplitViewController.m */,
+				5AC68ACE1B336D4100A71FF3 /* SRSettingsSplitViewController.xib */,
+			);
+			name = SRSettingsSplitViewController;
+			sourceTree = "<group>";
+		};
 		5AECDB9C1B06C3FA00DB572E /* SRHomeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -736,9 +790,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5A4D92ED1B0673EC0008EF93 /* Build configuration list for PBXNativeTarget "Showroom" */;
 			buildPhases = (
+				C95AF31F5DFDCCCCB5B5AC55 /* Check Pods Manifest.lock */,
 				5A4D92C31B0673EC0008EF93 /* Sources */,
 				5A4D92C41B0673EC0008EF93 /* Frameworks */,
 				5A4D92C51B0673EC0008EF93 /* Resources */,
+				61F7DC70FFB8C245E4C649B7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -822,20 +878,25 @@
 				5A04B23F1B30CBC500CF5A3B /* add_to_selection.png in Resources */,
 				5A07EE121B2CA72900BA875E /* banner.png in Resources */,
 				5A07EE0C1B2C9E5100BA875E /* provider-dropbox.png in Resources */,
+				5AE34EEE1B336BCE001D2011 /* Podfile in Resources */,
 				5A4D92DE1B0673EC0008EF93 /* LaunchScreen.xib in Resources */,
 				5A4D93C61B06A13D0008EF93 /* SRCollectionReusableHeader.xib in Resources */,
 				5A04B2481B30DC0500CF5A3B /* SRSelectionBarButtonItem.xib in Resources */,
+				5AE34EE21B335FFE001D2011 /* grid.png in Resources */,
 				5A4D93C41B06A13D0008EF93 /* SRCollectionReusableFooter.xib in Resources */,
 				5A07EE0A1B2C9E5100BA875E /* arrow-down@2x.png in Resources */,
 				5A07EE0B1B2C9E5100BA875E /* arrow-down@3x.png in Resources */,
 				5AB7B6811B276E31002402E2 /* SRCreateSelectionViewController.xib in Resources */,
 				5A07EDDF1B2C8DDE00BA875E /* SRDirectoryThumbnailTableViewCell.xib in Resources */,
+				5AC68AD01B336D4100A71FF3 /* SRSettingsSplitViewController.xib in Resources */,
 				5A07EE151B2CAAD300BA875E /* home.png in Resources */,
 				5A07EDE11B2C980800BA875E /* SRSelectionsTableViewController.xib in Resources */,
 				5A07EE0D1B2C9E5100BA875E /* provider-ipad.png in Resources */,
 				5A04B2401B30CBC500CF5A3B /* remove_from_selection.png in Resources */,
+				5AE34EE41B33608D001D2011 /* file_box.png in Resources */,
 				5A4D93001B0676730008EF93 /* Localizable.strings in Resources */,
 				5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */,
+				5AE34EE61B3368F5001D2011 /* gears.png in Resources */,
 				5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */,
 				5AECDBA11B06C90600DB572E /* localization.sh in Resources */,
 				5A4D92DB1B0673EC0008EF93 /* Images.xcassets in Resources */,
@@ -851,6 +912,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		61F7DC70FFB8C245E4C649B7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C95AF31F5DFDCCCCB5B5AC55 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5A4D92C31B0673EC0008EF93 /* Sources */ = {
@@ -878,6 +972,7 @@
 				5A4D93741B068FC30008EF93 /* UICoreDataTableViewController.m in Sources */,
 				5AB7B66B1B27613D002402E2 /* SRSelectionsTableViewController.m in Sources */,
 				5A07EDD91B2C8D7000BA875E /* SRTableViewCell.m in Sources */,
+				5AC68ACF1B336D4100A71FF3 /* SRSettingsSplitViewController.m in Sources */,
 				5A4D938D1B0696790008EF93 /* SRFilesNavigationController.m in Sources */,
 				5A8761A01B1F93C20030221A /* SRDiaporamaCollectionViewCell.m in Sources */,
 				5A4D93431B067B3C0008EF93 /* Showroom.xcdatamodeld in Sources */,
@@ -893,12 +988,14 @@
 				5A4D935F1B068A0B0008EF93 /* SRFile+Serializer.m in Sources */,
 				5A4D93251B067AF80008EF93 /* SRProvider.m in Sources */,
 				5AB7B6761B276867002402E2 /* SRSelectionPopoverNavigationController.m in Sources */,
+				5AC68AE31B337BFF00A71FF3 /* UIViewController+Helper.m in Sources */,
 				5A07EDB91B28C4CC00BA875E /* SRImage.m in Sources */,
 				5A07EDDC1B2C8DC000BA875E /* SRDirectoryThumbnailTableViewCell.m in Sources */,
 				5A4D93531B0680F00008EF93 /* SRFile+Helper.m in Sources */,
 				5A4D93421B067B3C0008EF93 /* SRImage+Serializer.m in Sources */,
 				5A07EDCE1B2A2A7400BA875E /* SRViewController.m in Sources */,
 				5A0E58E21B1F8FA800846031 /* SROperationProviderLocalLoadImages.m in Sources */,
+				5A6CD2861B35C4760036B129 /* SRNavigationController.m in Sources */,
 				5A4D93441B067B3C0008EF93 /* SRModel.m in Sources */,
 				5A4D93471B067B910008EF93 /* SRNotificationCenter.m in Sources */,
 				5AB7B6851B276FF8002402E2 /* SRSelection+Serializer.m in Sources */,
@@ -1034,6 +1131,7 @@
 		};
 		5A4D92EE1B0673EC0008EF93 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 164B82FF61803F037869C64E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1047,6 +1145,7 @@
 		};
 		5A4D92EF1B0673EC0008EF93 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B206BE2FCC3398C8BBEF54F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

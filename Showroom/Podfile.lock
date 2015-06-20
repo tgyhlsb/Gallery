@@ -1,0 +1,10 @@
+PODS:
+  - MEDeclarativeTable (0.2.0)
+
+DEPENDENCIES:
+  - MEDeclarativeTable (~> 0.2.0)
+
+SPEC CHECKSUMS:
+  MEDeclarativeTable: 5f4865b80e62361c2d8a389a4e6ceeabebf77ddd
+
+COCOAPODS: 0.35.0
