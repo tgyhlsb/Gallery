@@ -28,6 +28,8 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultController;
 @property (strong, nonatomic) SRSelectionBarButtonItem *selectionButton;
 
+@property (nonatomic) BOOL fullScreen;
+
 @end
 
 @implementation SRDiaporamaViewController
@@ -100,6 +102,15 @@
     self.activeImage = centerViewController.image;
 }
 
+- (void)setFullScreen:(BOOL)fullScreen {
+    
+    if (fullScreen != _fullScreen) {
+        _fullScreen = fullScreen;
+        self.navigationController.navigationBarHidden = fullScreen;
+        self.pageViewController.view.backgroundColor = fullScreen ? [UIColor blackColor] : [UIColor whiteColor];;
+    }
+}
+
 #pragma mark - Handlers
 
 - (void)addAndRemoveButtonHandler:(SRSelectionBarButtonItem *)sender {
@@ -153,8 +164,14 @@
     [self.pageViewController didMoveToParentViewController:self];
 }
 
+- (SRImageViewController *)dequeueViewControllerForImage:(SRImage *)image {
+    SRImageViewController *imageViewController = [SRImageViewController newWithImage:image];
+    imageViewController.view.backgroundColor = [UIColor clearColor];
+    return imageViewController;
+}
+
 - (void)setPageViewControllerForImage:(SRImage *)image {
-    SRImageViewController *centerViewController = [SRImageViewController newWithImage:image];
+    SRImageViewController *centerViewController = [self dequeueViewControllerForImage:image];
     __weak SRDiaporamaViewController *weakSelf = self;
     [self.pageViewController setViewControllers:@[centerViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL finished) {
         if (finished) weakSelf.centerViewController = centerViewController;
@@ -177,7 +194,7 @@
     
     NSIndexPath *beforeIndexPath = [NSIndexPath indexPathForRow:centerIndexPath.row-1 inSection:centerIndexPath.section];
     SRImage *image = [self.fetchedResultController objectAtIndexPath:beforeIndexPath];
-    SRImageViewController *beforeViewController = [SRImageViewController newWithImage:image];
+    SRImageViewController *beforeViewController = [self dequeueViewControllerForImage:image];
     return beforeViewController;
 }
 
@@ -191,7 +208,7 @@
     if (centerIndexPath.row + 1 >= [self.fetchedResultController.fetchedObjects count]) return nil;
     
     SRImage *image = [self.fetchedResultController objectAtIndexPath:afterIndexPath];
-    SRImageViewController *afterViewController = [SRImageViewController newWithImage:image];
+    SRImageViewController *afterViewController = [self dequeueViewControllerForImage:image];
     return afterViewController;
 }
 
@@ -210,8 +227,7 @@
 }
 
 - (void)imageViewControllerDidDoubleTap {
-    self.navigationController.navigationBarHidden = !self.navigationController.navigationBarHidden;
-    self.centerViewController.view.backgroundColor = self.navigationController.navigationBarHidden ? [UIColor blackColor] : [UIColor whiteColor];
+    self.fullScreen = !self.fullScreen;
 }
 
 @end
