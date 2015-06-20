@@ -85,7 +85,7 @@
 		5AB7B68B1B2787EE002402E2 /* SRSelection+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB7B68A1B2787EE002402E2 /* SRSelection+Helper.m */; };
 		5AC68ACF1B336D4100A71FF3 /* SRSettingsSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC68ACD1B336D4100A71FF3 /* SRSettingsSplitViewController.m */; };
 		5AC68AD01B336D4100A71FF3 /* SRSettingsSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC68ACE1B336D4100A71FF3 /* SRSettingsSplitViewController.xib */; };
-		5AC68AD91B33721C00A71FF3 /* SRSettingsMasterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC68AD71B33721C00A71FF3 /* SRSettingsMasterTableViewController.m */; };
+		5AC68AE31B337BFF00A71FF3 /* UIViewController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC68AE21B337BFF00A71FF3 /* UIViewController+Helper.m */; };
 		5AE34EE21B335FFE001D2011 /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE34EE11B335FFE001D2011 /* grid.png */; };
 		5AE34EE41B33608D001D2011 /* file_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE34EE31B33608D001D2011 /* file_box.png */; };
 		5AE34EE61B3368F5001D2011 /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE34EE51B3368F5001D2011 /* gears.png */; };
@@ -240,8 +240,8 @@
 		5AC68ACC1B336D4100A71FF3 /* SRSettingsSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRSettingsSplitViewController.h; path = SRSettingsSplitViewController/SRSettingsSplitViewController.h; sourceTree = "<group>"; };
 		5AC68ACD1B336D4100A71FF3 /* SRSettingsSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRSettingsSplitViewController.m; path = SRSettingsSplitViewController/SRSettingsSplitViewController.m; sourceTree = "<group>"; };
 		5AC68ACE1B336D4100A71FF3 /* SRSettingsSplitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRSettingsSplitViewController.xib; path = SRSettingsSplitViewController/SRSettingsSplitViewController.xib; sourceTree = "<group>"; };
-		5AC68AD61B33721C00A71FF3 /* SRSettingsMasterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRSettingsMasterTableViewController.h; path = SRSettingsSplitViewController/SRSettingsMasterTableViewController/SRSettingsMasterTableViewController.h; sourceTree = "<group>"; };
-		5AC68AD71B33721C00A71FF3 /* SRSettingsMasterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRSettingsMasterTableViewController.m; path = SRSettingsSplitViewController/SRSettingsMasterTableViewController/SRSettingsMasterTableViewController.m; sourceTree = "<group>"; };
+		5AC68AE11B337BFF00A71FF3 /* UIViewController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helper.h"; sourceTree = "<group>"; };
+		5AC68AE21B337BFF00A71FF3 /* UIViewController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helper.m"; sourceTree = "<group>"; };
 		5AE34EE11B335FFE001D2011 /* grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid.png; sourceTree = "<group>"; };
 		5AE34EE31B33608D001D2011 /* file_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file_box.png; sourceTree = "<group>"; };
 		5AE34EE51B3368F5001D2011 /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gears.png; sourceTree = "<group>"; };
@@ -448,6 +448,8 @@
 			children = (
 				5A07EDCC1B2A2A7400BA875E /* SRViewController.h */,
 				5A07EDCD1B2A2A7400BA875E /* SRViewController.m */,
+				5AC68AE11B337BFF00A71FF3 /* UIViewController+Helper.h */,
+				5AC68AE21B337BFF00A71FF3 /* UIViewController+Helper.m */,
 				5A4D93721B068FC30008EF93 /* UICoreDataTableViewController.h */,
 				5A4D93731B068FC30008EF93 /* UICoreDataTableViewController.m */,
 				5A4D938F1B069ABF0008EF93 /* UICoreDataCollectionViewController.h */,
@@ -752,18 +754,8 @@
 				5AC68ACC1B336D4100A71FF3 /* SRSettingsSplitViewController.h */,
 				5AC68ACD1B336D4100A71FF3 /* SRSettingsSplitViewController.m */,
 				5AC68ACE1B336D4100A71FF3 /* SRSettingsSplitViewController.xib */,
-				5AC68AD51B336DFA00A71FF3 /* SRSettingsMasterTableViewController */,
 			);
 			name = SRSettingsSplitViewController;
-			sourceTree = "<group>";
-		};
-		5AC68AD51B336DFA00A71FF3 /* SRSettingsMasterTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				5AC68AD61B33721C00A71FF3 /* SRSettingsMasterTableViewController.h */,
-				5AC68AD71B33721C00A71FF3 /* SRSettingsMasterTableViewController.m */,
-			);
-			name = SRSettingsMasterTableViewController;
 			sourceTree = "<group>";
 		};
 		5AECDB9C1B06C3FA00DB572E /* SRHomeViewController */ = {
@@ -979,7 +971,6 @@
 				5A4D938D1B0696790008EF93 /* SRFilesNavigationController.m in Sources */,
 				5A8761A01B1F93C20030221A /* SRDiaporamaCollectionViewCell.m in Sources */,
 				5A4D93431B067B3C0008EF93 /* Showroom.xcdatamodeld in Sources */,
-				5AC68AD91B33721C00A71FF3 /* SRSettingsMasterTableViewController.m in Sources */,
 				5AB7B65E1B264093002402E2 /* SRSelectionPickerBarButton.m in Sources */,
 				5A4D93C71B06A13D0008EF93 /* SRCollectionViewCell.m in Sources */,
 				5A4D93D21B06AA8C0008EF93 /* SRImageNavigationController.m in Sources */,
@@ -992,6 +983,7 @@
 				5A4D935F1B068A0B0008EF93 /* SRFile+Serializer.m in Sources */,
 				5A4D93251B067AF80008EF93 /* SRProvider.m in Sources */,
 				5AB7B6761B276867002402E2 /* SRSelectionPopoverNavigationController.m in Sources */,
+				5AC68AE31B337BFF00A71FF3 /* UIViewController+Helper.m in Sources */,
 				5A07EDB91B28C4CC00BA875E /* SRImage.m in Sources */,
 				5A07EDDC1B2C8DC000BA875E /* SRDirectoryThumbnailTableViewCell.m in Sources */,
 				5A4D93531B0680F00008EF93 /* SRFile+Helper.m in Sources */,

@@ -10,4 +10,6 @@
 
 @interface SRSettingsSplitViewController : UISplitViewController
 
+@property (strong, nonatomic) UIBarButtonItem *closeButton;
+
 @end

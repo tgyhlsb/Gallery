@@ -262,6 +262,7 @@
 
 - (IBAction)settingsButtonHandler:(UIButton *)sender {
     SRSettingsSplitViewController *destination = [SRSettingsSplitViewController new];
+    destination.closeButton = self.homeBarButton;
     [self presentViewController:destination animated:YES completion:nil];
 }
 

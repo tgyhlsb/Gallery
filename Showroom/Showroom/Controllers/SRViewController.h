@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+Helper.h"
 
 @interface SRViewController : UIViewController
-
-- (void)setTitleWithAppIcon;
 
 @end
