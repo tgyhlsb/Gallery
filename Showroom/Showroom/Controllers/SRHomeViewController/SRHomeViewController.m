@@ -50,6 +50,9 @@
 
 @property (strong, nonatomic) SRBarButtonItem *homeBarButton;
 
+@property (strong, nonatomic) NSFetchedResultsController *localFilesResultController;
+@property (strong, nonatomic) NSFetchedResultsController *selectionsResultController;
+
 @property (nonatomic) BOOL interfaceIsHidden;
 @property (nonatomic) BOOL showTableView;
 
@@ -221,10 +224,29 @@
 }
 
 - (void)setShowTableView:(BOOL)showTableView {
+    [self  setShowTableView:showTableView completion:nil];
+}
+
+- (void)setShowTableView:(BOOL)showTableView completion:(void (^)(SRHomeViewController *weakSelf, BOOL finished))completion{
     if (_showTableView != showTableView) {
         _showTableView = showTableView;
-        [self animateLayoutWitDuration:0.5 completion:nil];
+        [self animateLayoutWitDuration:0.5 completion:completion];
     }
+}
+
+- (NSFetchedResultsController *)localFilesResultController {
+    if (!_localFilesResultController) {
+        SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
+        _localFilesResultController = [[SRModel defaultModel] fetchedResultControllerForDirectoriesInDirectoryRecursively:directory];
+    }
+    return _localFilesResultController;
+}
+
+- (NSFetchedResultsController *)selectionsResultController {
+    if (_selectionsResultController) {
+        
+    }
+    return _selectionsResultController;
 }
 
 #pragma mark - Handlers 
@@ -239,11 +261,43 @@
 }
 
 - (IBAction)filesButtonHandler:(UIButton *)sender {
-    self.showTableView = !self.showTableView;
+    if (self.showTableView) {
+        if ([self.fetchedResultsController isEqual:self.localFilesResultController]) {
+            self.showTableView = NO;
+        } else {
+            [self setShowTableView:NO completion:^(SRHomeViewController *weakSelf, BOOL finished) {
+                [weakSelf showTableViewForLocalFiles];
+            }];
+        }
+    } else {
+        [self showTableViewForLocalFiles];
+    }
+}
+
+- (void)showTableViewForLocalFiles {
+    
+    self.fetchedResultsController = self.localFilesResultController;
+    [self setShowTableView:YES];
 }
 
 - (IBAction)selectionsButtonHandler:(UIButton *)sender {
+    if (self.showTableView) {
+        if ([self.fetchedResultsController isEqual:self.selectionsResultController]) {
+            self.showTableView = NO;
+        } else {
+            [self setShowTableView:NO completion:^(SRHomeViewController *weakSelf, BOOL finished) {
+                [weakSelf showTableViewForSelections];
+            }];
+        }
+    } else {
+        [self showTableViewForSelections];
+    }
+}
+
+- (void)showTableViewForSelections {
     
+    self.fetchedResultsController = self.selectionsResultController;
+    [self setShowTableView:YES];
 }
 
 - (IBAction)settingsButtonHandler:(UIButton *)sender {
@@ -254,8 +308,6 @@
 #pragma mark - UICoreDataTableViewController
 
 - (void)setUpFetchedResultController {
-    SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
-    self.fetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForDirectoriesInDirectoryRecursively:directory];
 }
 
 - (SRImage *)firstImageForDirectory:(SRDirectory *)directory {
