@@ -132,9 +132,9 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
-//    SRDiaporamaViewController *destination = [SRDiaporamaViewController newWithDirectory:self.directory activeImage:image];
-//    [self.navigationController pushViewController:destination animated:YES];
+    SRImage *image = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    SRDiaporamaViewController *destination = [SRDiaporamaViewController newWithResultController:self.fetchedResultsController activeImage:image];
+    [self.navigationController pushViewController:destination animated:YES];
     
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }

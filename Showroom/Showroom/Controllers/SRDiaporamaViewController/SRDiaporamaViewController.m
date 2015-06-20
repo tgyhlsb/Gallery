@@ -34,14 +34,14 @@
 
 #pragma mark - Constructor
 
-+ (instancetype)newWithDirectory:(SRDirectory *)directory activeImage:(SRImage *)activeImage {
-    return [[SRDiaporamaViewController alloc] initWithDirectory:directory activeImage:activeImage];
++ (instancetype)newWithResultController:(NSFetchedResultsController *)fetchedResultController activeImage:(SRImage *)activeImage {
+    return [[SRDiaporamaViewController alloc] initWithResultController:fetchedResultController activeImage:activeImage];
 }
 
-- (id)initWithDirectory:(SRDirectory *)directory activeImage:(SRImage *)activeImage {
+- (id)initWithResultController:(NSFetchedResultsController *)fetchedResultController activeImage:(SRImage *)activeImage {
     self = [super init];
     if (self) {
-        self.directory = directory;
+        self.fetchedResultController = fetchedResultController;
         self.activeImage = activeImage;
     }
     return self;
@@ -89,13 +89,6 @@
 }
 
 #pragma mark - Getters & Setters
-
-- (void)setDirectory:(SRDirectory *)directory {
-    if (![directory isEqual:_directory]) {
-        _directory = directory;
-        [self updateFetchedResultController];
-    }
-}
 
 - (void)setActiveImage:(SRImage *)selectedImage {
     _activeImage = selectedImage;
@@ -158,12 +151,6 @@
     self.pageViewController.view.frame = self.view.bounds;
     [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
-}
-
-- (void)updateFetchedResultController {
-    self.fetchedResultController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectory:self.directory recursively:YES];
-    NSError *error = nil;
-    [self.fetchedResultController performFetch:&error];
 }
 
 - (void)setPageViewControllerForImage:(SRImage *)image {

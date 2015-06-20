@@ -14,10 +14,9 @@
 
 @interface SRDiaporamaViewController : SRViewController
 
-@property (strong, nonatomic) SRDirectory *directory;
 @property (strong, nonatomic) SRImage *activeImage;
 
-+ (instancetype)newWithDirectory:(SRDirectory *)directory activeImage:(SRImage *)activeImage;
++ (instancetype)newWithResultController:(NSFetchedResultsController *)fetchedResultController activeImage:(SRImage *)activeImage;
 
 
 @end
