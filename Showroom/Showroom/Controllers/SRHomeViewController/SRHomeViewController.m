@@ -18,6 +18,7 @@
 // Controllers
 #import "SRImageNavigationController.h"
 #import "SRFilesNavigationController.h"
+#import "SRSettingsSplitViewController.h"
 
 // Views
 #import "SRBarButtonItem.h"
@@ -34,8 +35,9 @@
 // XIB
 
 @property (weak, nonatomic) IBOutlet UIView *mainView;
-@property (weak, nonatomic) IBOutlet UIButton *iPadProviderButton;
-@property (weak, nonatomic) IBOutlet UIButton *dropboxProviderButton;
+@property (weak, nonatomic) IBOutlet UIButton *filesButton;
+@property (weak, nonatomic) IBOutlet UIButton *selectionsButton;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewLeftConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewWidthConstraint;
@@ -47,6 +49,9 @@
 // Other
 
 @property (strong, nonatomic) SRBarButtonItem *homeBarButton;
+
+@property (strong, nonatomic) NSFetchedResultsController *localFilesResultController;
+@property (strong, nonatomic) NSFetchedResultsController *selectionsResultController;
 
 @property (nonatomic) BOOL interfaceIsHidden;
 @property (nonatomic) BOOL showTableView;
@@ -67,8 +72,6 @@
     [self initializeView];
     [self initializeProviders];
     [self initializeManagers];
-    
-    [self setUpFetchedResultController];
     
     self.tableView.hidden = YES; // prevents first animation on launch
     
@@ -165,16 +168,20 @@
 //
 //    *********************
     
-    UIColor *providerButtonColor = [UIColor whiteColor];
+    UIColor *buttonColor = [UIColor whiteColor];
     
     
-    UIImage *iPadProviderImage = [UIImage imageNamed:@"provider-ipad.png"];
-    [self.iPadProviderButton setImage:iPadProviderImage forState:UIControlStateNormal];
-    [self.iPadProviderButton setTintColor:providerButtonColor];
+    UIImage *filesButtonImage = [UIImage imageNamed:@"grid.png"];
+    [self.filesButton setImage:filesButtonImage forState:UIControlStateNormal];
+    [self.filesButton setTintColor:buttonColor];
     
-    UIImage *dropboxProviderImage = [UIImage imageNamed:@"provider-dropbox.png"];
-    [self.dropboxProviderButton setImage:dropboxProviderImage forState:UIControlStateNormal];
-    [self.dropboxProviderButton setTintColor:providerButtonColor];
+    UIImage *selectionsButtonImage = [UIImage imageNamed:@"file_box.png"];
+    [self.selectionsButton setImage:selectionsButtonImage forState:UIControlStateNormal];
+    [self.selectionsButton setTintColor:buttonColor];
+    
+    UIImage *settingsButtonImage = [UIImage imageNamed:@"gears.png"];
+    [self.settingsButton setImage:settingsButtonImage forState:UIControlStateNormal];
+    [self.settingsButton setTintColor:buttonColor];
 }
 
 #pragma mark - Animations
@@ -215,56 +222,83 @@
 }
 
 - (void)setShowTableView:(BOOL)showTableView {
+    [self  setShowTableView:showTableView completion:nil];
+}
+
+- (void)setShowTableView:(BOOL)showTableView completion:(void (^)(SRHomeViewController *weakSelf, BOOL finished))completion{
     if (_showTableView != showTableView) {
         _showTableView = showTableView;
-        [self animateLayoutWitDuration:0.5 completion:nil];
+        [self animateLayoutWitDuration:0.5 completion:completion];
     }
 }
 
+- (NSFetchedResultsController *)localFilesResultController {
+    if (!_localFilesResultController) {
+        SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
+        _localFilesResultController = [[SRModel defaultModel] fetchedResultControllerForDirectoriesInDirectoryRecursively:directory];
+    }
+    return _localFilesResultController;
+}
+
+- (NSFetchedResultsController *)selectionsResultController {
+    if (!_selectionsResultController) {
+        _selectionsResultController = [[SRModel defaultModel] fetchedResultControllerForSelections];
+    }
+    return _selectionsResultController;
+}
+
 #pragma mark - Handlers 
-
-- (IBAction)fileListInterfaceButtonHandler:(UIButton *)sender {
-    SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
-    SRFilesNavigationController *destination = [SRFilesNavigationController newWithDirectory:directory];
-    destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
-    [self presentViewController:destination animated:YES completion:nil];
-}
-
-- (IBAction)imageCollectionInterfaceButtonHandler:(UIButton *)sender {
-    SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
-    SRImageNavigationController *destination = [SRImageNavigationController newWithDirectory:directory];
-    destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
-    [self presentViewController:destination animated:YES completion:nil];
-}
 
 - (void)homeBarButtonHandler {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)forceReloadButtonHandler:(UIButton *)sender {
-    [[SRProviderLocal defaultProvider] reloadFiles];
-    self.commentLabel.hidden = NO;
+- (IBAction)filesButtonHandler:(UIButton *)sender {
+    if (self.showTableView) {
+        if ([self.fetchedResultsController isEqual:self.localFilesResultController]) {
+            self.showTableView = NO;
+        } else {
+            [self setShowTableView:NO completion:^(SRHomeViewController *weakSelf, BOOL finished) {
+                [weakSelf showTableViewForLocalFiles];
+            }];
+        }
+    } else {
+        [self showTableViewForLocalFiles];
+    }
 }
 
-- (IBAction)iPadProviderButtonHandler:(UIButton *)sender {
-    self.showTableView = !self.showTableView;
-}
-
-- (IBAction)dropboxProviderButtonHandler:(UIButton *)sender {
-    self.showTableView = NO;
+- (void)showTableViewForLocalFiles {
     
-    NSString *title = NSLocalizedString(@"LOCALIZE_DROPBOX_NOT_AVAILABLE_TITLE", nil);
-    NSString *message = NSLocalizedString(@"LOCALIZE_DROPBOX_NOT_AVAILABLE_MESSAGE", nil);
-    NSString *cancel = NSLocalizedString(@"LOCALIZE_OK", nil);
-    [[[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:cancel otherButtonTitles:nil] show];
+    self.fetchedResultsController = self.localFilesResultController;
+    [self setShowTableView:YES];
+}
+
+- (IBAction)selectionsButtonHandler:(UIButton *)sender {
+    if (self.showTableView) {
+        if ([self.fetchedResultsController isEqual:self.selectionsResultController]) {
+            self.showTableView = NO;
+        } else {
+            [self setShowTableView:NO completion:^(SRHomeViewController *weakSelf, BOOL finished) {
+                [weakSelf showTableViewForSelections];
+            }];
+        }
+    } else {
+        [self showTableViewForSelections];
+    }
+}
+
+- (void)showTableViewForSelections {
+    
+    self.fetchedResultsController = self.selectionsResultController;
+    [self setShowTableView:YES];
+}
+
+- (IBAction)settingsButtonHandler:(UIButton *)sender {
+    SRSettingsSplitViewController *destination = [SRSettingsSplitViewController new];
+    [self presentViewController:destination animated:YES completion:nil];
 }
 
 #pragma mark - UICoreDataTableViewController
-
-- (void)setUpFetchedResultController {
-    SRDirectory *directory = [[SRProviderLocal defaultProvider] rootDirectory];
-    self.fetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForDirectoriesInDirectoryRecursively:directory];
-}
 
 - (SRImage *)firstImageForDirectory:(SRDirectory *)directory {
     static NSMutableDictionary *cachedThumbnails;
@@ -288,6 +322,15 @@
 #pragma mark UITableViewDataSource
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.fetchedResultsController isEqual:self.localFilesResultController]) {
+        return [self tableView:tableView cellForDirectoryAtIndexPath:indexPath];
+    } else if ([self.fetchedResultsController isEqual:self.selectionsResultController]) {
+        return [self tableView:tableView cellForSelectionAtIndexPath:indexPath];
+    }
+    return nil;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForDirectoryAtIndexPath:(NSIndexPath *)indexPath {
     NSString *identifier = [SRDirectoryThumbnailTableViewCell defaultIdentifier];
     SRDirectoryThumbnailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
@@ -299,7 +342,20 @@
     } else {
         [self setCell:cell forDirectory:directory];
     }
+    return cell;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForSelectionAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *identifier = [SRDirectoryThumbnailTableViewCell defaultIdentifier];
+    SRDirectoryThumbnailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     
+    SRSelection *selection = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    SRImage *image = [[selection.images allObjects] firstObject];;
+    cell.titleLabel.text = selection.title;
+    cell.thumbnailView.image = [image image];
+    cell.thumbnailView.contentMode = UIViewContentModeScaleAspectFill;
     return cell;
 }
 
@@ -321,14 +377,38 @@
 #pragma mark UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.fetchedResultsController isEqual:self.localFilesResultController]) {
+        [self tableView:tableView didSelectDirectoryAtIndexPath:indexPath];
+    } else if ([self.fetchedResultsController isEqual:self.selectionsResultController]) {
+        [self tableView:tableView didSelectSelectionAtIndexPath:indexPath];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectDirectoryAtIndexPath:(NSIndexPath *)indexPath {
     
     SRDirectory *directory = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    SRImageNavigationController *destination = [SRImageNavigationController newWithDirectory:directory];
+    NSFetchedResultsController *fetchedResultController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectory:directory recursively:YES];
+    SRImageNavigationController *destination = [SRImageNavigationController newWithResultController:fetchedResultController];
     destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
     
     [self setInterfaceHidden:YES duration:0.35 completion:^(SRHomeViewController *weakSelf, BOOL finished) {
     }];
     
+    [self presentViewController:destination animated:YES completion:nil];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectSelectionAtIndexPath:(NSIndexPath *)indexPath {
+    
+    SRSelection *selection = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSFetchedResultsController *fetchedResultController = [[SRModel defaultModel] fetchedResultControllerForImagesInSelection:selection];
+    SRImageNavigationController *destination = [SRImageNavigationController newWithResultController:fetchedResultController];
+    destination.topViewController.navigationItem.leftBarButtonItem = self.homeBarButton;
+    
+    [self setInterfaceHidden:YES duration:0.35 completion:^(SRHomeViewController *weakSelf, BOOL finished) {
+    }];
+    
+    [[SRModel defaultModel] setActiveSelection:selection];
     [self presentViewController:destination animated:YES completion:nil];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

@@ -13,6 +13,6 @@
 
 @interface SRImagesCollectionViewController : UICoreDataCollectionViewController
 
-+ (instancetype)newWithDirectory:(SRDirectory *)directory;
++ (instancetype)newWithResultController:(NSFetchedResultsController *)fetchResultController;
 
 @end

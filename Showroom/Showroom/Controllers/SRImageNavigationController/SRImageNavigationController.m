@@ -20,12 +20,12 @@
 
 #pragma mark - Constructors
 
-+ (instancetype)newWithDirectory:(SRDirectory *)directory {
-    return [[SRImageNavigationController alloc] initWithDirectory:directory];
++ (instancetype)newWithResultController:(NSFetchedResultsController *)fetchResultController {
+    return [[SRImageNavigationController alloc] initWithResultController:fetchResultController];
 }
 
-- (id)initWithDirectory:(SRDirectory *)directory {
-    SRImagesCollectionViewController *rootController = [SRImagesCollectionViewController newWithDirectory:directory];
+- (id)initWithResultController:(NSFetchedResultsController *)fetchResultController {
+    SRImagesCollectionViewController *rootController = [SRImagesCollectionViewController newWithResultController:fetchResultController];
     self = [super initWithRootViewController:rootController];
     if (self) {
         self.toolbarHidden = YES;
@@ -41,12 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationBar.translucent = NO;
     self.toolbar.translucent = NO;
-    
-    self.navigationBar.barTintColor = [UIColor colorWithRed:0.14f green:0.45f blue:0.65f alpha:1.00f];
-    self.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 @end

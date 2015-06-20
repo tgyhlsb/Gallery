@@ -16,18 +16,19 @@
 #import "SRModel.h"
 
 // Views
-#import "SRSelectionPickerBarButton.h"
-#import "SRAddAndRemoveSelectionBarButton.h"
+#import "SRSelectionBarButtonItem.h"
 
 // Managers
 #import "SRNotificationCenter.h"
 
-@interface SRDiaporamaViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate>
+@interface SRDiaporamaViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, SRSelectionBarButtonItemDelegate, SRImageViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
+@property (strong, nonatomic) SRImageViewController *centerViewController;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultController;
-@property (strong, nonatomic) SRSelectionPickerBarButton *selectionPickerButton;
-@property (strong, nonatomic) SRAddAndRemoveSelectionBarButton *selectionButton;
+@property (strong, nonatomic) SRSelectionBarButtonItem *selectionButton;
+
+@property (nonatomic) BOOL fullScreen;
 
 @end
 
@@ -35,15 +36,15 @@
 
 #pragma mark - Constructor
 
-+ (instancetype)newWithDirectory:(SRDirectory *)directory selectedImage:(SRImage *)selectedImage {
-    return [[SRDiaporamaViewController alloc] initWithDirectory:directory selectedImage:selectedImage];
++ (instancetype)newWithResultController:(NSFetchedResultsController *)fetchedResultController activeImage:(SRImage *)activeImage {
+    return [[SRDiaporamaViewController alloc] initWithResultController:fetchedResultController activeImage:activeImage];
 }
 
-- (id)initWithDirectory:(SRDirectory *)directory selectedImage:(SRImage *)selectedImage {
+- (id)initWithResultController:(NSFetchedResultsController *)fetchedResultController activeImage:(SRImage *)activeImage {
     self = [super init];
     if (self) {
-        self.directory = directory;
-        self.selectedImage = selectedImage;
+        self.fetchedResultController = fetchedResultController;
+        self.activeImage = activeImage;
     }
     return self;
 }
@@ -54,7 +55,7 @@
     [super viewDidLoad];
     
     [self initializePageViewController];
-    [self setPageViewControllerForImage:self.selectedImage];
+    [self setPageViewControllerForImage:self.activeImage];
     
     [self initializeBarButtons];
     
@@ -63,14 +64,17 @@
     [self setTitleWithAppIcon];
 }
 
+- (void)dealloc {
+    [[SRNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Initialization
 
 - (void)initializeBarButtons {
     SRSelection *selection = [SRModel defaultModel].activeSelection;
-    BOOL activeImageIsSelected = [selection imageIsSelected:self.selectedImage];
-    self.selectionPickerButton = [[SRSelectionPickerBarButton alloc] initWithTarget:self action:@selector(selectionPickerButtonHandler) selection:selection];
-    self.selectionButton = [[SRAddAndRemoveSelectionBarButton alloc] initWithTarget:self action:@selector(selectionButtonHandler) selected:activeImageIsSelected];
-    self.navigationItem.rightBarButtonItems = @[self.selectionPickerButton, self.selectionButton];
+    BOOL activeImageIsSelected = [selection imageIsSelected:self.activeImage];
+    self.selectionButton = [[SRSelectionBarButtonItem alloc] initWithDelegate:self selection:selection selected:activeImageIsSelected];
+    self.navigationItem.rightBarButtonItems = @[self.selectionButton];
 }
 
 #pragma mark - View updates
@@ -78,25 +82,49 @@
 - (void)updateSelectionButton {
     
     SRSelection *selection = [SRModel defaultModel].activeSelection;
-    if ([selection imageIsSelected:self.selectedImage]) {
+    if ([selection imageIsSelected:self.activeImage]) {
         self.selectionButton.selected = YES;
     } else {
         self.selectionButton.selected = NO;
     }
+    self.selectionButton.selection = selection;
 }
 
 #pragma mark - Getters & Setters
 
-- (void)setDirectory:(SRDirectory *)directory {
-    if (![directory isEqual:_directory]) {
-        _directory = directory;
-        [self updateFetchedResultController];
+- (void)setActiveImage:(SRImage *)selectedImage {
+    _activeImage = selectedImage;
+}
+
+- (void)setCenterViewController:(SRImageViewController *)centerViewController {
+    _centerViewController = centerViewController;
+    _centerViewController.delegate = self;
+    self.activeImage = centerViewController.image;
+}
+
+- (void)setFullScreen:(BOOL)fullScreen {
+    
+    if (fullScreen != _fullScreen) {
+        _fullScreen = fullScreen;
+        self.navigationController.navigationBarHidden = fullScreen;
+        self.pageViewController.view.backgroundColor = fullScreen ? [UIColor blackColor] : [UIColor whiteColor];;
     }
 }
 
 #pragma mark - Handlers
 
-- (void)selectionPickerButtonHandler {
+- (void)addAndRemoveButtonHandler:(SRSelectionBarButtonItem *)sender {
+    
+    SRSelection *selection = [SRModel defaultModel].activeSelection;
+    if ([selection imageIsSelected:self.activeImage]) {
+        [selection deselectImage:self.activeImage];
+    } else {
+        [selection selectImage:self.activeImage];
+    }
+    [self updateSelectionButton];
+}
+
+- (void)selectionPickerButtonHandler:(SRSelectionBarButtonItem *)sender {
     SRSelectionPopoverNavigationController *contentViewController = [SRSelectionPopoverNavigationController new];
     UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:contentViewController];
     
@@ -104,18 +132,7 @@
         [popoverController dismissPopoverAnimated:YES];
     }];
     
-    [popoverController presentPopoverFromBarButtonItem:self.selectionPickerButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-}
-
-- (void)selectionButtonHandler {
-    
-    SRSelection *selection = [SRModel defaultModel].activeSelection;
-    if ([selection imageIsSelected:self.selectedImage]) {
-        [selection removeImagesObject:self.selectedImage];
-    } else {
-        [selection addImagesObject:self.selectedImage];
-    }
-    [self updateSelectionButton];
+    [popoverController presentPopoverFromBarButtonItem:self.selectionButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark - Notifications
@@ -128,7 +145,7 @@
 }
 
 - (void)activeSelectionDidChangerNotificationHandler {
-    self.selectionPickerButton.selection = [SRModel defaultModel].activeSelection;
+    self.selectionButton.selection = [SRModel defaultModel].activeSelection;
     [self updateSelectionButton];
 }
 
@@ -147,16 +164,17 @@
     [self.pageViewController didMoveToParentViewController:self];
 }
 
-- (void)updateFetchedResultController {
-    self.fetchedResultController = [[SRModel defaultModel] fetchedResultControllerForImagesInDirectoryRecursively:self.directory];
-    NSError *error = nil;
-    [self.fetchedResultController performFetch:&error];
+- (SRImageViewController *)dequeueViewControllerForImage:(SRImage *)image {
+    SRImageViewController *imageViewController = [SRImageViewController newWithImage:image];
+    imageViewController.view.backgroundColor = [UIColor clearColor];
+    return imageViewController;
 }
 
 - (void)setPageViewControllerForImage:(SRImage *)image {
-    SRImageViewController *centerViewController = [SRImageViewController newWithImage:image];
+    SRImageViewController *centerViewController = [self dequeueViewControllerForImage:image];
+    __weak SRDiaporamaViewController *weakSelf = self;
     [self.pageViewController setViewControllers:@[centerViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL finished) {
-        
+        if (finished) weakSelf.centerViewController = centerViewController;
     }];
 }
 
@@ -176,7 +194,7 @@
     
     NSIndexPath *beforeIndexPath = [NSIndexPath indexPathForRow:centerIndexPath.row-1 inSection:centerIndexPath.section];
     SRImage *image = [self.fetchedResultController objectAtIndexPath:beforeIndexPath];
-    SRImageViewController *beforeViewController = [SRImageViewController newWithImage:image];
+    SRImageViewController *beforeViewController = [self dequeueViewControllerForImage:image];
     return beforeViewController;
 }
 
@@ -190,8 +208,26 @@
     if (centerIndexPath.row + 1 >= [self.fetchedResultController.fetchedObjects count]) return nil;
     
     SRImage *image = [self.fetchedResultController objectAtIndexPath:afterIndexPath];
-    SRImageViewController *afterViewController = [SRImageViewController newWithImage:image];
+    SRImageViewController *afterViewController = [self dequeueViewControllerForImage:image];
     return afterViewController;
+}
+
+#pragma mark - UIPageViewControllerDelegate
+
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed {
+    
+    self.centerViewController = [pageViewController.viewControllers lastObject];
+    [self updateSelectionButton];
+}
+
+#pragma mark - SRImageViewControllerDelegate
+
+- (void)imageViewControllerDidSingleTap {
+    
+}
+
+- (void)imageViewControllerDidDoubleTap {
+    self.fullScreen = !self.fullScreen;
 }
 
 @end

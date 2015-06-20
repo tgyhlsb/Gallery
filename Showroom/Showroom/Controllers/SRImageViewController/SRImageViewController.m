@@ -94,8 +94,17 @@
 #pragma mark - Gesture recognizers
 
 - (void)initializeGestures {
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureHandler)];
-    [self.scrollView addGestureRecognizer:tapRecognizer];
+    
+    UITapGestureRecognizer *doubleTapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapGestureHandler)];
+    doubleTapGesture.numberOfTapsRequired = 2;
+    doubleTapGesture.numberOfTouchesRequired = 1;
+    [self.scrollView addGestureRecognizer:doubleTapGesture];
+    
+    UITapGestureRecognizer *singleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapGestureHandler)];
+    singleTapRecognizer.numberOfTapsRequired = 1;
+    singleTapRecognizer.numberOfTouchesRequired = 1;
+    [singleTapRecognizer requireGestureRecognizerToFail:doubleTapGesture];
+    [self.scrollView addGestureRecognizer:singleTapRecognizer];
 }
 
 #pragma mark - Title animation
@@ -137,12 +146,23 @@
 
 #pragma mark - Handlers
 
-- (void)tapGestureHandler {
+- (void)singleTapGestureHandler {
     if (self.hideTitleTimer) {
         [self.hideTitleTimer fire];
     } else {
         [self showTitleButtonAnimated:YES];
         [self hideTitleButtonAfter:5];
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(imageViewControllerDidSingleTap)]) {
+        [self.delegate imageViewControllerDidSingleTap];
+    }
+}
+
+- (void)doubleTapGestureHandler {
+    
+    if ([self.delegate respondsToSelector:@selector(imageViewControllerDidDoubleTap)]) {
+        [self.delegate imageViewControllerDidDoubleTap];
     }
 }
 

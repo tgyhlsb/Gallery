@@ -6,13 +6,12 @@
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SRNavigationController.h"
 
-// Model
-#import "SRModel.h"
+@class NSFetchedResultsController;
 
-@interface SRImageNavigationController : UINavigationController
+@interface SRImageNavigationController : SRNavigationController
 
-+ (instancetype)newWithDirectory:(SRDirectory *)directory;
++ (instancetype)newWithResultController:(NSFetchedResultsController *)fetchResultController;
 
 @end
