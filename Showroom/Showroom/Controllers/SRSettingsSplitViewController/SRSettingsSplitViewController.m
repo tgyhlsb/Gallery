@@ -53,8 +53,8 @@ typedef void (^SRDeclarativeTableActionBlock)(MEDeclarativeTable *table, MEDecla
 - (MEDeclarativeTable *)settingsCategoryTable {
     MEDeclarativeTable *table = [[MEDeclarativeTable alloc] init];
     
-    [table addSection:[self providersSection]];
     [table addSection:[self appearanceSection]];
+    [table addSection:[self providersSection]];
     
     return table;
 }
