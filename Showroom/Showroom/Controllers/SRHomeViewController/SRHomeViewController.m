@@ -87,7 +87,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self setInterfaceHidden:NO duration:0.35 completion:nil];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -251,6 +250,7 @@
 
 - (void)homeBarButtonHandler {
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self setInterfaceHidden:NO duration:0.35 completion:nil];
 }
 
 - (IBAction)filesButtonHandler:(UIButton *)sender {
