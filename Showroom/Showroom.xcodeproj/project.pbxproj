@@ -72,6 +72,16 @@
 		5A4D93D71B06AB7F0008EF93 /* SRImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D93D51B06AB7F0008EF93 /* SRImageViewController.m */; };
 		5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */; };
 		5A6CD2861B35C4760036B129 /* SRNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CD2851B35C4760036B129 /* SRNavigationController.m */; };
+		5A6CD28D1B36B0290036B129 /* SRTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CD28B1B36B0290036B129 /* SRTutorialViewController.m */; };
+		5A6CD28E1B36B0290036B129 /* SRTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CD28C1B36B0290036B129 /* SRTutorialViewController.xib */; };
+		5A6CD2931B36B73E0036B129 /* SRTutorialSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CD2911B36B73E0036B129 /* SRTutorialSlideViewController.m */; };
+		5A6CD2941B36B73E0036B129 /* SRTutorialSlideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CD2921B36B73E0036B129 /* SRTutorialSlideViewController.xib */; };
+		5A6CD2A11B36C3B00036B129 /* mac.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CD29B1B36C3B00036B129 /* mac.png */; };
+		5A6CD2A21B36C3B00036B129 /* mac@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CD29C1B36C3B00036B129 /* mac@2x.png */; };
+		5A6CD2A31B36C3B00036B129 /* mac@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CD29D1B36C3B00036B129 /* mac@3x.png */; };
+		5A6CD2A41B36C3B00036B129 /* windows.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CD29E1B36C3B00036B129 /* windows.png */; };
+		5A6CD2A51B36C3B00036B129 /* windows@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CD29F1B36C3B00036B129 /* windows@2x.png */; };
+		5A6CD2A61B36C3B00036B129 /* windows@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A6CD2A01B36C3B00036B129 /* windows@3x.png */; };
 		5A8761A01B1F93C20030221A /* SRDiaporamaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A87619E1B1F93C20030221A /* SRDiaporamaCollectionViewCell.m */; };
 		5A8761A61B20EDBD0030221A /* SRDiaporamaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8761A41B20EDBD0030221A /* SRDiaporamaViewController.m */; };
 		5A8761A71B20EDBD0030221A /* SRDiaporamaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8761A51B20EDBD0030221A /* SRDiaporamaViewController.xib */; };
@@ -219,6 +229,18 @@
 		5A4D93D61B06AB7F0008EF93 /* SRImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRImageViewController.xib; path = SRImageViewController/SRImageViewController.xib; sourceTree = "<group>"; };
 		5A6CD2841B35C4760036B129 /* SRNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRNavigationController.h; sourceTree = "<group>"; };
 		5A6CD2851B35C4760036B129 /* SRNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRNavigationController.m; sourceTree = "<group>"; };
+		5A6CD28A1B36B0290036B129 /* SRTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRTutorialViewController.h; path = SRTutorialViewController/SRTutorialViewController.h; sourceTree = "<group>"; };
+		5A6CD28B1B36B0290036B129 /* SRTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRTutorialViewController.m; path = SRTutorialViewController/SRTutorialViewController.m; sourceTree = "<group>"; };
+		5A6CD28C1B36B0290036B129 /* SRTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRTutorialViewController.xib; path = SRTutorialViewController/SRTutorialViewController.xib; sourceTree = "<group>"; };
+		5A6CD2901B36B73E0036B129 /* SRTutorialSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRTutorialSlideViewController.h; path = SRTutorialViewController/SRTutorialSlideViewController/SRTutorialSlideViewController.h; sourceTree = "<group>"; };
+		5A6CD2911B36B73E0036B129 /* SRTutorialSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRTutorialSlideViewController.m; path = SRTutorialViewController/SRTutorialSlideViewController/SRTutorialSlideViewController.m; sourceTree = "<group>"; };
+		5A6CD2921B36B73E0036B129 /* SRTutorialSlideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRTutorialSlideViewController.xib; path = SRTutorialViewController/SRTutorialSlideViewController/SRTutorialSlideViewController.xib; sourceTree = "<group>"; };
+		5A6CD29B1B36C3B00036B129 /* mac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mac.png; sourceTree = "<group>"; };
+		5A6CD29C1B36C3B00036B129 /* mac@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mac@2x.png"; sourceTree = "<group>"; };
+		5A6CD29D1B36C3B00036B129 /* mac@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mac@3x.png"; sourceTree = "<group>"; };
+		5A6CD29E1B36C3B00036B129 /* windows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = windows.png; sourceTree = "<group>"; };
+		5A6CD29F1B36C3B00036B129 /* windows@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "windows@2x.png"; sourceTree = "<group>"; };
+		5A6CD2A01B36C3B00036B129 /* windows@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "windows@3x.png"; sourceTree = "<group>"; };
 		5A87619D1B1F93C20030221A /* SRDiaporamaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRDiaporamaCollectionViewCell.h; path = SRDiaporamaCollectionViewCell/SRDiaporamaCollectionViewCell.h; sourceTree = "<group>"; };
 		5A87619E1B1F93C20030221A /* SRDiaporamaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRDiaporamaCollectionViewCell.m; path = SRDiaporamaCollectionViewCell/SRDiaporamaCollectionViewCell.m; sourceTree = "<group>"; };
 		5A8761A31B20EDBD0030221A /* SRDiaporamaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRDiaporamaViewController.h; path = SRDiaporamaViewController/SRDiaporamaViewController.h; sourceTree = "<group>"; };
@@ -334,6 +356,7 @@
 				5A07EDED1B2C9DBC00BA875E /* banner@2x.png */,
 				5A07EE111B2CA72900BA875E /* banner@3x.png */,
 				5A07EE141B2CAAD300BA875E /* home.png */,
+				5A6CD2961B36C2E00036B129 /* Tutorials */,
 				5A07EE021B2C9E5100BA875E /* Buttons */,
 				5A07EE061B2C9E5100BA875E /* Provider icons */,
 			);
@@ -459,6 +482,7 @@
 				5A4D93731B068FC30008EF93 /* UICoreDataTableViewController.m */,
 				5A4D938F1B069ABF0008EF93 /* UICoreDataCollectionViewController.h */,
 				5A4D93901B069ABF0008EF93 /* UICoreDataCollectionViewController.m */,
+				5A6CD28F1B36B02F0036B129 /* SRTutorialViewController */,
 				5AC68AD11B336D4600A71FF3 /* SRSettingsSplitViewController */,
 				5AB7B6821B276E36002402E2 /* SRCreateSelectionViewController */,
 				5AB7B6781B27686B002402E2 /* SRSelectionPopoverNavigationController */,
@@ -683,6 +707,40 @@
 			name = SRImageViewController;
 			sourceTree = "<group>";
 		};
+		5A6CD28F1B36B02F0036B129 /* SRTutorialViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5A6CD28A1B36B0290036B129 /* SRTutorialViewController.h */,
+				5A6CD28B1B36B0290036B129 /* SRTutorialViewController.m */,
+				5A6CD28C1B36B0290036B129 /* SRTutorialViewController.xib */,
+				5A6CD2951B36B74A0036B129 /* SRTutorialSlideViewController */,
+			);
+			name = SRTutorialViewController;
+			sourceTree = "<group>";
+		};
+		5A6CD2951B36B74A0036B129 /* SRTutorialSlideViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5A6CD2901B36B73E0036B129 /* SRTutorialSlideViewController.h */,
+				5A6CD2911B36B73E0036B129 /* SRTutorialSlideViewController.m */,
+				5A6CD2921B36B73E0036B129 /* SRTutorialSlideViewController.xib */,
+			);
+			name = SRTutorialSlideViewController;
+			sourceTree = "<group>";
+		};
+		5A6CD2961B36C2E00036B129 /* Tutorials */ = {
+			isa = PBXGroup;
+			children = (
+				5A6CD29B1B36C3B00036B129 /* mac.png */,
+				5A6CD29C1B36C3B00036B129 /* mac@2x.png */,
+				5A6CD29D1B36C3B00036B129 /* mac@3x.png */,
+				5A6CD29E1B36C3B00036B129 /* windows.png */,
+				5A6CD29F1B36C3B00036B129 /* windows@2x.png */,
+				5A6CD2A01B36C3B00036B129 /* windows@3x.png */,
+			);
+			path = Tutorials;
+			sourceTree = "<group>";
+		};
 		5A8761A21B1F93CA0030221A /* SRDiaporamaCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -869,19 +927,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A07EE091B2C9E5100BA875E /* arrow-down.png in Resources */,
+				5A6CD2941B36B73E0036B129 /* SRTutorialSlideViewController.xib in Resources */,
 				5A07EDF71B2C9DBC00BA875E /* banner@2x.png in Resources */,
 				5A8761A71B20EDBD0030221A /* SRDiaporamaViewController.xib in Resources */,
 				5AB7B6771B276867002402E2 /* SRSelectionPopoverNavigationController.xib in Resources */,
+				5A6CD2A51B36C3B00036B129 /* windows@2x.png in Resources */,
 				5A4D93CF1B06A2060008EF93 /* SRImageCollectionViewCell.xib in Resources */,
 				5A07EDD01B2A2D1500BA875E /* SRImagesCollectionViewController.xib in Resources */,
 				5A07EE0F1B2CA1BC00BA875E /* provider-ipad-directory.png in Resources */,
+				5A6CD2A21B36C3B00036B129 /* mac@2x.png in Resources */,
 				5A04B23F1B30CBC500CF5A3B /* add_to_selection.png in Resources */,
 				5A07EE121B2CA72900BA875E /* banner.png in Resources */,
 				5A07EE0C1B2C9E5100BA875E /* provider-dropbox.png in Resources */,
 				5AE34EEE1B336BCE001D2011 /* Podfile in Resources */,
 				5A4D92DE1B0673EC0008EF93 /* LaunchScreen.xib in Resources */,
 				5A4D93C61B06A13D0008EF93 /* SRCollectionReusableHeader.xib in Resources */,
+				5A6CD2A41B36C3B00036B129 /* windows.png in Resources */,
+				5A6CD28E1B36B0290036B129 /* SRTutorialViewController.xib in Resources */,
+				5A6CD2A31B36C3B00036B129 /* mac@3x.png in Resources */,
 				5A04B2481B30DC0500CF5A3B /* SRSelectionBarButtonItem.xib in Resources */,
+				5A6CD2A11B36C3B00036B129 /* mac.png in Resources */,
 				5AE34EE21B335FFE001D2011 /* grid.png in Resources */,
 				5A4D93C41B06A13D0008EF93 /* SRCollectionReusableFooter.xib in Resources */,
 				5A07EE0A1B2C9E5100BA875E /* arrow-down@2x.png in Resources */,
@@ -898,6 +963,7 @@
 				5A4D93D81B06AB7F0008EF93 /* SRImageViewController.xib in Resources */,
 				5AE34EE61B3368F5001D2011 /* gears.png in Resources */,
 				5AECDB9B1B06C3F700DB572E /* SRHomeViewController.xib in Resources */,
+				5A6CD2A61B36C3B00036B129 /* windows@3x.png in Resources */,
 				5AECDBA11B06C90600DB572E /* localization.sh in Resources */,
 				5A4D92DB1B0673EC0008EF93 /* Images.xcassets in Resources */,
 				5A07EE131B2CA72900BA875E /* banner@3x.png in Resources */,
@@ -962,6 +1028,7 @@
 				5A4D93911B069ABF0008EF93 /* UICoreDataCollectionViewController.m in Sources */,
 				5A4D93C51B06A13D0008EF93 /* SRCollectionReusableHeader.m in Sources */,
 				5A0E58E41B1F8FA800846031 /* SRProviderLocal.m in Sources */,
+				5A6CD28D1B36B0290036B129 /* SRTutorialViewController.m in Sources */,
 				5AECDBA41B07665800DB572E /* SRProvider+Helper.m in Sources */,
 				5A4D934A1B067ED00008EF93 /* SRLogger.m in Sources */,
 				5A0E58E31B1F8FA800846031 /* SROperationProviderLocalSynchronization.m in Sources */,
@@ -973,6 +1040,7 @@
 				5AB7B66B1B27613D002402E2 /* SRSelectionsTableViewController.m in Sources */,
 				5A07EDD91B2C8D7000BA875E /* SRTableViewCell.m in Sources */,
 				5AC68ACF1B336D4100A71FF3 /* SRSettingsSplitViewController.m in Sources */,
+				5A6CD2931B36B73E0036B129 /* SRTutorialSlideViewController.m in Sources */,
 				5A4D938D1B0696790008EF93 /* SRFilesNavigationController.m in Sources */,
 				5A8761A01B1F93C20030221A /* SRDiaporamaCollectionViewCell.m in Sources */,
 				5A4D93431B067B3C0008EF93 /* Showroom.xcdatamodeld in Sources */,

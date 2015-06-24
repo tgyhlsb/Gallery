@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRTutorialViewController">
+            <connections>
+                <outlet property="closeButton" destination="xwz-EX-q6G" id="xuG-KG-R5w"/>
+                <outlet property="containerView" destination="InM-6r-YLe" id="xpo-uc-feV"/>
+                <outlet property="pageControl" destination="f85-wz-PuB" id="i7L-IP-Q6S"/>
+                <outlet property="segmentedControl" destination="e3n-BY-H3a" id="tbG-Ze-SKU"/>
+                <outlet property="toolBar" destination="fdO-6p-bND" id="hyS-uL-B1Y"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-6p-bND">
+                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="hiP-1k-bu9"/>
+                    </constraints>
+                    <items>
+                        <barButtonItem style="plain" id="2kE-h8-HvG">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="e3n-BY-H3a">
+                                <rect key="frame" x="16" y="7" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First" width="30"/>
+                                    <segment title="Second" width="30"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlValueDidChangeHandler:" destination="-1" eventType="valueChanged" id="3hi-4M-oj7"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="dyB-uJ-lHt"/>
+                        <barButtonItem style="plain" id="LVu-jo-aoj">
+                            <pageControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="f85-wz-PuB">
+                                <rect key="frame" x="-19" y="-18" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="0aI-Rk-eLS"/>
+                        <barButtonItem title="Item" id="xwz-EX-q6G">
+                            <connections>
+                                <action selector="closeButtonHandler" destination="-1" id="aZT-AE-DIJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="InM-6r-YLe">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fdO-6p-bND" secondAttribute="trailing" id="1S4-9B-E0K"/>
+                <constraint firstItem="InM-6r-YLe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="JKe-kG-yQo"/>
+                <constraint firstItem="fdO-6p-bND" firstAttribute="top" secondItem="InM-6r-YLe" secondAttribute="bottom" id="KWZ-vF-HWw"/>
+                <constraint firstItem="fdO-6p-bND" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SPQ-a4-PKf"/>
+                <constraint firstAttribute="bottom" secondItem="fdO-6p-bND" secondAttribute="bottom" id="fms-sG-YyA"/>
+                <constraint firstAttribute="trailing" secondItem="InM-6r-YLe" secondAttribute="trailing" id="jH2-ho-8LV"/>
+                <constraint firstItem="InM-6r-YLe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nsi-mS-hkX"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+        </view>
+    </objects>
+</document>

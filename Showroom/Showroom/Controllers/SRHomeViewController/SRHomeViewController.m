@@ -19,6 +19,7 @@
 #import "SRImageNavigationController.h"
 #import "SRFilesNavigationController.h"
 #import "SRSettingsSplitViewController.h"
+#import "SRTutorialViewController.h"
 
 // Views
 #import "SRBarButtonItem.h"
@@ -294,7 +295,10 @@
 }
 
 - (IBAction)settingsButtonHandler:(UIButton *)sender {
-    SRSettingsSplitViewController *destination = [SRSettingsSplitViewController new];
+//    SRSettingsSplitViewController *destination = [SRSettingsSplitViewController new];
+//    [self presentViewController:destination animated:YES completion:nil];
+    
+    SRTutorialViewController *destination = [SRTutorialViewController new];
     [self presentViewController:destination animated:YES completion:nil];
 }
 
