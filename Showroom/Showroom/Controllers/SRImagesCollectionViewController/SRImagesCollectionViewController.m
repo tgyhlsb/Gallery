@@ -12,6 +12,7 @@
 #import "SRCollectionReusableFooter.h"
 #import "SRCollectionReusableHeader.h"
 #import "SRImageCollectionViewCell.h"
+#import "CSStickyHeaderFlowLayout.h"
 
 // Controllers
 #import "SRImageViewController.h"
@@ -70,7 +71,7 @@
 #pragma mark - Initialization
 
 - (UICollectionViewFlowLayout *)createCollectionViewLayout {
-    UICollectionViewFlowLayout *collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
+    UICollectionViewFlowLayout *collectionViewLayout = [[CSStickyHeaderFlowLayout alloc] init];
     collectionViewLayout.sectionInset = UIEdgeInsetsMake(MARGIN, MARGIN, MARGIN, MARGIN);
     collectionViewLayout.itemSize = [self sizeForItemWithViewSize:[[UIScreen mainScreen] bounds].size];
     collectionViewLayout.minimumInteritemSpacing = MARGIN;
