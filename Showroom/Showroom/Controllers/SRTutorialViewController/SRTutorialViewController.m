@@ -37,21 +37,41 @@
         self.modalPresentationStyle = UIModalPresentationFormSheet;
         self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         
-        self.images = @[
-                        [UIImage imageNamed:@"banner.png"],
-                        [UIImage imageNamed:@"banner.png"],
-                        [UIImage imageNamed:@"banner.png"],
-                        [UIImage imageNamed:@"banner.png"],
-                        [UIImage imageNamed:@"banner.png"]
-                        ];
+        NSArray *macImages = @[
+                               [UIImage imageNamed:@"banner.png"],
+                               [UIImage imageNamed:@"banner.png"],
+                               [UIImage imageNamed:@"banner.png"],
+                               [UIImage imageNamed:@"banner.png"],
+                               [UIImage imageNamed:@"banner.png"]
+                               ];
         
-        self.messages = @[
-                          @"1",
-                          @"2",
-                          @"3",
-                          @"4",
-                          @"5"
-                          ];
+        NSArray *windowsImages = @[
+                                   [UIImage imageNamed:@"banner.png"],
+                                   [UIImage imageNamed:@"banner.png"],
+                                   [UIImage imageNamed:@"banner.png"],
+                                   [UIImage imageNamed:@"banner.png"],
+                                   [UIImage imageNamed:@"banner.png"]
+                                   ];
+        
+        NSArray *macMessages = @[
+                                 @"1",
+                                 @"2",
+                                 @"3",
+                                 @"4",
+                                 @"5"
+                                 ];
+        
+        NSArray *windowsMessages = @[
+                                    @"1",
+                                    @"2",
+                                    @"3",
+                                    @"4",
+                                    @"5"
+                                    ];
+        
+        self.images = @[macImages, windowsImages];
+        
+        self.messages = @[macMessages, windowsMessages];
     }
     return self;
 }
@@ -69,7 +89,7 @@
     
     [self.closeButton setTitle:NSLocalizedString(@"LOCALIZE_CLOSE", nil)];
     
-    self.pageControl.numberOfPages = self.images.count;
+    self.pageControl.numberOfPages = [self numberOfSlides];
     
     UIImage *macImage = [UIImage imageNamed:@"mac.png"];
     UIImage *windowsImage = [UIImage imageNamed:@"windows.png"];
@@ -90,6 +110,9 @@
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)segmentedControlValueDidChangeHandler:(UISegmentedControl *)sender {
+    [self updateVisibleControllers];
+}
 #pragma mark - Page view controller
 
 - (void)initializePageViewController {
@@ -105,11 +128,25 @@
     [self.pageViewController didMoveToParentViewController:self];
 }
 
+- (NSInteger)numberOfSlides {
+    NSInteger images = MIN([[self.images firstObject] count], [[self.images lastObject] count]);
+    NSInteger messages = MIN([[self.messages firstObject] count], [[self.messages lastObject] count]);
+    return MIN(images, messages);
+}
+
+- (UIImage *)imageForType:(NSInteger)type andIndex:(NSInteger)index {
+    return [[self.images objectAtIndex:type] objectAtIndex:index];
+}
+
+- (NSString *)messageForType:(NSInteger)type andIndex:(NSInteger)index {
+    return [[self.messages objectAtIndex:type] objectAtIndex:index];
+}
+
 - (SRTutorialSlideViewController *)dequeueViewControllerForIndex:(NSInteger)index {
     SRTutorialSlideViewController *newController = [[SRTutorialSlideViewController alloc] init];
     newController.index = index;
-    newController.image = [self.images objectAtIndex:index];
-    newController.message = [self.messages objectAtIndex:index];
+    newController.image = [self imageForType:self.segmentedControl.selectedSegmentIndex andIndex:index];
+    newController.message = [self messageForType:self.segmentedControl.selectedSegmentIndex andIndex:index];
     return newController;
 }
 
@@ -128,6 +165,12 @@
 
 #pragma mark - UIPageViewControllerDataSource
 
+- (void)updateVisibleControllers {
+    for (SRTutorialSlideViewController *viewController in self.pageViewController.viewControllers) {
+        viewController.view.backgroundColor = [UIColor blueColor];
+    }
+}
+
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     NSInteger beforeIndex = [self indexForViewController:viewController] - 1;
     
@@ -140,7 +183,7 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
     NSInteger afterIndex = [self indexForViewController:viewController] + 1;
     
-    if (afterIndex >= self.images.count) return nil;
+    if (afterIndex >= [self numberOfSlides]) return nil;
     
     SRTutorialSlideViewController *afterController = [self dequeueViewControllerForIndex:afterIndex];
     return afterController;
