@@ -117,7 +117,7 @@
                                                                             withReuseIdentifier:identifier
                                                                                    forIndexPath:indexPath];
     
-    header.titleLabel.text = [self titleForSection:indexPath.section];
+    header.title = [self titleForSection:indexPath.section];
     return header;
 }
 

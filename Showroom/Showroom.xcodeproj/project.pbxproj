@@ -97,6 +97,8 @@
 		5AC68ACF1B336D4100A71FF3 /* SRSettingsSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC68ACD1B336D4100A71FF3 /* SRSettingsSplitViewController.m */; };
 		5AC68AD01B336D4100A71FF3 /* SRSettingsSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC68ACE1B336D4100A71FF3 /* SRSettingsSplitViewController.xib */; };
 		5AC68AE31B337BFF00A71FF3 /* UIViewController+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AC68AE21B337BFF00A71FF3 /* UIViewController+Helper.m */; };
+		5AE199BA1B3EDEFB006152FD /* breadcrumb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE199B91B3EDEFB006152FD /* breadcrumb@3x.png */; };
+		5AE199BD1B3EE27F006152FD /* SRTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AE199BC1B3EE27F006152FD /* SRTextAttachment.m */; };
 		5AE34EE21B335FFE001D2011 /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE34EE11B335FFE001D2011 /* grid.png */; };
 		5AE34EE41B33608D001D2011 /* file_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE34EE31B33608D001D2011 /* file_box.png */; };
 		5AE34EE61B3368F5001D2011 /* gears.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AE34EE51B3368F5001D2011 /* gears.png */; };
@@ -267,6 +269,9 @@
 		5AC68ACE1B336D4100A71FF3 /* SRSettingsSplitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRSettingsSplitViewController.xib; path = SRSettingsSplitViewController/SRSettingsSplitViewController.xib; sourceTree = "<group>"; };
 		5AC68AE11B337BFF00A71FF3 /* UIViewController+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Helper.h"; sourceTree = "<group>"; };
 		5AC68AE21B337BFF00A71FF3 /* UIViewController+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Helper.m"; sourceTree = "<group>"; };
+		5AE199B91B3EDEFB006152FD /* breadcrumb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "breadcrumb@3x.png"; sourceTree = "<group>"; };
+		5AE199BB1B3EE27F006152FD /* SRTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRTextAttachment.h; sourceTree = "<group>"; };
+		5AE199BC1B3EE27F006152FD /* SRTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRTextAttachment.m; sourceTree = "<group>"; };
 		5AE34EE11B335FFE001D2011 /* grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid.png; sourceTree = "<group>"; };
 		5AE34EE31B33608D001D2011 /* file_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file_box.png; sourceTree = "<group>"; };
 		5AE34EE51B3368F5001D2011 /* gears.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gears.png; sourceTree = "<group>"; };
@@ -355,6 +360,7 @@
 				5A07EE101B2CA72900BA875E /* banner.png */,
 				5A07EDED1B2C9DBC00BA875E /* banner@2x.png */,
 				5A07EE111B2CA72900BA875E /* banner@3x.png */,
+				5AE199B91B3EDEFB006152FD /* breadcrumb@3x.png */,
 				5A07EE141B2CAAD300BA875E /* home.png */,
 				5A6CD2961B36C2E00036B129 /* Tutorials */,
 				5A07EE021B2C9E5100BA875E /* Buttons */,
@@ -663,6 +669,8 @@
 				5A4D93B81B06A13D0008EF93 /* SRCollectionReusableHeader.h */,
 				5A4D93B91B06A13D0008EF93 /* SRCollectionReusableHeader.m */,
 				5A4D93BA1B06A13D0008EF93 /* SRCollectionReusableHeader.xib */,
+				5AE199BB1B3EE27F006152FD /* SRTextAttachment.h */,
+				5AE199BC1B3EE27F006152FD /* SRTextAttachment.m */,
 			);
 			path = SRCollectionReusableHeader;
 			sourceTree = "<group>";
@@ -944,6 +952,7 @@
 				5A4D93C61B06A13D0008EF93 /* SRCollectionReusableHeader.xib in Resources */,
 				5A6CD2A41B36C3B00036B129 /* windows.png in Resources */,
 				5A6CD28E1B36B0290036B129 /* SRTutorialViewController.xib in Resources */,
+				5AE199BA1B3EDEFB006152FD /* breadcrumb@3x.png in Resources */,
 				5A6CD2A31B36C3B00036B129 /* mac@3x.png in Resources */,
 				5A04B2481B30DC0500CF5A3B /* SRSelectionBarButtonItem.xib in Resources */,
 				5A6CD2A11B36C3B00036B129 /* mac.png in Resources */,
@@ -1033,6 +1042,7 @@
 				5A4D934A1B067ED00008EF93 /* SRLogger.m in Sources */,
 				5A0E58E31B1F8FA800846031 /* SROperationProviderLocalSynchronization.m in Sources */,
 				5A07EDB31B28C4CB00BA875E /* SRFile.m in Sources */,
+				5AE199BD1B3EE27F006152FD /* SRTextAttachment.m in Sources */,
 				5AB7B68B1B2787EE002402E2 /* SRSelection+Helper.m in Sources */,
 				5A4D93781B0690A60008EF93 /* SRFilesTableViewController.m in Sources */,
 				5A4D93501B06803E0008EF93 /* SRDirectory+Helper.m in Sources */,

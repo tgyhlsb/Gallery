@@ -31,8 +31,4 @@
     return [super initWithFrame:frame];
 }
 
-- (void)awakeFromNib {
-    self.backgroundColor = [UIColor greenColor];
-}
-
 @end
