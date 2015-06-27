@@ -1,10 +1,13 @@
 PODS:
+  - CSStickyHeaderFlowLayout (0.2.7)
   - MEDeclarativeTable (0.2.0)
 
 DEPENDENCIES:
+  - CSStickyHeaderFlowLayout (~> 0.2.7)
   - MEDeclarativeTable (~> 0.2.0)
 
 SPEC CHECKSUMS:
+  CSStickyHeaderFlowLayout: 739445e36fd96ab2cee9b9826a902396567fb6a5
   MEDeclarativeTable: 5f4865b80e62361c2d8a389a4e6ceeabebf77ddd
 
 COCOAPODS: 0.35.0

@@ -9,6 +9,6 @@
 
 @interface SRCollectionReusableHeader : SRCollectionReusableView
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) NSString *title;
 
 @end
