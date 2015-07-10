@@ -124,6 +124,10 @@ static SRProviderLocal *defaultProvider;
 
 #pragma mark - Getters & Setters
 
+- (BOOL)filesExist {
+    return self.rootDirectory.children.count > 0;
+}
+
 - (BOOL)needsUpdate {
     return ![self.rootDirectory.modificationDate isEqualToDate:[self lastModificationDate]];
 }
