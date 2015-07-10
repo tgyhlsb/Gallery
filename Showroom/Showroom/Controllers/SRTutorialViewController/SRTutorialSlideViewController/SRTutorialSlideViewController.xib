@@ -7,8 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRTutorialSlideViewController">
             <connections>
+                <outlet property="descriptionLabel" destination="6Pr-hT-qCS" id="yvX-X8-EtR"/>
                 <outlet property="imageView" destination="yah-Xp-XkA" id="Jr7-ci-sZe"/>
-                <outlet property="testLabel" destination="bZQ-U5-wGh" id="YAF-U6-r7Q"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,8 +20,8 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yah-Xp-XkA">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZQ-U5-wGh">
-                    <rect key="frame" x="279" y="289" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pr-hT-qCS">
+                    <rect key="frame" x="8" y="408" width="584" height="184"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -29,10 +29,14 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="6Pr-hT-qCS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="3fd-PE-9XH"/>
                 <constraint firstItem="yah-Xp-XkA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4SN-fi-m6L"/>
                 <constraint firstAttribute="bottom" secondItem="yah-Xp-XkA" secondAttribute="bottom" constant="200" id="MOG-Bc-GBc"/>
                 <constraint firstAttribute="trailing" secondItem="yah-Xp-XkA" secondAttribute="trailing" id="NIN-rO-zaU"/>
                 <constraint firstItem="yah-Xp-XkA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="NwB-QI-46S"/>
+                <constraint firstAttribute="bottom" secondItem="6Pr-hT-qCS" secondAttribute="bottom" constant="8" id="ZkZ-xB-26z"/>
+                <constraint firstItem="6Pr-hT-qCS" firstAttribute="top" secondItem="yah-Xp-XkA" secondAttribute="bottom" constant="8" id="aBz-Ts-8dS"/>
+                <constraint firstAttribute="trailing" secondItem="6Pr-hT-qCS" secondAttribute="trailing" constant="8" id="kSb-Vs-zhp"/>
             </constraints>
         </view>
     </objects>

@@ -18,6 +18,7 @@
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"LOCALIZE_TUTORIAL_ADDFILES_TITLE", nil);
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 #pragma mark - Content configuration
@@ -42,11 +43,11 @@
                                ];
     
     NSArray *macMessages = @[
-                             @"1",
-                             @"2",
-                             @"3",
-                             @"4",
-                             @"5"
+                             NSLocalizedString(@"LOCALIZE_TUTORIAL_ADDFILES_STEP1", nil),
+                             NSLocalizedString(@"LOCALIZE_TUTORIAL_ADDFILES_STEP2", nil),
+                             NSLocalizedString(@"LOCALIZE_TUTORIAL_ADDFILES_STEP3", nil),
+                             NSLocalizedString(@"LOCALIZE_TUTORIAL_ADDFILES_STEP4", nil),
+                             NSLocalizedString(@"LOCALIZE_TUTORIAL_ADDFILES_STEP5", nil),
                              ];
     
     NSArray *windowsMessages = @[

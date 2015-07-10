@@ -9,8 +9,8 @@
 #import "SRTutorialSlideViewController.h"
 
 @interface SRTutorialSlideViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *testLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @end
 
@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.testLabel.text = self.message;
+    self.descriptionLabel.text = self.message;
     self.imageView.image = self.image;
 }
 
@@ -28,6 +28,11 @@
 - (void)setImage:(UIImage *)image {
     _image = image;
     self.imageView.image = image;
+}
+
+- (void)setMessage:(NSString *)message {
+    _message = message;
+    self.descriptionLabel.text = message;
 }
 
 @end
