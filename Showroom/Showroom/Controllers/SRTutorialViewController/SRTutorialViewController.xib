@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -9,7 +9,9 @@
             <connections>
                 <outlet property="closeButton" destination="xwz-EX-q6G" id="xuG-KG-R5w"/>
                 <outlet property="containerView" destination="InM-6r-YLe" id="xpo-uc-feV"/>
+                <outlet property="nextBarButtonItem" destination="RMH-t3-oPS" id="Qj9-Jg-dzN"/>
                 <outlet property="pageControl" destination="f85-wz-PuB" id="i7L-IP-Q6S"/>
+                <outlet property="previousBarButtonItem" destination="3on-AL-STR" id="kGy-d6-Vcb"/>
                 <outlet property="segmentedControl" destination="e3n-BY-H3a" id="tbG-Ze-SKU"/>
                 <outlet property="toolBar" destination="fdO-6p-bND" id="hyS-uL-B1Y"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -40,11 +42,23 @@
                             </segmentedControl>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="dyB-uJ-lHt"/>
+                        <barButtonItem image="arrow-left.png" style="plain" id="3on-AL-STR">
+                            <connections>
+                                <action selector="previousButtonHandler:" destination="-1" id="flJ-Td-tEY"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="qLW-6d-gHK"/>
                         <barButtonItem style="plain" id="LVu-jo-aoj">
                             <pageControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="f85-wz-PuB">
                                 <rect key="frame" x="-19" y="-18" width="39" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </pageControl>
+                        </barButtonItem>
+                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Ult-f3-E59"/>
+                        <barButtonItem image="arrow-right.png" id="RMH-t3-oPS">
+                            <connections>
+                                <action selector="nextButtonHandler:" destination="-1" id="fmh-83-p5s"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="0aI-Rk-eLS"/>
                         <barButtonItem title="Item" id="xwz-EX-q6G">
@@ -72,4 +86,8 @@
             <nil key="simulatedStatusBarMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="arrow-left.png" width="22" height="22"/>
+        <image name="arrow-right.png" width="22" height="22"/>
+    </resources>
 </document>

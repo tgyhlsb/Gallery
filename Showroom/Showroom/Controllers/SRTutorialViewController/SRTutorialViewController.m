@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *previousBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextBarButtonItem;
 @end
 
 @implementation SRTutorialViewController
@@ -79,9 +81,8 @@
     self.toolBar.barTintColor = [UIColor colorWithRed:0.12f green:0.45f blue:0.66f alpha:1.00f];
     self.toolBar.tintColor = [UIColor whiteColor];
     
-    [self.closeButton setTitle:NSLocalizedString(@"LOCALIZE_CLOSE", nil)];
-    
     self.pageControl.numberOfPages = [self numberOfSlides];
+    self.pageControl.userInteractionEnabled = NO;
     
     UIImage *macImage = [UIImage imageNamed:@"mac.png"];
     UIImage *windowsImage = [UIImage imageNamed:@"windows.png"];
@@ -109,6 +110,16 @@
 - (void)setCenterViewController:(SRTutorialSlideViewController *)centerViewController {
     _centerViewController = centerViewController;
     self.pageControl.currentPage = [self indexForViewController:centerViewController];
+    
+    BOOL firstPage = (self.pageControl.currentPage == 0);
+    BOOL lastPage = (self.pageControl.currentPage == self.pageControl.numberOfPages - 1);
+    
+    self.previousBarButtonItem.enabled = !firstPage;
+    self.nextBarButtonItem.enabled = !lastPage;
+    
+    NSString *closeTitle = lastPage ? NSLocalizedString(@"LOCALIZE_TERMINATE", nil) : NSLocalizedString(@"LOCALIZE_CLOSE", nil);
+    
+    [self.closeButton setTitle:closeTitle];
 }
 #pragma mark - Handlers
 
@@ -119,6 +130,17 @@
 - (IBAction)segmentedControlValueDidChangeHandler:(UISegmentedControl *)sender {
     [self updateVisibleControllers];
 }
+
+- (IBAction)previousButtonHandler:(UIBarButtonItem *)sender {
+    NSInteger destinationIndex = [self indexForViewController:self.centerViewController] - 1;
+    [self setPageViewControllerForIndex:destinationIndex];
+}
+
+- (IBAction)nextButtonHandler:(UIBarButtonItem *)sender {
+    NSInteger destinationIndex = [self indexForViewController:self.centerViewController] + 1;
+    [self setPageViewControllerForIndex:destinationIndex];
+}
+
 #pragma mark - Page view controller
 
 - (void)initializePageViewController {
