@@ -41,18 +41,7 @@
 }
 
 - (UIImage *)image {
-//    return [UIImage imageWithData:self.imageData];
     return [UIImage imageWithContentsOfFile:[self absolutePath]];
-}
-
-- (void)setImage:(UIImage *)image {
-//    if ([@[@"jpg", @"jpeg"] containsObject:self.extension.lowercaseString]) {
-//        self.imageData = UIImageJPEGRepresentation(image, 0.5);
-//    } else if ([@[@"png"] containsObject:self.extension.lowercaseString]) {
-//        self.imageData = UIImagePNGRepresentation(image);
-//    } else {
-//        [SRLogger addError:@"Unable to save image %@", image];
-//    }
 }
 
 @end
