@@ -2,7 +2,7 @@
 //  SRDirectory.m
 //  Showroom
 //
-//  Created by Tanguy Hélesbeux on 10/06/2015.
+//  Created by Tanguy Hélesbeux on 10/07/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
@@ -12,6 +12,7 @@
 
 @implementation SRDirectory
 
+@dynamic thumbnailData;
 @dynamic children;
 
 @end

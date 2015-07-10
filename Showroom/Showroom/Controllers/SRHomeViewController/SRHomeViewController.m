@@ -270,8 +270,19 @@
 
 - (void)showTableViewForLocalFiles {
     
-    self.fetchedResultsController = self.localFilesResultController;
-    [self setShowTableView:YES];
+    SRProviderLocal *localProvider = [SRProviderLocal defaultProvider];
+    if ([localProvider filesExist]) {
+        
+        // Show table view with directories
+        self.fetchedResultsController = self.localFilesResultController;
+        [self setShowTableView:YES];
+    } else {
+        
+        // show AddFiles tutorial
+        SRNavigationController *destination = [SRTutorialAddFilesViewController tutorialNavigationController];
+        [self presentViewController:destination animated:YES completion:nil];
+    }
+    
 }
 
 - (IBAction)selectionsButtonHandler:(UIButton *)sender {
@@ -295,10 +306,7 @@
 }
 
 - (IBAction)settingsButtonHandler:(UIButton *)sender {
-//    SRSettingsSplitViewController *destination = [SRSettingsSplitViewController new];
-//    [self presentViewController:destination animated:YES completion:nil];
-    
-    SRNavigationController *destination = [SRTutorialAddFilesViewController tutorialNavigationController];
+    SRSettingsSplitViewController *destination = [SRSettingsSplitViewController new];
     [self presentViewController:destination animated:YES completion:nil];
 }
 

@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) BOOL didUpdateAfterLaunch;
 @property (readwrite, nonatomic) BOOL autoUpdate;
 
+- (BOOL)filesExist;
 - (BOOL)needsUpdate;
 
 - (void)startMonitoring;

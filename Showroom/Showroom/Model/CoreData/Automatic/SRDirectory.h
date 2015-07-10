@@ -2,7 +2,7 @@
 //  SRDirectory.h
 //  Showroom
 //
-//  Created by Tanguy Hélesbeux on 10/06/2015.
+//  Created by Tanguy Hélesbeux on 10/07/2015.
 //  Copyright (c) 2015 Tanguy Hélesbeux. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 
 @interface SRDirectory : SRFile
 
+@property (nonatomic, retain) NSData * thumbnailData;
 @property (nonatomic, retain) NSSet *children;
 @end
 

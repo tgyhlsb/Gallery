@@ -11,10 +11,6 @@
 		5A04B2401B30CBC500CF5A3B /* remove_from_selection.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A04B23E1B30CBC500CF5A3B /* remove_from_selection.png */; };
 		5A04B2471B30DC0500CF5A3B /* SRSelectionBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B2451B30DC0500CF5A3B /* SRSelectionBarButtonItem.m */; };
 		5A04B2481B30DC0500CF5A3B /* SRSelectionBarButtonItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A04B2461B30DC0500CF5A3B /* SRSelectionBarButtonItem.xib */; };
-		5A07EDB31B28C4CB00BA875E /* SRFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDB21B28C4CB00BA875E /* SRFile.m */; };
-		5A07EDB61B28C4CC00BA875E /* SRDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDB51B28C4CC00BA875E /* SRDirectory.m */; };
-		5A07EDB91B28C4CC00BA875E /* SRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDB81B28C4CC00BA875E /* SRImage.m */; };
-		5A07EDBC1B28C4CC00BA875E /* SRSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDBB1B28C4CC00BA875E /* SRSelection.m */; };
 		5A07EDCE1B2A2A7400BA875E /* SRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDCD1B2A2A7400BA875E /* SRViewController.m */; };
 		5A07EDD01B2A2D1500BA875E /* SRImagesCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EDCF1B2A2D1500BA875E /* SRImagesCollectionViewController.xib */; };
 		5A07EDD51B2A314C00BA875E /* SRBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A07EDD41B2A314C00BA875E /* SRBarButtonItem.m */; };
@@ -31,7 +27,6 @@
 		5A07EE131B2CA72900BA875E /* banner@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EE111B2CA72900BA875E /* banner@3x.png */; };
 		5A07EE151B2CAAD300BA875E /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A07EE141B2CAAD300BA875E /* home.png */; };
 		5A0E58E11B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DA1B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m */; };
-		5A0E58E21B1F8FA800846031 /* SROperationProviderLocalLoadImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DC1B1F8FA800846031 /* SROperationProviderLocalLoadImages.m */; };
 		5A0E58E31B1F8FA800846031 /* SROperationProviderLocalSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DE1B1F8FA800846031 /* SROperationProviderLocalSynchronization.m */; };
 		5A0E58E41B1F8FA800846031 /* SRProviderLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58E01B1F8FA800846031 /* SRProviderLocal.m */; };
 		5A38510D1B4FACA000EBBF47 /* AddFiles_mac_step1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A3851031B4FACA000EBBF47 /* AddFiles_mac_step1.png */; };
@@ -57,6 +52,10 @@
 		5A3851351B4FBC0400EBBF47 /* arrow-right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A3851331B4FBC0400EBBF47 /* arrow-right@3x.png */; };
 		5A3851381B4FBC3400EBBF47 /* arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A3851361B4FBC3400EBBF47 /* arrow-up@2x.png */; };
 		5A3851391B4FBC3400EBBF47 /* arrow-up@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A3851371B4FBC3400EBBF47 /* arrow-up@3x.png */; };
+		5A38513C1B4FC87D00EBBF47 /* SRSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A38513B1B4FC87D00EBBF47 /* SRSelection.m */; };
+		5A38513F1B4FC87E00EBBF47 /* SRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A38513E1B4FC87E00EBBF47 /* SRImage.m */; };
+		5A3851421B4FC87E00EBBF47 /* SRDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3851411B4FC87E00EBBF47 /* SRDirectory.m */; };
+		5A3851451B4FC87E00EBBF47 /* SRFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3851441B4FC87E00EBBF47 /* SRFile.m */; };
 		5A4D92CD1B0673EC0008EF93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92CC1B0673EC0008EF93 /* main.m */; };
 		5A4D92D01B0673EC0008EF93 /* SRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92CF1B0673EC0008EF93 /* SRAppDelegate.m */; };
 		5A4D92DB1B0673EC0008EF93 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D92DA1B0673EC0008EF93 /* Images.xcassets */; };
@@ -147,14 +146,6 @@
 		5A04B2441B30DC0500CF5A3B /* SRSelectionBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSelectionBarButtonItem.h; sourceTree = "<group>"; };
 		5A04B2451B30DC0500CF5A3B /* SRSelectionBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSelectionBarButtonItem.m; sourceTree = "<group>"; };
 		5A04B2461B30DC0500CF5A3B /* SRSelectionBarButtonItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SRSelectionBarButtonItem.xib; sourceTree = "<group>"; };
-		5A07EDB11B28C4CB00BA875E /* SRFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRFile.h; sourceTree = "<group>"; };
-		5A07EDB21B28C4CB00BA875E /* SRFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRFile.m; sourceTree = "<group>"; };
-		5A07EDB41B28C4CC00BA875E /* SRDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDirectory.h; sourceTree = "<group>"; };
-		5A07EDB51B28C4CC00BA875E /* SRDirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDirectory.m; sourceTree = "<group>"; };
-		5A07EDB71B28C4CC00BA875E /* SRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRImage.h; sourceTree = "<group>"; };
-		5A07EDB81B28C4CC00BA875E /* SRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRImage.m; sourceTree = "<group>"; };
-		5A07EDBA1B28C4CC00BA875E /* SRSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSelection.h; sourceTree = "<group>"; };
-		5A07EDBB1B28C4CC00BA875E /* SRSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSelection.m; sourceTree = "<group>"; };
 		5A07EDCC1B2A2A7400BA875E /* SRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRViewController.h; sourceTree = "<group>"; };
 		5A07EDCD1B2A2A7400BA875E /* SRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRViewController.m; sourceTree = "<group>"; };
 		5A07EDCF1B2A2D1500BA875E /* SRImagesCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SRImagesCollectionViewController.xib; path = SRImagesCollectionViewController/SRImagesCollectionViewController.xib; sourceTree = "<group>"; };
@@ -177,8 +168,6 @@
 		5A07EE141B2CAAD300BA875E /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		5A0E58D91B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationProviderLocalCreateThumbnails.h; sourceTree = "<group>"; };
 		5A0E58DA1B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SROperationProviderLocalCreateThumbnails.m; sourceTree = "<group>"; };
-		5A0E58DB1B1F8FA800846031 /* SROperationProviderLocalLoadImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationProviderLocalLoadImages.h; sourceTree = "<group>"; };
-		5A0E58DC1B1F8FA800846031 /* SROperationProviderLocalLoadImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SROperationProviderLocalLoadImages.m; sourceTree = "<group>"; };
 		5A0E58DD1B1F8FA800846031 /* SROperationProviderLocalSynchronization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SROperationProviderLocalSynchronization.h; sourceTree = "<group>"; };
 		5A0E58DE1B1F8FA800846031 /* SROperationProviderLocalSynchronization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SROperationProviderLocalSynchronization.m; sourceTree = "<group>"; };
 		5A0E58DF1B1F8FA800846031 /* SRProviderLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRProviderLocal.h; sourceTree = "<group>"; };
@@ -207,6 +196,14 @@
 		5A3851331B4FBC0400EBBF47 /* arrow-right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-right@3x.png"; sourceTree = "<group>"; };
 		5A3851361B4FBC3400EBBF47 /* arrow-up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up@2x.png"; sourceTree = "<group>"; };
 		5A3851371B4FBC3400EBBF47 /* arrow-up@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up@3x.png"; sourceTree = "<group>"; };
+		5A38513A1B4FC87D00EBBF47 /* SRSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRSelection.h; sourceTree = "<group>"; };
+		5A38513B1B4FC87D00EBBF47 /* SRSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRSelection.m; sourceTree = "<group>"; };
+		5A38513D1B4FC87E00EBBF47 /* SRImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRImage.h; sourceTree = "<group>"; };
+		5A38513E1B4FC87E00EBBF47 /* SRImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRImage.m; sourceTree = "<group>"; };
+		5A3851401B4FC87E00EBBF47 /* SRDirectory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDirectory.h; sourceTree = "<group>"; };
+		5A3851411B4FC87E00EBBF47 /* SRDirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDirectory.m; sourceTree = "<group>"; };
+		5A3851431B4FC87E00EBBF47 /* SRFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRFile.h; sourceTree = "<group>"; };
+		5A3851441B4FC87E00EBBF47 /* SRFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRFile.m; sourceTree = "<group>"; };
 		5A4D92C71B0673EC0008EF93 /* Showroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Showroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4D92CB1B0673EC0008EF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A4D92CC1B0673EC0008EF93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -438,8 +435,6 @@
 			children = (
 				5A0E58D91B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.h */,
 				5A0E58DA1B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m */,
-				5A0E58DB1B1F8FA800846031 /* SROperationProviderLocalLoadImages.h */,
-				5A0E58DC1B1F8FA800846031 /* SROperationProviderLocalLoadImages.m */,
 				5A0E58DD1B1F8FA800846031 /* SROperationProviderLocalSynchronization.h */,
 				5A0E58DE1B1F8FA800846031 /* SROperationProviderLocalSynchronization.m */,
 				5A0E58DF1B1F8FA800846031 /* SRProviderLocal.h */,
@@ -655,14 +650,14 @@
 		5A4D932A1B067B3C0008EF93 /* Automatic */ = {
 			isa = PBXGroup;
 			children = (
-				5A07EDBA1B28C4CC00BA875E /* SRSelection.h */,
-				5A07EDBB1B28C4CC00BA875E /* SRSelection.m */,
-				5A07EDB71B28C4CC00BA875E /* SRImage.h */,
-				5A07EDB81B28C4CC00BA875E /* SRImage.m */,
-				5A07EDB41B28C4CC00BA875E /* SRDirectory.h */,
-				5A07EDB51B28C4CC00BA875E /* SRDirectory.m */,
-				5A07EDB11B28C4CB00BA875E /* SRFile.h */,
-				5A07EDB21B28C4CB00BA875E /* SRFile.m */,
+				5A3851431B4FC87E00EBBF47 /* SRFile.h */,
+				5A3851441B4FC87E00EBBF47 /* SRFile.m */,
+				5A3851401B4FC87E00EBBF47 /* SRDirectory.h */,
+				5A3851411B4FC87E00EBBF47 /* SRDirectory.m */,
+				5A38513D1B4FC87E00EBBF47 /* SRImage.h */,
+				5A38513E1B4FC87E00EBBF47 /* SRImage.m */,
+				5A38513A1B4FC87D00EBBF47 /* SRSelection.h */,
+				5A38513B1B4FC87D00EBBF47 /* SRSelection.m */,
 			);
 			path = Automatic;
 			sourceTree = "<group>";
@@ -1134,20 +1129,19 @@
 				5A8761A61B20EDBD0030221A /* SRDiaporamaViewController.m in Sources */,
 				5A07EDD51B2A314C00BA875E /* SRBarButtonItem.m in Sources */,
 				5A4D93CE1B06A2060008EF93 /* SRImageCollectionViewCell.m in Sources */,
-				5A07EDB61B28C4CC00BA875E /* SRDirectory.m in Sources */,
 				5A4D92D01B0673EC0008EF93 /* SRAppDelegate.m in Sources */,
 				5A4D93941B069C370008EF93 /* SRImagesCollectionViewController.m in Sources */,
 				5A4D93401B067B3C0008EF93 /* SRDirectory+Serializer.m in Sources */,
 				5A3851191B4FAEEB00EBBF47 /* SRTutorialAddFilesViewController.m in Sources */,
-				5A07EDBC1B28C4CC00BA875E /* SRSelection.m in Sources */,
 				5A4D93911B069ABF0008EF93 /* UICoreDataCollectionViewController.m in Sources */,
 				5A4D93C51B06A13D0008EF93 /* SRCollectionReusableHeader.m in Sources */,
+				5A3851451B4FC87E00EBBF47 /* SRFile.m in Sources */,
 				5A0E58E41B1F8FA800846031 /* SRProviderLocal.m in Sources */,
 				5A6CD28D1B36B0290036B129 /* SRTutorialViewController.m in Sources */,
+				5A38513F1B4FC87E00EBBF47 /* SRImage.m in Sources */,
 				5AECDBA41B07665800DB572E /* SRProvider+Helper.m in Sources */,
 				5A4D934A1B067ED00008EF93 /* SRLogger.m in Sources */,
 				5A0E58E31B1F8FA800846031 /* SROperationProviderLocalSynchronization.m in Sources */,
-				5A07EDB31B28C4CB00BA875E /* SRFile.m in Sources */,
 				5AE199BD1B3EE27F006152FD /* SRTextAttachment.m in Sources */,
 				5AB7B68B1B2787EE002402E2 /* SRSelection+Helper.m in Sources */,
 				5A4D93781B0690A60008EF93 /* SRFilesTableViewController.m in Sources */,
@@ -1173,12 +1167,12 @@
 				5A4D93251B067AF80008EF93 /* SRProvider.m in Sources */,
 				5AB7B6761B276867002402E2 /* SRSelectionPopoverNavigationController.m in Sources */,
 				5AC68AE31B337BFF00A71FF3 /* UIViewController+Helper.m in Sources */,
-				5A07EDB91B28C4CC00BA875E /* SRImage.m in Sources */,
 				5A07EDDC1B2C8DC000BA875E /* SRDirectoryThumbnailTableViewCell.m in Sources */,
 				5A4D93531B0680F00008EF93 /* SRFile+Helper.m in Sources */,
 				5A4D93421B067B3C0008EF93 /* SRImage+Serializer.m in Sources */,
+				5A3851421B4FC87E00EBBF47 /* SRDirectory.m in Sources */,
+				5A38513C1B4FC87D00EBBF47 /* SRSelection.m in Sources */,
 				5A07EDCE1B2A2A7400BA875E /* SRViewController.m in Sources */,
-				5A0E58E21B1F8FA800846031 /* SROperationProviderLocalLoadImages.m in Sources */,
 				5A6CD2861B35C4760036B129 /* SRNavigationController.m in Sources */,
 				5A4D93441B067B3C0008EF93 /* SRModel.m in Sources */,
 				5A4D93471B067B910008EF93 /* SRNotificationCenter.m in Sources */,
