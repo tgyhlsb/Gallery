@@ -105,7 +105,7 @@ static SRProviderLocal *defaultProvider;
     syncOperation.directory = self.rootDirectory;
     [syncOperation setCompletionBlock:^{
         [SRLogger addInformation:@"Local provider did create missing thumbnails"];
-        [self loadImages];
+//        [self loadImages];
         [self save];
     }];
     

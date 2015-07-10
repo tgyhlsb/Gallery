@@ -112,7 +112,7 @@
 - (NSFetchRequest *)requestForImagesWithoutThumbnail {
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[SRImage className]];
-    request.predicate = [NSPredicate predicateWithFormat:@"thumbnailData = nil || imageData = nil"];
+    request.predicate = [NSPredicate predicateWithFormat:@"thumbnailData = nil"];
     return request;
 }
 
