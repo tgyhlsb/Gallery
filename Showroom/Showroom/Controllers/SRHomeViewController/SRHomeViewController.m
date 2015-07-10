@@ -298,7 +298,7 @@
 //    SRSettingsSplitViewController *destination = [SRSettingsSplitViewController new];
 //    [self presentViewController:destination animated:YES completion:nil];
     
-    SRNavigationController *destination = [SRTutorialViewController tutorialNavigationController];
+    SRNavigationController *destination = [SRTutorialAddFilesViewController tutorialNavigationController];
     [self presentViewController:destination animated:YES completion:nil];
 }
 
