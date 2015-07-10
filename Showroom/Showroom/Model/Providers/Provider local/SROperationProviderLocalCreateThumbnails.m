@@ -103,7 +103,7 @@
 - (void)createThumbnailForImage:(SRImage *)image {
     NSString *absolutePath = [SRProviderLocal absolutePath:image.path];
     UIImage *thumbnail = [UIImage imageWithContentsOfFile:absolutePath];
-    thumbnail = [self resizeImage:thumbnail withMaxSize:CGSizeMake(150, 150)];
+    thumbnail = [self resizeImage:thumbnail withMaxSize:CGSizeMake(200, 200)];
     [image setThumbnail:thumbnail];
 }
 
