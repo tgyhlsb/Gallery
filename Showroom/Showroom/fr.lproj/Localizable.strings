@@ -14,7 +14,7 @@
 "LOCALIZE_HOME_BUTTON_SYNCHRONIZE" = "Synchroniser";
 
 /* No comment provided by engineer. */
-"LOCALIZE_SELECTION_LIST_TITLE" = "Mes sélections";
+"LOCALIZE_SELECTION_LIST_TITLE" = "Mes listes";
 
 /* No comment provided by engineer. */
 "LOCALIZE_SELECTION_BAR_BUTTON" = "Sélection";
@@ -90,4 +90,10 @@
 
 "LOCALIZE_SELECTION_BUTTON_DEFAULT_NAME" = "Aucune sélection";
 
-"LOCALIZE_TUTORIAL_SELECTIONS_TITLE" = "Les sélections";
+"LOCALIZE_TUTORIAL_SELECTIONS_TITLE" = "Les listes";
+
+"LOCALIZE_CREATE_LIST_BUTTON" = "Créer la liste";
+
+"LOCALIZE_CREATE_LIST_TITLE" = "Nouvelle liste";
+
+"LOCALIZE_NEW_LIST_TITLE" = "Nom de la nouvelle liste";

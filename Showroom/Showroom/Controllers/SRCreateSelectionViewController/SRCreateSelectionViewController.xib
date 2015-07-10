@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SRCreateSelectionViewController">
             <connections>
+                <outlet property="actionButton" destination="QOn-LN-21v" id="fMB-R9-HT6"/>
+                <outlet property="infoButton" destination="OsY-nn-SrM" id="Pyc-Oo-bxB"/>
+                <outlet property="titleLabel" destination="69y-ta-91B" id="IKC-P5-SOj"/>
                 <outlet property="titleTextField" destination="uq2-si-kZY" id="sPV-uP-Ju5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -17,16 +20,51 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uq2-si-kZY">
-                    <rect key="frame" x="20" y="285" width="560" height="30"/>
+                    <rect key="frame" x="20" y="255" width="560" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" keyboardType="alphabet" returnKeyType="done"/>
+                    <connections>
+                        <action selector="textFieldEditingChanged:" destination="-1" eventType="editingChanged" id="TfK-sy-KgJ"/>
+                    </connections>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOn-LN-21v">
+                    <rect key="frame" x="20" y="293" width="560" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Sma-ad-STA"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="actionButtonHandler:" destination="-1" eventType="touchUpInside" id="g2v-3m-Jz4"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69y-ta-91B">
+                    <rect key="frame" x="20" y="226" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsY-nn-SrM">
+                    <rect key="frame" x="289" y="358" width="22" height="22"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="infoButtonHandler:" destination="-1" eventType="touchUpInside" id="Too-PK-5VW"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="uq2-si-kZY" secondAttribute="centerY" id="0c8-SJ-OPQ"/>
+                <constraint firstAttribute="centerY" secondItem="uq2-si-kZY" secondAttribute="centerY" constant="30" id="0c8-SJ-OPQ"/>
+                <constraint firstItem="OsY-nn-SrM" firstAttribute="top" secondItem="QOn-LN-21v" secondAttribute="bottom" constant="25" id="BCN-dy-FKQ"/>
+                <constraint firstItem="QOn-LN-21v" firstAttribute="top" secondItem="uq2-si-kZY" secondAttribute="bottom" constant="8" id="NOS-Uq-pKK"/>
                 <constraint firstItem="uq2-si-kZY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="ZAS-34-iBs"/>
                 <constraint firstAttribute="trailing" secondItem="uq2-si-kZY" secondAttribute="trailing" constant="20" id="adl-NR-kgY"/>
+                <constraint firstItem="69y-ta-91B" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="pgC-yf-Pao"/>
+                <constraint firstAttribute="trailing" secondItem="QOn-LN-21v" secondAttribute="trailing" constant="20" id="rTZ-Kj-Nvn"/>
+                <constraint firstItem="QOn-LN-21v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="yIw-rt-qFG"/>
+                <constraint firstAttribute="centerX" secondItem="OsY-nn-SrM" secondAttribute="centerX" id="yKH-1C-PXr"/>
+                <constraint firstItem="uq2-si-kZY" firstAttribute="top" secondItem="69y-ta-91B" secondAttribute="bottom" constant="8" id="yzp-wT-hoV"/>
             </constraints>
         </view>
     </objects>

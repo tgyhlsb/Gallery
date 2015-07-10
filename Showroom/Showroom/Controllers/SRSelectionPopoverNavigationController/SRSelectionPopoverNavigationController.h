@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SRNavigationController.h"
 
-@interface SRSelectionPopoverNavigationController : UINavigationController
+@interface SRSelectionPopoverNavigationController : SRNavigationController
 
 @property (copy) void (^closeBlock)(void);
 
