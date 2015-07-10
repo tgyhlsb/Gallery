@@ -73,3 +73,15 @@
 "LOCALIZE_SETTING_THUMBNAILS_QUALITY_MEDIUM" = "Moyenne";
 
 "LOCALIZE_SETTING_THUMBNAILS_QUALITY_LOW" = "Faible";
+
+"LOCALIZE_TUTORIAL_ADDFILES_TITLE" = "Ajouter des fichiers";
+
+"LOCALIZE_TUTORIAL_ADDFILES_STEP1" = "Ouvrez iTunes et branchez votre iPad à votre ordinateur\n\nRendez-vous dans la section \"Apps\" de votre iPad";
+
+"LOCALIZE_TUTORIAL_ADDFILES_STEP2" = "Descendez en bas de l'écran pour voir la section \"Partage de fichiers\"\n\nCette section se trouve en dessous de la liste de vos applications";
+
+"LOCALIZE_TUTORIAL_ADDFILES_STEP3" = "Cliquez sur \"Ajouter...\" et sélectionnez les fichiers que vous voulez importer dans MyShowroom";
+
+"LOCALIZE_TUTORIAL_ADDFILES_STEP4" = "Le trasnfert des fichiers commence automatiquement, pas besoin de synchroniser\n\nVous pouvez voir l'avancement du transfert en haut de la fenêtre iTunes";
+
+"LOCALIZE_TUTORIAL_ADDFILES_STEP5" = "Quand le transfert est terminé, tous vos fichiers et dossiers sont visibles dans \"Documents MyShowroom\"\n\nVous pouvez fermer ce tutoriel et accéder à vos fichiers directement depuis l'application MyShowroom sur votre iPad";
