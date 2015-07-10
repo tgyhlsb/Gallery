@@ -29,6 +29,17 @@
 
 #pragma mark - Constructors
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.modalPresentationStyle = UIModalPresentationFormSheet;
+        self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        
+        [self configureContent];
+    }
+    return self;
+}
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -44,7 +55,7 @@
 }
 
 + (SRNavigationController *)tutorialNavigationController {
-    SRTutorialViewController *rootViewController = [SRTutorialViewController new];
+    SRTutorialViewController *rootViewController = [[self alloc] initWithNibName:@"SRTutorialViewController" bundle:nil];
     return [self navigationControllerForRootViewController:rootViewController];
 }
 
@@ -77,7 +88,9 @@
     [self.segmentedControl setImage:macImage forSegmentAtIndex:0];
     [self.segmentedControl setImage:windowsImage forSegmentAtIndex:1];
     
-    [self moveButtonsToNavigationBar];
+    if (self.navigationController) {
+        [self moveButtonsToNavigationBar];
+    }
 }
 
 - (void)moveButtonsToNavigationBar {
