@@ -20,6 +20,7 @@
 #import "SRFilesNavigationController.h"
 #import "SRSettingsSplitViewController.h"
 #import "SRTutorialAddFilesViewController.h"
+#import "SRTutorialSelectionsViewController.h"
 
 // Views
 #import "SRBarButtonItem.h"
@@ -302,7 +303,16 @@
 - (void)showTableViewForSelections {
     
     self.fetchedResultsController = self.selectionsResultController;
-    [self setShowTableView:YES];
+    if ([self.fetchedResultsController fetchedObjects].count > 0) {
+        
+        // Show table view with selections
+        [self setShowTableView:YES];
+    } else {
+        
+        // show Selections tutorial
+        SRNavigationController *destination = [SRTutorialSelectionsViewController tutorialNavigationController];
+        [self presentViewController:destination animated:YES completion:nil];
+    }
 }
 
 - (IBAction)settingsButtonHandler:(UIButton *)sender {

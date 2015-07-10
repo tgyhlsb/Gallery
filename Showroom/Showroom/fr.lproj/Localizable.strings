@@ -89,3 +89,5 @@
 "LOCALIZE_TUTORIAL_ADDFILES_STEP5" = "Quand le transfert est terminé, tous vos fichiers et dossiers sont visibles dans \"Documents MyShowroom\"\n\nVous pouvez fermer ce tutoriel et accéder à vos fichiers directement depuis l'application MyShowroom sur votre iPad";
 
 "LOCALIZE_SELECTION_BUTTON_DEFAULT_NAME" = "Aucune sélection";
+
+"LOCALIZE_TUTORIAL_SELECTIONS_TITLE" = "Les sélections";

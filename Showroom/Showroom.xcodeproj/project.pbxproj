@@ -56,6 +56,7 @@
 		5A38513F1B4FC87E00EBBF47 /* SRImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A38513E1B4FC87E00EBBF47 /* SRImage.m */; };
 		5A3851421B4FC87E00EBBF47 /* SRDirectory.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3851411B4FC87E00EBBF47 /* SRDirectory.m */; };
 		5A3851451B4FC87E00EBBF47 /* SRFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3851441B4FC87E00EBBF47 /* SRFile.m */; };
+		5A3851511B4FE36600EBBF47 /* SRTutorialSelectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3851501B4FE36600EBBF47 /* SRTutorialSelectionsViewController.m */; };
 		5A4D92CD1B0673EC0008EF93 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92CC1B0673EC0008EF93 /* main.m */; };
 		5A4D92D01B0673EC0008EF93 /* SRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4D92CF1B0673EC0008EF93 /* SRAppDelegate.m */; };
 		5A4D92DB1B0673EC0008EF93 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A4D92DA1B0673EC0008EF93 /* Images.xcassets */; };
@@ -204,6 +205,8 @@
 		5A3851411B4FC87E00EBBF47 /* SRDirectory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDirectory.m; sourceTree = "<group>"; };
 		5A3851431B4FC87E00EBBF47 /* SRFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRFile.h; sourceTree = "<group>"; };
 		5A3851441B4FC87E00EBBF47 /* SRFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRFile.m; sourceTree = "<group>"; };
+		5A38514F1B4FE36600EBBF47 /* SRTutorialSelectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRTutorialSelectionsViewController.h; path = SRTutorialViewController/SRTutorialSelectionsViewController.h; sourceTree = "<group>"; };
+		5A3851501B4FE36600EBBF47 /* SRTutorialSelectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRTutorialSelectionsViewController.m; path = SRTutorialViewController/SRTutorialSelectionsViewController.m; sourceTree = "<group>"; };
 		5A4D92C71B0673EC0008EF93 /* Showroom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Showroom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4D92CB1B0673EC0008EF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A4D92CC1B0673EC0008EF93 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -465,6 +468,8 @@
 			children = (
 				5A3851171B4FAEEB00EBBF47 /* SRTutorialAddFilesViewController.h */,
 				5A3851181B4FAEEB00EBBF47 /* SRTutorialAddFilesViewController.m */,
+				5A38514F1B4FE36600EBBF47 /* SRTutorialSelectionsViewController.h */,
+				5A3851501B4FE36600EBBF47 /* SRTutorialSelectionsViewController.m */,
 			);
 			name = Subclasses;
 			sourceTree = "<group>";
@@ -1130,6 +1135,7 @@
 				5A07EDD51B2A314C00BA875E /* SRBarButtonItem.m in Sources */,
 				5A4D93CE1B06A2060008EF93 /* SRImageCollectionViewCell.m in Sources */,
 				5A4D92D01B0673EC0008EF93 /* SRAppDelegate.m in Sources */,
+				5A3851511B4FE36600EBBF47 /* SRTutorialSelectionsViewController.m in Sources */,
 				5A4D93941B069C370008EF93 /* SRImagesCollectionViewController.m in Sources */,
 				5A4D93401B067B3C0008EF93 /* SRDirectory+Serializer.m in Sources */,
 				5A3851191B4FAEEB00EBBF47 /* SRTutorialAddFilesViewController.m in Sources */,
