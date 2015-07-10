@@ -55,11 +55,16 @@
 #pragma mark - SRSelectionsTableViewControllerDelegate
 
 - (void)selectionsTableViewController:(SRSelectionsTableViewController *)controller didSelectSelection:(SRSelection *)selection {
-    [[SRModel defaultModel] setActiveSelection:selection];
-    
-    if (self.closeBlock) {
-        self.closeBlock();
-        self.closeBlock = nil;
+    SRModel *model = [SRModel defaultModel];
+    if ([selection isEqual:model.activeSelection]) {
+        [model setActiveSelection:nil];
+    } else {
+        [model setActiveSelection:selection];
+        
+        if (self.closeBlock) {
+            self.closeBlock();
+            self.closeBlock = nil;
+        }
     }
 }
 
