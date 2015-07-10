@@ -7,7 +7,14 @@
 //
 
 #import "SRViewController.h"
+#import "SRNavigationController.h"
 
 @interface SRTutorialViewController : SRViewController
+
+@property (strong, nonatomic) NSArray *images;
+@property (strong, nonatomic) NSArray *messages;
+
++ (SRNavigationController *)tutorialNavigationController;
++ (SRNavigationController *)navigationControllerForRootViewController:(SRTutorialViewController *)rootController;
 
 @end

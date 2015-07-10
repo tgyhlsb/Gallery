@@ -19,7 +19,7 @@
 #import "SRImageNavigationController.h"
 #import "SRFilesNavigationController.h"
 #import "SRSettingsSplitViewController.h"
-#import "SRTutorialViewController.h"
+#import "SRTutorialAddFilesViewController.h"
 
 // Views
 #import "SRBarButtonItem.h"
@@ -298,7 +298,7 @@
 //    SRSettingsSplitViewController *destination = [SRSettingsSplitViewController new];
 //    [self presentViewController:destination animated:YES completion:nil];
     
-    SRTutorialViewController *destination = [SRTutorialViewController new];
+    SRNavigationController *destination = [SRTutorialViewController tutorialNavigationController];
     [self presentViewController:destination animated:YES completion:nil];
 }
 

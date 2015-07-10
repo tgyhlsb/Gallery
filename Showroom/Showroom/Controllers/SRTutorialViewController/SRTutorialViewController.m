@@ -15,8 +15,6 @@
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (strong, nonatomic) SRTutorialSlideViewController *centerViewController;
-@property (strong, nonatomic) NSArray *images;
-@property (strong, nonatomic) NSArray *messages;
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 
@@ -37,44 +35,27 @@
         self.modalPresentationStyle = UIModalPresentationFormSheet;
         self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         
-        NSArray *macImages = @[
-                               [UIImage imageNamed:@"banner.png"],
-                               [UIImage imageNamed:@"banner.png"],
-                               [UIImage imageNamed:@"banner.png"],
-                               [UIImage imageNamed:@"banner.png"],
-                               [UIImage imageNamed:@"banner.png"]
-                               ];
-        
-        NSArray *windowsImages = @[
-                                   [UIImage imageNamed:@"banner.png"],
-                                   [UIImage imageNamed:@"banner.png"],
-                                   [UIImage imageNamed:@"banner.png"],
-                                   [UIImage imageNamed:@"banner.png"],
-                                   [UIImage imageNamed:@"banner.png"]
-                                   ];
-        
-        NSArray *macMessages = @[
-                                 @"1",
-                                 @"2",
-                                 @"3",
-                                 @"4",
-                                 @"5"
-                                 ];
-        
-        NSArray *windowsMessages = @[
-                                    @"1",
-                                    @"2",
-                                    @"3",
-                                    @"4",
-                                    @"5"
-                                    ];
-        
-        self.images = @[macImages, windowsImages];
-        
-        self.messages = @[macMessages, windowsMessages];
+        [self configureContent];
     }
     return self;
 }
+
+- (void)configureContent {
+}
+
++ (SRNavigationController *)tutorialNavigationController {
+    SRTutorialViewController *rootViewController = [SRTutorialViewController new];
+    return [self navigationControllerForRootViewController:rootViewController];
+}
+
++ (SRNavigationController *)navigationControllerForRootViewController:(SRTutorialViewController *)rootController {
+    
+    SRNavigationController *navigationController = [[SRNavigationController alloc] initWithRootViewController:rootController];
+    navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    navigationController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    return navigationController;
+}
+
 
 #pragma mark - View life cycle
 
@@ -95,6 +76,19 @@
     UIImage *windowsImage = [UIImage imageNamed:@"windows.png"];
     [self.segmentedControl setImage:macImage forSegmentAtIndex:0];
     [self.segmentedControl setImage:windowsImage forSegmentAtIndex:1];
+    
+    [self moveButtonsToNavigationBar];
+}
+
+- (void)moveButtonsToNavigationBar {
+    NSMutableArray *toolBarItems = [self.toolBar.items mutableCopy];
+    [toolBarItems removeObject:self.closeButton];
+    UIBarButtonItem *segmentedBarItem = [toolBarItems firstObject];
+    [toolBarItems removeObject:segmentedBarItem];
+    self.toolBar.items = toolBarItems;
+    
+    self.navigationItem.leftBarButtonItem = self.closeButton;
+    self.navigationItem.rightBarButtonItem = segmentedBarItem;
 }
 
 #pragma mark - Getters & Setters
@@ -103,7 +97,6 @@
     _centerViewController = centerViewController;
     self.pageControl.currentPage = [self indexForViewController:centerViewController];
 }
-
 #pragma mark - Handlers
 
 - (IBAction)closeButtonHandler {
