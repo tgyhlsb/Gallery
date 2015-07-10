@@ -47,6 +47,8 @@
     
     [self configureView];
     [self initializeGestures];
+    
+    [self loadImage];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -79,13 +81,22 @@
     self.titleButton.layer.cornerRadius = self.titleButton.frame.size.height/2;
 }
 
+- (void)loadImage {
+    self.imageView.image = nil;
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        UIImage *image = [self.image image];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            self.imageView.image = image;
+        });
+    });
+}
+
 #pragma mark - Getters & Setters
 
 - (UIImageView *)imageView {
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
-        _imageView.image = [self.image image];
         [self.scrollView addSubview:_imageView];
     }
     return _imageView;
