@@ -76,7 +76,7 @@
     [super viewDidLoad];
     
     [self initializePageViewController];
-    [self setPageViewControllerForIndex:0];
+    [self setPageViewControllerForIndex:0 animated:NO];
     
     self.toolBar.barTintColor = [UIColor colorWithRed:0.12f green:0.45f blue:0.66f alpha:1.00f];
     self.toolBar.tintColor = [UIColor whiteColor];
@@ -133,12 +133,12 @@
 
 - (IBAction)previousButtonHandler:(UIBarButtonItem *)sender {
     NSInteger destinationIndex = [self indexForViewController:self.centerViewController] - 1;
-    [self setPageViewControllerForIndex:destinationIndex];
+    [self setPageViewControllerForIndex:destinationIndex animated:YES];
 }
 
 - (IBAction)nextButtonHandler:(UIBarButtonItem *)sender {
     NSInteger destinationIndex = [self indexForViewController:self.centerViewController] + 1;
-    [self setPageViewControllerForIndex:destinationIndex];
+    [self setPageViewControllerForIndex:destinationIndex animated:YES];
 }
 
 #pragma mark - Page view controller
@@ -178,10 +178,11 @@
     return newController;
 }
 
-- (void)setPageViewControllerForIndex:(NSInteger)index {
+- (void)setPageViewControllerForIndex:(NSInteger)index animated:(BOOL)animated {
     SRTutorialSlideViewController *centerViewController = [self dequeueViewControllerForIndex:index];
+    UIPageViewControllerNavigationDirection direction = index > self.pageControl.currentPage ? UIPageViewControllerNavigationDirectionForward: UIPageViewControllerNavigationDirectionReverse;
     __weak SRTutorialViewController *weakSelf = self;
-    [self.pageViewController setViewControllers:@[centerViewController] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL finished) {
+    [self.pageViewController setViewControllers:@[centerViewController] direction:direction animated:animated completion:^(BOOL finished) {
         if (finished) weakSelf.centerViewController = centerViewController;
     }];
 }
