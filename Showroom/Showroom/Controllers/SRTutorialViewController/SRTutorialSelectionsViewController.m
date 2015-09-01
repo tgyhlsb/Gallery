@@ -27,14 +27,16 @@
     
     
     NSArray *macImages = @[
-                           [UIImage imageNamed:@"AddFiles_mac_step1.png"],
-                           [UIImage imageNamed:@"AddFiles_mac_step2.png"],
-                           [UIImage imageNamed:@"AddFiles_mac_step3.png"],
-                           [UIImage imageNamed:@"AddFiles_mac_step4.png"],
-                           [UIImage imageNamed:@"AddFiles_mac_step5.png"]
+                           [UIImage imageNamed:@"Lists_step1.png"],
+                           [UIImage imageNamed:@"Lists_step2.png"],
+                           [UIImage imageNamed:@"Lists_step3.png"],
+                           [UIImage imageNamed:@"Lists_step4.png"],
+                           [UIImage imageNamed:@"Lists_step5.png"],
+                           [UIImage imageNamed:@"Lists_step6.png"],
                            ];
     
     NSArray *windowsImages = @[
+                               [UIImage imageNamed:@"banner.png"],
                                [UIImage imageNamed:@"banner.png"],
                                [UIImage imageNamed:@"banner.png"],
                                [UIImage imageNamed:@"banner.png"],
@@ -43,11 +45,12 @@
                                ];
     
     NSArray *macMessages = @[
-                             NSLocalizedString(@"LOCALIZE_TUTORIAL_ADDFILES_STEP1", nil),
-                             NSLocalizedString(@"LOCALIZE_TUTORIAL_ADDFILES_STEP2", nil),
-                             NSLocalizedString(@"LOCALIZE_TUTORIAL_ADDFILES_STEP3", nil),
-                             NSLocalizedString(@"LOCALIZE_TUTORIAL_ADDFILES_STEP4", nil),
-                             NSLocalizedString(@"LOCALIZE_TUTORIAL_ADDFILES_STEP5", nil),
+                             NSLocalizedString(@"LOCALIZE_TUTORIAL_LISTS_STEP1", nil),
+                             NSLocalizedString(@"LOCALIZE_TUTORIAL_LISTS_STEP2", nil),
+                             NSLocalizedString(@"LOCALIZE_TUTORIAL_LISTS_STEP3", nil),
+                             NSLocalizedString(@"LOCALIZE_TUTORIAL_LISTS_STEP4", nil),
+                             NSLocalizedString(@"LOCALIZE_TUTORIAL_LISTS_STEP5", nil),
+                             NSLocalizedString(@"LOCALIZE_TUTORIAL_LISTS_STEP6", nil)
                              ];
     
     NSArray *windowsMessages = @[
@@ -55,7 +58,8 @@
                                  @"2",
                                  @"3",
                                  @"4",
-                                 @"5"
+                                 @"5",
+                                 @"6"
                                  ];
     
     self.images = @[macImages, windowsImages];
