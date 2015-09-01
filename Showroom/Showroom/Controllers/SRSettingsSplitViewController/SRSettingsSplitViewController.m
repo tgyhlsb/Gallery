@@ -8,6 +8,9 @@
 
 #import "SRSettingsSplitViewController.h"
 
+// Providers
+#import "SRProviderLocal.h"
+
 // Controllers
 #import "UIViewController+Helper.h"
 #import "SRNavigationController.h"
@@ -336,6 +339,8 @@ typedef void (^SRDeclarativeTableActionBlock)(MEDeclarativeTable *table, MEDecla
         
         self.tempSection = nil;
         self.tempRow = nil;
+        
+        [[SRProviderLocal defaultProvider] reloadFiles];
         
         [self.detailTableViewController.tableView reloadData];
     }
