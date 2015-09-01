@@ -97,3 +97,15 @@
 "LOCALIZE_CREATE_LIST_TITLE" = "Nouvelle liste";
 
 "LOCALIZE_NEW_LIST_TITLE" = "Nom de la nouvelle liste";
+
+"LOCALIZE_TUTORIAL_LISTS_STEP1" = "Les listes vous permettent de classer vos images. Pour créer une nouvelle liste, cliquez sur le bouton blanc en haut à droite de l'écran.";
+
+"LOCALIZE_TUTORIAL_LISTS_STEP2" = "Lorsque vous installez l'application, vous n'avez aucune liste. Cliquez sur le bouton + pour créer votre première liste.";
+
+"LOCALIZE_TUTORIAL_LISTS_STEP3" = "Seul un nom est nécessaire pour créer une liste.\n\nLe bouton d'information permet d'ouvrir ce tutoriel.";
+
+"LOCALIZE_TUTORIAL_LISTS_STEP4" = "Entrez un nom pour votre liste et utilisez le bouton \"Créer la liste\" pour valider.";
+
+"LOCALIZE_TUTORIAL_LISTS_STEP5" = "Votre liste est créée. Vous pouvez revenir à la gallerie d'images.";
+
+"LOCALIZE_TUTORIAL_LISTS_STEP6" = "Un nouveau bouton est disponible à côté du bouton blanc. Ce nouveau bouton permet d'ajouter et de retirer une image de la liste sélectionnée.";
