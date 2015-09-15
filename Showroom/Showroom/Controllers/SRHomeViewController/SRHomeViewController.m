@@ -14,6 +14,7 @@
 
 // Managers
 #import "SRNotificationCenter.h"
+#import "SRAnalyticsManager.h"
 
 // Controllers
 #import "SRImageNavigationController.h"
@@ -225,7 +226,7 @@
 }
 
 - (void)setShowTableView:(BOOL)showTableView {
-    [self  setShowTableView:showTableView completion:nil];
+    [self setShowTableView:showTableView completion:nil];
 }
 
 - (void)setShowTableView:(BOOL)showTableView completion:(void (^)(SRHomeViewController *weakSelf, BOOL finished))completion{
@@ -279,6 +280,7 @@
         // Show table view with directories
         self.fetchedResultsController = self.localFilesResultController;
         [self setShowTableView:YES];
+        [SRAnalyticsManager addScreenView:@"Home - Directories table"];
     } else {
         
         // show AddFiles tutorial
@@ -307,6 +309,7 @@
     self.fetchedResultsController = self.selectionsResultController;
     if ([self.fetchedResultsController fetchedObjects].count > 0) {
         
+        [SRAnalyticsManager addScreenView:@"Home - Selections table"];
         // Show table view with selections
         [self setShowTableView:YES];
     } else {
