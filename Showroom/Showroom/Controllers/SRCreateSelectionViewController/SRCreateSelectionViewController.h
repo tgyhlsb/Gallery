@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SRCreateSelectionViewController : UIViewController
+#import "SRViewController.h"
+
+@interface SRCreateSelectionViewController : SRViewController
 
 @end

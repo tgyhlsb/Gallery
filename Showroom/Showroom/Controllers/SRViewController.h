@@ -11,4 +11,6 @@
 
 @interface SRViewController : UIViewController
 
+@property (strong, nonatomic) NSString *screenName; // Used for analytics
+
 @end

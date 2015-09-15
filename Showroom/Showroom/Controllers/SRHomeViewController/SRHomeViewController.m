@@ -80,6 +80,8 @@
     [self updateLayout];
     
     [SRDirectoryThumbnailTableViewCell registerToTableView:self.tableView];
+    
+    self.screenName = @"Home";
 }
 
 - (void)viewDidAppear:(BOOL)animated {

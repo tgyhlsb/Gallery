@@ -8,6 +8,15 @@
 
 #import "SRViewController.h"
 
+// Managers
+#import "SRAnalyticsManager.h"
+
 @implementation SRViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [SRAnalyticsManager addScreenView:self.screenName];
+}
 
 @end

@@ -49,6 +49,8 @@
     [self initializeGestures];
     
     [self loadImage];
+    
+    self.screenName = @"Image";
 }
 
 - (void)viewDidLayoutSubviews {

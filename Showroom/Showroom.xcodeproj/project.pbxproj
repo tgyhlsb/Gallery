@@ -29,6 +29,8 @@
 		5A0E58E11B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DA1B1F8FA800846031 /* SROperationProviderLocalCreateThumbnails.m */; };
 		5A0E58E31B1F8FA800846031 /* SROperationProviderLocalSynchronization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58DE1B1F8FA800846031 /* SROperationProviderLocalSynchronization.m */; };
 		5A0E58E41B1F8FA800846031 /* SRProviderLocal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0E58E01B1F8FA800846031 /* SRProviderLocal.m */; };
+		5A216ECA1BA8C90200C2E2C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A216EC91BA8C90200C2E2C5 /* GoogleService-Info.plist */; };
+		5A216ECD1BA8C9C200C2E2C5 /* SRAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A216ECC1BA8C9C200C2E2C5 /* SRAnalyticsManager.m */; };
 		5A38510D1B4FACA000EBBF47 /* AddFiles_mac_step1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A3851031B4FACA000EBBF47 /* AddFiles_mac_step1.png */; };
 		5A38510E1B4FACA000EBBF47 /* AddFiles_mac_step1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A3851041B4FACA000EBBF47 /* AddFiles_mac_step1@2x.png */; };
 		5A38510F1B4FACA000EBBF47 /* AddFiles_mac_step2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A3851051B4FACA000EBBF47 /* AddFiles_mac_step2.png */; };
@@ -185,6 +187,9 @@
 		5A0E58DE1B1F8FA800846031 /* SROperationProviderLocalSynchronization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SROperationProviderLocalSynchronization.m; sourceTree = "<group>"; };
 		5A0E58DF1B1F8FA800846031 /* SRProviderLocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRProviderLocal.h; sourceTree = "<group>"; };
 		5A0E58E01B1F8FA800846031 /* SRProviderLocal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRProviderLocal.m; sourceTree = "<group>"; };
+		5A216EC91BA8C90200C2E2C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5A216ECB1BA8C9C200C2E2C5 /* SRAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRAnalyticsManager.h; sourceTree = "<group>"; };
+		5A216ECC1BA8C9C200C2E2C5 /* SRAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRAnalyticsManager.m; sourceTree = "<group>"; };
 		5A3851031B4FACA000EBBF47 /* AddFiles_mac_step1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddFiles_mac_step1.png; sourceTree = "<group>"; };
 		5A3851041B4FACA000EBBF47 /* AddFiles_mac_step1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddFiles_mac_step1@2x.png"; sourceTree = "<group>"; };
 		5A3851051B4FACA000EBBF47 /* AddFiles_mac_step2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddFiles_mac_step2.png; sourceTree = "<group>"; };
@@ -557,6 +562,7 @@
 		5A4D92CA1B0673EC0008EF93 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5A216EC91BA8C90200C2E2C5 /* GoogleService-Info.plist */,
 				5AECDBA01B06C90600DB572E /* localization.sh */,
 				5A4D92CB1B0673EC0008EF93 /* Info.plist */,
 				5A4D92FE1B0676720008EF93 /* Localizable.strings */,
@@ -619,6 +625,8 @@
 				5A4D93461B067B910008EF93 /* SRNotificationCenter.m */,
 				5A4D93481B067ED00008EF93 /* SRLogger.h */,
 				5A4D93491B067ED00008EF93 /* SRLogger.m */,
+				5A216ECB1BA8C9C200C2E2C5 /* SRAnalyticsManager.h */,
+				5A216ECC1BA8C9C200C2E2C5 /* SRAnalyticsManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1107,6 +1115,7 @@
 				5A3851351B4FBC0400EBBF47 /* arrow-right@3x.png in Resources */,
 				5A6CD2A11B36C3B00036B129 /* mac.png in Resources */,
 				5A38512E1B4FBBBD00EBBF47 /* arrow-left@2x.png in Resources */,
+				5A216ECA1BA8C90200C2E2C5 /* GoogleService-Info.plist in Resources */,
 				5A3851301B4FBBBD00EBBF47 /* arrow-right.png in Resources */,
 				5AE34EE21B335FFE001D2011 /* grid.png in Resources */,
 				5A4D93C41B06A13D0008EF93 /* SRCollectionReusableFooter.xib in Resources */,
@@ -1240,6 +1249,7 @@
 				5A4D93471B067B910008EF93 /* SRNotificationCenter.m in Sources */,
 				5AB7B6851B276FF8002402E2 /* SRSelection+Serializer.m in Sources */,
 				5AECDB9A1B06C3F700DB572E /* SRHomeViewController.m in Sources */,
+				5A216ECD1BA8C9C200C2E2C5 /* SRAnalyticsManager.m in Sources */,
 				5A4D93C31B06A13D0008EF93 /* SRCollectionReusableFooter.m in Sources */,
 				5A4D93C21B06A13D0008EF93 /* SRCollectionReusableView.m in Sources */,
 				5A04B2471B30DC0500CF5A3B /* SRSelectionBarButtonItem.m in Sources */,

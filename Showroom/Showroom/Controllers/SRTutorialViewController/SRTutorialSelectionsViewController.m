@@ -19,6 +19,8 @@
     
     self.title = NSLocalizedString(@"LOCALIZE_TUTORIAL_SELECTIONS_TITLE", nil);
     self.navigationItem.rightBarButtonItem = nil;
+    
+    self.screenName = @"Tutorial - Selections";
 }
 
 #pragma mark - Content configuration

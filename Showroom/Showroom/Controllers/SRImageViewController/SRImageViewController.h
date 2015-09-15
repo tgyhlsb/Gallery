@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+// Controllers
+#import "SRViewController.h"
+
 // Model
 #import "SRImage.h"
 
 @protocol SRImageViewControllerDelegate;
 
-@interface SRImageViewController : UIViewController
+@interface SRImageViewController : SRViewController
 
 @property (weak, nonatomic) id<SRImageViewControllerDelegate> delegate;
 @property (strong, nonatomic) SRImage *image;

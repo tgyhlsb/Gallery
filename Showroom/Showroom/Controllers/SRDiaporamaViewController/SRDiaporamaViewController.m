@@ -20,6 +20,7 @@
 
 // Managers
 #import "SRNotificationCenter.h"
+#import "SRAnalyticsManager.h"
 
 @interface SRDiaporamaViewController () <UIPageViewControllerDataSource, UIPageViewControllerDelegate, SRSelectionBarButtonItemDelegate, SRImageViewControllerDelegate>
 
@@ -62,6 +63,8 @@
     [self registerToModelNotifications];
     
     [self setTitleWithAppIcon];
+    
+    self.screenName = @"Diaporama";
 }
 
 - (void)dealloc {
@@ -118,8 +121,10 @@
     SRSelection *selection = [SRModel defaultModel].activeSelection;
     if ([selection imageIsSelected:self.activeImage]) {
         [selection deselectImage:self.activeImage];
+        [SRAnalyticsManager addScreenView:@"Selection REMOVE"];
     } else {
         [selection selectImage:self.activeImage];
+        [SRAnalyticsManager addScreenView:@"Selection ADD"];
     }
     [self updateSelectionButton];
 }

@@ -38,6 +38,8 @@
         self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         
         [self configureContent];
+        
+        self.screenName = @"Generic tutorial";
     }
     return self;
 }
@@ -172,6 +174,7 @@
 
 - (SRTutorialSlideViewController *)dequeueViewControllerForIndex:(NSInteger)index {
     SRTutorialSlideViewController *newController = [[SRTutorialSlideViewController alloc] init];
+    newController.screenName = [NSString stringWithFormat:@"%@ - %d", self.screenName, index];
     newController.index = index;
     newController.image = [self imageForType:self.segmentedControl.selectedSegmentIndex andIndex:index];
     newController.message = [self messageForType:self.segmentedControl.selectedSegmentIndex andIndex:index];

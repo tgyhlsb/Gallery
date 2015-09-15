@@ -41,6 +41,8 @@
     self.fetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForSelections];
     
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    
+    self.screenName = @"Selection list popup";
 }
 
 #pragma mark - Getters & Setters

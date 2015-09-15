@@ -19,6 +19,8 @@
     
     self.title = NSLocalizedString(@"LOCALIZE_TUTORIAL_ADDFILES_TITLE", nil);
     self.navigationItem.rightBarButtonItem = nil;
+
+    self.screenName = @"Tutorial - Add files";
 }
 
 #pragma mark - Content configuration

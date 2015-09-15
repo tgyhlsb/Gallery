@@ -30,6 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeView];
+    
+    self.screenName = @"Create Selection";
 }
 
 - (void)viewDidAppear:(BOOL)animated {

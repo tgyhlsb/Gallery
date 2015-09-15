@@ -55,6 +55,8 @@
     [SRImageCollectionViewCell registerToCollectionView:self.collectionView];
     
     [self setTitleWithAppIcon];
+    
+    self.screenName = @"Image collection";
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
