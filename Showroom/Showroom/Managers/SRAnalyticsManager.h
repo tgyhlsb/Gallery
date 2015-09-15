@@ -10,6 +10,7 @@
 
 @interface SRAnalyticsManager : NSObject
 
++ (void)configureGoogleAnalytics;
 + (void)addScreenView:(NSString *)screenName;
 
 @end
