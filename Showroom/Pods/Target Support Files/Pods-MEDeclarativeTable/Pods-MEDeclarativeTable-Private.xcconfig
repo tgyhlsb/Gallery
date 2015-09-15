@@ -1,5 +1,5 @@
 #include "Pods-MEDeclarativeTable.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/MEDeclarativeTable" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CSStickyHeaderFlowLayout" "${PODS_ROOT}/Headers/Public/MEDeclarativeTable"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/MEDeclarativeTable" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CSStickyHeaderFlowLayout" "${PODS_ROOT}/Headers/Public/Google" "${PODS_ROOT}/Headers/Public/Google/Google" "${PODS_ROOT}/Headers/Public/GoogleAnalytics" "${PODS_ROOT}/Headers/Public/GoogleNetworkingUtilities" "${PODS_ROOT}/Headers/Public/GoogleSymbolUtilities" "${PODS_ROOT}/Headers/Public/GoogleUtilities" "${PODS_ROOT}/Headers/Public/MEDeclarativeTable"
 OTHER_LDFLAGS = -ObjC
 PODS_ROOT = ${SRCROOT}
