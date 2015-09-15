@@ -39,9 +39,16 @@
 //    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
     self.fetchedResultsController = [[SRModel defaultModel] fetchedResultControllerForSelections];
+    
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
 #pragma mark - Getters & Setters
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    [self.tableView setEditing:editing animated:animated];
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -80,6 +87,30 @@
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    switch (editingStyle) {
+        case UITableViewCellEditingStyleDelete: {
+            SRSelection *selection = [self.fetchedResultsController objectAtIndexPath:indexPath];
+            [[SRModel defaultModel] deleteSelection:selection];
+            break;
+        }
+        case UITableViewCellEditingStyleInsert:
+            
+            break;
+        case UITableViewCellEditingStyleNone:
+            
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

@@ -188,6 +188,12 @@ static SRModel *defaultModel;
     return selection;
 }
 
+- (void)deleteSelection:(SRSelection *)selection {
+    [self.managedObjectContext deleteObject:selection];
+    if ([self.activeSelection isEqual:selection]) self.activeSelection = nil;
+    [self saveContext];
+}
+
 #pragma mark - Core Data stack
 
 @synthesize managedObjectContext = _managedObjectContext;

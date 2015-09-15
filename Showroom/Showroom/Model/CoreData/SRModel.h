@@ -40,6 +40,7 @@
 - (void)fetchActiveSelection;
 
 - (SRSelection *)createSelectionWithTitle:(NSString *)title;
+- (void)deleteSelection:(SRSelection *)selection;
 
 
 @end
