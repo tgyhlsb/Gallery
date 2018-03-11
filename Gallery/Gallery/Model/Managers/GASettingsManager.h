@@ -9,6 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger,GASettingDirectoryNavigationMode){
+    GASettingDirectoryNavigationModeIgnore,
+    GASettingDirectoryNavigationModeShowDirectory,
+    GASettingDirectoryNavigationModeShowFirstImage
+};
+
+typedef NS_ENUM(NSInteger,GASettingNavigationFileType){
+    GASettingNavigationFileTypeAll,
+    GASettingNavigationFileTypeImages,
+    GASettingNavigationFileTypeDirectories
+};
+
 @interface GASettingsManager : NSObject
 
 + (UIViewContentMode)thumbnailMode;
@@ -16,5 +28,21 @@
 
 + (NSInteger)thumbnailCacheLimit;
 + (void)setTumbnailCacheLimit:(NSInteger)cacheLimit;
+
++ (BOOL)shouldCacheThumbnails;
++ (void)setShouldCacheThumbnails:(BOOL)shouldCacheThumbnails;
+
++ (GASettingDirectoryNavigationMode)directoryNavigationMode;
++ (void)setDirectoryNavigationMode:(GASettingDirectoryNavigationMode)mode;
+
++ (NSInteger)pictureNumberPortrait;
++ (void)setPictureNumberPortrait:(NSInteger)pictureNumber;
+
++ (NSInteger)pictureNumberLandscape;
++ (void)setPictureNumberLandscape:(NSInteger)pictureNumber;
+
++ (GASettingNavigationFileType)navigationFileType;
++ (void)setNavigationFileType:(GASettingNavigationFileType)type;
+
 
 @end

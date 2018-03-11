@@ -1,0 +1,75 @@
+/* No comment provided by engineer. */
+"LOCALIZE_HOME_BUTTON" = "Accueil";
+
+/* No comment provided by engineer. */
+"LOCALIZE_HOME_BUTTON_FILE_LIST" = "Liste de fichier";
+
+/* No comment provided by engineer. */
+"LOCALIZE_HOME_BUTTON_IMAGE_COLLECTION" = "Gallerie d'image";
+
+/* No comment provided by engineer. */
+"LOCALIZE_HOME_INFO_FILE_UPDATE" = "Les fichiers modifiés ont été mis à jour";
+
+/* No comment provided by engineer. */
+"LOCALIZE_HOME_BUTTON_SYNCHRONIZE" = "Synchroniser";
+
+/* No comment provided by engineer. */
+"LOCALIZE_SELECTION_LIST_TITLE" = "Mes sélections";
+
+/* No comment provided by engineer. */
+"LOCALIZE_SELECTION_BAR_BUTTON" = "Sélection";
+
+/* No comment provided by engineer. */
+"LOCALIZE_SELECTION_IMAGE_COUNT_FORMAT_NULL" = "Aucune image";
+
+/* No comment provided by engineer. */
+"LOCALIZE_SELECTION_IMAGE_COUNT_FORMAT_SINGLE" = "1 image";
+
+/* No comment provided by engineer. */
+"LOCALIZE_SELECTION_IMAGE_COUNT_FORMAT_PLURAL" = "%d images";
+
+/* No comment provided by engineer. */
+"LOCALIZE_LOCAL_PROVIDER_TITLE" = "Toutes les images";
+
+/* No comment provided by engineer. */
+"LOCALIZE_DROPBOX_NOT_AVAILABLE_TITLE" = "Synchronisation avec Dropbox";
+
+/* No comment provided by engineer. */
+"LOCALIZE_DROPBOX_NOT_AVAILABLE_MESSAGE" = "La lecture des fichiers grâce à votre compte Dropbox sera prochainement disponible";
+
+/* No comment provided by engineer. */
+"LOCALIZE_OK" = "D'accord";
+
+"LOCALIZE_CLOSE" = "Fermer";
+
+"LOCALIZE_SETTING_SECTION_APPEARANCE" = "Apparence";
+
+"LOCALIZE_SETTING_APPEARANCE_INTERFACE" = "Interface";
+
+"LOCALIZE_SETTING_APPEARANCE_THUMBNAILS" = "Miniatures";
+
+"LOCALIZE_SETTING_SECTION_PROVIDERS" = "Fichiers";
+
+"LOCALIZE_SETTING_PROVIDER_LOCAL_SYNCHRONIZATION" = "Synchronisation";
+
+"LOCALIZE_SETTING_SYNCHRONIZE" = "Synchronizer";
+
+"LOCALIZE_SETTING_APPEARANCE_APP_COLOR_SECTION" = "Couleurs de l'application";
+
+"LOCALIZE_SETTING_APPEARANCE_MAIN_COLOR" = "Couleur principale";
+
+"LOCALIZE_SETTING_APPEARANCE_SECONDARY_COLOR" = "Couleur secondaire";
+
+"LOCALIZE_SETTING_APPEARANCE_DIAPORAMA_COLOR_SECTION" = "Fond d'écran du diaporama";
+
+"LOCALIZE_SETTING_APPEARANCE_DIAPORAMA_BACKGROUND_COLOR" = "Couleur standard";
+
+"LOCALIZE_SETTING_APPEARANCE_DIAPORAMA_BACKGROUND_COLOR_FULLSCREEN" = "Couleur en plein écran";
+
+"LOCALIZE_SETTING_THUMBNAILS_QUALITY_SECTION" = "Qualité des miniatures";
+
+"LOCALIZE_SETTING_THUMBNAILS_QUALITY_HIGH" = "Élevée";
+
+"LOCALIZE_SETTING_THUMBNAILS_QUALITY_MEDIUM" = "Moyenne";
+
+"LOCALIZE_SETTING_THUMBNAILS_QUALITY_LOW" = "Faible";

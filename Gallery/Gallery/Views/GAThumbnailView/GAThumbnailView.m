@@ -48,11 +48,21 @@
 #pragma mark - Image processing
 
 - (void)updateImageView {
+    self.image = nil;
     [self startLoading];
-    [GACacheManager thumbnailForFile:self.file inBackgroundWithBlock:^(UIImage *thumbnail) {
-        [self performSelectorOnMainThread:@selector(setImage:) withObject:thumbnail waitUntilDone:YES];
-        [self performSelectorOnMainThread:@selector(stopLoading) withObject:nil waitUntilDone:YES];
+    CGSize imageSize = [self imageSizeFromScale];
+    [GACacheManager thumbnailForFile:self.file andSize:imageSize inBackgroundWithBlock:^(UIImage *thumbnail) {
+        self.image = thumbnail;
+        [self stopLoading];
     }];
+}
+
+#define MIN_SCALE 0.5
+
+- (CGSize)imageSizeFromScale {
+    CGSize size = (self.preferredSize.width*self.preferredSize.height > 0) ? self.preferredSize : self.frame.size;
+    CGFloat scale = MAX(self.scale, MIN_SCALE);
+    return CGSizeMake(size.width*scale, size.height*scale);
 }
 
 #pragma mark - Activity Indicator

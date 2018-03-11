@@ -16,7 +16,7 @@
 @interface GAImageFile : GAFile
 
 + (instancetype)imageFileFromPath:(NSString *)path
-                           parent:(GAFile *)parent;
+                           parent:(GADirectory *)parent;
 
 + (BOOL)isImageFile:(NSString *)path;
 

@@ -10,10 +10,18 @@
 
 // Models
 #import "GADirectory.h"
+// Blocks
+typedef void (^GAFileReadingCompletionBlock)(GADirectory *root, NSError *error);
+
+static NSString *GANotificationFileDirectoryChanged = @"GANotificationFileDirectoryChanged";
 
 @interface GAFileManager : NSObject
 
++ (void)startMonitoring;
++ (void)stopMonitoring;
+
 + (GADirectory *)rootDirectory;
 + (GADirectory *)readSharedDirectory;
++ (void)readSharedDirectoryInBackgroundWithBlock:(GAFileReadingCompletionBlock)block;
 
 @end

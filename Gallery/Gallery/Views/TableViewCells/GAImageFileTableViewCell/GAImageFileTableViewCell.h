@@ -14,5 +14,7 @@
 @interface GAImageFileTableViewCell : GATableViewCell
 
 @property (strong, nonatomic) GAFile *imageFile;
+@property (nonatomic) CGSize thumbnailPreferredSize;
+@property (nonatomic) CGFloat thumbnailScale;
 
 @end
